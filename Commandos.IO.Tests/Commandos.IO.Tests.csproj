@@ -50,10 +50,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntitySerializerTest.cs" />
+    <Compile Include="MisFileReaderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="TestFiles\5G1A.MIS">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Commandos.IO\Commandos.IO.csproj">

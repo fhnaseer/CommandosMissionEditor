@@ -1,28 +1,35 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.IO;
-using Commandos.Model;
+using Commandos.Model.Common;
 
 namespace Commandos.IO
 {
     public static class EntitySerializer
     {
-        public static Camera ToCamera(string[] tokens)
-        {
-            if (tokens.Length != 2)
-                throw new InvalidDataException("Invalid number of tokens,");
+        //public static Camera ToCamera(string[] tokens)
+        //{
+        //    if (tokens is null)
+        //        throw new ArgumentNullException(nameof(tokens));
 
-            return new Camera
-            {
-                Value = int.Parse(tokens[1], CultureInfo.CurrentCulture)
-            };
-        }
+        //    if (tokens.Length != 2)
+        //        throw new InvalidDataException("Invalid number of tokens,");
 
-        public static Point3D ToPoint3D(string[] tokens)
+        //    //return new Camera
+        //    //{
+        //    //    Value = (CameraDirection)int.Parse(tokens[1], CultureInfo.CurrentCulture)
+        //    //};
+        //}
+
+        public static Position ToPosition(string[] tokens)
         {
+            if (tokens is null)
+                throw new ArgumentNullException(nameof(tokens));
+
             if (tokens.Length != 6)
                 throw new InvalidDataException("Invalid number of tokens,");
 
-            return new Point3D
+            return new Position
             {
                 X = double.Parse(tokens[2], CultureInfo.CurrentCulture),
                 Y = double.Parse(tokens[3], CultureInfo.CurrentCulture),

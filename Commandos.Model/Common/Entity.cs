@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Commandos.Model
+namespace Commandos.Model.Common
 {
     public abstract class Entity
     {
@@ -9,11 +9,11 @@ namespace Commandos.Model
 
     public abstract class SingleValueEntity<T> : Entity
     {
-        public abstract T Value { get; set; }
+        public virtual T Value { get; set; }
     }
 
     public abstract class MultipleDataEntity<T> : Entity
     {
-        public abstract List<T> Values { get; }
+        public abstract IList<T> Values { get; }
     }
 }

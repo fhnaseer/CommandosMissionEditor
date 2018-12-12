@@ -1,18 +1,14 @@
 ﻿using System.Collections.Generic;
 
-namespace Commandos.Model
+namespace Commandos.Model.Common
 {
-    public class Point3D : MultipleDataEntity<double>
+    public class Position : MultipleDataEntity<double>
     {
-        public Point3D()
+        public Position()
             : this(0, 0, 0)
         { }
 
-        public Point3D(double x, double y)
-            : this(x, y, 0)
-        { }
-
-        public Point3D(double x, double y, double z)
+        public Position(double x, double y, double z)
         {
             X = x;
             Y = y;
@@ -27,6 +23,6 @@ namespace Commandos.Model
 
         public double Z { get; set; }
 
-        public override List<double> Values => new List<double> { X, Y, Z };
+        public override IList<double> Values => new List<double> { X, Y, Z };
     }
 }
