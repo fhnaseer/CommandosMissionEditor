@@ -7,8 +7,8 @@
 
         public const string MsbFile = ".MANUAL_LIBRETA";
 
-        public const string Viewer = ".VISORES";
-        public const string Camera = ".CAMERA";
+        public const string Camera = ".VISORES";
+        public const string CameraDirection = ".CAMARA";
 
     }
 }

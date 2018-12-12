@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Commandos.IO.Serializers;
 
 namespace Commandos.IO
 {
@@ -13,6 +14,7 @@ namespace Commandos.IO
             lines = GetCleanedLines(lines);
             var fullText = string.Join(" ", lines);
             var tokens = fullText.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var camera = CameraSerializer.ToCamera(tokens, IndexHelper.GetCameraIndexes(tokens));
         }
 
         private static List<string> GetCleanedLines(List<string> lines)
@@ -37,34 +39,6 @@ namespace Commandos.IO
             lines = GetCleanedLines(lines);
             var fullText = string.Join(" ", lines);
             return fullText.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-        }
-
-        public static (int startIndex, int endIndex) GetCameraIndex(string[] tokens)
-        {
-            var startIndex = 0;
-            for (var i = 0; i < tokens.Length; i++)
-            {
-                if (tokens[i] == StringConstants.Viewer)
-                {
-                    startIndex = i;
-                    break;
-                }
-            }
-            if (tokens[startIndex + 1] != "[")
-                return (startIndex, startIndex + 1);
-            var counter = 0;
-            for (var i = startIndex + 1; i < tokens.Length; i++)
-            {
-                if (tokens[i] == "[")
-                    counter++;
-                if (tokens[i] == "]")
-                {
-                    counter--;
-                    if (counter == 0)
-                        return (startIndex, i);
-                }
-            }
-            throw new InvalidDataException("Wrong file,");
         }
     }
 }

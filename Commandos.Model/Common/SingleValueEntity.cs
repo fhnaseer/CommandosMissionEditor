@@ -1,30 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace Commandos.Model.Common
 {
-    public class Position : MultipleDataEntity<double>
+    public abstract class SingleValueEntity<T> : Entity
     {
-        public Position()
-            : this(0, 0, 0)
-        { }
-
-        public Position(double x, double y, double z)
-        {
-            X = x;
-            Y = y;
-            Z = z;
-        }
-
-        public override string Name => ".XYZ";
-
-        public double X { get; set; }
-
-        public double Y { get; set; }
-
-        public double Z { get; set; }
-
-        public override IList<double> Values => new List<double> { X, Y, Z };
+        public virtual T Value { get; set; }
 
 
         #region Methods for Equality checks.
@@ -33,36 +13,36 @@ namespace Commandos.Model.Common
         // Code is taken from MSDN which uses additional null checks for better performance.
         // It make no sense in writing same unit-tests again and again (is left null, is right null, etc.) again and again.
         /// <summary>
-        /// Determines whether the specified <see cref="System.Object" />, is equal to this instance.
+        /// Determines whether the specified <see cref="Object" />, is equal to this instance.
         /// </summary>
-        /// <param name="obj">The <see cref="System.Object" /> to compare with this instance.</param>
+        /// <param name="obj">The <see cref="Object" /> to compare with this instance.</param>
         /// <returns>
-        ///   <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+        ///   <c>true</c> if the specified <see cref="Object" /> is equal to this instance; otherwise, <c>false</c>.
         /// </returns>
         [ExcludeFromCodeCoverage]
         public override bool Equals(object obj)
         {
-            return Equals(obj as Position);
+            return Equals(obj as SingleValueEntity<T>);
         }
 
         /// <summary>
-        /// Determines whether the specified Position is equal to the current Position.
+        /// Determines whether the specified SingleValueEntity<T> is equal to the current SingleValueEntity<T>.
         /// </summary>
-        /// <param name="other">The Position to compare with the current Position.</param>
-        /// <returns>true if the specified Position is equal to the current Position;
+        /// <param name="other">The SingleValueEntity<T> to compare with the current SingleValueEntity<T>.</param>
+        /// <returns>true if the specified SingleValueEntity<T> is equal to the current SingleValueEntity<T>;
         /// otherwise, false.</returns>
         [ExcludeFromCodeCoverage]
-        internal bool Equals(Position other)
+        internal bool Equals(SingleValueEntity<T> other)
         {
             // If parameter is null, return false.
-            if (ReferenceEquals(other, null))
+            if (other is null)
                 return false;
 
             // Optimization for a common success case.
             if (ReferenceEquals(this, other))
                 return true;
 
-            return X == other.X && Y == other.Y && Z == other.Z;
+            return Value.Equals(other.Value);
         }
 
         /// <summary>
@@ -78,19 +58,19 @@ namespace Commandos.Model.Common
         }
 
         /// <summary>
-        /// Overrides equal operator for Position.
+        /// Overrides equal operator for SingleValueEntity<T>.
         /// </summary>
-        /// <param name="left">Left Position.</param>
-        /// <param name="right">Right Position</param>
-        /// <returns>true if the left Position is equal to the right Position;
+        /// <param name="left">Left SingleValueEntity<T>.</param>
+        /// <param name="right">Right SingleValueEntity<T></param>
+        /// <returns>true if the left SingleValueEntity<T> is equal to the right SingleValueEntity<T>;
         /// otherwise, false. </returns>
         [ExcludeFromCodeCoverage]
-        public static bool operator ==(Position left, Position right)
+        public static bool operator ==(SingleValueEntity<T> left, SingleValueEntity<T> right)
         {
             // Check for null on left side.
-            if (ReferenceEquals(left, null))
+            if (left is null)
             {
-                if (ReferenceEquals(right, null))
+                if (right is null)
                 {
                     // null == null = true.
                     return true;
@@ -104,14 +84,14 @@ namespace Commandos.Model.Common
         }
 
         /// <summary>
-        /// Overrides not equal operator for Position.
+        /// Overrides not equal operator for SingleValueEntity<T>.
         /// </summary>
-        /// <param name="left">Left Position.</param>
-        /// <param name="right">Right Position</param>
-        /// <returns>true if the left Position is not equal to the right Position;
+        /// <param name="left">Left SingleValueEntity<T>.</param>
+        /// <param name="right">Right SingleValueEntity<T></param>
+        /// <returns>true if the left SingleValueEntity<T> is not equal to the right SingleValueEntity<T>;
         /// otherwise, false. </returns>
         [ExcludeFromCodeCoverage]
-        public static bool operator !=(Position left, Position right)
+        public static bool operator !=(SingleValueEntity<T> left, SingleValueEntity<T> right)
         {
             return !(left == right);
         }

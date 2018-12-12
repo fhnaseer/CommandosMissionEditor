@@ -30,6 +30,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -53,11 +54,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="EntitySerializer.cs" />
+    <Compile Include="Serializers\EntitySerializer.cs" />
+    <Compile Include="IndexHelper.cs" />
     <Compile Include="MisFileReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serializers\FileSerializer.cs" />
     <Compile Include="StringConstants.cs" />
-    <Compile Include="CameraSerializer.cs" />
+    <Compile Include="Serializers\CameraSerializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
