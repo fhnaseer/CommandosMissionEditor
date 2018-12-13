@@ -9,7 +9,7 @@ namespace Commandos.IO.Serializers
             var indexes = GetBriefingIndexes(tokens, startIndex);
             return new Briefing
             {
-                FileName = EntitySerializer.GetStringValue(tokens, StringConstants.Initial, indexes.startIndex)
+                FileName = EntitySerializer.GetStringValue(tokens, StringConstants.BriefingFile, indexes.startIndex)
             };
         }
 

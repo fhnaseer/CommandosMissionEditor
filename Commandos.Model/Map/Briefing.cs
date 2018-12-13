@@ -6,7 +6,6 @@ namespace Commandos.Model.Map
     {
         public string FileName { get; set; }
 
-
         #region Methods for Equality checks.
         // http://msdn.microsoft.com/en-us/library/dd183755.aspx
         // Why ExcludeFromCodeCoverage? This code is used in multiple places and is heavily unit-tested.

@@ -12,6 +12,8 @@
       <Word>mis</Word>
       <Word>msb</Word>
       <Word>esc</Word>
+      <Word>bas</Word>
+      <Word>Ficheros</Word>
     </Recognized>
     <Deprecated>
       <Term PreferredAlternate="EnterpriseServices">ComPlus</Term>

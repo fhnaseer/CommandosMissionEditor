@@ -2,17 +2,9 @@
 
 namespace Commandos.Model.Map
 {
-    public class Mission
+    public class Ficheros
     {
-        public string MsbFileName { get; set; }
-
-        public string BasFileName { get; set; }
-
-        public Camera Camera { get; set; }
-
-        public Briefing Briefing { get; set; }
-
-        public Ficheros Ficheros { get; set; }
+        public string FileName { get; set; }
 
         #region Methods for Equality checks.
         // http://msdn.microsoft.com/en-us/library/dd183755.aspx
@@ -29,17 +21,17 @@ namespace Commandos.Model.Map
         [ExcludeFromCodeCoverage]
         public override bool Equals(object obj)
         {
-            return Equals(obj as Mission);
+            return Equals(obj as Ficheros);
         }
 
         /// <summary>
-        /// Determines whether the specified Mission is equal to the current Mission.
+        /// Determines whether the specified Ficheros is equal to the current Ficheros.
         /// </summary>
-        /// <param name="other">The Mission to compare with the current Mission.</param>
-        /// <returns>true if the specified Mission is equal to the current Mission;
+        /// <param name="other">The Ficheros to compare with the current Ficheros.</param>
+        /// <returns>true if the specified Ficheros is equal to the current Ficheros;
         /// otherwise, false.</returns>
         [ExcludeFromCodeCoverage]
-        internal bool Equals(Mission other)
+        internal bool Equals(Ficheros other)
         {
             // If parameter is null, return false.
             if (other is null)
@@ -49,10 +41,7 @@ namespace Commandos.Model.Map
             if (ReferenceEquals(this, other))
                 return true;
 
-            return MsbFileName == other.MsbFileName &&
-                BasFileName == other.BasFileName &&
-                Camera == other.Camera &&
-                Briefing == other.Briefing;
+            return FileName == other.FileName;
         }
 
         /// <summary>
@@ -68,14 +57,14 @@ namespace Commandos.Model.Map
         }
 
         /// <summary>
-        /// Overrides equal operator for Mission.
+        /// Overrides equal operator for Ficheros.
         /// </summary>
-        /// <param name="left">Left Mission.</param>
-        /// <param name="right">Right Mission</param>
-        /// <returns>true if the left Mission is equal to the right Mission;
+        /// <param name="left">Left Ficheros.</param>
+        /// <param name="right">Right Ficheros</param>
+        /// <returns>true if the left Ficheros is equal to the right Ficheros;
         /// otherwise, false. </returns>
         [ExcludeFromCodeCoverage]
-        public static bool operator ==(Mission left, Mission right)
+        public static bool operator ==(Ficheros left, Ficheros right)
         {
             // Check for null on left side.
             if (left is null)
@@ -94,14 +83,14 @@ namespace Commandos.Model.Map
         }
 
         /// <summary>
-        /// Overrides not equal operator for Mission.
+        /// Overrides not equal operator for Ficheros.
         /// </summary>
-        /// <param name="left">Left Mission.</param>
-        /// <param name="right">Right Mission</param>
-        /// <returns>true if the left Mission is not equal to the right Mission;
+        /// <param name="left">Left Ficheros.</param>
+        /// <param name="right">Right Ficheros</param>
+        /// <returns>true if the left Ficheros is not equal to the right Ficheros;
         /// otherwise, false. </returns>
         [ExcludeFromCodeCoverage]
-        public static bool operator !=(Mission left, Mission right)
+        public static bool operator !=(Ficheros left, Ficheros right)
         {
             return !(left == right);
         }

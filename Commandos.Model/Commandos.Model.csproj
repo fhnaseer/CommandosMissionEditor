@@ -55,6 +55,7 @@
     <Compile Include="Map\Camera.cs" />
     <Compile Include="Files\MsbFileEntity.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Map\Ficheros.cs" />
     <Compile Include="Map\Mission.cs" />
     <Compile Include="Common\Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
