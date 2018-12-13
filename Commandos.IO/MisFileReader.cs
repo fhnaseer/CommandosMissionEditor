@@ -12,6 +12,7 @@ namespace Commandos.IO
         public static Mission ReadMisFile(string path)
         {
             var tokens = GetTokens(path);
+            var missionTokens = TokenParser.ParseTokens(tokens);
             return MissionSerializer.ToMission(tokens);
         }
 

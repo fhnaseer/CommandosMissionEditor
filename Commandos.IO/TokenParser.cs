@@ -1,18 +1,19 @@
-﻿using Commandos.IO.Entities;
+﻿using System;
+using System.IO;
+using Commandos.IO.Entities;
 
 namespace Commandos.IO
 {
     public static class TokenParser
     {
-        //public static IList<TokenBase> ParseTokens(string[] tokens)
-        //{
-        //    if (tokens is null)
-        //        throw new ArgumentNullException(nameof(tokens));
-        //    if (tokens[0] != "[" && tokens[tokens.Length - 1] != "]")
-        //        throw new InvalidDataException("Invalid data,");
-
-
-        //}
+        public static TokenBase ParseTokens(string[] tokens)
+        {
+            if (tokens is null)
+                throw new ArgumentNullException(nameof(tokens));
+            if (tokens[0] != "[" && tokens[tokens.Length - 1] != "]")
+                throw new InvalidDataException("Invalid data,");
+            return ParseMultipleRecords(tokens, 0, tokens.Length - 1);
+        }
 
         internal static TokenBase ParseTokens(string[] tokens, int startIndex)
         {
