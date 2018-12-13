@@ -62,6 +62,7 @@
     <Compile Include="Serializers\FicherosSerializer.cs" />
     <Compile Include="Serializers\FileSerializer.cs" />
     <Compile Include="Serializers\MissionSerializer.cs" />
+    <Compile Include="Serializers\MusicSerializer.cs" />
     <Compile Include="StringConstants.cs" />
     <Compile Include="Serializers\CameraSerializer.cs" />
   </ItemGroup>

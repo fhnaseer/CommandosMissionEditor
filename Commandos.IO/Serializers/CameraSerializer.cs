@@ -12,23 +12,18 @@ namespace Commandos.IO.Serializers
             {
                 Position = EntitySerializer.GetPosition(tokens, indexes.startIndex),
                 Escape = EntitySerializer.GetStringValue(tokens, StringConstants.Escape, indexes.startIndex),
-                CameraDirection = ToCameraDirection(tokens, indexes.startIndex)
+                CameraDirection = GetCameraDirection(tokens, indexes.startIndex)
             };
         }
 
         private static (int startIndex, int endIndex) GetCameraIndexes(string[] tokens, int startPoint = 0)
         {
-            return IndexHelper.GetIndexes(tokens, StringConstants.Camera, startPoint, TokenType.SquareBracket);
+            return IndexHelper.GetRecordIndexes(tokens, StringConstants.Camera, startPoint, TokenType.MultipleRecords);
         }
 
-        private static (int startIndex, int endIndex) GetCameraDirection(string[] tokens, int startPoint = 0)
+        private static CameraDirection GetCameraDirection(string[] tokens, int startIndex)
         {
-            return IndexHelper.GetIndexes(tokens, StringConstants.CameraDirection, startPoint, TokenType.SingleValue);
-        }
-
-        private static CameraDirection ToCameraDirection(string[] tokens, int startIndex)
-        {
-            var indexes = GetCameraDirection(tokens, startIndex);
+            var indexes = IndexHelper.GetRecordIndexes(tokens, StringConstants.CameraDirection, startIndex, TokenType.SingleValue);
             return (CameraDirection)int.Parse(tokens[indexes.startIndex + 1], CultureInfo.CurrentCulture);
         }
     }

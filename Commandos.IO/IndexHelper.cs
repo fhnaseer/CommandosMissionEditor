@@ -5,55 +5,71 @@ namespace Commandos.IO
     public enum TokenType
     {
         SingleValue,
-        SquareBracket,
-        RoundBrackets
+        MultipleRecords,
+        MultipleValues,
+        MultipleList
     }
 
     public static class IndexHelper
     {
         public static (int startIndex, int endIndex) GetPositionIndexes(string[] tokens, int startPoint)
         {
-            return GetIndexes(tokens, StringConstants.Position, startPoint, TokenType.RoundBrackets);
+            return GetRecordIndexes(tokens, StringConstants.Position, startPoint, TokenType.SingleValue);
         }
 
-        public static (int startIndex, int endIndex) GetEscapeIndexes(string[] tokens, int startPoint)
+        internal static (int startIndex, int endIndex, int count, int elementCount) GetListIndexes(string[] tokens, string tokenName, int startPoint, TokenType tokenType)
         {
-            return GetIndexes(tokens, StringConstants.Escape, startPoint, TokenType.SingleValue);
+            var startIndex = GetStartIndex(tokens, tokenName, startPoint);
+            //if (tokenType == TokenType.MultipleValues)
+            //{
+            //    var indexes = (startIndex, startIndex + 1);
+            //}
+            //else if (tokenType == TokenType.MultipleList)
+            //    return (startIndex, GetRecordIndexes(tokens, startIndex, "(", ")").endIndex);
+            //else if (tokenType == TokenType.MultipleRecords)
+            //    return (startIndex, GetRecordIndexes(tokens, startIndex, "[", "]").endIndex);
+            throw new InvalidDataException($"Invalid tokenType {tokenType} for tokenName {tokenName},");
         }
 
-        internal static (int startIndex, int endIndex) GetIndexes(string[] tokens, string tokenName, int startPoint, TokenType tokenType)
+        private static int GetStartIndex(string[] tokens, string tokenName, int startPoint)
         {
-            var startIndex = 0;
             for (var i = startPoint; i < tokens.Length; i++)
-            {
-                if (tokens[i] != tokenName)
-                    continue;
-                startIndex = i;
-                break;
-            }
+                if (tokens[i] == tokenName)
+                    return i;
+            throw new InvalidDataException($"Token {tokenName} not found,");
+        }
+
+        internal static (int startIndex, int endIndex) GetRecordIndexes(string[] tokens, string tokenName, int startPoint, TokenType tokenType)
+        {
+            var startIndex = GetStartIndex(tokens, tokenName, startPoint);
             if (tokenType == TokenType.SingleValue)
                 return (startIndex, startIndex + 1);
-            else if (tokenType == TokenType.RoundBrackets)
-                return GetIndexes(tokens, startIndex, "(", ")");
-            else
-                return GetIndexes(tokens, startIndex, "[", "]");
+            else if (tokenType == TokenType.MultipleList)
+                return (startIndex, GetRecordIndexes(tokens, startIndex, "(", ")").endIndex);
+            else if (tokenType == TokenType.MultipleRecords)
+                return (startIndex, GetRecordIndexes(tokens, startIndex, "[", "]").endIndex);
+            throw new InvalidDataException($"Invalid tokenType {tokenType} for tokenName {tokenName},");
         }
 
-        private static (int startIndex, int endIndex) GetIndexes(string[] tokens, int startIndex, string startingElement, string endingElement)
+        private static (int endIndex, int childCount) GetRecordIndexes(string[] tokens, int startIndex, string startingElement, string endingElement)
         {
             var counter = 0;
+            var childCount = 0;
             for (var i = startIndex + 1; i < tokens.Length; i++)
             {
                 if (tokens[i] == startingElement)
+                {
                     counter++;
-                if (tokens[i] == endingElement)
+                    childCount++;
+                }
+                else if (tokens[i] == endingElement)
                 {
                     counter--;
                     if (counter == 0)
-                        return (startIndex, i);
+                        return (i, childCount);
                 }
             }
-            throw new InvalidDataException("Wrong data,");
+            throw new InvalidDataException("Invalid data,");
         }
     }
 }

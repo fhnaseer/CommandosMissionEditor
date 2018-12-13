@@ -17,5 +17,8 @@
         public const string Ficheros = ".FICHEROS";
         public const string FicherosStrFile = ".STR";
 
+        public const string Music = ".MUSICA";
+        public const string MusicList = ".MUSICAS";
+        public const string MusicBegining = ".MUSICA_POR_DEFECTO";
     }
 }

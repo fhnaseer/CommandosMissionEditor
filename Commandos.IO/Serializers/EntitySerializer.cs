@@ -7,25 +7,20 @@ namespace Commandos.IO.Serializers
     {
         internal static string GetStringValue(string[] tokens, string tokenName, int startIndex)
         {
-            var indexes = IndexHelper.GetIndexes(tokens, tokenName, startIndex, TokenType.SingleValue);
+            var indexes = IndexHelper.GetRecordIndexes(tokens, tokenName, startIndex, TokenType.SingleValue);
             return tokens[indexes.startIndex + 1];
         }
 
         internal static double GetDoubleValue(string[] tokens, string tokenName, int startIndex)
         {
-            var indexes = IndexHelper.GetIndexes(tokens, tokenName, startIndex, TokenType.SingleValue);
+            var indexes = IndexHelper.GetRecordIndexes(tokens, tokenName, startIndex, TokenType.SingleValue);
             return double.Parse(tokens[indexes.startIndex + 1], CultureInfo.CurrentCulture);
         }
 
         internal static int GetIntValue(string[] tokens, string tokenName, int startIndex)
         {
-            var indexes = IndexHelper.GetIndexes(tokens, tokenName, startIndex, TokenType.SingleValue);
+            var indexes = IndexHelper.GetRecordIndexes(tokens, tokenName, startIndex, TokenType.SingleValue);
             return int.Parse(tokens[indexes.startIndex + 1], CultureInfo.CurrentCulture);
-        }
-
-        internal static string GetEscape(string[] tokens, int startIndex)
-        {
-            return GetStringValue(tokens, StringConstants.Escape, startIndex);
         }
 
         internal static Position GetPosition(string[] tokens, int startIndex)

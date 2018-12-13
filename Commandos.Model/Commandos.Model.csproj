@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Enums.cs" />
     <Compile Include="Common\SingleValueEntity.cs" />
     <Compile Include="Map\Briefing.cs" />
     <Compile Include="Map\Camera.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Map\Ficheros.cs" />
     <Compile Include="Map\Mission.cs" />
     <Compile Include="Common\Position.cs" />
+    <Compile Include="Map\Music.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\Entity.cs" />
   </ItemGroup>
