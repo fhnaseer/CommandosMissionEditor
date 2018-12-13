@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace Commandos.Model.Common
 {
-    public class Position : MultipleDataEntity<double>
+    public class Position //: MultipleDataEntity<double>
     {
         public Position()
             : this(0, 0, 0)
@@ -16,7 +15,7 @@ namespace Commandos.Model.Common
             Z = z;
         }
 
-        public override string Name => ".XYZ";
+        //public override string Name => ".XYZ";
 
         public double X { get; set; }
 
@@ -24,8 +23,7 @@ namespace Commandos.Model.Common
 
         public double Z { get; set; }
 
-        public override IList<double> Values => new List<double> { X, Y, Z };
-
+        //public override IList<double> Values => new List<double> { X, Y, Z };
 
         #region Methods for Equality checks.
         // http://msdn.microsoft.com/en-us/library/dd183755.aspx
@@ -55,7 +53,7 @@ namespace Commandos.Model.Common
         internal bool Equals(Position other)
         {
             // If parameter is null, return false.
-            if (ReferenceEquals(other, null))
+            if (other is null)
                 return false;
 
             // Optimization for a common success case.
@@ -88,9 +86,9 @@ namespace Commandos.Model.Common
         public static bool operator ==(Position left, Position right)
         {
             // Check for null on left side.
-            if (ReferenceEquals(left, null))
+            if (left is null)
             {
-                if (ReferenceEquals(right, null))
+                if (right is null)
                 {
                     // null == null = true.
                     return true;

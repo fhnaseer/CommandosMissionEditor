@@ -1,9 +1,9 @@
-﻿using Commandos.Model.Common;
+﻿//using Commandos.Model.Common;
 
-namespace Commandos.Model.Files
-{
-    public class MsbFileEntity : SingleValueEntity<string>
-    {
-        public override string Name => ".MANUAL_LIBRETA";
-    }
-}
+//namespace Commandos.Model.Files
+//{
+//    public class MsbFileEntity : SingleValueEntity<string>
+//    {
+//        public override string Name => ".MANUAL_LIBRETA";
+//    }
+//}

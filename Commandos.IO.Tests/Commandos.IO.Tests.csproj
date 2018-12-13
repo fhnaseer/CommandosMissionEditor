@@ -54,6 +54,7 @@
     <Compile Include="IndexHelperTest.cs" />
     <Compile Include="MisFileReaderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serializers\MissionSerializerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
