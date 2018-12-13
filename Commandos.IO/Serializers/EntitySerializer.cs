@@ -23,10 +23,9 @@ namespace Commandos.IO.Serializers
             return int.Parse(tokens[indexes.startIndex + 1], CultureInfo.CurrentCulture);
         }
 
-        internal static Escape ToEscape(string[] tokens, int startIndex)
+        internal static string ToEscape(string[] tokens, int startIndex)
         {
-            var indexes = IndexHelper.GetEscapeIndexes(tokens, startIndex);
-            return new Escape { Value = tokens[indexes.startIndex + 1] };
+            return ToStringValue(tokens, StringConstants.Escape, startIndex);
         }
 
         internal static Position ToPosition(string[] tokens, int startIndex)

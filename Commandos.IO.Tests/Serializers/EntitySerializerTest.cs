@@ -50,20 +50,6 @@ namespace Commandos.IO.Tests.Serializers
         }
 
         [TestMethod]
-        public void ToEscape_Works()
-        {
-            // Arrange,
-            var expected = new Escape { Value = "Exterior" };
-            var tokens = new[] { "paani", ".ESC", "Exterior" };
-
-            // Act,
-            var actual = EntitySerializer.ToEscape(tokens, 0);
-
-            // Assert,
-            Assert.AreEqual(expected.Value, actual.Value);
-        }
-
-        [TestMethod]
         public void ToPosition_Works()
         {
             // Arrange,
