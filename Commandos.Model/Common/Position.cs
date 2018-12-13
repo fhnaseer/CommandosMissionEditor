@@ -2,7 +2,7 @@
 
 namespace Commandos.Model.Common
 {
-    public class Position //: MultipleDataEntity<double>
+    public class Position
     {
         public Position()
             : this(0, 0, 0)
@@ -15,15 +15,11 @@ namespace Commandos.Model.Common
             Z = z;
         }
 
-        //public override string Name => ".XYZ";
-
         public double X { get; set; }
 
         public double Y { get; set; }
 
         public double Z { get; set; }
-
-        //public override IList<double> Values => new List<double> { X, Y, Z };
 
         #region Methods for Equality checks.
         // http://msdn.microsoft.com/en-us/library/dd183755.aspx

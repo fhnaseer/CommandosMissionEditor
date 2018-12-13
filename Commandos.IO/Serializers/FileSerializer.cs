@@ -1,6 +1,6 @@
-﻿namespace Commandos.IO.Serializers
-{
-    public static class FileSerializer
-    {
-    }
-}
+﻿//namespace Commandos.IO.Serializers
+//{
+//    public static class FileSerializer
+//    {
+//    }
+//}

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Commandos.IO.Serializers;
 using Commandos.Model.Map;
 
 namespace Commandos.IO
@@ -13,7 +12,8 @@ namespace Commandos.IO
         {
             var tokens = GetTokens(path);
             var missionTokens = TokenParser.ParseTokens(tokens);
-            return MissionSerializer.ToMission(tokens);
+            return null;
+            //return MissionSerializer.ToMission(tokens);
         }
 
         internal static string[] GetTokens(string path)

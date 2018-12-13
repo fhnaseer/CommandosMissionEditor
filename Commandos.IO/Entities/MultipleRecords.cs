@@ -2,9 +2,9 @@
 
 namespace Commandos.IO.Entities
 {
-    public class MultipleRecords : TokenBase
+    public class MultipleRecords : RecordValueBase
     {
-        private List<TokenBase> _values;
-        public IList<TokenBase> Values => _values ?? (_values = new List<TokenBase>());
+        private List<Record> _records;
+        public IList<Record> Records => _records ?? (_records = new List<Record>());
     }
 }

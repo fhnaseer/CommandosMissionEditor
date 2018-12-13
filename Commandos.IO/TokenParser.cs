@@ -6,7 +6,7 @@ namespace Commandos.IO
 {
     public static class TokenParser
     {
-        public static MultipleRecord ParseTokens(string[] tokens)
+        public static MultipleRecords ParseTokens(string[] tokens)
         {
             if (tokens is null)
                 throw new ArgumentNullException(nameof(tokens));
@@ -15,9 +15,9 @@ namespace Commandos.IO
             return ParseMultipleRecords(tokens, 0, tokens.Length - 1);
         }
 
-        private static MultipleRecord ParseMultipleRecords(string[] tokens, int startIndex, int endIndex)
+        private static MultipleRecords ParseMultipleRecords(string[] tokens, int startIndex, int endIndex)
         {
-            var record = new MultipleRecord();
+            var record = new MultipleRecords();
             for (var i = startIndex + 1; i < endIndex; i++)
             {
                 var indexes = IndexHelper.GetIndexes(tokens, i);
@@ -32,20 +32,12 @@ namespace Commandos.IO
             var indexes = IndexHelper.GetIndexes(tokens, startIndex);
             var record = new Record();
             record.Name = tokens[indexes.nameIndex];
-            if (indexes.tokenValueType == TokenValueType.SingleValue)
+            if (indexes.recordValueType == RecordValueType.SingleValue)
                 record.Value = ParseSingleValue(tokens, indexes.startIndex);
-            else if (indexes.tokenValueType == TokenValueType.MultipleRecords)
+            else if (indexes.recordValueType == RecordValueType.MultipleRecords)
                 record.Value = ParseMultipleRecords(tokens, indexes.startIndex, indexes.endIndex);
-            else if (indexes.tokenValueType == TokenValueType.MixedValues)
+            else if (indexes.recordValueType == RecordValueType.MixedValues)
                 record.Value = ParseMixedRecords(tokens, indexes.startIndex, indexes.endIndex);
-
-            //record.Value = ParseMultipleValues(tokens, indexes.startIndex, indexes.endIndex);
-            //else if (indexes.tokenValueType == TokenValueType.MultipleList)
-            //    record.Value = ParseMultipleList(tokens, indexes.startIndex, indexes.endIndex);
-            //else if (indexes.tokenValueType == TokenValueType.MultipleListRecords)
-            //    record.Value = ParseMultipleListRecords(tokens, indexes.startIndex, indexes.endIndex);
-            //else
-            //    record.Value = ParseMultipleRecords(tokens, indexes.startIndex, indexes.endIndex);
             return record;
         }
 
@@ -75,41 +67,9 @@ namespace Commandos.IO
             return record;
         }
 
-        private static SingleRecord ParseSingleValue(string[] tokens, int startIndex)
+        private static SingleValue ParseSingleValue(string[] tokens, int startIndex)
         {
-            return new SingleRecord { Value = tokens[startIndex] };
+            return new SingleValue { Value = tokens[startIndex] };
         }
-
-        private static MultipleValues ParseMultipleValues(string[] tokens, int startIndex, int endIndex)
-        {
-            var result = new MultipleValues();
-            for (var i = startIndex + 1; i < endIndex; i++)
-                result.Values.Add(tokens[i]);
-            return result;
-        }
-
-        //private static MultipleList ParseMultipleList(string[] tokens, int startIndex, int endIndex)
-        //{
-        //    var result = new MultipleList();
-        //    for (var i = startIndex + 1; i < endIndex; i++)
-        //    {
-        //        var end = IndexHelper.GetEndIndex(tokens, i, "(", ")");
-        //        result.Values.Add(ParseMultipleValues(tokens, i, end));
-        //        i = end;
-        //    }
-        //    return result;
-        //}
-
-        //private static MultipleRecord ParseMultipleListRecords(string[] tokens, int startIndex, int endIndex)
-        //{
-        //    var result = new MultipleRecord();
-        //    for (var i = startIndex + 1; i < endIndex; i++)
-        //    {
-        //        var end = IndexHelper.GetEndIndex(tokens, i, "[", "]");
-        //        result.Records.Add(ParseMultipleRecords(tokens, i, end));
-        //        i = end;
-        //    }
-        //    return result;
-        //}
     }
 }
