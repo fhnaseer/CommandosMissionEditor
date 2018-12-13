@@ -49,12 +49,12 @@ namespace Commandos.IO
                 int end;
                 if (tokens[i] == "(")
                 {
-                    end = IndexHelper.GetEndIndex(tokens, i, "(", ")");
+                    end = IndexHelper.GetEndIndex(tokens, i, BracketType.RoundBracket);
                     record.Values.Add(ParseMixedRecords(tokens, i, end));
                 }
                 else if (tokens[i] == "[")
                 {
-                    end = IndexHelper.GetEndIndex(tokens, i, "[", "]");
+                    end = IndexHelper.GetEndIndex(tokens, i, BracketType.SquareBracket);
                     record.Values.Add(ParseMultipleRecords(tokens, i, end));
                 }
                 else

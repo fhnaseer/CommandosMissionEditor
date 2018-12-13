@@ -3,24 +3,14 @@ using Commandos.IO.Entities;
 
 namespace Commandos.IO
 {
+    public enum BracketType
+    {
+        RoundBracket,
+        SquareBracket
+    }
+
     public static class IndexHelper
     {
-        //private static int GetStartIndex(string[] tokens, string tokenName, int startPoint)
-        //{
-        //    for (var i = startPoint; i < tokens.Length; i++)
-        //        if (tokens[i] == tokenName)
-        //            return i;
-        //    throw new InvalidDataException($"Token {tokenName} not found,");
-        //}
-
-        private static int GetStartIndex(string[] tokens, int startPoint)
-        {
-            for (var i = startPoint; i < tokens.Length; i++)
-                if (tokens[i].StartsWith(".", System.StringComparison.CurrentCultureIgnoreCase))
-                    return i;
-            throw new InvalidDataException($"Token not found,");
-        }
-
         internal static (int nameIndex, int startIndex, int endIndex, RecordValueType recordValueType) GetIndexes(string[] tokens, int startPoint)
         {
             var nameIndex = GetStartIndex(tokens, startPoint);
@@ -35,19 +25,23 @@ namespace Commandos.IO
                 return (nameIndex, startIndex, startIndex, RecordValueType.SingleValue);
         }
 
-        //internal static (int startIndex, int endIndex) GetRecordIndexes(string[] tokens, string tokenName, int startPoint, RecordValueType tokenType)
-        //{
-        //    var startIndex = GetStartIndex(tokens, tokenName, startPoint);
-        //    if (tokenType == TokenType.SingleValue)
-        //        return (startIndex, startIndex + 1);
-        //    else if (tokenType == TokenType.MultipleList)
-        //        return (startIndex, GetEndIndex(tokens, startIndex, "(", ")"));
-        //    else if (tokenType == TokenType.MultipleRecords)
-        //        return (startIndex, GetEndIndex(tokens, startIndex, "[", "]"));
-        //    throw new InvalidDataException($"Invalid tokenType {tokenType} for tokenName {tokenName},");
-        //}
+        private static int GetStartIndex(string[] tokens, int startPoint)
+        {
+            for (var i = startPoint; i < tokens.Length; i++)
+                if (tokens[i].StartsWith(".", System.StringComparison.CurrentCultureIgnoreCase))
+                    return i;
+            throw new InvalidDataException($"Token not found,");
+        }
 
-        internal static int GetEndIndex(string[] tokens, int startIndex, string startingElement, string endingElement)
+        internal static int GetEndIndex(string[] tokens, int startIndex, BracketType bracketType)
+        {
+            if (bracketType == BracketType.RoundBracket)
+                return GetEndIndex(tokens, startIndex, "(", ")");
+            else
+                return GetEndIndex(tokens, startIndex, "[", "]");
+        }
+
+        private static int GetEndIndex(string[] tokens, int startIndex, string startingElement, string endingElement)
         {
             var counter = 0;
             for (var i = startIndex; i < tokens.Length; i++)
