@@ -22,8 +22,10 @@ namespace Commandos.IO
                 result = ParseSingleValue(tokens, indexes.startIndex);
             else if (indexes.tokenValueType == TokenValueType.MultipleValues)
                 result = ParseMultipleValues(tokens, indexes.startIndex, indexes.endIndex);
-            else //if (indexes.tokenValueType == TokenValueType.MultipleValues)
+            else if (indexes.tokenValueType == TokenValueType.MultipleList)
                 result = ParseMultipleList(tokens, indexes.startIndex, indexes.endIndex);
+            else
+                result = ParseMultipleRecords(tokens, indexes.startIndex, indexes.endIndex);
             result.Name = tokens[indexes.nameIndex];
             return result;
         }
@@ -53,9 +55,16 @@ namespace Commandos.IO
             return result;
         }
 
-        //private static TokenBase ParseMultipleValues(string[] tokens, int startIndex, int endIndex)
-        //{
-
-        //}
+        private static MultipleRecords ParseMultipleRecords(string[] tokens, int startIndex, int endIndex)
+        {
+            var result = new MultipleRecords();
+            for (var i = startIndex + 1; i < endIndex; i++)
+            {
+                var indexes = IndexHelper.GetIndexes(tokens, i);
+                result.Values.Add(ParseTokens(tokens, i));
+                i = indexes.endIndex;
+            }
+            return result;
+        }
     }
 }

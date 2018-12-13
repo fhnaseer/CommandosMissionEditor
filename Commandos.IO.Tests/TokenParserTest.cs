@@ -58,5 +58,22 @@ namespace Commandos.IO.Tests
             Assert.AreEqual("Shadows.WAV", actual.Values[1].Values[0]);
             Assert.AreEqual("INTERIOR", actual.Values[1].Values[1]);
         }
+
+        [TestMethod]
+        public void ParseTokens_MultipleRecords_Works()
+        {
+            // Arrange,
+            var text = "[ .VISORES [ .XYZ ( 1 2 0 ) .ESC EXTERIOR .CAMARA 0 ] .BRIEFING [ .INICIAL TU01A.BRI ] .BAS TU01.BAS ]";
+            var tokens = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+            // Act,
+            var actual = (MultipleRecords)TokenParser.ParseTokens(tokens, 1);
+
+            // Assert,
+            Assert.AreEqual(".VISORES", actual.Name);
+            Assert.AreEqual(".XYZ", actual.Values[0].Name);
+            Assert.AreEqual(".ESC", actual.Values[1].Name);
+            Assert.AreEqual(".CAMARA", actual.Values[2].Name);
+        }
     }
 }
