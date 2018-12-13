@@ -16,17 +16,12 @@ namespace Commandos.IO
             return GetIndexes(tokens, StringConstants.Position, startPoint, TokenType.RoundBrackets);
         }
 
-        public static (int startIndex, int endIndex) GetEscapeIndexes(string[] tokens, int startPoint = 0)
+        public static (int startIndex, int endIndex) GetEscapeIndexes(string[] tokens, int startPoint)
         {
             return GetIndexes(tokens, StringConstants.Escape, startPoint, TokenType.SingleValue);
         }
 
-        public static (int startIndex, int endIndex) GetCameraIndexes(string[] tokens, int startPoint = 0)
-        {
-            return GetIndexes(tokens, StringConstants.Camera, startPoint, TokenType.SquareBracket);
-        }
-
-        public static (int startIndex, int endIndex) GetIndexes(string[] tokens, string tokenName, int startPoint, TokenType tokenType)
+        internal static (int startIndex, int endIndex) GetIndexes(string[] tokens, string tokenName, int startPoint, TokenType tokenType)
         {
             var startIndex = 0;
             for (var i = startPoint; i < tokens.Length; i++)

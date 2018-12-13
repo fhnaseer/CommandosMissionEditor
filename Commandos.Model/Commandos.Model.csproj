@@ -50,7 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Escape.cs" />
     <Compile Include="Common\SingleValueEntity.cs" />
     <Compile Include="Map\Camera.cs" />
     <Compile Include="Files\MsbFileEntity.cs" />

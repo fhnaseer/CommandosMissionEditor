@@ -9,7 +9,7 @@ namespace Commandos.IO.Tests
         public TestContext TestContext { get; set; }
 
         [TestMethod]
-        public void GetSingleValueIndex_Works()
+        public void GetIndexes_SingleValue_Works()
         {
             // Arrange,
             const string text = "[    .MANUAL_LIBRETA Manual_Libreta_TU01A.msb     .VISORES     [         .XYZ         (             241.0 - 248.0 0         )         .ESC EXTERIOR        .CAMARA 0    ]    .BRIEFING    [        .INICIAL TU01A.BRI    ]";
@@ -24,7 +24,22 @@ namespace Commandos.IO.Tests
         }
 
         [TestMethod]
-        public void GetPositionIndex_Works()
+        public void GetIndexes_RoundBracket_Works()
+        {
+            // Arrange,
+            const string text = "[    .MANUAL_LIBRETA Manual_Libreta_TU01A.msb     .VISORES     [         .XYZ         (             241.0 - 248.0 0         )         .ESC EXTERIOR        .CAMARA 0    ]    .BRIEFING    [        .INICIAL TU01A.BRI    ]";
+            var tokens = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+            // Act,
+            var result = IndexHelper.GetIndexes(tokens, StringConstants.Position, 0, TokenType.RoundBrackets);
+
+            // Assert,
+            Assert.AreEqual(5, result.startIndex);
+            Assert.AreEqual(11, result.endIndex);
+        }
+
+        [TestMethod]
+        public void GetPositionIndexes_Works()
         {
             // Arrange,
             const string text = "[    .MANUAL_LIBRETA Manual_Libreta_TU01A.msb     .VISORES     [         .XYZ         (             241.0 - 248.0 0         )         .ESC EXTERIOR        .CAMARA 0    ]    .BRIEFING    [        .INICIAL TU01A.BRI    ]";
@@ -39,14 +54,14 @@ namespace Commandos.IO.Tests
         }
 
         [TestMethod]
-        public void GetCameraIndex_Works()
+        public void GetIndexes_SquareBrackets_Works()
         {
             // Arrange,
             const string text = "[    .MANUAL_LIBRETA Manual_Libreta_TU01A.msb     .VISORES     [         .XYZ         (             241.0 - 248.0 0         )         .ESC EXTERIOR        .CAMARA 0    ]    .BRIEFING    [        .INICIAL TU01A.BRI    ]";
             var tokens = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
             // Act,
-            var result = IndexHelper.GetCameraIndexes(tokens);
+            var result = IndexHelper.GetIndexes(tokens, StringConstants.Camera, 0, TokenType.SquareBracket);
 
             // Assert,
             Assert.AreEqual(3, result.startIndex);

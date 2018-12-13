@@ -17,7 +17,7 @@ namespace Commandos.Model
 
         public Position Position { get; set; }
 
-        public Escape Escape { get; set; }
+        public string Escape { get; set; }
 
         #region Methods for Equality checks.
         // http://msdn.microsoft.com/en-us/library/dd183755.aspx

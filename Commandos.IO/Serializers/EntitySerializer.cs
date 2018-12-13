@@ -5,19 +5,38 @@ namespace Commandos.IO.Serializers
 {
     internal static class EntitySerializer
     {
-        internal static Escape ToEscape(string[] tokens, int startIndex)
+        internal static string ToStringValue(string[] tokens, string tokenName, int startIndex)
         {
-            return new Escape { Value = tokens[startIndex + 1] };
+            var indexes = IndexHelper.GetIndexes(tokens, tokenName, startIndex, TokenType.SingleValue);
+            return tokens[indexes.startIndex + 1];
         }
 
+        internal static double ToDoubleValue(string[] tokens, string tokenName, int startIndex)
+        {
+            var indexes = IndexHelper.GetIndexes(tokens, tokenName, startIndex, TokenType.SingleValue);
+            return double.Parse(tokens[indexes.startIndex + 1], CultureInfo.CurrentCulture);
+        }
+
+        internal static int ToIntValue(string[] tokens, string tokenName, int startIndex)
+        {
+            var indexes = IndexHelper.GetIndexes(tokens, tokenName, startIndex, TokenType.SingleValue);
+            return int.Parse(tokens[indexes.startIndex + 1], CultureInfo.CurrentCulture);
+        }
+
+        internal static Escape ToEscape(string[] tokens, int startIndex)
+        {
+            var indexes = IndexHelper.GetEscapeIndexes(tokens, startIndex);
+            return new Escape { Value = tokens[indexes.startIndex + 1] };
+        }
 
         internal static Position ToPosition(string[] tokens, int startIndex)
         {
+            var indexes = IndexHelper.GetPositionIndexes(tokens, startIndex);
             return new Position
             {
-                X = double.Parse(tokens[startIndex + 2], CultureInfo.CurrentCulture),
-                Y = double.Parse(tokens[startIndex + 3], CultureInfo.CurrentCulture),
-                Z = double.Parse(tokens[startIndex + 4], CultureInfo.CurrentCulture),
+                X = double.Parse(tokens[indexes.startIndex + 2], CultureInfo.CurrentCulture),
+                Y = double.Parse(tokens[indexes.startIndex + 3], CultureInfo.CurrentCulture),
+                Z = double.Parse(tokens[indexes.startIndex + 4], CultureInfo.CurrentCulture),
             };
         }
     }

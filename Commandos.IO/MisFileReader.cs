@@ -14,7 +14,7 @@ namespace Commandos.IO
             lines = GetCleanedLines(lines);
             var fullText = string.Join(" ", lines);
             var tokens = fullText.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            var camera = CameraSerializer.ToCamera(tokens, IndexHelper.GetCameraIndexes(tokens));
+            var camera = CameraSerializer.ToCamera(tokens, 0);
         }
 
         private static List<string> GetCleanedLines(List<string> lines)

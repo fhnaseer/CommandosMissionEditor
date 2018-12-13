@@ -16,13 +16,12 @@ namespace Commandos.IO.Tests.Serializers
             var expected = new Model.Camera
             {
                 Position = new Model.Common.Position(1, 2, 0),
-                Escape = new Model.Common.Escape { Value = "EXTERIOR" },
+                Escape = "EXTERIOR",
                 CameraDirection = Model.CameraDirection.Zero
             };
-            var indexes = IndexHelper.GetCameraIndexes(tokens);
 
             // Act,
-            var actual = CameraSerializer.ToCamera(tokens, indexes);
+            var actual = CameraSerializer.ToCamera(tokens, 0);
 
             // Assert,
             Assert.AreEqual(expected, actual);
