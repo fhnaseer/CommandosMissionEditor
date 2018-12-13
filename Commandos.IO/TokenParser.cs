@@ -17,35 +17,39 @@ namespace Commandos.IO
         internal static TokenBase ParseTokens(string[] tokens, int startIndex)
         {
             var indexes = IndexHelper.GetIndexes(tokens, startIndex);
+            TokenBase result;
             if (indexes.tokenValueType == TokenValueType.SingleValue)
-                return ParseSingleValue(tokens, indexes.startIndex, indexes.endIndex);
-            if (indexes.tokenValueType == TokenValueType.MultipleValues)
-                return ParseMultipleValues(tokens, indexes.startIndex, indexes.endIndex);
-            if (indexes.tokenValueType == TokenValueType.MultipleValues)
-                return ParseMultipleList(tokens, indexes.startIndex, indexes.endIndex);
-            return null;
+                result = ParseSingleValue(tokens, indexes.startIndex);
+            else if (indexes.tokenValueType == TokenValueType.MultipleValues)
+                result = ParseMultipleValues(tokens, indexes.startIndex, indexes.endIndex);
+            else //if (indexes.tokenValueType == TokenValueType.MultipleValues)
+                result = ParseMultipleList(tokens, indexes.startIndex, indexes.endIndex);
+            result.Name = tokens[indexes.nameIndex];
+            return result;
         }
 
-        private static TokenBase ParseSingleValue(string[] tokens, int startIndex, int endIndex)
+        private static SingleValue ParseSingleValue(string[] tokens, int startIndex)
         {
-            return new SingleValue { Name = tokens[startIndex], Value = tokens[endIndex] };
+            return new SingleValue { Value = tokens[startIndex] };
         }
 
-        private static TokenBase ParseMultipleValues(string[] tokens, int startIndex, int endIndex)
+        private static MultipleValues ParseMultipleValues(string[] tokens, int startIndex, int endIndex)
         {
             var result = new MultipleValues();
-            result.Name = tokens[startIndex];
-            for (var i = startIndex + 2; i < endIndex; i++)
+            for (var i = startIndex + 1; i < endIndex; i++)
                 result.Values.Add(tokens[i]);
             return result;
         }
 
-        private static TokenBase ParseMultipleList(string[] tokens, int startIndex, int endIndex)
+        private static MultipleList ParseMultipleList(string[] tokens, int startIndex, int endIndex)
         {
-            var result = new MultipleValues();
-            result.Name = tokens[startIndex];
-            for (var i = startIndex + 2; i < endIndex; i++)
-                result.Values.Add(tokens[i]);
+            var result = new MultipleList();
+            for (var i = startIndex + 1; i < endIndex; i++)
+            {
+                var end = IndexHelper.GetEndIndex(tokens, i, "(", ")");
+                result.Values.Add(ParseMultipleValues(tokens, i, end));
+                i = end;
+            }
             return result;
         }
 

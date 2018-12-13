@@ -48,22 +48,23 @@ namespace Commandos.IO
             throw new InvalidDataException($"Token not found,");
         }
 
-        internal static (int startIndex, int endIndex, TokenValueType tokenValueType) GetIndexes(string[] tokens, int startPoint)
+        internal static (int nameIndex, int startIndex, int endIndex, TokenValueType tokenValueType) GetIndexes(string[] tokens, int startPoint)
         {
-            var startIndex = GetStartIndex(tokens, startPoint);
-            if (tokens[startIndex + 1] == "[" || tokens[startIndex + 1] == "]")
-                return (startIndex, GetRecordIndexes(tokens, startIndex, "[", "]"), TokenValueType.MultipleRecords);
-            else if (tokens[startIndex + 1] == "(" || tokens[startIndex + 1] == ")")
+            var nameIndex = GetStartIndex(tokens, startPoint);
+            var startIndex = nameIndex + 1;
+            if (tokens[startIndex] == "[")
+                return (nameIndex, startIndex, GetEndIndex(tokens, startIndex, "[", "]"), TokenValueType.MultipleRecords);
+            else if (tokens[startIndex] == "(")
             {
-                if (tokens[startIndex + 2] == "(")
-                    return (startIndex, GetRecordIndexes(tokens, startIndex, "(", ")"), TokenValueType.MultipleList);
-                else if (tokens[startIndex + 2] == "[")
-                    return (startIndex, GetRecordIndexes(tokens, startIndex, "(", ")"), TokenValueType.MultipleRecords);
+                if (tokens[startIndex + 1] == "(")
+                    return (nameIndex, startIndex, GetEndIndex(tokens, startIndex, "(", ")"), TokenValueType.MultipleList);
+                else if (tokens[startIndex + 1] == "[")
+                    return (nameIndex, startIndex, GetEndIndex(tokens, startIndex, "(", ")"), TokenValueType.MultipleRecords);
                 else
-                    return (startIndex, GetRecordIndexes(tokens, startIndex, "(", ")"), TokenValueType.MultipleValues);
+                    return (nameIndex, startIndex, GetEndIndex(tokens, startIndex, "(", ")"), TokenValueType.MultipleValues);
             }
             else
-                return (startIndex, startIndex + 1, TokenValueType.SingleValue);
+                return (nameIndex, startIndex, startIndex, TokenValueType.SingleValue);
         }
 
         internal static (int startIndex, int endIndex) GetRecordIndexes(string[] tokens, string tokenName, int startPoint, TokenType tokenType)
@@ -72,16 +73,16 @@ namespace Commandos.IO
             if (tokenType == TokenType.SingleValue)
                 return (startIndex, startIndex + 1);
             else if (tokenType == TokenType.MultipleList)
-                return (startIndex, GetRecordIndexes(tokens, startIndex, "(", ")"));
+                return (startIndex, GetEndIndex(tokens, startIndex, "(", ")"));
             else if (tokenType == TokenType.MultipleRecords)
-                return (startIndex, GetRecordIndexes(tokens, startIndex, "[", "]"));
+                return (startIndex, GetEndIndex(tokens, startIndex, "[", "]"));
             throw new InvalidDataException($"Invalid tokenType {tokenType} for tokenName {tokenName},");
         }
 
-        private static int GetRecordIndexes(string[] tokens, int startIndex, string startingElement, string endingElement)
+        internal static int GetEndIndex(string[] tokens, int startIndex, string startingElement, string endingElement)
         {
             var counter = 0;
-            for (var i = startIndex + 1; i < tokens.Length; i++)
+            for (var i = startIndex; i < tokens.Length; i++)
             {
                 if (tokens[i] == startingElement)
                     counter++;

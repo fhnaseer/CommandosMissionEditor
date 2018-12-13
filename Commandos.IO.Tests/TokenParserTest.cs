@@ -40,5 +40,23 @@ namespace Commandos.IO.Tests
             Assert.AreEqual("2", actual.Values[1]);
             Assert.AreEqual("0", actual.Values[2]);
         }
+
+        [TestMethod]
+        public void ParseTokens_MultipleList_Works()
+        {
+            // Arrange,
+            var text = "[ .MUSICAS ( ( Battle.WAV EXTERIOR ) ( Shadows.WAV INTERIOR ) ) ]";
+            var tokens = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+            // Act,
+            var actual = (MultipleList)TokenParser.ParseTokens(tokens, 1);
+
+            // Assert,
+            Assert.AreEqual(".MUSICAS", actual.Name);
+            Assert.AreEqual("Battle.WAV", actual.Values[0].Values[0]);
+            Assert.AreEqual("EXTERIOR", actual.Values[0].Values[1]);
+            Assert.AreEqual("Shadows.WAV", actual.Values[1].Values[0]);
+            Assert.AreEqual("INTERIOR", actual.Values[1].Values[1]);
+        }
     }
 }
