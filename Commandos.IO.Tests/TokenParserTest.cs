@@ -75,5 +75,21 @@ namespace Commandos.IO.Tests
             Assert.AreEqual(".ESC", actual.Values[1].Name);
             Assert.AreEqual(".CAMARA", actual.Values[2].Name);
         }
+
+        [TestMethod]
+        public void ParseTokens_MultipleRecords_Works_2()
+        {
+            // Arrange,
+            var text = "[ .PUERTAS ( [ .TOKEN PI_TU03I00-EXT .FLAGS ( CERRADA_CON_LLAVE ) ] ) ]";
+            var tokens = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+            // Act,
+            var actual = (MultipleRecords)TokenParser.ParseTokens(tokens, 1);
+
+            // Assert,
+            Assert.AreEqual(".PUERTAS", actual.Name);
+            Assert.AreEqual(".TOKEN", ((MultipleRecords)actual.Values[0]).Values[0].Name);
+            Assert.AreEqual(".FLAGS", ((MultipleRecords)actual.Values[0]).Values[1].Name);
+        }
     }
 }

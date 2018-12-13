@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\MultipleListRecords.cs" />
     <Compile Include="Entities\MultipleList.cs" />
     <Compile Include="Entities\TokenBase.cs" />
     <Compile Include="Entities\MultipleRecords.cs" />

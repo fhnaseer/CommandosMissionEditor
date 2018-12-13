@@ -24,6 +24,8 @@ namespace Commandos.IO
                 result = ParseMultipleValues(tokens, indexes.startIndex, indexes.endIndex);
             else if (indexes.tokenValueType == TokenValueType.MultipleList)
                 result = ParseMultipleList(tokens, indexes.startIndex, indexes.endIndex);
+            else if (indexes.tokenValueType == TokenValueType.MultipleListRecords)
+                result = ParseMultipleListRecords(tokens, indexes.startIndex, indexes.endIndex);
             else
                 result = ParseMultipleRecords(tokens, indexes.startIndex, indexes.endIndex);
             result.Name = tokens[indexes.nameIndex];
@@ -50,6 +52,18 @@ namespace Commandos.IO
             {
                 var end = IndexHelper.GetEndIndex(tokens, i, "(", ")");
                 result.Values.Add(ParseMultipleValues(tokens, i, end));
+                i = end;
+            }
+            return result;
+        }
+
+        private static MultipleRecords ParseMultipleListRecords(string[] tokens, int startIndex, int endIndex)
+        {
+            var result = new MultipleRecords();
+            for (var i = startIndex + 1; i < endIndex; i++)
+            {
+                var end = IndexHelper.GetEndIndex(tokens, i, "[", "]");
+                result.Values.Add(ParseMultipleRecords(tokens, i, end));
                 i = end;
             }
             return result;

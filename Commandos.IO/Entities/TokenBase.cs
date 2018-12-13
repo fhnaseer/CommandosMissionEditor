@@ -5,6 +5,7 @@
         SingleValue,
         MultipleValues,
         MultipleList,
+        MultipleListRecords,
         MultipleRecords
     }
 
