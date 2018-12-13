@@ -8,7 +8,7 @@ namespace Commandos.IO.Tests.Serializers
     public class CameraSerializerTest
     {
         [TestMethod]
-        public void ToCamera_Works()
+        public void GetCamera_Works()
         {
             // Arrange,
             const string text = "[    .MANUAL_LIBRETA Manual_Libreta_TU01A.msb     .VISORES     [         .XYZ         (             1 2 0         )         .ESC EXTERIOR        .CAMARA 0    ]    .BRIEFING    [        .INICIAL TU01A.BRI    ]";
@@ -21,7 +21,7 @@ namespace Commandos.IO.Tests.Serializers
             };
 
             // Act,
-            var actual = CameraSerializer.ToCamera(tokens, 0);
+            var actual = CameraSerializer.GetCamera(tokens, 0);
 
             // Assert,
             Assert.AreEqual(expected, actual);

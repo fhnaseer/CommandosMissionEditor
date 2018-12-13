@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Serializers\BriefingSerializer.cs" />
     <Compile Include="Serializers\EntitySerializer.cs" />
     <Compile Include="IndexHelper.cs" />
     <Compile Include="MisFileReader.cs" />

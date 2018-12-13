@@ -2,13 +2,10 @@
 
 namespace Commandos.Model.Map
 {
-    public class Mission
+    public class Briefing
     {
-        public string MsbFileName { get; set; }
+        public string FileName { get; set; }
 
-        public Camera Camera { get; set; }
-
-        public Briefing Briefing { get; set; }
 
         #region Methods for Equality checks.
         // http://msdn.microsoft.com/en-us/library/dd183755.aspx
@@ -25,17 +22,17 @@ namespace Commandos.Model.Map
         [ExcludeFromCodeCoverage]
         public override bool Equals(object obj)
         {
-            return Equals(obj as Mission);
+            return Equals(obj as Briefing);
         }
 
         /// <summary>
-        /// Determines whether the specified Mission is equal to the current Mission.
+        /// Determines whether the specified Briefing is equal to the current Briefing.
         /// </summary>
-        /// <param name="other">The Mission to compare with the current Mission.</param>
-        /// <returns>true if the specified Mission is equal to the current Mission;
+        /// <param name="other">The Briefing to compare with the current Briefing.</param>
+        /// <returns>true if the specified Briefing is equal to the current Briefing;
         /// otherwise, false.</returns>
         [ExcludeFromCodeCoverage]
-        internal bool Equals(Mission other)
+        internal bool Equals(Briefing other)
         {
             // If parameter is null, return false.
             if (other is null)
@@ -45,9 +42,7 @@ namespace Commandos.Model.Map
             if (ReferenceEquals(this, other))
                 return true;
 
-            return MsbFileName == other.MsbFileName &&
-                Camera == other.Camera &&
-                Briefing == other.Briefing;
+            return FileName == other.FileName;
         }
 
         /// <summary>
@@ -63,14 +58,14 @@ namespace Commandos.Model.Map
         }
 
         /// <summary>
-        /// Overrides equal operator for Mission.
+        /// Overrides equal operator for Briefing.
         /// </summary>
-        /// <param name="left">Left Mission.</param>
-        /// <param name="right">Right Mission</param>
-        /// <returns>true if the left Mission is equal to the right Mission;
+        /// <param name="left">Left Briefing.</param>
+        /// <param name="right">Right Briefing</param>
+        /// <returns>true if the left Briefing is equal to the right Briefing;
         /// otherwise, false. </returns>
         [ExcludeFromCodeCoverage]
-        public static bool operator ==(Mission left, Mission right)
+        public static bool operator ==(Briefing left, Briefing right)
         {
             // Check for null on left side.
             if (left is null)
@@ -89,14 +84,14 @@ namespace Commandos.Model.Map
         }
 
         /// <summary>
-        /// Overrides not equal operator for Mission.
+        /// Overrides not equal operator for Briefing.
         /// </summary>
-        /// <param name="left">Left Mission.</param>
-        /// <param name="right">Right Mission</param>
-        /// <returns>true if the left Mission is not equal to the right Mission;
+        /// <param name="left">Left Briefing.</param>
+        /// <param name="right">Right Briefing</param>
+        /// <returns>true if the left Briefing is not equal to the right Briefing;
         /// otherwise, false. </returns>
         [ExcludeFromCodeCoverage]
-        public static bool operator !=(Mission left, Mission right)
+        public static bool operator !=(Briefing left, Briefing right)
         {
             return !(left == right);
         }

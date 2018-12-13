@@ -8,56 +8,56 @@ namespace Commandos.IO.Tests.Serializers
     public class EntitySerializerTest
     {
         [TestMethod]
-        public void ToStringValue_Works()
+        public void GetStringValue_Works()
         {
             // Arrange,
             var expected = "Exterior";
             var tokens = new[] { ".ESC", expected };
 
             // Act,
-            var actual = EntitySerializer.ToStringValue(tokens, StringConstants.Escape, 0);
+            var actual = EntitySerializer.GetStringValue(tokens, StringConstants.Escape, 0);
 
             // Assert,
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void ToDoubleValue_Works()
+        public void GetDoubleValue_Works()
         {
             // Arrange,
             var expected = 5.2;
             var tokens = new[] { "paani", ".ESC", expected.ToString() };
 
             // Act,
-            var actual = EntitySerializer.ToDoubleValue(tokens, StringConstants.Escape, 0);
+            var actual = EntitySerializer.GetDoubleValue(tokens, StringConstants.Escape, 0);
 
             // Assert,
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void ToIntValue_Works()
+        public void GetIntValue_Works()
         {
             // Arrange,
             var expected = 5;
             var tokens = new[] { "paani", ".ESC", expected.ToString() };
 
             // Act,
-            var actual = EntitySerializer.ToIntValue(tokens, StringConstants.Escape, 0);
+            var actual = EntitySerializer.GetIntValue(tokens, StringConstants.Escape, 0);
 
             // Assert,
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void ToPosition_Works()
+        public void GetPosition_Works()
         {
             // Arrange,
             var expected = new Position(4, 5, 6);
             var tokens = new[] { StringConstants.Position, "(", "4", "5", "6", ")" };
 
             // Act,
-            var actual = EntitySerializer.ToPosition(tokens, 0);
+            var actual = EntitySerializer.GetPosition(tokens, 0);
 
             // Assert,
             Assert.AreEqual(expected.X, actual.X);

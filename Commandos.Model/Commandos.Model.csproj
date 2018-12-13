@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\SingleValueEntity.cs" />
+    <Compile Include="Map\Briefing.cs" />
     <Compile Include="Map\Camera.cs" />
     <Compile Include="Files\MsbFileEntity.cs" />
     <Compile Include="GlobalSuppressions.cs" />

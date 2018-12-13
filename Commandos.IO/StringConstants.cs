@@ -10,5 +10,8 @@
         public const string Camera = ".VISORES";
         public const string CameraDirection = ".CAMARA";
 
+        public const string Briefing = ".BRIEFING";
+        public const string Initial = ".INICIAL";
+
     }
 }

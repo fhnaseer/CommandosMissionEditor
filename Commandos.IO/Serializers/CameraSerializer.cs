@@ -5,16 +5,15 @@ namespace Commandos.IO.Serializers
 {
     public static class CameraSerializer
     {
-        public static Camera ToCamera(string[] tokens, int startIndex)
+        public static Camera GetCamera(string[] tokens, int startIndex)
         {
             var indexes = GetCameraIndexes(tokens, startIndex);
-            var camera = new Camera
+            return new Camera
             {
-                Position = EntitySerializer.ToPosition(tokens, indexes.startIndex),
-                Escape = EntitySerializer.ToStringValue(tokens, StringConstants.Escape, indexes.startIndex),
+                Position = EntitySerializer.GetPosition(tokens, indexes.startIndex),
+                Escape = EntitySerializer.GetStringValue(tokens, StringConstants.Escape, indexes.startIndex),
                 CameraDirection = ToCameraDirection(tokens, indexes.startIndex)
             };
-            return camera;
         }
 
         private static (int startIndex, int endIndex) GetCameraIndexes(string[] tokens, int startPoint = 0)

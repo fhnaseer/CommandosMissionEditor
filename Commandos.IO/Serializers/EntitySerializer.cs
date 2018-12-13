@@ -5,30 +5,30 @@ namespace Commandos.IO.Serializers
 {
     internal static class EntitySerializer
     {
-        internal static string ToStringValue(string[] tokens, string tokenName, int startIndex)
+        internal static string GetStringValue(string[] tokens, string tokenName, int startIndex)
         {
             var indexes = IndexHelper.GetIndexes(tokens, tokenName, startIndex, TokenType.SingleValue);
             return tokens[indexes.startIndex + 1];
         }
 
-        internal static double ToDoubleValue(string[] tokens, string tokenName, int startIndex)
+        internal static double GetDoubleValue(string[] tokens, string tokenName, int startIndex)
         {
             var indexes = IndexHelper.GetIndexes(tokens, tokenName, startIndex, TokenType.SingleValue);
             return double.Parse(tokens[indexes.startIndex + 1], CultureInfo.CurrentCulture);
         }
 
-        internal static int ToIntValue(string[] tokens, string tokenName, int startIndex)
+        internal static int GetIntValue(string[] tokens, string tokenName, int startIndex)
         {
             var indexes = IndexHelper.GetIndexes(tokens, tokenName, startIndex, TokenType.SingleValue);
             return int.Parse(tokens[indexes.startIndex + 1], CultureInfo.CurrentCulture);
         }
 
-        internal static string ToEscape(string[] tokens, int startIndex)
+        internal static string GetEscape(string[] tokens, int startIndex)
         {
-            return ToStringValue(tokens, StringConstants.Escape, startIndex);
+            return GetStringValue(tokens, StringConstants.Escape, startIndex);
         }
 
-        internal static Position ToPosition(string[] tokens, int startIndex)
+        internal static Position GetPosition(string[] tokens, int startIndex)
         {
             var indexes = IndexHelper.GetPositionIndexes(tokens, startIndex);
             return new Position

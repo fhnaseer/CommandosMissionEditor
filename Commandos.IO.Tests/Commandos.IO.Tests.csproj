@@ -49,6 +49,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Serializers\BriefingSerializerTest.cs" />
     <Compile Include="Serializers\CameraSerializerTest.cs" />
     <Compile Include="Serializers\EntitySerializerTest.cs" />
     <Compile Include="IndexHelperTest.cs" />

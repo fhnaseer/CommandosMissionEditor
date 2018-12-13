@@ -6,10 +6,12 @@ namespace Commandos.IO.Serializers
     {
         public static Mission ToMission(string[] tokens)
         {
-            var mission = new Mission();
-            mission.Camera = CameraSerializer.ToCamera(tokens, 0);
-            mission.MsbFileName = EntitySerializer.ToStringValue(tokens, StringConstants.MsbFile, 0);
-            return mission;
+            return new Mission
+            {
+                Camera = CameraSerializer.GetCamera(tokens, 0),
+                MsbFileName = EntitySerializer.GetStringValue(tokens, StringConstants.MsbFile, 0),
+                Briefing = BriefingSerializer.GetBriefing(tokens, 0)
+            };
         }
     }
 }
