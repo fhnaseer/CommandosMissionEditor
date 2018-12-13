@@ -42,12 +42,14 @@ namespace Commandos.IO
                 return (nameIndex, startIndex, GetEndIndex(tokens, startIndex, "[", "]"), TokenValueType.MultipleRecords);
             else if (tokens[startIndex] == "(")
             {
-                if (tokens[startIndex + 1] == "(")
-                    return (nameIndex, startIndex, GetEndIndex(tokens, startIndex, "(", ")"), TokenValueType.MultipleList);
-                else if (tokens[startIndex + 1] == "[")
-                    return (nameIndex, startIndex, GetEndIndex(tokens, startIndex, "(", ")"), TokenValueType.MultipleListRecords);
-                else
-                    return (nameIndex, startIndex, GetEndIndex(tokens, startIndex, "(", ")"), TokenValueType.MultipleValues);
+                return (nameIndex, startIndex, GetEndIndex(tokens, startIndex, "(", ")"), TokenValueType.MixedValues);
+
+                //if (tokens[startIndex + 1] == "(")
+                //    return (nameIndex, startIndex, GetEndIndex(tokens, startIndex, "(", ")"), TokenValueType.MultipleList);
+                //else if (tokens[startIndex + 1] == "[")
+                //    return (nameIndex, startIndex, GetEndIndex(tokens, startIndex, "(", ")"), TokenValueType.MultipleListRecords);
+                //else
+                //    return (nameIndex, startIndex, GetEndIndex(tokens, startIndex, "(", ")"), TokenValueType.MultipleValues);
             }
             else
                 return (nameIndex, startIndex, startIndex, TokenValueType.SingleValue);

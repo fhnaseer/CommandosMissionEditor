@@ -3,10 +3,11 @@
     public enum TokenValueType
     {
         SingleValue,
-        MultipleValues,
+        MultipleRecords,
         MultipleList,
         MultipleListRecords,
-        MultipleRecords
+        MultipleValues,
+        MixedValues
     }
 
     public abstract class TokenBase

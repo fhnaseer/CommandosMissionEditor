@@ -6,7 +6,7 @@ namespace Commandos.IO
 {
     public static class TokenParser
     {
-        public static TokenBase ParseTokens(string[] tokens)
+        public static MultipleRecord ParseTokens(string[] tokens)
         {
             if (tokens is null)
                 throw new ArgumentNullException(nameof(tokens));
@@ -15,27 +15,69 @@ namespace Commandos.IO
             return ParseMultipleRecords(tokens, 0, tokens.Length - 1);
         }
 
-        internal static TokenBase ParseTokens(string[] tokens, int startIndex)
+        private static MultipleRecord ParseMultipleRecords(string[] tokens, int startIndex, int endIndex)
         {
-            var indexes = IndexHelper.GetIndexes(tokens, startIndex);
-            TokenBase result;
-            if (indexes.tokenValueType == TokenValueType.SingleValue)
-                result = ParseSingleValue(tokens, indexes.startIndex);
-            else if (indexes.tokenValueType == TokenValueType.MultipleValues)
-                result = ParseMultipleValues(tokens, indexes.startIndex, indexes.endIndex);
-            else if (indexes.tokenValueType == TokenValueType.MultipleList)
-                result = ParseMultipleList(tokens, indexes.startIndex, indexes.endIndex);
-            else if (indexes.tokenValueType == TokenValueType.MultipleListRecords)
-                result = ParseMultipleListRecords(tokens, indexes.startIndex, indexes.endIndex);
-            else
-                result = ParseMultipleRecords(tokens, indexes.startIndex, indexes.endIndex);
-            result.Name = tokens[indexes.nameIndex];
-            return result;
+            var record = new MultipleRecord();
+            for (var i = startIndex + 1; i < endIndex; i++)
+            {
+                var indexes = IndexHelper.GetIndexes(tokens, i);
+                record.Records.Add(ParseTokens(tokens, i));
+                i = indexes.endIndex;
+            }
+            return record;
         }
 
-        private static SingleValue ParseSingleValue(string[] tokens, int startIndex)
+        internal static Record ParseTokens(string[] tokens, int startIndex)
         {
-            return new SingleValue { Value = tokens[startIndex] };
+            var indexes = IndexHelper.GetIndexes(tokens, startIndex);
+            var record = new Record();
+            record.Name = tokens[indexes.nameIndex];
+            if (indexes.tokenValueType == TokenValueType.SingleValue)
+                record.Value = ParseSingleValue(tokens, indexes.startIndex);
+            else if (indexes.tokenValueType == TokenValueType.MultipleRecords)
+                record.Value = ParseMultipleRecords(tokens, indexes.startIndex, indexes.endIndex);
+            else if (indexes.tokenValueType == TokenValueType.MixedValues)
+                record.Value = ParseMixedRecords(tokens, indexes.startIndex, indexes.endIndex);
+
+            //record.Value = ParseMultipleValues(tokens, indexes.startIndex, indexes.endIndex);
+            //else if (indexes.tokenValueType == TokenValueType.MultipleList)
+            //    record.Value = ParseMultipleList(tokens, indexes.startIndex, indexes.endIndex);
+            //else if (indexes.tokenValueType == TokenValueType.MultipleListRecords)
+            //    record.Value = ParseMultipleListRecords(tokens, indexes.startIndex, indexes.endIndex);
+            //else
+            //    record.Value = ParseMultipleRecords(tokens, indexes.startIndex, indexes.endIndex);
+            return record;
+        }
+
+        private static MixedRecords ParseMixedRecords(string[] tokens, int startIndex, int endIndex)
+        {
+            var record = new MixedRecords();
+            for (var i = startIndex + 1; i < endIndex; i++)
+            {
+                int end;
+                if (tokens[i] == "(")
+                {
+                    end = IndexHelper.GetEndIndex(tokens, i, "(", ")");
+                    record.Values.Add(ParseMixedRecords(tokens, i, end));
+                }
+                else if (tokens[i] == "[")
+                {
+                    end = IndexHelper.GetEndIndex(tokens, i, "[", "]");
+                    record.Values.Add(ParseMultipleRecords(tokens, i, end));
+                }
+                else
+                {
+                    record.Values.Add(ParseSingleValue(tokens, i));
+                    end = i;
+                }
+                i = end;
+            }
+            return record;
+        }
+
+        private static SingleRecord ParseSingleValue(string[] tokens, int startIndex)
+        {
+            return new SingleRecord { Value = tokens[startIndex] };
         }
 
         private static MultipleValues ParseMultipleValues(string[] tokens, int startIndex, int endIndex)
@@ -46,40 +88,28 @@ namespace Commandos.IO
             return result;
         }
 
-        private static MultipleList ParseMultipleList(string[] tokens, int startIndex, int endIndex)
-        {
-            var result = new MultipleList();
-            for (var i = startIndex + 1; i < endIndex; i++)
-            {
-                var end = IndexHelper.GetEndIndex(tokens, i, "(", ")");
-                result.Values.Add(ParseMultipleValues(tokens, i, end));
-                i = end;
-            }
-            return result;
-        }
+        //private static MultipleList ParseMultipleList(string[] tokens, int startIndex, int endIndex)
+        //{
+        //    var result = new MultipleList();
+        //    for (var i = startIndex + 1; i < endIndex; i++)
+        //    {
+        //        var end = IndexHelper.GetEndIndex(tokens, i, "(", ")");
+        //        result.Values.Add(ParseMultipleValues(tokens, i, end));
+        //        i = end;
+        //    }
+        //    return result;
+        //}
 
-        private static MultipleRecords ParseMultipleListRecords(string[] tokens, int startIndex, int endIndex)
-        {
-            var result = new MultipleRecords();
-            for (var i = startIndex + 1; i < endIndex; i++)
-            {
-                var end = IndexHelper.GetEndIndex(tokens, i, "[", "]");
-                result.Values.Add(ParseMultipleRecords(tokens, i, end));
-                i = end;
-            }
-            return result;
-        }
-
-        private static MultipleRecords ParseMultipleRecords(string[] tokens, int startIndex, int endIndex)
-        {
-            var result = new MultipleRecords();
-            for (var i = startIndex + 1; i < endIndex; i++)
-            {
-                var indexes = IndexHelper.GetIndexes(tokens, i);
-                result.Values.Add(ParseTokens(tokens, i));
-                i = indexes.endIndex;
-            }
-            return result;
-        }
+        //private static MultipleRecord ParseMultipleListRecords(string[] tokens, int startIndex, int endIndex)
+        //{
+        //    var result = new MultipleRecord();
+        //    for (var i = startIndex + 1; i < endIndex; i++)
+        //    {
+        //        var end = IndexHelper.GetEndIndex(tokens, i, "[", "]");
+        //        result.Records.Add(ParseMultipleRecords(tokens, i, end));
+        //        i = end;
+        //    }
+        //    return result;
+        //}
     }
 }
