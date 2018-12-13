@@ -57,6 +57,7 @@
     <Compile Include="MisFileReaderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serializers\MissionSerializerTest.cs" />
+    <Compile Include="TokenParserTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

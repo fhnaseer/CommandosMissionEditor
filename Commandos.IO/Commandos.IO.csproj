@@ -53,6 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\MultipleList.cs" />
+    <Compile Include="Entities\TokenBase.cs" />
+    <Compile Include="Entities\MultipleRecords.cs" />
+    <Compile Include="Entities\MultipleValues.cs" />
+    <Compile Include="Entities\SingleValue.cs" />
+    <Compile Include="TokenParser.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Serializers\BriefingSerializer.cs" />
     <Compile Include="Serializers\EntitySerializer.cs" />
