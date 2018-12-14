@@ -25,6 +25,12 @@ namespace Commandos.IO.Entities
             return null;
         }
 
+        public static MixedValues GetMixedValues(this MixedValues mixedValues, int indexNumber)
+        {
+            var values = mixedValues.Values;
+            return ((MixedValues)values[indexNumber]);
+        }
+
         public static string GetStringValue(this MixedValues mixedValues, int indexNumber)
         {
             var values = mixedValues.Values;

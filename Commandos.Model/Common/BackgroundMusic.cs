@@ -1,16 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using Commandos.Model.Common;
+﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Commandos.Model.Map
+namespace Commandos.Model.Common
 {
-    public class Music
+    public class BackgroundMusic
     {
-        private List<BackgroundMusic> _backgroundMusics;
-        public List<BackgroundMusic> BackgroundMusics => _backgroundMusics ?? (_backgroundMusics = new List<BackgroundMusic>());
+        public string Environment { get; set; }
 
-        public string StartingMusicEnvironment { get; set; }
+        public string MusicFileName { get; set; }
 
 
         #region Methods for Equality checks.
@@ -28,17 +24,17 @@ namespace Commandos.Model.Map
         [ExcludeFromCodeCoverage]
         public override bool Equals(object obj)
         {
-            return Equals(obj as Music);
+            return Equals(obj as BackgroundMusic);
         }
 
         /// <summary>
-        /// Determines whether the specified Music is equal to the current Music.
+        /// Determines whether the specified BackgroundMusic is equal to the current BackgroundMusic.
         /// </summary>
-        /// <param name="other">The Music to compare with the current Music.</param>
-        /// <returns>true if the specified Music is equal to the current Music;
+        /// <param name="other">The BackgroundMusic to compare with the current BackgroundMusic.</param>
+        /// <returns>true if the specified BackgroundMusic is equal to the current BackgroundMusic;
         /// otherwise, false.</returns>
         [ExcludeFromCodeCoverage]
-        internal bool Equals(Music other)
+        internal bool Equals(BackgroundMusic other)
         {
             // If parameter is null, return false.
             if (other is null)
@@ -48,9 +44,7 @@ namespace Commandos.Model.Map
             if (ReferenceEquals(this, other))
                 return true;
 
-            return StartingMusicEnvironment == other.StartingMusicEnvironment &&
-                BackgroundMusics.Count == other.BackgroundMusics.Count &&
-                BackgroundMusics.SequenceEqual(other.BackgroundMusics);
+            return Environment == other.Environment && MusicFileName == other.MusicFileName;
         }
 
         /// <summary>
@@ -66,14 +60,14 @@ namespace Commandos.Model.Map
         }
 
         /// <summary>
-        /// Overrides equal operator for Music.
+        /// Overrides equal operator for BackgroundMusic.
         /// </summary>
-        /// <param name="left">Left Music.</param>
-        /// <param name="right">Right Music</param>
-        /// <returns>true if the left Music is equal to the right Music;
+        /// <param name="left">Left BackgroundMusic.</param>
+        /// <param name="right">Right BackgroundMusic</param>
+        /// <returns>true if the left BackgroundMusic is equal to the right BackgroundMusic;
         /// otherwise, false. </returns>
         [ExcludeFromCodeCoverage]
-        public static bool operator ==(Music left, Music right)
+        public static bool operator ==(BackgroundMusic left, BackgroundMusic right)
         {
             // Check for null on left side.
             if (left is null)
@@ -92,14 +86,14 @@ namespace Commandos.Model.Map
         }
 
         /// <summary>
-        /// Overrides not equal operator for Music.
+        /// Overrides not equal operator for BackgroundMusic.
         /// </summary>
-        /// <param name="left">Left Music.</param>
-        /// <param name="right">Right Music</param>
-        /// <returns>true if the left Music is not equal to the right Music;
+        /// <param name="left">Left BackgroundMusic.</param>
+        /// <param name="right">Right BackgroundMusic</param>
+        /// <returns>true if the left BackgroundMusic is not equal to the right BackgroundMusic;
         /// otherwise, false. </returns>
         [ExcludeFromCodeCoverage]
-        public static bool operator !=(Music left, Music right)
+        public static bool operator !=(BackgroundMusic left, BackgroundMusic right)
         {
             return !(left == right);
         }

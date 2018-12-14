@@ -19,6 +19,6 @@
 
         public const string Music = ".MUSICA";
         public const string MusicList = ".MUSICAS";
-        public const string MusicBeginning = ".MUSICA_POR_DEFECTO";
+        public const string StartingMusicEnvironment = ".MUSICA_POR_DEFECTO";
     }
 }

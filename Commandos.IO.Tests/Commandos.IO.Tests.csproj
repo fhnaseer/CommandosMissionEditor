@@ -58,6 +58,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serializers\Map\MissionSerializerTest.cs" />
     <Compile Include="Serializers\Files\TokenParserTest.cs" />
+    <Compile Include="Serializers\Map\MusicSerializerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

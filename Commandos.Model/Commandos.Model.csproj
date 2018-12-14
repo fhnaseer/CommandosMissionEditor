@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\BackgroundMusic.cs" />
     <Compile Include="Common\ItemCollections.cs" />
     <Compile Include="Map\Briefing.cs" />
     <Compile Include="Map\Camera.cs" />
