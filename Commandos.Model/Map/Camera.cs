@@ -3,14 +3,6 @@ using Commandos.Model.Common;
 
 namespace Commandos.Model.Map
 {
-    public enum CameraDirection
-    {
-        Zero,
-        One,
-        Two,
-        Three
-    }
-
     public class Camera
     {
         public CameraDirection CameraDirection { get; set; }

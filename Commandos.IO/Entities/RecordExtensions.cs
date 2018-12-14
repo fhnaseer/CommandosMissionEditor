@@ -18,6 +18,29 @@ namespace Commandos.IO.Entities
             return null;
         }
 
+        public static MixedValues GetMixedValues(this MultipleRecords multipleRecords, string recordName)
+        {
+            if (multipleRecords.Records.TryGetValue(recordName, out Record record))
+                return record.Value as MixedValues;
+            return null;
+        }
+
+        public static string GetStringValue(this MixedValues mixedValues, int indexNumber)
+        {
+            var values = mixedValues.Values;
+            return ((SingleValue)values[indexNumber]).Value;
+        }
+
+        public static double GetDoubleValue(this MixedValues mixedValues, int indexNumber)
+        {
+            return double.Parse(mixedValues.GetStringValue(indexNumber), CultureInfo.CurrentCulture);
+        }
+
+        public static int GetIntegerValue(this MixedValues mixedValues, int indexNumber)
+        {
+            return int.Parse(mixedValues.GetStringValue(indexNumber), CultureInfo.CurrentCulture);
+        }
+
         public static string GetStringValue(this MultipleRecords multipleRecords, string recordName)
         {
             if (multipleRecords.Records.TryGetValue(recordName, out Record record))

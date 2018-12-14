@@ -12,6 +12,8 @@ namespace Commandos.Model.Map
 
         public Briefing Briefing { get; set; }
 
+        public Music Music { get; set; }
+
         public Ficheros Ficheros { get; set; }
 
         #region Methods for Equality checks.

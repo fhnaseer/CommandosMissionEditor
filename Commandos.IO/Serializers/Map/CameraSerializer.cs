@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using Commandos.IO.Entities;
+﻿using Commandos.IO.Entities;
 using Commandos.IO.Files;
 using Commandos.Model.Common;
 using Commandos.Model.Map;
@@ -10,23 +9,20 @@ namespace Commandos.IO.Serializers.Map
     {
         public static Camera GetCamera(MultipleRecords multipleRecords)
         {
-            multipleRecords.Records.TryGetValue(StringConstants.Position, out Record positionRecord);
-            multipleRecords.Records.TryGetValue(StringConstants.Escape, out Record escapeRecord);
-            multipleRecords.Records.TryGetValue(StringConstants.CameraDirection, out Record directionRecord);
             return new Camera
             {
-                Position = GetPosition(positionRecord),
-                Escape = escapeRecord?.GetStringValue(),
-                CameraDirection = (CameraDirection)directionRecord?.GetIntegerValue()
+                Position = GetPosition(multipleRecords.GetMixedValues(StringConstants.Position)),
+                Escape = multipleRecords.GetStringValue(StringConstants.Escape),
+                CameraDirection = (CameraDirection)multipleRecords.GetIntegerValue(StringConstants.CameraDirection)
             };
         }
 
-        private static Position GetPosition(Record positionRecord)
+        private static Position GetPosition(MixedValues mixedValues)
         {
-            var values = (MixedValues)positionRecord.Value;
-            var x = double.Parse(((SingleValue)values.Values[0]).Value, CultureInfo.CurrentCulture);
-            var y = double.Parse(((SingleValue)values.Values[1]).Value, CultureInfo.CurrentCulture);
-            var z = double.Parse(((SingleValue)values.Values[2]).Value, CultureInfo.CurrentCulture);
+            var values = mixedValues.Values;
+            var x = mixedValues.GetDoubleValue(0);
+            var y = mixedValues.GetDoubleValue(1);
+            var z = mixedValues.GetDoubleValue(2);
             return new Position(x, y, z);
         }
     }

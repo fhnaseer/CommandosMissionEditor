@@ -2,6 +2,7 @@
 using Commandos.IO.Entities;
 using Commandos.IO.Files;
 using Commandos.IO.Serializers.Map;
+using Commandos.Model.Common;
 using Commandos.Model.Map;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
