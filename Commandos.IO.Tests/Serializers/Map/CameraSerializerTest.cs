@@ -1,10 +1,11 @@
 ﻿using System;
+using Commandos.IO.Entities;
 using Commandos.IO.Files;
-using Commandos.IO.Serializers.Mission;
+using Commandos.IO.Serializers.Map;
 using Commandos.Model.Map;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Commandos.IO.Tests.Serializers.Mission
+namespace Commandos.IO.Tests.Serializers.Map
 {
     [TestClass]
     public class CameraSerializerTest
@@ -21,7 +22,7 @@ namespace Commandos.IO.Tests.Serializers.Mission
                 Escape = "EXTERIOR",
                 CameraDirection = CameraDirection.Zero
             };
-            var record = TokenParser.ParseTokens(tokens, 0);
+            var record = TokenParser.ParseTokens(tokens).GetMultipleRecord(StringConstants.Camera);
 
             // Act,
             var actual = CameraSerializer.GetCamera(record);

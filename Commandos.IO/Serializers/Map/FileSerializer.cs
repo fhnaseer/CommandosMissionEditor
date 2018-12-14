@@ -1,4 +1,4 @@
-﻿//namespace Commandos.IO.Serializers.Mission
+﻿//namespace Commandos.IO.Serializers.Map
 //{
 //    public static class FileSerializer
 //    {

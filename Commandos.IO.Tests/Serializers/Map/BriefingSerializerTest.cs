@@ -1,10 +1,11 @@
 ﻿using System;
+using Commandos.IO.Entities;
 using Commandos.IO.Files;
-using Commandos.IO.Serializers.Mission;
+using Commandos.IO.Serializers.Map;
 using Commandos.Model.Map;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Commandos.IO.Tests.Serializers.Mission
+namespace Commandos.IO.Tests.Serializers.Map
 {
     [TestClass]
     public class BriefingSerializerTest
@@ -19,7 +20,7 @@ namespace Commandos.IO.Tests.Serializers.Mission
             {
                 FileName = "TU01A.BRI"
             };
-            var record = TokenParser.ParseTokens(tokens, 0);
+            var record = TokenParser.ParseTokens(tokens).GetMultipleRecord(StringConstants.Briefing);
 
             // Act,
             var actual = BriefingSerializer.GetBriefing(record);

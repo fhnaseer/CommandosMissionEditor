@@ -4,16 +4,15 @@ using Commandos.IO.Files;
 using Commandos.Model.Common;
 using Commandos.Model.Map;
 
-namespace Commandos.IO.Serializers.Mission
+namespace Commandos.IO.Serializers.Map
 {
     public static class CameraSerializer
     {
-        public static Camera GetCamera(Record record)
+        public static Camera GetCamera(MultipleRecords multipleRecords)
         {
-            var cameraRecord = record.GetMultipleRecords();
-            cameraRecord.Records.TryGetValue(StringConstants.Position, out Record positionRecord);
-            cameraRecord.Records.TryGetValue(StringConstants.Escape, out Record escapeRecord);
-            cameraRecord.Records.TryGetValue(StringConstants.CameraDirection, out Record directionRecord);
+            multipleRecords.Records.TryGetValue(StringConstants.Position, out Record positionRecord);
+            multipleRecords.Records.TryGetValue(StringConstants.Escape, out Record escapeRecord);
+            multipleRecords.Records.TryGetValue(StringConstants.CameraDirection, out Record directionRecord);
             return new Camera
             {
                 Position = GetPosition(positionRecord),
