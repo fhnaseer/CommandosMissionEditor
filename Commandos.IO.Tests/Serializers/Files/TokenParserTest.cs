@@ -35,7 +35,7 @@ namespace Commandos.IO.Tests.Files
 
             // Assert,
             Assert.AreEqual(".XYZ", actual.Name);
-            var values = (MixedRecords)actual.Value;
+            var values = (MixedValues)actual.Value;
             Assert.AreEqual("1", values.Values[0].ToString());
             Assert.AreEqual("2", values.Values[1].ToString());
             Assert.AreEqual("0", values.Values[2].ToString());
@@ -53,11 +53,11 @@ namespace Commandos.IO.Tests.Files
 
             // Assert,
             Assert.AreEqual(".MUSICAS", actual.Name);
-            var values = (MixedRecords)actual.Value;
-            Assert.AreEqual("Battle.WAV", ((MixedRecords)values.Values[0]).Values[0].ToString());
-            Assert.AreEqual("EXTERIOR", ((MixedRecords)values.Values[0]).Values[1].ToString());
-            Assert.AreEqual("Shadows.WAV", ((MixedRecords)values.Values[1]).Values[0].ToString());
-            Assert.AreEqual("INTERIOR", ((MixedRecords)values.Values[1]).Values[1].ToString());
+            var values = (MixedValues)actual.Value;
+            Assert.AreEqual("Battle.WAV", ((MixedValues)values.Values[0]).Values[0].ToString());
+            Assert.AreEqual("EXTERIOR", ((MixedValues)values.Values[0]).Values[1].ToString());
+            Assert.AreEqual("Shadows.WAV", ((MixedValues)values.Values[1]).Values[0].ToString());
+            Assert.AreEqual("INTERIOR", ((MixedValues)values.Values[1]).Values[1].ToString());
         }
 
         [TestMethod]
@@ -94,7 +94,7 @@ namespace Commandos.IO.Tests.Files
 
             // Assert,
             Assert.AreEqual(".PUERTAS", actual.Name);
-            var records = ((MultipleRecords)((MixedRecords)actual.Value).Values[0]).Records;
+            var records = ((MultipleRecords)((MixedValues)actual.Value).Values[0]).Records;
             Assert.IsTrue(records.ContainsKey(".TOKEN"));
             Assert.IsTrue(records.ContainsKey(".FLAGS"));
             //Assert.AreEqual(".TOKEN", records.Values[0].Name);

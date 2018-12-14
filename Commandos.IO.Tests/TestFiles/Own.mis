@@ -1,0 +1,4271 @@
+﻿[
+    .MANUAL_LIBRETA Manual_Libreta_TU01A.msb
+    .VISORES
+    [
+        .XYZ
+        (
+            241.0 -248.0 0
+        )
+        .ESC EXTERIOR
+        .CAMARA 0
+    ]
+    .BRIEFING
+    [
+        .INICIAL TU01A.BRI
+    ]
+    .MUSICA
+    [
+        .MUSICAS
+        (
+            (
+                M_TU.WAV EXTERIOR
+            )
+        )
+        .MUSICA_POR_DEFECTO EXTERIOR
+    ]
+    .MUNDO
+    [
+        .INTENDENCIA
+        [
+            .DAR_ALARMA_AL_VER_ALIADO 1.0
+            .ZONAS
+            (
+                [
+                    .NOMBRE HUIDA
+                    .LISTA_MAPZON
+                    (
+                        [
+                            .ESC EXTERIOR
+                            .ZON HUIDA
+                        ]
+                    )
+                ]
+            )
+            .FLAGS
+            (
+                FL_OBES_CONSEGUIDOS FL_VEHICULO_HUIDA_DESTRUIDO
+            )
+            .FINMISION
+            [
+                .BICHOSVIP
+                (
+                    [
+                        .BICHO ARTIFICIERO
+                    ]
+                    [
+                        .BICHO RATERO
+                    ]
+                )
+                .OBJETIVOS_ESPECIALES
+                [
+                    .FLAG_CONSEGUIDO FL_OBES_CONSEGUIDOS
+                    .FLAGS_ABORTADOS
+                    (
+                        FL_VEHICULO_HUIDA_DESTRUIDO VHDE
+                    )
+                ]
+            ]
+            .LISTAS_BICHOS
+            (
+                [
+                    .NOMBRE ALEMANES_PUESTO
+                    .BICHOS
+                    (
+                        ALE_554 ALEMAN_03
+                    )
+                ]
+                [
+                    .NOMBRE COMANDOS
+                    .BICHOS
+                    (
+                        ARTIFICIERO RATERO
+                    )
+                ]
+                [
+                    .NOMBRE ALEMANES_PATRULLA
+                    .BICHOS
+                    (
+                        PAT0001_1_1 PAT0001_1_0 PAT0001_0_1 PAT0001_0_0 PAT0001_S
+                    )
+                ]
+            )
+            .INFOJUG
+            [
+                .OBJETIVOS
+                (
+                    [
+                        .NOMBRE ESCAPA
+                        .VISINI 1.0
+                    ]
+                    [
+                        .NOMBRE MATA_PUESTO
+                        .VISINI 1.0
+                    ]
+                    [
+                        .NOMBRE COGE_DETECTOR
+                        .VISINI 1.0
+                    ]
+                    [
+                        .NOMBRE DESACTIVA_MINAS
+                        .VISINI 1.0
+                    ]
+                )
+                .OBJETIVOS_SEC
+                (
+                    [
+                        .NOMBRE MATA_PATRULLA
+                        .VISINI 1.0
+                    ]
+                )
+                .PISTAS
+                (
+                    [
+                        .NOMBRE COGE_GRANADAS
+                        .VISINI 1.0
+                    ]
+                )
+                .SECUENCIAS
+                (
+                    
+                )
+            ]
+            .REGLAS
+            (
+                [
+                    .NOMBRE DESACTIVA_MINAS
+                    .CUANDOEJECUTAR SOLOLAPRIMERAVEZ
+                    .CONDICIONES
+                    (
+                        (
+                            CondEvento
+                            [
+                                .EVENTO FDMT
+                                .NUM_MINIMO 4.0
+                            ]
+                        )
+                    )
+                    .OPERACIONES
+                    (
+                        (
+                            OperInfoJug
+                            [
+                                .INFOJUG DESACTIVA_MINAS
+                                .ACCION CONSEGUIDO
+                            ]
+                        )
+                    )
+                ]
+                [
+                    .NOMBRE COGER_GRANADAS
+                    .CUANDOEJECUTAR SOLOLAPRIMERAVEZ
+                    .CONDICIONES
+                    (
+                        (
+                            CondTipoBichoEnBichos
+                            [
+                                .BICHOS COMANDOS
+                                .TIPO_BICHO TPB_GRANADA
+                            ]
+                        )
+                    )
+                    .OPERACIONES
+                    (
+                        (
+                            OperInfoJug
+                            [
+                                .INFOJUG COGE_GRANADAS
+                                .ACCION CONSEGUIDO
+                            ]
+                        )
+                    )
+                ]
+                [
+                    .NOMBRE COGER_DETECTOR
+                    .CUANDOEJECUTAR SOLOLAPRIMERAVEZ
+                    .CONDICIONES
+                    (
+                        (
+                            CondTipoBichoEnBichos
+                            [
+                                .BICHOS COMANDOS
+                                .TIPO_BICHO TPB_DETECTOR
+                            ]
+                        )
+                    )
+                    .OPERACIONES
+                    (
+                        (
+                            OperInfoJug
+                            [
+                                .INFOJUG COGE_DETECTOR
+                                .ACCION CONSEGUIDO
+                            ]
+                        )
+                    )
+                ]
+                [
+                    .NOMBRE MATAR_PATRULLA
+                    .CUANDOEJECUTAR SOLOLAPRIMERAVEZ
+                    .CONDICIONES
+                    (
+                        (
+                            CondBichosMuertos
+                            [
+                                .BICHOS ALEMANES_PATRULLA
+                                .INCAPACITADOS_SON_MUERTOS 1.0
+                            ]
+                        )
+                    )
+                    .OPERACIONES
+                    (
+                        (
+                            OperInfoJug
+                            [
+                                .INFOJUG MATA_PATRULLA
+                                .ACCION CONSEGUIDO
+                            ]
+                        )
+                    )
+                ]
+                [
+                    .NOMBRE MATAR_PUESTO
+                    .CUANDOEJECUTAR SOLOLAPRIMERAVEZ
+                    .CONDICIONES
+                    (
+                        (
+                            CondBichosMuertos
+                            [
+                                .BICHOS ALEMANES_PUESTO
+                                .INCAPACITADOS_SON_MUERTOS 1.0
+                            ]
+                        )
+                    )
+                    .OPERACIONES
+                    (
+                        (
+                            OperInfoJug
+                            [
+                                .INFOJUG MATA_PUESTO
+                                .ACCION CONSEGUIDO
+                            ]
+                        )
+                    )
+                ]
+                [
+                    .NOMBRE VEHICULO_HUIDA_DESTRUIDO
+                    .CUANDOEJECUTAR SOLOLAPRIMERAVEZ
+                    .CONDICIONES
+                    (
+                        (
+                            CondBichoMuerto
+                            [
+                                .BICHO KUBEL
+                            ]
+                        )
+                    )
+                    .OPERACIONES
+                    (
+                        (
+                            OperCambiaFlagIntendencia
+                            [
+                                .NOMBREFLAG FL_VEHICULO_HUIDA_DESTRUIDO
+                                .SETALVALOR 1.0
+                            ]
+                        )
+                    )
+                ]
+                [
+                    .NOMBRE FIN_MISION
+                    .CUANDOEJECUTAR SOLOLAPRIMERAVEZ
+                    .CONDICIONES
+                    (
+                        (
+                            CondMisionNoAbortada
+                            [
+                            ]
+                        )
+                        (
+                            CondBichosEnBichos
+                            [
+                                .BICHOS COMANDOS
+                                .BICHO_CONTENEDOR KUBEL
+                                .NECESARIO_TODOS 1.0
+                            ]
+                        )
+                        (
+                            CondBichoEnZona
+                            [
+                                .BICHO KUBEL
+                                .ZONA HUIDA
+                            ]
+                        )
+                    )
+                    .OPERACIONES
+                    (
+                        (
+                            OperCambiaFlagIntendencia
+                            [
+                                .NOMBREFLAG FL_OBES_CONSEGUIDOS
+                                .SETALVALOR 1.0
+                            ]
+                        )
+                    )
+                ]
+            )
+        ]
+        .BICHOS
+        (
+            [
+                .TOKEN ARTIFICIERO
+                .POS
+                [
+                    .XYZ
+                    (
+                        -392.0 -359.0 0
+                    )
+                    .ESC EXTERIOR
+                ]
+                .BANDO ALIADO
+                .HTIP AART
+                .ACCIONES
+                (
+                    (
+                        Ac_DejarPisadasGraficas
+                        [
+                        ]
+                    )
+                    (
+                        Ac_DejarPisadasLogicas
+                        [
+                        ]
+                    )
+                )
+                .COMPORTAMIENTO
+                (
+                    ComporUsuario
+                    [
+                        .ACCIONES
+                        (
+                            (
+                                AUNarcotizar
+                                [
+                                ]
+                            )
+                            (
+                                AUInteractuar
+                                [
+                                ]
+                            )
+                            (
+                                AUGoTo
+                                [
+                                ]
+                            )
+                            (
+                                AUCambiarPostura
+                                [
+                                ]
+                            )
+                            (
+                                AUSaltarPorTransfer
+                                [
+                                    .CABLE 0
+                                    .CANALON 0
+                                    .CALLE 0
+                                    .FACHADA 0
+                                    .ESCALA 1.0
+                                    .GANCHO 1.0
+                                ]
+                            )
+                            (
+                                AUUsarTransfer
+                                [
+                                ]
+                            )
+                            (
+                                AUUsarVehiculo
+                                [
+                                    .PUEDE_DISPARAR 1.0
+                                ]
+                            )
+                            (
+                                AUNadar
+                                [
+                                ]
+                            )
+                            (
+                                AUUsarTenazas
+                                [
+                                ]
+                            )
+                            (
+                                AUUsarSoplete
+                                [
+                                ]
+                            )
+                            (
+                                AUMirarPorTransfer
+                                [
+                                    .CABLE 0
+                                    .CANALON 0
+                                    .CALLE 0
+                                    .FACHADA 0
+                                    .ESCALA 1.0
+                                    .GANCHO 1.0
+                                ]
+                            )
+                            (
+                                AUUsarBotiquin
+                                [
+                                ]
+                            )
+                            (
+                                AUSoltarBicho
+                                [
+                                ]
+                            )
+                            (
+                                AUCoger
+                                [
+                                ]
+                            )
+                            (
+                                AUDetectarExplosivos
+                                [
+                                ]
+                            )
+                            (
+                                AUManejarExplosivos
+                                [
+                                ]
+                            )
+                            (
+                                AUSilbato
+                                [
+                                ]
+                            )
+                            (
+                                AULanzarGranada
+                                [
+                                    .TIPO_GRANADA EXPLOSIVA
+                                ]
+                            )
+                            (
+                                AUDispararArma
+                                [
+                                ]
+                            )
+                            (
+                                AUDispararMetralleta
+                                [
+                                ]
+                            )
+                            (
+                                AUDispararRifleCorto
+                                [
+                                ]
+                            )
+                            (
+                                AULanzallamas
+                                [
+                                ]
+                            )
+                            (
+                                AUBazooka
+                                [
+                                ]
+                            )
+                            (
+                                AUExaminar
+                                [
+                                ]
+                            )
+                            (
+                                AUUsarEscala
+                                [
+                                ]
+                            )
+                            (
+                                AUUsarAscensor
+                                [
+                                ]
+                            )
+                            (
+                                AUDetenido
+                                [
+                                ]
+                            )
+                            (
+                                AUEsconderse
+                                [
+                                ]
+                            )
+                            (
+                                AULanzarMolotov
+                                [
+                                ]
+                            )
+                            (
+                                AUUsarRadio
+                                [
+                                ]
+                            )
+                            (
+                                AUAbrirPuertaInterior
+                                [
+                                ]
+                            )
+                            (
+                                AULanzarTabaco
+                                [
+                                ]
+                            )
+                            (
+                                AUComidaPerro
+                                [
+                                ]
+                            )
+                            (
+                                AUPrismaticos
+                                [
+                                ]
+                            )
+                            (
+                                AULlevarMuerto
+                                [
+                                    .ARRASTRAR 1.0
+                                ]
+                            )
+                            (
+                                AUIrPegaoAPared
+                                [
+                                ]
+                            )
+                            (
+                                AUAsociarBombaATrampa
+                                [
+                                ]
+                            )
+                            (
+                                AUPonerseTraje
+                                [
+                                ]
+                            )
+                            (
+                                AULiberarChusma
+                                [
+                                ]
+                            )
+                            (
+                                AUBucear
+                                [
+                                ]
+                            )
+                            (
+                                AUUsarArmaEstatica
+                                [
+                                ]
+                            )
+                            (
+                                AUAmordazar
+                                [
+                                ]
+                            )
+                            (
+                                AUSoltarEscalaEnrollable
+                                [
+                                ]
+                            )
+                            (
+                                AUPonerSenuelo
+                                [
+                                ]
+                            )
+                            (
+                                AUManejarSenuelo
+                                [
+                                ]
+                            )
+                            (
+                                AUGolpearPared
+                                [
+                                ]
+                            )
+                            (
+                                AUUsarInterruptor
+                                [
+                                ]
+                            )
+                            (
+                                AUUsarBotella
+                                [
+                                ]
+                            )
+                            (
+                                AUApostarse
+                                [
+                                    .VIGILADOR
+                                    [
+                                        .LONG_CORTA 200.0
+                                        .LONG_NORMAL 400.0
+                                        .LONG_LARGA 600.0
+                                    ]
+                                ]
+                            )
+                            (
+                                AUAtontar
+                                [
+                                ]
+                            )
+                            (
+                                AUDeslumbrar
+                                [
+                                ]
+                            )
+                            (
+                                AULlevarWhisky
+                                [
+                                ]
+                            )
+                            (
+                                AUAbrirPuertaConLlave
+                                [
+                                ]
+                            )
+                            (
+                                AUUsarGarfio
+                                [
+                                ]
+                            )
+                            (
+                                AUActuarSobre
+                                [
+                                ]
+                            )
+                        )
+                        .GESTOR_MOVIMIENTO
+                        [
+                            .PATRULLAJE
+                            [
+                            ]
+                        ]
+                        .EMPIEZA_TORTURADO 0
+                    ]
+                )
+                .USAHAB
+                [
+                ]
+                .VOLCOLISION
+                (
+                    Cilindro
+                    [
+                        .RADIO 12.0
+                        .ALTURA 50.0
+                    ]
+                )
+                .TIPOCOLISION PEATON
+                .ZONASELECCION
+                (
+                    Cilindro
+                    [
+                        .RADIO 10.0
+                        .ALTURA 50.0
+                    ]
+                )
+                .MOTOR
+                (
+                    MotorPeaton
+                    [
+                        .ATRAVIESAALAMBRADAS 0
+                    ]
+                )
+                .COLORPUNTOLIBRETA ALIADO
+                .ANIMADOR
+                (
+                    AnimadorHumano
+                    [
+                        .VOL
+                        (
+                            Cilindro
+                            [
+                                .RADIO 20.0
+                                .ALTURA 50.0
+                            ]
+                        )
+                        .ANIM ARTIFIC.ANI
+                    ]
+                )
+                .CONTENEDOR 1.0
+                .ANGULO 258.0
+                .LISTAS
+                (
+                    CHOC VISI SELE EJEC
+                )
+                .GEL
+                [
+                ]
+                .DUMMY
+                [
+                    .ANIMADOR
+                    (
+                        AnimadorHumano
+                        [
+                            .VOL
+                            (
+                                Cilindro
+                                [
+                                    .RADIO 10.0
+                                    .ALTURA 50.0
+                                ]
+                            )
+                            .ANIM ARTIFIC.ANI
+                        ]
+                    )
+                ]
+                .PUEDE_CONDUCIR
+                (
+                    GLOBO WILLIS CAMION CANON LANCHA_MOTORA NIDO_AMETRALLADORAS ASCENSOR MONTA SILLA_ALIADA
+                )
+                .VISTA
+                (
+                    VistaTriangular
+                    [
+                    ]
+                )
+                .BICHOS
+                (
+                    [
+                        .TOKEN PISTOLA_AR
+                        .COLORPUNTOLIBRETA OBJETO
+                        .POS
+                        [
+                            .XYZ
+                            (
+                                0 0 0
+                            )
+                            .ESC EXTERIOR
+                        ]
+                        .BANDO NEUTRAL
+                        .HTIP TPIS
+                        .COMPORTAMIENTO
+                        (
+                            ComporPistola
+                            [
+                            ]
+                        )
+                        .ZONASELECCION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 10.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .VOLCOLISION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 12.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .ANIMADOR
+                        (
+                            Animador2d
+                            [
+                                .VOL
+                                (
+                                    Cilindro
+                                    [
+                                        .RADIO 20.0
+                                        .ALTURA 30.0
+                                    ]
+                                )
+                                .ANI PISTOLA.AN2
+                            ]
+                        )
+                        .ANGULO 0
+                        .TRANSFERIBLEACHUSMA 1.0
+                        .BICHOENCUAD
+                        [
+                            .DIMBICHOX 1.0
+                            .DIMBICHOY 1.0
+                            .GFX CPISTOLA
+                        ]
+                        .LISTAS
+                        (
+                            SELE EJEC FLAS
+                        )
+                    ]
+                    [
+                        .TOKEN CUCHI_AR
+                        .COLORPUNTOLIBRETA OBJETO
+                        .POS
+                        [
+                            .XYZ
+                            (
+                                0 0 0
+                            )
+                            .ESC EXTERIOR
+                        ]
+                        .BANDO NEUTRAL
+                        .HTIP TCUC
+                        .COMPORTAMIENTO
+                        (
+                            ComporCuchillo
+                            [
+                            ]
+                        )
+                        .ZONASELECCION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 10.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .VOLCOLISION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 12.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .ANIMADOR
+                        (
+                            Animador2d
+                            [
+                                .VOL
+                                (
+                                    Cilindro
+                                    [
+                                        .RADIO 20.0
+                                        .ALTURA 30.0
+                                    ]
+                                )
+                                .ANI CUCHILLO.AN2
+                            ]
+                        )
+                        .ANGULO 0
+                        .BICHOENCUAD
+                        [
+                            .DIMBICHOX 1.0
+                            .DIMBICHOY 1.0
+                            .GFX CCUCHI
+                        ]
+                        .LISTAS
+                        (
+                            EJEC FLAS SELP
+                        )
+                    ]
+                )
+                .VELOCIDADES_PREFIJADAS 1.0
+                .REMOLQUE 1.0
+            ]
+            [
+                .TOKEN RATERO
+                .POS
+                [
+                    .XYZ
+                    (
+                        298.0 -562.0 0
+                    )
+                    .ESC EXTERIOR
+                ]
+                .BANDO ALIADO
+                .HTIP ARAT
+                .ACCIONES
+                (
+                    (
+                        Ac_DejarPisadasGraficas
+                        [
+                        ]
+                    )
+                    (
+                        Ac_DejarPisadasLogicas
+                        [
+                        ]
+                    )
+                )
+                .COMPORTAMIENTO
+                (
+                    ComporUsuario
+                    [
+                        .ACCIONES
+                        (
+                            (
+                                AUInteractuar
+                                [
+                                ]
+                            )
+                            (
+                                AUGoTo
+                                [
+                                ]
+                            )
+                            (
+                                AUCambiarPostura
+                                [
+                                ]
+                            )
+                            (
+                                AUUsarTransfer
+                                [
+                                ]
+                            )
+                            (
+                                AUEscalar
+                                [
+                                ]
+                            )
+                            (
+                                AUNadar
+                                [
+                                ]
+                            )
+                            (
+                                AUUsarVehiculo
+                                [
+                                ]
+                            )
+                            (
+                                AUUsarTenazas
+                                [
+                                ]
+                            )
+                            (
+                                AUSaltarPorTransfer
+                                [
+                                    .CABLE 1.0
+                                    .CANALON 0
+                                    .CALLE 1.0
+                                    .FACHADA 1.0
+                                    .ESCALA 1.0
+                                    .GANCHO 1.0
+                                ]
+                            )
+                            (
+                                AUColarsePorTransfer
+                                [
+                                ]
+                            )
+                            (
+                                AUMirarPorTransfer
+                                [
+                                    .CABLE 1.0
+                                    .CANALON 0
+                                    .CALLE 1.0
+                                    .FACHADA 1.0
+                                    .ESCALA 1.0
+                                    .GANCHO 1.0
+                                ]
+                            )
+                            (
+                                AUUsarBotiquin
+                                [
+                                ]
+                            )
+                            (
+                                AUSoltarBicho
+                                [
+                                ]
+                            )
+                            (
+                                AUCoger
+                                [
+                                ]
+                            )
+                            (
+                                AUSilbato
+                                [
+                                ]
+                            )
+                            (
+                                AUDispararArma
+                                [
+                                ]
+                            )
+                            (
+                                AUDispararMetralleta
+                                [
+                                ]
+                            )
+                            (
+                                AUDispararRifleCorto
+                                [
+                                ]
+                            )
+                            (
+                                AUExaminar
+                                [
+                                ]
+                            )
+                            (
+                                AUUsarEscala
+                                [
+                                ]
+                            )
+                            (
+                                AUUsarAscensor
+                                [
+                                ]
+                            )
+                            (
+                                AUDetenido
+                                [
+                                ]
+                            )
+                            (
+                                AUForzarCerradura
+                                [
+                                ]
+                            )
+                            (
+                                AUEsconderse
+                                [
+                                ]
+                            )
+                            (
+                                AUGolpearPared
+                                [
+                                ]
+                            )
+                            (
+                                AUUsarRadio
+                                [
+                                ]
+                            )
+                            (
+                                AUTreparCable
+                                [
+                                ]
+                            )
+                            (
+                                AUTreparPared
+                                [
+                                    .CRAMPEA 1.0
+                                ]
+                            )
+                            (
+                                AUAbrirPuertaInterior
+                                [
+                                ]
+                            )
+                            (
+                                AUPegarseABicho
+                                [
+                                ]
+                            )
+                            (
+                                AUComidaPerro
+                                [
+                                ]
+                            )
+                            (
+                                AULanzarTabaco
+                                [
+                                ]
+                            )
+                            (
+                                AULlevarMuerto
+                                [
+                                    .ARRASTRAR 1.0
+                                ]
+                            )
+                            (
+                                AUPrismaticos
+                                [
+                                ]
+                            )
+                            (
+                                AUIrPegaoAPared
+                                [
+                                ]
+                            )
+                            (
+                                AUAbrirCajaFuerte
+                                [
+                                ]
+                            )
+                            (
+                                AUPonerseTraje
+                                [
+                                ]
+                            )
+                            (
+                                AULiberarChusma
+                                [
+                                ]
+                            )
+                            (
+                                AUBucear
+                                [
+                                ]
+                            )
+                            (
+                                AUDispararTirachinas
+                                [
+                                ]
+                            )
+                            (
+                                AUUsarMuneco
+                                [
+                                ]
+                            )
+                            (
+                                AUUsarInterruptor
+                                [
+                                ]
+                            )
+                            (
+                                AUSoltarEscalaEnrollable
+                                [
+                                ]
+                            )
+                            (
+                                AUPonerSenuelo
+                                [
+                                ]
+                            )
+                            (
+                                AUManejarSenuelo
+                                [
+                                ]
+                            )
+                            (
+                                AUDispararMetralleta
+                                [
+                                ]
+                            )
+                            (
+                                AUDispararRifleCorto
+                                [
+                                ]
+                            )
+                            (
+                                AUApostarse
+                                [
+                                    .VIGILADOR
+                                    [
+                                        .LONG_CORTA 200.0
+                                        .LONG_NORMAL 400.0
+                                        .LONG_LARGA 600.0
+                                    ]
+                                ]
+                            )
+                            (
+                                AUAtontar
+                                [
+                                    .EMPUJA 1.0
+                                ]
+                            )
+                            (
+                                AUNarcotizar
+                                [
+                                ]
+                            )
+                            (
+                                AUUsarBotella
+                                [
+                                ]
+                            )
+                            (
+                                AUUsarTelefono
+                                [
+                                ]
+                            )
+                            (
+                                AUDeslumbrar
+                                [
+                                ]
+                            )
+                            (
+                                AUUsarGarfio
+                                [
+                                ]
+                            )
+                            (
+                                AULlevarWhisky
+                                [
+                                ]
+                            )
+                            (
+                                AUAbrirPuertaConLlave
+                                [
+                                ]
+                            )
+                            (
+                                AUActuarSobre
+                                [
+                                ]
+                            )
+                        )
+                        .GESTOR_MOVIMIENTO
+                        [
+                            .PATRULLAJE
+                            [
+                            ]
+                        ]
+                        .EMPIEZA_TORTURADO 0
+                    ]
+                )
+                .USAHAB
+                [
+                ]
+                .VOLCOLISION
+                (
+                    Cilindro
+                    [
+                        .RADIO 12.0
+                        .ALTURA 50.0
+                    ]
+                )
+                .TIPOCOLISION PEATON
+                .ZONASELECCION
+                (
+                    Cilindro
+                    [
+                        .RADIO 10.0
+                        .ALTURA 50.0
+                    ]
+                )
+                .MOTOR
+                (
+                    MotorPeaton
+                    [
+                        .ATRAVIESAALAMBRADAS 1.0
+                    ]
+                )
+                .COLORPUNTOLIBRETA ALIADO
+                .ANIMADOR
+                (
+                    AnimadorHumano
+                    [
+                        .VOL
+                        (
+                            Cilindro
+                            [
+                                .RADIO 20.0
+                                .ALTURA 50.0
+                            ]
+                        )
+                        .ANIM RATERO.ANI
+                        .MOTIONBLUR_CORRIENDO 1.0
+                    ]
+                )
+                .CONTENEDOR 1.0
+                .ANGULO 121.0
+                .LISTAS
+                (
+                    CHOC VISI SELE EJEC
+                )
+                .GEL
+                [
+                ]
+                .DUMMY
+                [
+                    .ANIMADOR
+                    (
+                        AnimadorHumano
+                        [
+                            .VOL
+                            (
+                                Cilindro
+                                [
+                                    .RADIO 10.0
+                                    .ALTURA 50.0
+                                ]
+                            )
+                            .ANIM RATERO.ANI
+                        ]
+                    )
+                ]
+                .PUEDE_CONDUCIR
+                (
+                    GLOBO WILLIS CAMION LANCHA_MOTORA ASCENSOR MONTA ELEFANTE SILLA_ALIADA
+                )
+                .VISTA
+                (
+                    VistaTriangular
+                    [
+                    ]
+                )
+                .BICHOS
+                (
+                    [
+                        .TOKEN GANZUAS
+                        .COLORPUNTOLIBRETA OBJETO
+                        .POS
+                        [
+                            .XYZ
+                            (
+                                266.0 -270.0 0
+                            )
+                            .ESC EXTERIOR
+                        ]
+                        .BANDO NEUTRAL
+                        .HTIP GANZ
+                        .COMPORTAMIENTO
+                        (
+                            ComporGanzua
+                            [
+                            ]
+                        )
+                        .ZONASELECCION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 10.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .VOLCOLISION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 12.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .ANIMADOR
+                        (
+                            Animador2d
+                            [
+                                .VOL
+                                (
+                                    Cilindro
+                                    [
+                                        .RADIO 20.0
+                                        .ALTURA 30.0
+                                    ]
+                                )
+                                .ANI GANZUA.AN2
+                            ]
+                        )
+                        .ANGULO 0
+                        .BICHOENCUAD
+                        [
+                            .DIMBICHOX 1.0
+                            .DIMBICHOY 1.0
+                            .GFX CGANZUA
+                        ]
+                        .LISTAS
+                        (
+                            SELE EJEC FLAS
+                        )
+                    ]
+                    [
+                        .TOKEN RATA
+                        .POS
+                        [
+                            .XYZ
+                            (
+                                189.0 -172.0 0
+                            )
+                            .ESC EXTERIOR
+                        ]
+                        .BANDO NEUTRAL
+                        .HTIP MUNE
+                        .COMPORTAMIENTO
+                        (
+                            ComporMuneco
+                            [
+                                .GESTOR_MOVIMIENTO
+                                [
+                                ]
+                            ]
+                        )
+                        .ZONASELECCION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 10.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .VOLCOLISION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 12.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .TIPOCOLISION PEATON
+                        .MOTOR
+                        (
+                            MotorPeaton
+                            [
+                                .ATRAVIESAALAMBRADAS 1.0
+                                .ENCARAESCALAS 0
+                            ]
+                        )
+                        .ANIMADOR
+                        (
+                            AnimadorHumano
+                            [
+                                .VOL
+                                (
+                                    Cilindro
+                                    [
+                                        .RADIO 20.0
+                                        .ALTURA 30.0
+                                    ]
+                                )
+                                .ANIM RATA.ANI
+                            ]
+                        )
+                        .ANGULO 0
+                        .LISTAS
+                        (
+                            SELE VISI EJEC
+                        )
+                        .GEL
+                        [
+                        ]
+                        .FLASHEABLE 1.0
+                    ]
+                )
+                .VELOCIDADES_PREFIJADAS 1.0
+                .REMOLQUE 1.0
+            ]
+            [
+                .POS
+                [
+                    .XYZ
+                    (
+                        344.0 236.0 0
+                    )
+                    .ESC EXTERIOR
+                ]
+                .ANGULO 45.0
+                .TOKEN ALEMAN_03
+                .BANDO ALEMAN
+                .HTIP SOLD
+                .COMPORTAMIENTO
+                (
+                    ComporAlemanScript
+                    [
+                        .EVENTOS_RUTA
+                        (
+                            
+                        )
+                        .DISPARADOR
+                        [
+                            .ARMA ALEMAN_Z
+                        ]
+                        .QUEDARSE_EN_EL_SITIO 0
+                        .NUM_GRANADAS 0
+                        .ANIMACION ALEMET.ANI
+                        .GESTOR_MOVIMIENTO
+                        [
+                            .PATRULLAJE
+                            [
+                                .NO_EXISTE 1.0
+                            ]
+                        ]
+                    ]
+                )
+                .VISTA
+                (
+                    VistaTriangular
+                    [
+                    ]
+                )
+                .OIDO
+                (
+                    Oido
+                    [
+                    ]
+                )
+                .MOTOR
+                (
+                    MotorPeaton
+                    [
+                    ]
+                )
+                .ANIMADOR
+                (
+                    AnimadorHumano
+                    [
+                        .VOL
+                        (
+                            Cilindro
+                            [
+                                .RADIO 20.0
+                                .ALTURA 50.0
+                            ]
+                        )
+                        .ANIM ALEMET.ANI
+                    ]
+                )
+                .VOLCOLISION
+                (
+                    Cilindro
+                    [
+                        .RADIO 12.0
+                        .ALTURA 50.0
+                    ]
+                )
+                .TIPOCOLISION PEATON
+                .ZONASELECCION
+                (
+                    Cilindro
+                    [
+                        .RADIO 10.0
+                        .ALTURA 50.0
+                    ]
+                )
+                .LISTAS
+                (
+                    CHOC SELE VISI EJEC FLAE
+                )
+                .COLORPUNTOLIBRETA ALEMAN
+                .USAHAB
+                [
+                ]
+                .PUEDE_CONDUCIR
+                (
+                    WILLIS ZODIAK CAMION CANON LANCHA_MOTORA NIDO_AMETRALLADORAS ASCENSOR MONTA_ALEMAN SILLA CAMA
+                )
+                .MICUADRICULA
+                [
+                    .DIMCUADX 4.0
+                    .DIMCUADY 6.0
+                    .GFXCUAD CUADRIC
+                ]
+                .GEL
+                [
+                ]
+                .DUMMY
+                [
+                    .ANIMADOR
+                    (
+                        AnimadorHumano
+                        [
+                            .VOL
+                            (
+                                Cilindro
+                                [
+                                    .RADIO 10.0
+                                    .ALTURA 50.0
+                                ]
+                            )
+                            .ANIM ALEMET.ANI
+                        ]
+                    )
+                ]
+            ]
+            [
+                .TOKEN CAJA
+                .COLORPUNTOLIBRETA OBJETO
+                .POS
+                [
+                    .XYZ
+                    (
+                        307.0 188.0 0
+                    )
+                    .ESC EXTERIOR
+                ]
+                .ANGULO 127.0
+                .BANDO NEUTRAL
+                .HTIP CAJA
+                .COMPORTAMIENTO
+                (
+                    ComporCaja
+                    [
+                        .CERRADA 1.0
+                    ]
+                )
+                .ZONASELECCION
+                (
+                    Cilindro
+                    [
+                        .RADIO 10.0
+                        .ALTURA 20.0
+                    ]
+                )
+                .VOLCOLISION
+                (
+                    Cilindro
+                    [
+                        .RADIO 12.0
+                        .ALTURA 20.0
+                    ]
+                )
+                .ANIMADOR
+                (
+                    AnimadorSimple
+                    [
+                        .VOL
+                        (
+                            Cilindro
+                            [
+                                .RADIO 20.0
+                                .ALTURA 30.0
+                            ]
+                        )
+                        .ANIM CAJAMETALICA.ANI
+                    ]
+                )
+                .CONTENEDOR 1.0
+                .MICUADRICULA
+                [
+                    .DIMCUADX 4.0
+                    .DIMCUADY 3.0
+                    .GFXCUAD CUADPERR
+                ]
+                .LISTAS
+                (
+                    SELE EJEC FLAS CHOC
+                )
+                .BICHOS
+                (
+                    [
+                        .TOKEN GRANADA
+                        .COLORPUNTOLIBRETA OBJETO
+                        .POS
+                        [
+                            .XYZ
+                            (
+                                52.0 43.0 0
+                            )
+                            .ESC EXTERIOR
+                        ]
+                        .BANDO NEUTRAL
+                        .HTIP TGRA
+                        .COMPORTAMIENTO
+                        (
+                            ComporGranada
+                            [
+                                .NUMUNIDADES 4.0
+                            ]
+                        )
+                        .ZONASELECCION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 10.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .VOLCOLISION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 12.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .ANIMADOR
+                        (
+                            Animador2d
+                            [
+                                .VOL
+                                (
+                                    Cilindro
+                                    [
+                                        .RADIO 20.0
+                                        .ALTURA 30.0
+                                    ]
+                                )
+                                .ANI GRANADA.AN2
+                            ]
+                        )
+                        .ANGULO 0
+                        .BICHOENCUAD
+                        [
+                            .DIMBICHOX 1.0
+                            .DIMBICHOY 1.0
+                            .GFX CGRANA
+                        ]
+                        .LISTAS
+                        (
+                            SELE EJEC FLAS
+                        )
+                    ]
+                    [
+                        .TOKEN BOMBA
+                        .POS
+                        [
+                            .XYZ
+                            (
+                                0 0 0
+                            )
+                            .ESC EXTERIOR
+                        ]
+                        .COLORPUNTOLIBRETA OBJETO
+                        .BANDO NEUTRAL
+                        .HTIP TBOM
+                        .COMPORTAMIENTO
+                        (
+                            ComporBomba
+                            [
+                                .ACTIVABLE 0
+                                .RADIOINI 0
+                                .RADIOFIN 200.0
+                                .ALTURA 50.0
+                                .VELEXPANSION 20.0
+                                .DURACION 11.0
+                                .RETARDO 500.0
+                                .TIPO_EFECTO NORMAL
+                                .TROZOS CscAsfalto
+                                .NUM_TROZOS 3.0
+                                .NUM_BRAZOS 5.0
+                            ]
+                        )
+                        .ZONASELECCION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 10.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .VOLCOLISION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 12.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .ANIMADOR
+                        (
+                            Animador2d
+                            [
+                                .VOL
+                                (
+                                    Cilindro
+                                    [
+                                        .RADIO 20.0
+                                        .ALTURA 30.0
+                                    ]
+                                )
+                                .ANI BOMBA.AN2
+                            ]
+                        )
+                        .ANGULO 0
+                        .BICHOENCUAD
+                        [
+                            .DIMBICHOX 2.0
+                            .DIMBICHOY 1.0
+                            .GFX CBOMBA
+                        ]
+                        .LISTAS
+                        (
+                            CHOC SELE EJEC FLAS
+                        )
+                    ]
+                )
+            ]
+            [
+                .TOKEN MINA01
+                .POS
+                [
+                    .XYZ
+                    (
+                        122.0 -213.0 0
+                    )
+                    .ESC EXTERIOR
+                ]
+                .COLORPUNTOLIBRETA INDEFINIDO
+                .HTIP MINA
+                .BANDO NEUTRAL
+                .COMPORTAMIENTO
+                (
+                    ComporMina
+                    [
+                        .ACTIVABLE 0
+                        .RADIOINI 0
+                        .RADIOFIN 20.0
+                        .ALTURA 20.0
+                        .VELEXPANSION 10.0
+                        .DURACION 11.0
+                        .NUM_TROZOS 1.0
+                        .NUM_BRAZOS 4.0
+                        .TROZOS CscAsfalto
+                        .NUMUNIDADES 1.0
+                    ]
+                )
+                .ZONASELECCION
+                (
+                    Cilindro
+                    [
+                        .RADIO 10.0
+                        .ALTURA 20.0
+                    ]
+                )
+                .VOLCOLISION
+                (
+                    Cilindro
+                    [
+                        .RADIO 10.0
+                        .ALTURA 20.0
+                    ]
+                )
+                .TIPOCOLISION ATRAVESABLE
+                .ANIMADOR
+                (
+                    Animador2d
+                    [
+                        .VOL
+                        (
+                            Cilindro
+                            [
+                                .RADIO 10.0
+                                .ALTURA 5.0
+                            ]
+                        )
+                        .ANI Mina.an2
+                    ]
+                )
+                .ANGULO 0
+                .BICHOENCUAD
+                [
+                    .DIMBICHOX 1.0
+                    .DIMBICHOY 1.0
+                    .GFX CMINA
+                ]
+                .LISTAS
+                (
+                    CHOC FLAS
+                )
+                .FLASHEABLE 1.0
+            ]
+            [
+                .TOKEN MINA02
+                .POS
+                [
+                    .XYZ
+                    (
+                        190.0 -221.0 0
+                    )
+                    .ESC EXTERIOR
+                ]
+                .COLORPUNTOLIBRETA INDEFINIDO
+                .HTIP MINA
+                .BANDO NEUTRAL
+                .COMPORTAMIENTO
+                (
+                    ComporMina
+                    [
+                        .ACTIVABLE 0
+                        .RADIOINI 0
+                        .RADIOFIN 20.0
+                        .ALTURA 20.0
+                        .VELEXPANSION 10.0
+                        .DURACION 11.0
+                        .NUM_TROZOS 1.0
+                        .NUM_BRAZOS 4.0
+                        .TROZOS CscAsfalto
+                        .NUMUNIDADES 1.0
+                    ]
+                )
+                .ZONASELECCION
+                (
+                    Cilindro
+                    [
+                        .RADIO 10.0
+                        .ALTURA 20.0
+                    ]
+                )
+                .VOLCOLISION
+                (
+                    Cilindro
+                    [
+                        .RADIO 10.0
+                        .ALTURA 20.0
+                    ]
+                )
+                .TIPOCOLISION ATRAVESABLE
+                .ANIMADOR
+                (
+                    Animador2d
+                    [
+                        .VOL
+                        (
+                            Cilindro
+                            [
+                                .RADIO 10.0
+                                .ALTURA 5.0
+                            ]
+                        )
+                        .ANI Mina.an2
+                    ]
+                )
+                .ANGULO 0
+                .BICHOENCUAD
+                [
+                    .DIMBICHOX 1.0
+                    .DIMBICHOY 1.0
+                    .GFX CMINA
+                ]
+                .LISTAS
+                (
+                    CHOC FLAS
+                )
+                .FLASHEABLE 1.0
+            ]
+            [
+                .TOKEN MINA03
+                .POS
+                [
+                    .XYZ
+                    (
+                        327.0 -223.0 0
+                    )
+                    .ESC EXTERIOR
+                ]
+                .COLORPUNTOLIBRETA INDEFINIDO
+                .HTIP MINA
+                .BANDO NEUTRAL
+                .COMPORTAMIENTO
+                (
+                    ComporMina
+                    [
+                        .ACTIVABLE 0
+                        .RADIOINI 0
+                        .RADIOFIN 20.0
+                        .ALTURA 20.0
+                        .VELEXPANSION 10.0
+                        .DURACION 11.0
+                        .NUM_TROZOS 1.0
+                        .NUM_BRAZOS 4.0
+                        .TROZOS CscAsfalto
+                        .NUMUNIDADES 1.0
+                    ]
+                )
+                .ZONASELECCION
+                (
+                    Cilindro
+                    [
+                        .RADIO 10.0
+                        .ALTURA 20.0
+                    ]
+                )
+                .VOLCOLISION
+                (
+                    Cilindro
+                    [
+                        .RADIO 10.0
+                        .ALTURA 20.0
+                    ]
+                )
+                .TIPOCOLISION ATRAVESABLE
+                .ANIMADOR
+                (
+                    Animador2d
+                    [
+                        .VOL
+                        (
+                            Cilindro
+                            [
+                                .RADIO 10.0
+                                .ALTURA 5.0
+                            ]
+                        )
+                        .ANI Mina.an2
+                    ]
+                )
+                .ANGULO 0
+                .BICHOENCUAD
+                [
+                    .DIMBICHOX 1.0
+                    .DIMBICHOY 1.0
+                    .GFX CMINA
+                ]
+                .LISTAS
+                (
+                    CHOC FLAS
+                )
+                .FLASHEABLE 1.0
+            ]
+            [
+                .TOKEN MINA04
+                .POS
+                [
+                    .XYZ
+                    (
+                        418.0 -229.0 0
+                    )
+                    .ESC EXTERIOR
+                ]
+                .COLORPUNTOLIBRETA INDEFINIDO
+                .HTIP MINA
+                .BANDO NEUTRAL
+                .COMPORTAMIENTO
+                (
+                    ComporMina
+                    [
+                        .ACTIVABLE 0
+                        .RADIOINI 0
+                        .RADIOFIN 20.0
+                        .ALTURA 20.0
+                        .VELEXPANSION 10.0
+                        .DURACION 11.0
+                        .NUM_TROZOS 1.0
+                        .NUM_BRAZOS 4.0
+                        .TROZOS CscAsfalto
+                        .NUMUNIDADES 1.0
+                    ]
+                )
+                .ZONASELECCION
+                (
+                    Cilindro
+                    [
+                        .RADIO 10.0
+                        .ALTURA 20.0
+                    ]
+                )
+                .VOLCOLISION
+                (
+                    Cilindro
+                    [
+                        .RADIO 10.0
+                        .ALTURA 20.0
+                    ]
+                )
+                .TIPOCOLISION ATRAVESABLE
+                .ANIMADOR
+                (
+                    Animador2d
+                    [
+                        .VOL
+                        (
+                            Cilindro
+                            [
+                                .RADIO 10.0
+                                .ALTURA 5.0
+                            ]
+                        )
+                        .ANI Mina.an2
+                    ]
+                )
+                .ANGULO 0
+                .BICHOENCUAD
+                [
+                    .DIMBICHOX 1.0
+                    .DIMBICHOY 1.0
+                    .GFX CMINA
+                ]
+                .LISTAS
+                (
+                    CHOC FLAS
+                )
+                .FLASHEABLE 1.0
+            ]
+            [
+                .TOKEN MINA05
+                .POS
+                [
+                    .XYZ
+                    (
+                        526.0 -240.0 0
+                    )
+                    .ESC EXTERIOR
+                ]
+                .COLORPUNTOLIBRETA INDEFINIDO
+                .HTIP MINA
+                .BANDO NEUTRAL
+                .COMPORTAMIENTO
+                (
+                    ComporMina
+                    [
+                        .ACTIVABLE 0
+                        .RADIOINI 0
+                        .RADIOFIN 20.0
+                        .ALTURA 20.0
+                        .VELEXPANSION 10.0
+                        .DURACION 11.0
+                        .NUM_TROZOS 1.0
+                        .NUM_BRAZOS 4.0
+                        .TROZOS CscAsfalto
+                        .NUMUNIDADES 1.0
+                    ]
+                )
+                .ZONASELECCION
+                (
+                    Cilindro
+                    [
+                        .RADIO 10.0
+                        .ALTURA 20.0
+                    ]
+                )
+                .VOLCOLISION
+                (
+                    Cilindro
+                    [
+                        .RADIO 10.0
+                        .ALTURA 20.0
+                    ]
+                )
+                .TIPOCOLISION ATRAVESABLE
+                .ANIMADOR
+                (
+                    Animador2d
+                    [
+                        .VOL
+                        (
+                            Cilindro
+                            [
+                                .RADIO 10.0
+                                .ALTURA 5.0
+                            ]
+                        )
+                        .ANI Mina.an2
+                    ]
+                )
+                .ANGULO 0
+                .BICHOENCUAD
+                [
+                    .DIMBICHOX 1.0
+                    .DIMBICHOY 1.0
+                    .GFX CMINA
+                ]
+                .LISTAS
+                (
+                    CHOC FLAS
+                )
+                .FLASHEABLE 1.0
+            ]
+            [
+                .POS
+                [
+                    .XYZ
+                    (
+                        -63.0 -301.0 0
+                    )
+                    .ESC EXTERIOR
+                ]
+                .ANGULO 290.0
+                .TOKEN ALEMAN06
+                .BANDO ALEMAN
+                .HTIP SOLD
+                .COMPORTAMIENTO
+                (
+                    ComporAlemanScript
+                    [
+                        .EVENTOS_RUTA
+                        (
+                            
+                        )
+                        .DISPARADOR
+                        [
+                            .ARMA ALEMAN_PISTOLA
+                        ]
+                        .NUM_GRANADAS 0
+                        .ANIMACION ALEPISTGORDO2.ANI
+                        .GESTOR_MOVIMIENTO
+                        [
+                            .PATRULLAJE
+                            [
+                                .RECPATRULLA
+                                [
+                                    .RUTAS
+                                    (
+                                        [
+                                            .NOMBRE DEFAULT
+                                            .VEL 1.7
+                                            .TIPO LOOP
+                                            .ESCALAS
+                                            (
+                                                (
+                                                    IR_A_PUNTO
+                                                    [
+                                                        .MODO ANDANDO
+                                                        .XYZ
+                                                        (
+                                                            -206.0 -387.0 0
+                                                        )
+                                                        .ESC EXTERIOR
+                                                    ]
+                                                )
+                                                (
+                                                    LANZAR_TRIGGER
+                                                    [
+                                                        .TRIGGER HABL
+                                                    ]
+                                                )
+                                                (
+                                                    IR_A_PUNTO
+                                                    [
+                                                        .MODO ANDANDO
+                                                        .XYZ
+                                                        (
+                                                            -227.0 -388.0 0
+                                                        )
+                                                        .ESC EXTERIOR
+                                                    ]
+                                                )
+                                                (
+                                                    ENCARARSE
+                                                    [
+                                                        .ANGULO 200.0
+                                                    ]
+                                                )
+                                                (
+                                                    ESPERAR
+                                                    [
+                                                        .TIEMPO 100.0
+                                                    ]
+                                                )
+                                                (
+                                                    POSE_REPETIDA
+                                                    [
+                                                        .REPETICIONES 1.0
+                                                        .ANIMACION HABLAR_5
+                                                    ]
+                                                )
+                                                (
+                                                    LANZAR_TRIGGER
+                                                    [
+                                                        .TRIGGER NORM
+                                                    ]
+                                                )
+                                                (
+                                                    IR_A_PUNTO
+                                                    [
+                                                        .MODO ANDANDO
+                                                        .XYZ
+                                                        (
+                                                            -28.0 -259.0 0
+                                                        )
+                                                        .ESC EXTERIOR
+                                                    ]
+                                                )
+                                                (
+                                                    ENCARARSE
+                                                    [
+                                                        .ANGULO 58.0
+                                                    ]
+                                                )
+                                                (
+                                                    ESPERAR
+                                                    [
+                                                        .TIEMPO 300.0
+                                                    ]
+                                                )
+                                                (
+                                                    IR_A_PUNTO
+                                                    [
+                                                        .MODO ANDANDO
+                                                        .XYZ
+                                                        (
+                                                            -226.0 -383.0 0
+                                                        )
+                                                        .ESC EXTERIOR
+                                                    ]
+                                                )
+                                                (
+                                                    ENCARARSE
+                                                    [
+                                                        .ANGULO 222.0
+                                                    ]
+                                                )
+                                                (
+                                                    ESPERAR
+                                                    [
+                                                        .TIEMPO 150.0
+                                                    ]
+                                                )
+                                                (
+                                                    IR_A_PUNTO
+                                                    [
+                                                        .MODO ANDANDO
+                                                        .XYZ
+                                                        (
+                                                            -29.0 -254.0 0
+                                                        )
+                                                        .ESC EXTERIOR
+                                                    ]
+                                                )
+                                                (
+                                                    ENCARARSE
+                                                    [
+                                                        .ANGULO 60.0
+                                                    ]
+                                                )
+                                                (
+                                                    ESPERAR
+                                                    [
+                                                        .TIEMPO 150.0
+                                                    ]
+                                                )
+                                            )
+                                        ]
+                                    )
+                                    .RUTA_POR_DEFECTO DEFAULT
+                                ]
+                            ]
+                        ]
+                    ]
+                )
+                .VISTA
+                (
+                    VistaTriangular
+                    [
+                    ]
+                )
+                .OIDO
+                (
+                    Oido
+                    [
+                    ]
+                )
+                .MOTOR
+                (
+                    MotorPeaton
+                    [
+                    ]
+                )
+                .ANIMADOR
+                (
+                    AnimadorHumano
+                    [
+                        .VOL
+                        (
+                            Cilindro
+                            [
+                                .RADIO 20.0
+                                .ALTURA 50.0
+                            ]
+                        )
+                        .ANIM ALEPISTGORDO2.ANI
+                    ]
+                )
+                .VOLCOLISION
+                (
+                    Cilindro
+                    [
+                        .RADIO 12.0
+                        .ALTURA 50.0
+                    ]
+                )
+                .TIPOCOLISION PEATON
+                .ZONASELECCION
+                (
+                    Cilindro
+                    [
+                        .RADIO 10.0
+                        .ALTURA 50.0
+                    ]
+                )
+                .LISTAS
+                (
+                    CHOC SELE VISI EJEC FLAE
+                )
+                .COLORPUNTOLIBRETA ALEMAN
+                .USAHAB
+                [
+                ]
+                .PUEDE_CONDUCIR
+                (
+                    WILLIS ZODIAK CAMION CANON LANCHA_MOTORA NIDO_AMETRALLADORAS ASCENSOR MONTA_ALEMAN SILLA CAMA
+                )
+                .MICUADRICULA
+                [
+                    .DIMCUADX 4.0
+                    .DIMCUADY 6.0
+                    .GFXCUAD CUADRIC
+                ]
+                .GEL
+                [
+                ]
+                .DUMMY
+                [
+                    .ANIMADOR
+                    (
+                        AnimadorHumano
+                        [
+                            .VOL
+                            (
+                                Cilindro
+                                [
+                                    .RADIO 10.0
+                                    .ALTURA 50.0
+                                ]
+                            )
+                            .ANIM ALEPISTGORDO2.ANI
+                        ]
+                    )
+                ]
+                .BICHOS
+                (
+                    
+                )
+            ]
+            [
+                .POS
+                [
+                    .XYZ
+                    (
+                        -254.0 -396.0 0
+                    )
+                    .ESC EXTERIOR
+                ]
+                .ANGULO 322.0
+                .TOKEN ALE0001
+                .BANDO ALEMAN
+                .HTIP SOLD
+                .COMPORTAMIENTO
+                (
+                    ComporAlemanScript
+                    [
+                        .EVENTOS_RUTA
+                        (
+                            HABL NORM
+                        )
+                        .DISPARADOR
+                        [
+                            .ARMA ALEMAN_FUSIL
+                        ]
+                        .NUM_GRANADAS 0
+                        .ANIMACION ALEFUS.ANI
+                        .GESTOR_MOVIMIENTO
+                        [
+                            .PATRULLAJE
+                            [
+                                .RECPATRULLA
+                                [
+                                    .RUTAS
+                                    (
+                                        [
+                                            .NOMBRE NORM
+                                            .VEL 1.5
+                                            .TIPO STOPPED
+                                            .ESCALAS
+                                            (
+                                                (
+                                                    IR_A_PUNTO
+                                                    [
+                                                        .MODO ANDANDO
+                                                        .XYZ
+                                                        (
+                                                            -254.0 -396.0 0
+                                                        )
+                                                        .ESC EXTERIOR
+                                                    ]
+                                                )
+                                                (
+                                                    ENCARARSE
+                                                    [
+                                                        .ANGULO 324.0
+                                                    ]
+                                                )
+                                            )
+                                        ]
+                                        [
+                                            .NOMBRE HABL
+                                            .VEL 2.5
+                                            .TIPO STOPPED
+                                            .ESCALAS
+                                            (
+                                                (
+                                                    IR_A_PUNTO
+                                                    [
+                                                        .MODO ANDANDO
+                                                        .XYZ
+                                                        (
+                                                            -254.0 -396.0 0
+                                                        )
+                                                        .ESC EXTERIOR
+                                                    ]
+                                                )
+                                                (
+                                                    ENCARARSE
+                                                    [
+                                                        .ANGULO 22.0
+                                                    ]
+                                                )
+                                                (
+                                                    POSE_REPETIDA
+                                                    [
+                                                        .REPETICIONES 1.0
+                                                        .ANIMACION HABLAR_2
+                                                    ]
+                                                )
+                                            )
+                                        ]
+                                    )
+                                    .RUTA_POR_DEFECTO NORM
+                                ]
+                            ]
+                        ]
+                    ]
+                )
+                .VISTA
+                (
+                    VistaTriangular
+                    [
+                    ]
+                )
+                .OIDO
+                (
+                    Oido
+                    [
+                    ]
+                )
+                .MOTOR
+                (
+                    MotorPeaton
+                    [
+                    ]
+                )
+                .ANIMADOR
+                (
+                    AnimadorHumano
+                    [
+                        .VOL
+                        (
+                            Cilindro
+                            [
+                                .RADIO 20.0
+                                .ALTURA 50.0
+                            ]
+                        )
+                        .ANIM ALEFUS.ANI
+                    ]
+                )
+                .VOLCOLISION
+                (
+                    Cilindro
+                    [
+                        .RADIO 12.0
+                        .ALTURA 50.0
+                    ]
+                )
+                .TIPOCOLISION PEATON
+                .ZONASELECCION
+                (
+                    Cilindro
+                    [
+                        .RADIO 10.0
+                        .ALTURA 50.0
+                    ]
+                )
+                .LISTAS
+                (
+                    CHOC SELE VISI EJEC FLAE
+                )
+                .COLORPUNTOLIBRETA ALEMAN
+                .USAHAB
+                [
+                ]
+                .PUEDE_CONDUCIR
+                (
+                    WILLIS ZODIAK CAMION CANON LANCHA_MOTORA NIDO_AMETRALLADORAS ASCENSOR MONTA_ALEMAN SILLA CAMA
+                )
+                .MICUADRICULA
+                [
+                    .DIMCUADX 4.0
+                    .DIMCUADY 6.0
+                    .GFXCUAD CUADRIC
+                ]
+                .GEL
+                [
+                ]
+                .DUMMY
+                [
+                    .ANIMADOR
+                    (
+                        AnimadorHumano
+                        [
+                            .VOL
+                            (
+                                Cilindro
+                                [
+                                    .RADIO 10.0
+                                    .ALTURA 50.0
+                                ]
+                            )
+                            .ANIM ALEFUS.ANI
+                        ]
+                    )
+                ]
+                .BICHOS
+                (
+                    [
+                        .TOKEN TABACO_01
+                        .COLORPUNTOLIBRETA OBJETO
+                        .POS
+                        [
+                            .XYZ
+                            (
+                                -31.0 -91.0 0
+                            )
+                            .ESC EXTERIOR
+                        ]
+                        .BANDO NEUTRAL
+                        .HTIP TABC
+                        .COMPORTAMIENTO
+                        (
+                            ComporTabaco
+                            [
+                                .NUMCIGARROS 10.0
+                                .NUMUNIDADES 1.0
+                            ]
+                        )
+                        .ZONASELECCION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 10.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .VOLCOLISION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 12.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .ANIMADOR
+                        (
+                            Animador2d
+                            [
+                                .VOL
+                                (
+                                    Cilindro
+                                    [
+                                        .RADIO 20.0
+                                        .ALTURA 30.0
+                                    ]
+                                )
+                                .ANI TABACO.AN2
+                            ]
+                        )
+                        .ANGULO 0
+                        .BICHOENCUAD
+                        [
+                            .DIMBICHOX 1.0
+                            .DIMBICHOY 1.0
+                            .GFX CTABACO
+                        ]
+                        .LISTAS
+                        (
+                            VISI SELE EJEC FLAS
+                        )
+                    ]
+                )
+            ]
+            [
+                .TOKEN CAJA_01
+                .COLORPUNTOLIBRETA OBJETO
+                .POS
+                [
+                    .XYZ
+                    (
+                        286.0 103.0 0
+                    )
+                    .ESC EXTERIOR
+                ]
+                .ANGULO 20.0
+                .BANDO NEUTRAL
+                .HTIP CAJA
+                .COMPORTAMIENTO
+                (
+                    ComporCaja
+                    [
+                    ]
+                )
+                .ZONASELECCION
+                (
+                    Cilindro
+                    [
+                        .RADIO 10.0
+                        .ALTURA 20.0
+                    ]
+                )
+                .VOLCOLISION
+                (
+                    Cilindro
+                    [
+                        .RADIO 12.0
+                        .ALTURA 20.0
+                    ]
+                )
+                .ANIMADOR
+                (
+                    AnimadorSimple
+                    [
+                        .VOL
+                        (
+                            Cilindro
+                            [
+                                .RADIO 20.0
+                                .ALTURA 30.0
+                            ]
+                        )
+                        .ANIM CAJAMETALICA.ANI
+                    ]
+                )
+                .CONTENEDOR 1.0
+                .MICUADRICULA
+                [
+                    .DIMCUADX 4.0
+                    .DIMCUADY 3.0
+                    .GFXCUAD CUADPERR
+                ]
+                .LISTAS
+                (
+                    SELE EJEC FLAS CHOC
+                )
+                .BICHOS
+                (
+                    [
+                        .TOKEN DETECTOR
+                        .COLORPUNTOLIBRETA OBJETO
+                        .HTIP DETE
+                        .POS
+                        [
+                            .XYZ
+                            (
+                                240.0 -247.0 0
+                            )
+                            .ESC EXTERIOR
+                        ]
+                        .BANDO NEUTRAL
+                        .COMPORTAMIENTO
+                        (
+                            ComporDetector
+                            [
+                                .RADIODETECCION 0
+                            ]
+                        )
+                        .ZONASELECCION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 10.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .VOLCOLISION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 12.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .ANIMADOR
+                        (
+                            Animador2d
+                            [
+                                .VOL
+                                (
+                                    Cilindro
+                                    [
+                                        .RADIO 20.0
+                                        .ALTURA 30.0
+                                    ]
+                                )
+                                .ANI DETECTOR.AN2
+                            ]
+                        )
+                        .ANGULO 0
+                        .BICHOENCUAD
+                        [
+                            .DIMBICHOX 1.0
+                            .DIMBICHOY 3.0
+                            .GFX CDETEC
+                        ]
+                        .LISTAS
+                        (
+                            SELE EJEC FLAS
+                        )
+                    ]
+                    [
+                        .TOKEN CIZALLA
+                        .POS
+                        [
+                            .XYZ
+                            (
+                                106.0 326.0 0
+                            )
+                            .ESC EXTERIOR
+                        ]
+                        .ANGULO 0
+                        .BANDO NEUTRAL
+                        .HTIP TENA
+                        .COMPORTAMIENTO
+                        (
+                            ComporTenazas
+                            [
+                            ]
+                        )
+                        .ZONASELECCION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 10.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .VOLCOLISION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 12.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .ANIMADOR
+                        (
+                            Animador2d
+                            [
+                                .VOL
+                                (
+                                    Cilindro
+                                    [
+                                        .RADIO 20.0
+                                        .ALTURA 30.0
+                                    ]
+                                )
+                                .ANI TENAZAS.AN2
+                            ]
+                        )
+                        .BICHOENCUAD
+                        [
+                            .DIMBICHOX 2.0
+                            .DIMBICHOY 1.0
+                            .GFX CTENAZAS
+                        ]
+                        .LISTAS
+                        (
+                            SELE EJEC FLAS
+                        )
+                    ]
+                )
+            ]
+            [
+                .POS
+                [
+                    .XYZ
+                    (
+                        396.0 44.0 0
+                    )
+                    .ESC EXTERIOR
+                ]
+                .ANGULO 150.0
+                .TOKEN MECANICO
+                .BANDO ALEMAN
+                .HTIP SOLD
+                .COMPORTAMIENTO
+                (
+                    ComporAlemanScript
+                    [
+                        .EVENTOS_RUTA
+                        (
+                            
+                        )
+                        .DISPARADOR
+                        [
+                            .ARMA ALEMAN_PISTOLA
+                        ]
+                        .NUM_GRANADAS 0
+                        .ANIMACION ALEMECANICO.ANI
+                        .GESTOR_MOVIMIENTO
+                        [
+                            .PATRULLAJE
+                            [
+                                .RECPATRULLA
+                                [
+                                    .RUTAS
+                                    (
+                                        [
+                                            .NOMBRE DEFAULT
+                                            .VEL 1.5
+                                            .TIPO LOOP
+                                            .ESCALAS
+                                            (
+                                                (
+                                                    IR_A_PUNTO
+                                                    [
+                                                        .MODO ANDANDO
+                                                        .XYZ
+                                                        (
+                                                            259.0 80.0 0
+                                                        )
+                                                        .ESC EXTERIOR
+                                                    ]
+                                                )
+                                                (
+                                                    ENCARARSE
+                                                    [
+                                                        .ANGULO 150.0
+                                                    ]
+                                                )
+                                                (
+                                                    ESPERAR
+                                                    [
+                                                        .TIEMPO 200.0
+                                                    ]
+                                                )
+                                                (
+                                                    ENCARARSE
+                                                    [
+                                                        .ANGULO 236.0
+                                                    ]
+                                                )
+                                                (
+                                                    ESPERAR
+                                                    [
+                                                        .TIEMPO 300.0
+                                                    ]
+                                                )
+                                            )
+                                        ]
+                                    )
+                                    .RUTA_POR_DEFECTO DEFAULT
+                                ]
+                            ]
+                        ]
+                    ]
+                )
+                .VISTA
+                (
+                    VistaTriangular
+                    [
+                    ]
+                )
+                .OIDO
+                (
+                    Oido
+                    [
+                    ]
+                )
+                .MOTOR
+                (
+                    MotorPeaton
+                    [
+                    ]
+                )
+                .ANIMADOR
+                (
+                    AnimadorHumano
+                    [
+                        .VOL
+                        (
+                            Cilindro
+                            [
+                                .RADIO 20.0
+                                .ALTURA 50.0
+                            ]
+                        )
+                        .ANIM ALEMECANICO.ANI
+                    ]
+                )
+                .VOLCOLISION
+                (
+                    Cilindro
+                    [
+                        .RADIO 12.0
+                        .ALTURA 50.0
+                    ]
+                )
+                .TIPOCOLISION PEATON
+                .ZONASELECCION
+                (
+                    Cilindro
+                    [
+                        .RADIO 10.0
+                        .ALTURA 50.0
+                    ]
+                )
+                .LISTAS
+                (
+                    CHOC SELE VISI EJEC FLAE
+                )
+                .COLORPUNTOLIBRETA ALEMAN
+                .USAHAB
+                [
+                ]
+                .PUEDE_CONDUCIR
+                (
+                    WILLIS ZODIAK CAMION CANON LANCHA_MOTORA NIDO_AMETRALLADORAS ASCENSOR MONTA_ALEMAN SILLA CAMA
+                )
+                .MICUADRICULA
+                [
+                    .DIMCUADX 4.0
+                    .DIMCUADY 6.0
+                    .GFXCUAD CUADRIC
+                ]
+                .GEL
+                [
+                ]
+                .DUMMY
+                [
+                    .ANIMADOR
+                    (
+                        AnimadorHumano
+                        [
+                            .VOL
+                            (
+                                Cilindro
+                                [
+                                    .RADIO 10.0
+                                    .ALTURA 50.0
+                                ]
+                            )
+                            .ANIM ALEMECANICO.ANI
+                        ]
+                    )
+                ]
+            ]
+            [
+                .POS
+                [
+                    .XYZ
+                    (
+                        333.0 -26.0 0
+                    )
+                    .ESC EXTERIOR
+                ]
+                .TOKEN KUBEL
+                .ANGULO 126.0
+                .HTIP QBEL
+                .COLORPUNTOLIBRETA DEPENDEBANDO
+                .BANDO NEUTRAL
+                .VIDA 2500.0
+                .COMPORTAMIENTO
+                (
+                    ComporWillis
+                    [
+                        .TICKS_PETICION_LARGA_A_CORTA 4.0
+                        .TIPO_EXACTO KUBEL
+                        .RAILES 0
+                        .ESTROPEADO 0
+                        .COMIENZAARRANCADO 0
+                        .DESAPARECE_AL_MORIR 1.0
+                        .VEL
+                        [
+                            .NORMAL 5.0
+                            .RAPIDA 10.0
+                            .SUPER_RAPIDA 15.0
+                            .GIRO 3.0
+                        ]
+                        .TIPO_RECEPCION_IMPACTO EXACTO
+                        .RECEPTOR_IMPACTOS
+                        [
+                            .FLAGS
+                            (
+                                REPARTE_IMPACTO
+                            )
+                            .BLINDAJE 0
+                            .CONFIGURACION
+                            (
+                                (
+                                    CANION 1.0
+                                )
+                                (
+                                    EXPLOSION_MINA_ANTICARRO 1.0
+                                )
+                                (
+                                    EXPLOSION_BOMBA 1.0
+                                )
+                                (
+                                    EXPLOSION_GRANADA 1.0
+                                )
+                                (
+                                    EXPLOSION_CANION 1.0
+                                )
+                                (
+                                    EXPLOSION_TANQUE 1.0
+                                )
+                                (
+                                    EXPLOSION_BAZOOKA 1.0
+                                )
+                            )
+                        ]
+                        .GESTOR_ANIMACIONES
+                        [
+                            .TIPO WILLIS
+                            .MODO LIBRE
+                            .CAMBIAR_ANI 1.0
+                            .ANI_EXPLOTANDO Kubel_Reventado.ani
+                            .SEC_EXPLOTANDO ROMPER
+                            .NUM_BRAZOS_EXPLOSION_VEHICULO 8.0
+                            .RUEDAS_RADIO 11.0
+                            .RUEDAS_MAX_ANGULO_A_VEL_MIN 49.5
+                            .RUEDAS_MAX_ANGULO_A_VEL_MAX 28.0
+                            .RUEDAS_AVANCE_FACTOR_LINEAL 1.0
+                            .RUEDAS_AVANCE_FACTOR_ANGULAR 1.0
+                            .RUEDAS_DELANTERA_DERECHA_P0
+                            (
+                                78.0 -25.0
+                            )
+                            .RUEDAS_DELANTERA_DERECHA_P1
+                            (
+                                84.0 -25.0
+                            )
+                            .RUEDAS_DELANTERA_IZQUIERDA_P0
+                            (
+                                78.0 25.0
+                            )
+                            .RUEDAS_DELANTERA_IZQUIERDA_P1
+                            (
+                                84.0 25.0
+                            )
+                            .RUEDAS_TRASERA_DERECHA_P0
+                            (
+                                -4.0 -25.0
+                            )
+                            .RUEDAS_TRASERA_DERECHA_P1
+                            (
+                                2.0 -25.0
+                            )
+                            .RUEDAS_TRASERA_IZQUIERDA_P0
+                            (
+                                -4.0 25.0
+                            )
+                            .RUEDAS_TRASERA_IZQUIERDA_P1
+                            (
+                                2.0 25.0
+                            )
+                            .VOLANTE_ANGULO_A_VEL_MIN 8.0
+                            .VOLANTE_ANGULO_A_VEL_MAX 15.0
+                            .VOLANTE_ACELERACION 0.1
+                            .MAX_ANGULO_LONGITUDINAL 4.5
+                            .ACELERACION_LONGITUDINAL 0.5
+                            .FACTOR_LONGITUDINAL 3.5
+                            .MAX_ANGULO_TRANSVERSAL 4.5
+                            .ACELERACION_TRANSVERSAL 0.5
+                            .FACTOR_TRANSVERSAL 45.0
+                            .ANGULO_LONGITUDINAL_DEFECTO 2.0
+                            .ANGULO_TRANSVERSAL_DEFECTO 0
+                            .DERRAPE 1.0
+                            .EJE_GIRO_IZQUIERDA
+                            (
+                                64.0 12.0 0
+                            )
+                            .EJE_GIRO_DERECHA
+                            (
+                                64.0 -12.0 0
+                            )
+                            .UMBRAL_TICKS_PREDERRAPE 15.0
+                            .MAX_ANGULO_DERRAPE 9.0
+                            .VEL_DERRAPE 1.0
+                            .TICKS_ESPERA_PARO_DERRAPE 10.0
+                            .FACTOR_RELACION_AVANCE_CORRECION_ALFA_A_VEL_NORMAL 1.0
+                            .FACTOR_RELACION_AVANCE_CORRECION_ALFA_A_VEL_RAPIDA 1.0
+                        ]
+                        .GESTOR_ESTADOS
+                        [
+                            .TIPO WILLIS
+                            .FLAGS
+                            (
+                                SONIDO
+                            )
+                            .FLI_LOGICO VVEH
+                            .FLI_ST_ARRANCAR WLAR
+                            .FLI_ST_RALENTI WLPD
+                            .FLI_ST_MOVIENDOSE WLMO
+                            .FLI_ST_MOVIENDOSERAPIDO WLMO
+                            .FLI_ST_MOVIENDOSESRAPIDO WLMO
+                            .FLI_ST_APAGANDO WLPN
+                            .FLI_ST_DERRAPE DWIL
+                            .FREQ_MOV 1.0
+                            .FREQ_MOV_RAP 1.4
+                            .FREQ_MOV_SRAP 1.5
+                            .FREQ_FINAL_RAL_A_MOV 1.1
+                            .FREQ_FINAL_RAL_A_MOV_RAP 1.6
+                            .FREQ_FINAL_RAL_A_MOV_SRAP 1.8
+                            .VEL_RAL_A_MOV 0.0
+                            .VEL_RAL_A_MOV_RAP 0.1
+                            .VEL_RAL_A_MOV_SRAP 0.1
+                            .FREQ_FINAL_MOV_A_RAL 0.9
+                            .FREQ_FINAL_MOV_A_APAGANDO 0.9
+                            .VEL_MOV_A_RAL 0.0
+                            .VEL_MOV_A_APAGANDO 0.0
+                            .FREQ_FINAL_MOV_RAP_A_RAL 0.8
+                            .FREQ_FINAL_MOV_RAP_A_APAGANDO 0.8
+                            .VEL_MOV_RAP_A_RAL 0.1
+                            .VEL_MOV_RAP_A_APAGANDO 0.0
+                            .FREQ_FINAL_MOV_SRAP_A_RAL 0.8
+                            .FREQ_FINAL_MOV_SRAP_A_APAGANDO 0.8
+                            .VEL_MOV_SRAP_A_RAL 0.1
+                            .VEL_MOV_SRAP_A_APAGANDO 0.1
+                            .VEL_MOV_RAP_MOV 0.1
+                            .VEL_MOV_SRAP_MOV 0.1
+                            .VEL_MOV_SRAP_MOV_RAP 0.1
+                            .VEL_VOL_SLIDE 0.1
+                        ]
+                        .GESTOR_PASAJEROS
+                        [
+                            .TIPO KUBEL
+                            .PASAJEROS_EN_EL_CENTRO 1.0
+                            .VEL_ENCARAR 10.0
+                            .ACEL_ENCARAR 5.0
+                            .UMBRAL_ENCARAR 10.0
+                        ]
+                    ]
+                )
+                .MOTOR
+                (
+                    MotorRuedas
+                    [
+                        .ZONA_AVISO_ATROPELLO_DELANTE
+                        (
+                            (
+                                86.1 -50.0
+                            )
+                            (
+                                286.0 -75.0
+                            )
+                            (
+                                286.0 75.0
+                            )
+                            (
+                                86.1 50.0
+                            )
+                        )
+                        .ARISTAS_ESCAPE_DELANTE
+                        (
+                            (
+                                0 1.0
+                            )
+                            (
+                                2.0 3.0
+                            )
+                        )
+                        .ZONA_AVISO_ATROPELLO_DETRAS
+                        (
+                            (
+                                -26.5 50.0
+                            )
+                            (
+                                -226.0 75.0
+                            )
+                            (
+                                -226.0 -75.0
+                            )
+                            (
+                                -26.5 -50.0
+                            )
+                        )
+                        .ARISTAS_ESCAPE_DETRAS
+                        (
+                            (
+                                0 1.0
+                            )
+                            (
+                                2.0 3.0
+                            )
+                        )
+                    ]
+                )
+                .ANIMADOR
+                (
+                    AnimadorVehiculoWillis
+                    [
+                        .VOL
+                        (
+                            Poligono
+                            [
+                                .VERTICES
+                                (
+                                    (
+                                        -22.0 -28.0
+                                    )
+                                    (
+                                        104.0 -28.0
+                                    )
+                                    (
+                                        104.0 28.0
+                                    )
+                                    (
+                                        -22.0 28.0
+                                    )
+                                )
+                                .ALTURA 63.0
+                            ]
+                        )
+                        .ANIM KUBEL.ANI
+                    ]
+                )
+                .TIPOCOLISION VEHICULO
+                .HABITACULO
+                [
+                    .TIPO WILLIS
+                    .FLAGS
+                    (
+                        
+                    )
+                    .ANIM_CONDUCIR_HACIA_DELANTE CONDUCE_KUBEL
+                    .ANIM_CONDUCIR_HACIA_ATRAS CONDUCE_KUBEL_MA
+                    .POS_DEFECTO_ENTRADA
+                    (
+                        24.0 31.0 0
+                    )
+                    .POS_DEFECTO_SALIDA
+                    (
+                        24.0 31.0 0
+                    )
+                    .ANG_DEFECTO_ENTRADA 270.0
+                    .ANG_DEFECTO_SALIDA 90.0
+                    .DATOS
+                    (
+                        [
+                            .ENTRADA
+                            (
+                                
+                            )
+                            .ANIM_DENTRO SENTADO_KUBEL_SEAT_1
+                            .XYZ_DENTRO
+                            (
+                                18.0 12.0 -2.1
+                            )
+                            .ANGULODENTRO 0
+                            .SALIDA
+                            (
+                                
+                            )
+                            .FLAGS
+                            (
+                                PINT COND
+                            )
+                        ]
+                        [
+                            .ENTRADA
+                            (
+                                
+                            )
+                            .ANIM_DENTRO SENTADO_KUBEL_SEAT_2
+                            .XYZ_DENTRO
+                            (
+                                21.4 -13.0 -2.1
+                            )
+                            .ANGULODENTRO 0
+                            .SALIDA
+                            (
+                                
+                            )
+                            .FLAGS
+                            (
+                                PINT
+                            )
+                        ]
+                        [
+                            .ENTRADA
+                            (
+                                
+                            )
+                            .ANIM_DENTRO SENTADO_KUBEL_SEAT_3
+                            .XYZ_DENTRO
+                            (
+                                -9.0 16.4 -2.1
+                            )
+                            .ANGULODENTRO 0
+                            .SALIDA
+                            (
+                                
+                            )
+                            .FLAGS
+                            (
+                                PINT
+                            )
+                        ]
+                        [
+                            .ENTRADA
+                            (
+                                
+                            )
+                            .ANIM_DENTRO SENTADO_KUBEL_SEAT_4
+                            .XYZ_DENTRO
+                            (
+                                -11.0 -9.7 -2.1
+                            )
+                            .ANGULODENTRO 0
+                            .SALIDA
+                            (
+                                
+                            )
+                            .FLAGS
+                            (
+                                PINT
+                            )
+                        ]
+                    )
+                ]
+                .PUNTOMANEJO
+                [
+                    .TIPO PRECONFIGURADO_HABITACULO
+                    .PUNTOS
+                    (
+                        [
+                            .POS
+                            (
+                                51.0 31.0 0
+                            )
+                            .ASIENTO 0
+                        ]
+                        [
+                            .POS
+                            (
+                                51.0 -31.0 0
+                            )
+                            .ASIENTO 1.0
+                        ]
+                        [
+                            .POS
+                            (
+                                24.0 31.0 0
+                            )
+                            .ASIENTO 2.0
+                        ]
+                        [
+                            .POS
+                            (
+                                24.0 -31.0 0
+                            )
+                            .ASIENTO 3.0
+                        ]
+                    )
+                ]
+                .VOLCOLISION
+                (
+                    Poligono
+                    [
+                        .VERTICES
+                        (
+                            (
+                                -22.0 -28.0
+                            )
+                            (
+                                104.0 -28.0
+                            )
+                            (
+                                104.0 28.0
+                            )
+                            (
+                                -22.0 28.0
+                            )
+                        )
+                        .VERTICES_CLOCKWISE_NOARRASCAR
+                        (
+                            0 2.0
+                        )
+                        .VERTICES_ANTICLOCKWISE_NOARRASCAR
+                        (
+                            1.0 3.0
+                        )
+                        .ALTURA 63.0
+                    ]
+                )
+                .ZONASELECCION
+                (
+                    Poly3d
+                    [
+                        .VERTICES
+                        (
+                            (
+                                -22.0 -28.0
+                            )
+                            (
+                                104.0 -28.0
+                            )
+                            (
+                                104.0 28.0
+                            )
+                            (
+                                -22.0 28.0
+                            )
+                        )
+                        .ALTURA 63.0
+                    ]
+                )
+                .LISTAS
+                (
+                    CHOC VISI SELE OCLU ESQU EJEC
+                )
+            ]
+            [
+                .TOKEN CAJA_002
+                .COLORPUNTOLIBRETA OBJETO
+                .POS
+                [
+                    .XYZ
+                    (
+                        -128.0 122.0 0
+                    )
+                    .ESC EXTERIOR
+                ]
+                .ANGULO 237.0
+                .BANDO NEUTRAL
+                .HTIP CAJA
+                .COMPORTAMIENTO
+                (
+                    ComporCaja
+                    [
+                        .CERRADA 0
+                    ]
+                )
+                .ZONASELECCION
+                (
+                    Cilindro
+                    [
+                        .RADIO 10.0
+                        .ALTURA 20.0
+                    ]
+                )
+                .VOLCOLISION
+                (
+                    Cilindro
+                    [
+                        .RADIO 12.0
+                        .ALTURA 20.0
+                    ]
+                )
+                .ANIMADOR
+                (
+                    AnimadorSimple
+                    [
+                        .VOL
+                        (
+                            Cilindro
+                            [
+                                .RADIO 20.0
+                                .ALTURA 30.0
+                            ]
+                        )
+                        .ANIM CAJAMADERA.ANI
+                    ]
+                )
+                .CONTENEDOR 1.0
+                .MICUADRICULA
+                [
+                    .DIMCUADX 4.0
+                    .DIMCUADY 3.0
+                    .GFXCUAD CUADPERR
+                ]
+                .LISTAS
+                (
+                    SELE EJEC FLAS CHOC
+                )
+                .BICHOS
+                (
+                    [
+                        .TOKEN BOTI_01
+                        .POS
+                        [
+                            .XYZ
+                            (
+                                240.0 -247.0 0
+                            )
+                            .ESC EXTERIOR
+                        ]
+                        .ANGULO 0
+                        .BANDO NEUTRAL
+                        .HTIP BOTI
+                        .COMPORTAMIENTO
+                        (
+                            ComporBotiquin
+                            [
+                                .CANT_DE_DOSIS 5.0
+                            ]
+                        )
+                        .ZONASELECCION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 10.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .VOLCOLISION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 12.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .ANIMADOR
+                        (
+                            Animador2d
+                            [
+                                .VOL
+                                (
+                                    Cilindro
+                                    [
+                                        .RADIO 20.0
+                                        .ALTURA 30.0
+                                    ]
+                                )
+                                .ANI BOTIQUIN.AN2
+                            ]
+                        )
+                        .BICHOENCUAD
+                        [
+                            .DIMBICHOX 2.0
+                            .DIMBICHOY 1.0
+                            .GFX CMALETIN
+                        ]
+                        .LISTAS
+                        (
+                            SELE EJEC FLAS
+                        )
+                    ]
+                    [
+                        .TOKEN BOTELLA_01
+                        .COLORPUNTOLIBRETA OBJETO
+                        .POS
+                        [
+                            .XYZ
+                            (
+                                -166.0 155.0 0
+                            )
+                            .ESC EXTERIOR
+                        ]
+                        .BANDO NEUTRAL
+                        .COMPORTAMIENTO
+                        (
+                            ComporBotella
+                            [
+                                .NUMTRAGOS 5.0
+                            ]
+                        )
+                        .ZONASELECCION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 10.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .VOLCOLISION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 12.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .ANIMADOR
+                        (
+                            Animador2d
+                            [
+                                .VOL
+                                (
+                                    Cilindro
+                                    [
+                                        .RADIO 20.0
+                                        .ALTURA 30.0
+                                    ]
+                                )
+                                .ANI BOTELLA.AN2
+                            ]
+                        )
+                        .ANGULO 0
+                        .BICHOENCUAD
+                        [
+                            .DIMBICHOX 1.0
+                            .DIMBICHOY 1.0
+                            .LIBRERIA CBOTELLA
+                        ]
+                        .LISTAS
+                        (
+                            SELE VISI EJEC FLAS
+                        )
+                    ]
+                    [
+                        .TOKEN LATA_01
+                        .POS
+                        [
+                            .XYZ
+                            (
+                                -153.0 119.0 0
+                            )
+                            .ESC EXTERIOR
+                        ]
+                        .BANDO NEUTRAL
+                        .HTIP LACO
+                        .COLORPUNTOLIBRETA OBJETO
+                        .COMPORTAMIENTO
+                        (
+                            ComporLataComida
+                            [
+                                .NUMUNIDADES 4.0
+                            ]
+                        )
+                        .ZONASELECCION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 10.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .VOLCOLISION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 12.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .ANIMADOR
+                        (
+                            Animador2d
+                            [
+                                .VOL
+                                (
+                                    Cilindro
+                                    [
+                                        .RADIO 20.0
+                                        .ALTURA 20.0
+                                    ]
+                                )
+                                .ANI LATACOMIDA.AN2
+                            ]
+                        )
+                        .ANGULO 0
+                        .BICHOENCUAD
+                        [
+                            .DIMBICHOX 1.0
+                            .DIMBICHOY 1.0
+                            .GFX CLATACOMIDA
+                        ]
+                        .LISTAS
+                        (
+                            VISI SELE EJEC FLAS
+                        )
+                    ]
+                )
+            ]
+            [
+                .POS
+                [
+                    .XYZ
+                    (
+                        -36.0 -55.0 0
+                    )
+                    .ESC EXTERIOR
+                ]
+                .ANGULO 333.0
+                .TOKEN ALE_554
+                .BANDO ALEMAN
+                .HTIP SOLD
+                .COMPORTAMIENTO
+                (
+                    ComporAlemanScript
+                    [
+                        .EVENTOS_RUTA
+                        (
+                            
+                        )
+                        .DISPARADOR
+                        [
+                            .ARMA ALEMAN_FUSIL
+                        ]
+                        .NUM_GRANADAS 0
+                        .ANIMACION ALEFUS.ANI
+                        .GESTOR_MOVIMIENTO
+                        [
+                            .PATRULLAJE
+                            [
+                                .RECPATRULLA
+                                [
+                                    .RUTAS
+                                    (
+                                        [
+                                            .NOMBRE DEFAULT
+                                            .VEL 1.5
+                                            .TIPO LOOP
+                                            .ESCALAS
+                                            (
+                                                (
+                                                    IR_A_PUNTO
+                                                    [
+                                                        .MODO ANDANDO
+                                                        .XYZ
+                                                        (
+                                                            -37.0 -54.0 0
+                                                        )
+                                                        .ESC EXTERIOR
+                                                    ]
+                                                )
+                                                (
+                                                    ENCARARSE
+                                                    [
+                                                        .ANGULO 321.0
+                                                    ]
+                                                )
+                                                (
+                                                    POSE_REPETIDA
+                                                    [
+                                                        .REPETICIONES 1.0
+                                                        .ANIMACION FUMAR_PRINCIPIO
+                                                    ]
+                                                )
+                                                (
+                                                    POSE_REPETIDA
+                                                    [
+                                                        .REPETICIONES 4.0
+                                                        .ANIMACION FUMAR_MITAD
+                                                    ]
+                                                )
+                                                (
+                                                    POSE_REPETIDA
+                                                    [
+                                                        .REPETICIONES 1.0
+                                                        .ANIMACION FUMAR_FINAL
+                                                    ]
+                                                )
+                                                (
+                                                    ESPERAR
+                                                    [
+                                                        .TIEMPO 400.0
+                                                    ]
+                                                )
+                                            )
+                                        ]
+                                    )
+                                    .RUTA_POR_DEFECTO DEFAULT
+                                ]
+                            ]
+                        ]
+                    ]
+                )
+                .VISTA
+                (
+                    VistaTriangular
+                    [
+                    ]
+                )
+                .OIDO
+                (
+                    Oido
+                    [
+                    ]
+                )
+                .MOTOR
+                (
+                    MotorPeaton
+                    [
+                    ]
+                )
+                .ANIMADOR
+                (
+                    AnimadorHumano
+                    [
+                        .VOL
+                        (
+                            Cilindro
+                            [
+                                .RADIO 20.0
+                                .ALTURA 50.0
+                            ]
+                        )
+                        .ANIM ALEFUS.ANI
+                    ]
+                )
+                .VOLCOLISION
+                (
+                    Cilindro
+                    [
+                        .RADIO 12.0
+                        .ALTURA 50.0
+                    ]
+                )
+                .TIPOCOLISION PEATON
+                .ZONASELECCION
+                (
+                    Cilindro
+                    [
+                        .RADIO 10.0
+                        .ALTURA 50.0
+                    ]
+                )
+                .LISTAS
+                (
+                    CHOC SELE VISI EJEC FLAE
+                )
+                .COLORPUNTOLIBRETA ALEMAN
+                .USAHAB
+                [
+                ]
+                .PUEDE_CONDUCIR
+                (
+                    WILLIS ZODIAK CAMION CANON LANCHA_MOTORA NIDO_AMETRALLADORAS ASCENSOR MONTA_ALEMAN SILLA CAMA
+                )
+                .MICUADRICULA
+                [
+                    .DIMCUADX 4.0
+                    .DIMCUADY 6.0
+                    .GFXCUAD CUADRIC
+                ]
+                .GEL
+                [
+                ]
+                .DUMMY
+                [
+                    .ANIMADOR
+                    (
+                        AnimadorHumano
+                        [
+                            .VOL
+                            (
+                                Cilindro
+                                [
+                                    .RADIO 10.0
+                                    .ALTURA 50.0
+                                ]
+                            )
+                            .ANIM ALEFUS.ANI
+                        ]
+                    )
+                ]
+                .BICHOS
+                (
+                    [
+                        .TOKEN TABACO_02
+                        .COLORPUNTOLIBRETA OBJETO
+                        .POS
+                        [
+                            .XYZ
+                            (
+                                0 0 0
+                            )
+                            .ESC EXTERIOR
+                        ]
+                        .BANDO NEUTRAL
+                        .HTIP TABC
+                        .COMPORTAMIENTO
+                        (
+                            ComporTabaco
+                            [
+                                .NUMCIGARROS 20.0
+                                .NUMUNIDADES 1.0
+                            ]
+                        )
+                        .ZONASELECCION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 10.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .VOLCOLISION
+                        (
+                            Cilindro
+                            [
+                                .RADIO 12.0
+                                .ALTURA 20.0
+                            ]
+                        )
+                        .ANIMADOR
+                        (
+                            Animador2d
+                            [
+                                .VOL
+                                (
+                                    Cilindro
+                                    [
+                                        .RADIO 20.0
+                                        .ALTURA 30.0
+                                    ]
+                                )
+                                .ANI TABACO.AN2
+                            ]
+                        )
+                        .ANGULO 0
+                        .BICHOENCUAD
+                        [
+                            .DIMBICHOX 1.0
+                            .DIMBICHOY 1.0
+                            .GFX CTABACO
+                        ]
+                        .LISTAS
+                        (
+                            VISI SELE EJEC FLAS
+                        )
+                    ]
+                )
+            ]
+        )
+        .ENTES
+        (
+            (
+                EntePatrulla
+                [
+                    .PATRULLAJE
+                    [
+                        .RECPATRULLA
+                        [
+                            .RUTAS
+                            (
+                                [
+                                    .NOMBRE DEFAULT
+                                    .VEL 1.5
+                                    .TIPO STOPPED
+                                    .ESCALAS
+                                    (
+                                        (
+                                            IR_A_PUNTO
+                                            [
+                                                .MODO ANDANDO
+                                                .XYZ
+                                                (
+                                                    -154.0 337.0 0
+                                                )
+                                                .ESC EXTERIOR
+                                            ]
+                                        )
+                                        (
+                                            POSE_COSTUMBRISTA
+                                            [
+                                                .XYZ
+                                                (
+                                                    -154.0 337.0 0
+                                                )
+                                                .ESC EXTERIOR
+                                                .POSES
+                                                (
+                                                    [
+                                                        .XYZ
+                                                        (
+                                                            -154.0 337.0 0
+                                                        )
+                                                        .ESC EXTERIOR
+                                                        .ANGULO 191.0
+                                                        .ANIMACION1 HABLAR_1
+                                                        .ANIMACION2 HABLAR_4
+                                                        .PORCENTAJEANIM2 0.5
+                                                    ]
+                                                    [
+                                                        .XYZ
+                                                        (
+                                                            -193.0 309.0 0
+                                                        )
+                                                        .ESC EXTERIOR
+                                                        .ANGULO 18.0
+                                                        .ANIMACION1 QUIETO_DE_PIE
+                                                        .ANIMACION2 INQUIETO
+                                                        .PORCENTAJEANIM2 0.1
+                                                    ]
+                                                    [
+                                                        .XYZ
+                                                        (
+                                                            -201.0 337.0 0
+                                                        )
+                                                        .ESC EXTERIOR
+                                                        .ANGULO 18.0
+                                                        .ANIMACION1 QUIETO_DE_PIE
+                                                    ]
+                                                    [
+                                                        .XYZ
+                                                        (
+                                                            -234.0 293.0 0
+                                                        )
+                                                        .ESC EXTERIOR
+                                                        .ANGULO 18.0
+                                                        .ANIMACION1 QUIETO_DE_PIE
+                                                    ]
+                                                    [
+                                                        .XYZ
+                                                        (
+                                                            -244.0 323.0 0
+                                                        )
+                                                        .ESC EXTERIOR
+                                                        .ANGULO 18.0
+                                                        .ANIMACION1 QUIETO_DE_PIE
+                                                        .ANIMACION2 INQUIETO
+                                                        .PORCENTAJEANIM2 0.0
+                                                    ]
+                                                )
+                                            ]
+                                        )
+                                    )
+                                ]
+                            )
+                            .RUTA_POR_DEFECTO DEFAULT
+                        ]
+                    ]
+                    .TOKEN PAT0001
+                    .XYZ
+                    (
+                        -160.0 335.0 0
+                    )
+                    .ESC EXTERIOR
+                    .ANGULO 0
+                    .EMPIEZA PATRULLANDO
+                    .NCOLUMNAS 2.0
+                    .NSOLDADOSCOLUMNA 2.0
+                    .ANIMSOLDADO ALEMET.ANI
+                    .ANIMSARGENTO ALECABO.ANI
+                    .DETIENE 0
+                ]
+            )
+        )
+        .ZONASFLOTANTES
+        (
+            [
+                .NOMBRE HUIDA
+                .ESCENARIO EXTERIOR
+                .LISTA_POLYS
+                (
+                    (
+                        (
+                            270.7 409.1 0
+                        )
+                        (
+                            295.3 403.0 0
+                        )
+                        (
+                            292.5 373.6 0
+                        )
+                        (
+                            272.6 381.4 0
+                        )
+                    )
+                )
+                .TODO_EL_ESCENARIO 0
+            ]
+        )
+        .SONIDOSAMBIENTE
+        (
+            [
+                .FLISONIDO PAJ1
+                .XYZ
+                (
+                    (
+                        -303.6 -269.2 0
+                    )
+                )
+                .RETARDOS
+                (
+                    320.0 450.0 400.0
+                )
+                .ESC EXTERIOR
+                .OMNIPRESENTE 0
+                .CONTINUO 0
+                .VOL 0.6
+            ]
+            [
+                .FLISONIDO PAJ2
+                .XYZ
+                (
+                    (
+                        155.3 -444.8 0
+                    )
+                )
+                .RETARDOS
+                (
+                    550.0 220.0
+                )
+                .ESC EXTERIOR
+                .OMNIPRESENTE 0
+                .CONTINUO 0
+                .VOL 0.8
+            ]
+            [
+                .FLISONIDO PAJ3
+                .XYZ
+                (
+                    (
+                        435.7 132.2 0
+                    )
+                )
+                .RETARDOS
+                (
+                    370.0 500.0
+                )
+                .ESC EXTERIOR
+                .OMNIPRESENTE 0
+                .CONTINUO 0
+                .VOL 0.8
+            ]
+            [
+                .FLISONIDO PAJ7
+                .XYZ
+                (
+                    (
+                        -306.4 371.7 0
+                    )
+                )
+                .RETARDOS
+                (
+                    200.0 600.0
+                )
+                .ESC EXTERIOR
+                .OMNIPRESENTE 0
+                .CONTINUO 0
+                .VOL 0.8
+            ]
+            [
+                .FLISONIDO PAJ6
+                .XYZ
+                (
+                    (
+                        434.7 410.7 0
+                    )
+                )
+                .RETARDOS
+                (
+                    260.0 520.0 630.0
+                )
+                .ESC EXTERIOR
+                .OMNIPRESENTE 0
+                .CONTINUO 0
+                .VOL 0.6
+            ]
+        )
+    ]
+    .INTERFAZ
+    [
+        .SUBINTERFACES
+        (
+            (
+                MOCHILA
+                [
+                    .TOKEN ARTIFICIERO
+                    .ITEMS_BASICOS
+                    (
+                        IT_SALIR_S IT_TECLADOOFF_S IT_TECLADOON_S IT_EXAMINAR_S IT_AGACHARSE_S IT_LEVANTARSE_NORMAL_S IT_AGACHARSE_LEVANTARSE_S IT_TENAZAS_S IT_SOPLETE_S IT_BOTIQUIN_S IT_DETECTOR_S IT_SILBATO_S IT_BOMBA_ACT_S IT_BOMBA_TIEMPO_S IT_MINA_S IT_MINACONTRACARRO_S IT_PISTOLA_S IT_GRANADA_S IT_BAZOOKA_S IT_LANZALLAMAS_S IT_COMIDAPERRO_S IT_LANZARTABACO_S IT_PRISMATICOS_S IT_DISFRAZSOLDADO_S IT_DISFRAZCIVIL_S IT_METRALLETA_S IT_RIFLECORTO_S IT_SUMERGIR_S IT_EMERGER_S IT_ESCALA_ENROLLABLE_S IT_SENUELO_S IT_SENUELOON_S IT_SENUELoOFF_S IT_LATA_COMIDA_S IT_APOSTAR_NOMAS_S IT_GOLPEAR_S IT_BOTELLA_S IT_NARCOTICOS_S IT_ACTIVADOR_1_S IT_ACTIVADOR_2_S IT_ACTIVADOR_3_S IT_ACTIVADOR_4_S IT_ACTIVADOR_5_S IT_ASOMAR_BUCEANDO_S IT_DESASOMAR_BUCEANDO_S IT_SOLTAR_A_WHISKY_S IT_BOTELLA_NARCOTIZADA_S IT_COMIDA_PERRO_NARCOTIZADA_S IT_DESPEGAR_S IT_ATERRIZAR_S IT_DISFRAZSOLDADOJAPONES_S
+                    )
+                    .ITEMS
+                    (
+                        IT_SENUELO_S IT_SENUELOOFF_S IT_SENUELOON_S
+                    )
+                ]
+            )
+            (
+                MOCHILA
+                [
+                    .TOKEN RATERO
+                    .ITEMS_BASICOS
+                    (
+                        IT_SALIR_S IT_TECLADOOFF_S IT_TECLADOON_S IT_EXAMINAR_S IT_AGACHARSE_S IT_LEVANTARSE_NORMAL_S IT_AGACHARSE_LEVANTARSE_S IT_TENAZAS_S IT_BOTIQUIN_S IT_SILBATO_S IT_PISTOLA_S IT_GANZUA_S IT_PEGARSE_A_BICHO_S IT_COMIDAPERRO_S IT_LANZARTABACO_S IT_PRISMATICOS_S IT_DISFRAZSOLDADO_S IT_DISFRAZCIVIL_S IT_SUMERGIR_S IT_EMERGER_S IT_ESCALA_ENROLLABLE_S IT_SENUELO_S IT_SENUELOON_S IT_SENUELoOFF_S IT_LATA_COMIDA_S IT_APOSTAR_NOMAS_S IT_GOLPEAR_S IT_RIFLECORTO_S IT_METRALLETA_S IT_NARCOTICOS_S IT_BOTELLA_S IT_ASOMAR_BUCEANDO_S IT_DESASOMAR_BUCEANDO_S IT_SOLTAR_A_WHISKY_S IT_BOTELLA_NARCOTIZADA_S IT_COMIDA_PERRO_NARCOTIZADA_S IT_DESPEGAR_S IT_ATERRIZAR_S IT_ESCALA_DE_SABANAS_S IT_DISFRAZSOLDADOJAPONES_S
+                    )
+                    .ITEMS
+                    (
+                        
+                    )
+                ]
+            )
+        )
+        .MULTIPLE
+        [
+            .ITEMS_BASICOS
+            (
+                IT_PISTOLA_M IT_AGACHARSE_M IT_LEVANTARSE_M IT_AGACHARSE_LEVANTARSE_M IT_SALIR_M IT_TECLADOON_M IT_TECLADOOFF_M IT_ATACAR_M IT_NO_ATACAR_M IT_AP_DEPIE_M IT_AP_TUMBADO_M IT_AP_ARRODILLADO_M IT_SUMERGIR_M IT_EMERGER_M
+            )
+            .ITEMS
+            (
+                
+            )
+        ]
+    ]
+    .FICHEROS
+    [
+        .STR TU1A.STR
+    ]
+    .BAS TU01.BAS
+]

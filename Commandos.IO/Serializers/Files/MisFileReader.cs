@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Commandos.IO.Entities;
 using Commandos.Model.Map;
 
 namespace Commandos.IO.Files
@@ -14,6 +15,12 @@ namespace Commandos.IO.Files
             var missionTokens = TokenParser.ParseTokens(tokens);
             return null;
             //return MissionSerializer.ToMission(tokens);
+        }
+
+        public static MultipleRecords GetMultipleRecords(string path)
+        {
+            var tokens = GetTokens(path);
+            return TokenParser.ParseTokens(tokens);
         }
 
         internal static string[] GetTokens(string path)

@@ -49,6 +49,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Serializers\Files\RecordWriterTest.cs" />
     <Compile Include="Serializers\Mission\FicherosSerializerTest.cs" />
     <Compile Include="Serializers\Mission\BriefingSerializerTest.cs" />
     <Compile Include="Serializers\Mission\CameraSerializerTest.cs" />
@@ -64,6 +65,7 @@
     <None Include="TestFiles\5G1A.MIS">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="TestFiles\Own.mis" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Commandos.IO\Commandos.IO.csproj">

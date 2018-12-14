@@ -42,9 +42,9 @@ namespace Commandos.IO.Files
             return record;
         }
 
-        private static MixedRecords ParseMixedRecords(string[] tokens, int startIndex, int endIndex)
+        private static MixedValues ParseMixedRecords(string[] tokens, int startIndex, int endIndex)
         {
-            var record = new MixedRecords();
+            var record = new MixedValues();
             for (var i = startIndex + 1; i < endIndex; i++)
             {
                 int end;

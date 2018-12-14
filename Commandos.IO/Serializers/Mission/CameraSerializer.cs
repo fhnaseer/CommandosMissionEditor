@@ -23,7 +23,7 @@ namespace Commandos.IO.Serializers.Mission
 
         private static Position GetPosition(Record positionRecord)
         {
-            var values = (MixedRecords)positionRecord.Value;
+            var values = (MixedValues)positionRecord.Value;
             var x = double.Parse(((SingleValue)values.Values[0]).Value, CultureInfo.CurrentCulture);
             var y = double.Parse(((SingleValue)values.Values[1]).Value, CultureInfo.CurrentCulture);
             var z = double.Parse(((SingleValue)values.Values[2]).Value, CultureInfo.CurrentCulture);
