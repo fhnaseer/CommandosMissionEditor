@@ -1,7 +1,7 @@
 ﻿//using System.Globalization;
 //using Commandos.Model.Common;
 
-//namespace Commandos.IO.Serializers
+//namespace Commandos.IO.Serializers.Mission
 //{
 //    internal static class EntitySerializer
 //    {

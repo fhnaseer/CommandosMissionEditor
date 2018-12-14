@@ -2,7 +2,7 @@
 //using Commandos.IO.Serializers;
 //using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-//namespace Commandos.IO.Tests.Serializers
+//namespace Commandos.IO.Tests.Serializers.Mission
 //{
 //    [TestClass]
 //    public class CameraSerializerTest

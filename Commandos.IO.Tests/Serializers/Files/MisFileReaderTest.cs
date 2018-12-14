@@ -1,7 +1,8 @@
 ﻿using System.IO;
+using Commandos.IO.Files;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Commandos.IO.Tests
+namespace Commandos.IO.Tests.Files
 {
     [TestClass]
     [DeploymentItem("TestFiles")]

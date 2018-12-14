@@ -1,7 +1,7 @@
 ﻿//using System.Globalization;
 //using Commandos.Model;
 
-//namespace Commandos.IO.Serializers
+//namespace Commandos.IO.Serializers.Mission
 //{
 //    public static class CameraSerializer
 //    {

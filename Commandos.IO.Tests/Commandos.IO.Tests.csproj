@@ -49,15 +49,15 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Serializers\FicherosSerializerTest.cs" />
-    <Compile Include="Serializers\BriefingSerializerTest.cs" />
-    <Compile Include="Serializers\CameraSerializerTest.cs" />
-    <Compile Include="Serializers\EntitySerializerTest.cs" />
-    <Compile Include="IndexHelperTest.cs" />
-    <Compile Include="MisFileReaderTest.cs" />
+    <Compile Include="Serializers\Mission\FicherosSerializerTest.cs" />
+    <Compile Include="Serializers\Mission\BriefingSerializerTest.cs" />
+    <Compile Include="Serializers\Mission\CameraSerializerTest.cs" />
+    <Compile Include="Serializers\Mission\EntitySerializerTest.cs" />
+    <Compile Include="Serializers\Files\IndexHelperTest.cs" />
+    <Compile Include="Serializers\Files\MisFileReaderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Serializers\MissionSerializerTest.cs" />
-    <Compile Include="TokenParserTest.cs" />
+    <Compile Include="Serializers\Mission\MissionSerializerTest.cs" />
+    <Compile Include="Serializers\Files\TokenParserTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -75,6 +75,7 @@
       <Name>Commandos.Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

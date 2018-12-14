@@ -2,7 +2,7 @@
 using System.IO;
 using Commandos.IO.Entities;
 
-namespace Commandos.IO
+namespace Commandos.IO.Files
 {
     public static class TokenParser
     {

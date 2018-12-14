@@ -1,6 +1,6 @@
 ﻿//using Commandos.Model.Map;
 
-//namespace Commandos.IO.Serializers
+//namespace Commandos.IO.Serializers.Mission
 //{
 //    public static class FicherosSerializer
 //    {

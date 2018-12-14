@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using Commandos.Model.Map;
 
-namespace Commandos.IO
+namespace Commandos.IO.Files
 {
     public static class MisFileReader
     {

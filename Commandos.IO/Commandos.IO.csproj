@@ -58,19 +58,19 @@
     <Compile Include="Entities\RecordValueBase.cs" />
     <Compile Include="Entities\MultipleRecords.cs" />
     <Compile Include="Entities\SingleValue.cs" />
-    <Compile Include="TokenParser.cs" />
+    <Compile Include="Serializers\Files\TokenParser.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Serializers\BriefingSerializer.cs" />
-    <Compile Include="Serializers\EntitySerializer.cs" />
-    <Compile Include="IndexHelper.cs" />
-    <Compile Include="MisFileReader.cs" />
+    <Compile Include="Serializers\Mission\BriefingSerializer.cs" />
+    <Compile Include="Serializers\Mission\EntitySerializer.cs" />
+    <Compile Include="Serializers\Files\IndexHelper.cs" />
+    <Compile Include="Serializers\Files\MisFileReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Serializers\FicherosSerializer.cs" />
-    <Compile Include="Serializers\FileSerializer.cs" />
-    <Compile Include="Serializers\MissionSerializer.cs" />
-    <Compile Include="Serializers\MusicSerializer.cs" />
+    <Compile Include="Serializers\Mission\FicherosSerializer.cs" />
+    <Compile Include="Serializers\Mission\FileSerializer.cs" />
+    <Compile Include="Serializers\Mission\MissionSerializer.cs" />
+    <Compile Include="Serializers\Mission\MusicSerializer.cs" />
     <Compile Include="StringConstants.cs" />
-    <Compile Include="Serializers\CameraSerializer.cs" />
+    <Compile Include="Serializers\Mission\CameraSerializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

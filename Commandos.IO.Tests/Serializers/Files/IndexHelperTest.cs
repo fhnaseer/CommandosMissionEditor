@@ -1,7 +1,8 @@
 ﻿using System;
+using Commandos.IO.Files;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Commandos.IO.Tests
+namespace Commandos.IO.Tests.Files
 {
     [TestClass]
     public class IndexHelperTest
@@ -39,7 +40,7 @@ namespace Commandos.IO.Tests
             // Assert,
             Assert.AreEqual(3, result.nameIndex);
             Assert.AreEqual(4, result.startIndex);
-            Assert.AreEqual(15, result.endIndex);
+            Assert.AreEqual(16, result.endIndex);
         }
 
         [TestMethod]
@@ -51,7 +52,7 @@ namespace Commandos.IO.Tests
             var tokens = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
             // Act,
-            var result = IndexHelper.GetIndexes(tokens, 3);
+            var result = IndexHelper.GetIndexes(tokens, 19);
 
             // Assert,
             Assert.AreEqual(19, result.nameIndex);

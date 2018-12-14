@@ -3,7 +3,7 @@
 //using Commandos.Model.Map;
 //using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-//namespace Commandos.IO.Tests.Serializers
+//namespace Commandos.IO.Tests.Serializers.Mission
 //{
 //    [TestClass]
 //    public class BriefingSerializerTest
