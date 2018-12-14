@@ -73,9 +73,13 @@ namespace Commandos.IO.Tests.Files
             // Assert,
             Assert.AreEqual(".VISORES", actual.Name);
             var values = (MultipleRecords)actual.Value;
-            Assert.AreEqual(".XYZ", values.Records[0].Name);
-            Assert.AreEqual(".ESC", values.Records[1].Name);
-            Assert.AreEqual(".CAMARA", values.Records[2].Name);
+            Assert.IsTrue(values.Records.ContainsKey(".XYZ"));
+            Assert.IsTrue(values.Records.ContainsKey(".ESC"));
+            Assert.IsTrue(values.Records.ContainsKey(".CAMARA"));
+
+            //Assert.AreEqual(".XYZ", values.Records[0].Name);
+            //Assert.AreEqual(".ESC", values.Records[1].Name);
+            //Assert.AreEqual(".CAMARA", values.Records[2].Name);
         }
 
         [TestMethod]
@@ -91,8 +95,10 @@ namespace Commandos.IO.Tests.Files
             // Assert,
             Assert.AreEqual(".PUERTAS", actual.Name);
             var records = ((MultipleRecords)((MixedRecords)actual.Value).Values[0]).Records;
-            Assert.AreEqual(".TOKEN", records[0].Name);
-            Assert.AreEqual(".FLAGS", records[1].Name);
+            Assert.IsTrue(records.ContainsKey(".TOKEN"));
+            Assert.IsTrue(records.ContainsKey(".FLAGS"));
+            //Assert.AreEqual(".TOKEN", records.Values[0].Name);
+            //Assert.AreEqual(".FLAGS", records[1].Name);
         }
     }
 }

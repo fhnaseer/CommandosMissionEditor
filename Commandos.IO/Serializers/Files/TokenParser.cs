@@ -21,7 +21,8 @@ namespace Commandos.IO.Files
             for (var i = startIndex + 1; i < endIndex; i++)
             {
                 var indexes = IndexHelper.GetIndexes(tokens, i);
-                record.Records.Add(ParseTokens(tokens, i));
+                var result = ParseTokens(tokens, i);
+                record.Records.Add(result.Name, result);
                 i = indexes.endIndex;
             }
             return record;

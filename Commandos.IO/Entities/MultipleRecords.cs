@@ -4,7 +4,7 @@ namespace Commandos.IO.Entities
 {
     public class MultipleRecords : RecordValueBase
     {
-        private List<Record> _records;
-        public IList<Record> Records => _records ?? (_records = new List<Record>());
+        private Dictionary<string, Record> _records;
+        public IDictionary<string, Record> Records => _records ?? (_records = new Dictionary<string, Record>());
     }
 }
