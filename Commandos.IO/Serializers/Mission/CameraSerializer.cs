@@ -1,30 +1,33 @@
-﻿//using System.Globalization;
-//using Commandos.Model;
+﻿using System.Globalization;
+using Commandos.IO.Entities;
+using Commandos.Model;
+using Commandos.Model.Common;
 
-//namespace Commandos.IO.Serializers.Mission
-//{
-//    public static class CameraSerializer
-//    {
-//        public static Camera GetCamera(string[] tokens, int startIndex)
-//        {
-//            var indexes = GetCameraIndexes(tokens, startIndex);
-//            return new Camera
-//            {
-//                Position = EntitySerializer.GetPosition(tokens, indexes.startIndex),
-//                Escape = EntitySerializer.GetStringValue(tokens, StringConstants.Escape, indexes.startIndex),
-//                CameraDirection = GetCameraDirection(tokens, indexes.startIndex)
-//            };
-//        }
+namespace Commandos.IO.Serializers.Mission
+{
+    public static class CameraSerializer
+    {
+        public static Camera GetCamera(Record record)
+        {
+            var cameraRecord = record.GetMultipleRecords();
+            cameraRecord.Records.TryGetValue(StringConstants.Position, out Record positionRecord);
+            cameraRecord.Records.TryGetValue(StringConstants.Escape, out Record escapeRecord);
+            cameraRecord.Records.TryGetValue(StringConstants.CameraDirection, out Record directionRecord);
+            return new Camera
+            {
+                Position = GetPosition(positionRecord),
+                Escape = escapeRecord?.GetStringValue(),
+                CameraDirection = (CameraDirection)directionRecord?.GetIntegerValue()
+            };
+        }
 
-//        private static (int startIndex, int endIndex) GetCameraIndexes(string[] tokens, int startPoint = 0)
-//        {
-//            return IndexHelper.GetRecordIndexes(tokens, StringConstants.Camera, startPoint, TokenType.MultipleRecords);
-//        }
-
-//        private static CameraDirection GetCameraDirection(string[] tokens, int startIndex)
-//        {
-//            var indexes = IndexHelper.GetRecordIndexes(tokens, StringConstants.CameraDirection, startIndex, TokenType.SingleValue);
-//            return (CameraDirection)int.Parse(tokens[indexes.startIndex + 1], CultureInfo.CurrentCulture);
-//        }
-//    }
-//}
+        private static Position GetPosition(Record positionRecord)
+        {
+            var values = (MixedRecords)positionRecord.Value;
+            var x = double.Parse(((SingleValue)values.Values[0]).Value, CultureInfo.CurrentCulture);
+            var y = double.Parse(((SingleValue)values.Values[1]).Value, CultureInfo.CurrentCulture);
+            var z = double.Parse(((SingleValue)values.Values[2]).Value, CultureInfo.CurrentCulture);
+            return new Position(x, y, z);
+        }
+    }
+}
