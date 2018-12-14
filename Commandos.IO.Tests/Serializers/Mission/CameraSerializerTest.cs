@@ -1,6 +1,7 @@
 ﻿using System;
 using Commandos.IO.Files;
 using Commandos.IO.Serializers.Mission;
+using Commandos.Model.Map;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Commandos.IO.Tests.Serializers.Mission
@@ -14,11 +15,11 @@ namespace Commandos.IO.Tests.Serializers.Mission
             // Arrange,
             const string text = "[ .VISORES [ .XYZ ( 1 2 0 ) .ESC EXTERIOR .CAMARA 0 ] ]";
             var tokens = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            var expected = new Model.Camera
+            var expected = new Camera
             {
                 Position = new Model.Common.Position(1, 2, 0),
                 Escape = "EXTERIOR",
-                CameraDirection = Model.CameraDirection.Zero
+                CameraDirection = CameraDirection.Zero
             };
             var record = TokenParser.ParseTokens(tokens, 0);
 

@@ -11,7 +11,7 @@ namespace Commandos.IO.Entities
         public override string ToString() => $"{Name} {Value.ToString()}";
     }
 
-    public static class RecordExtensions
+    internal static class RecordExtensions
     {
         public static MultipleRecords GetMultipleRecords(this Record record)
         {

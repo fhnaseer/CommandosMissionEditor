@@ -70,7 +70,7 @@
     <Compile Include="Serializers\Mission\FileSerializer.cs" />
     <Compile Include="Serializers\Mission\MissionSerializer.cs" />
     <Compile Include="Serializers\Mission\MusicSerializer.cs" />
-    <Compile Include="StringConstants.cs" />
+    <Compile Include="Serializers\Files\StringConstants.cs" />
     <Compile Include="Serializers\Mission\CameraSerializer.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,8 @@
 ﻿using System.Globalization;
 using Commandos.IO.Entities;
-using Commandos.Model;
+using Commandos.IO.Files;
 using Commandos.Model.Common;
+using Commandos.Model.Map;
 
 namespace Commandos.IO.Serializers.Mission
 {

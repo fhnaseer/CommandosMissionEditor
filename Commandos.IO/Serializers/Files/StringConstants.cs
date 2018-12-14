@@ -1,4 +1,4 @@
-﻿namespace Commandos.IO
+﻿namespace Commandos.IO.Files
 {
     public static class StringConstants
     {
@@ -19,6 +19,6 @@
 
         public const string Music = ".MUSICA";
         public const string MusicList = ".MUSICAS";
-        public const string MusicBegining = ".MUSICA_POR_DEFECTO";
+        public const string MusicBeginning = ".MUSICA_POR_DEFECTO";
     }
 }

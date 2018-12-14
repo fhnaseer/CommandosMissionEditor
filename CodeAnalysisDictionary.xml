@@ -13,6 +13,7 @@
       <Word>msb</Word>
       <Word>esc</Word>
       <Word>bas</Word>
+      <Word>str</Word>
       <Word>Ficheros</Word>
     </Recognized>
     <Deprecated>

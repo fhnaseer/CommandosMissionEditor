@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Commandos.Model.Common;
 
-namespace Commandos.Model
+namespace Commandos.Model.Map
 {
     public enum CameraDirection
     {
