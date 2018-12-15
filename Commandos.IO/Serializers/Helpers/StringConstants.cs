@@ -1,4 +1,4 @@
-﻿namespace Commandos.IO.Files
+﻿namespace Commandos.IO.Helpers
 {
     public static class StringConstants
     {

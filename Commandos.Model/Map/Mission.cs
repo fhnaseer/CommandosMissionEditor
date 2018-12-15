@@ -1,4 +1,6 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using Commandos.Model.Characters.Commandos;
 
 namespace Commandos.Model.Map
 {
@@ -15,6 +17,10 @@ namespace Commandos.Model.Map
         public Music Music { get; set; }
 
         public Ficheros Ficheros { get; set; }
+
+        private List<Commando> _commandos;
+        public IList<Commando> Commandos => _commandos ?? (_commandos = new List<Commando>());
+
 
         #region Methods for Equality checks.
         // http://msdn.microsoft.com/en-us/library/dd183755.aspx

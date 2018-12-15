@@ -1,6 +1,6 @@
 ﻿using System;
 using Commandos.IO.Entities;
-using Commandos.IO.Files;
+using Commandos.IO.Helpers;
 using Commandos.IO.Serializers.Map;
 using Commandos.Model.Map;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

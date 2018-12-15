@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Commandos.IO.Entities;
+using Commandos.IO.Helpers;
 using Commandos.IO.Serializers.Map;
 using Commandos.Model.Map;
 

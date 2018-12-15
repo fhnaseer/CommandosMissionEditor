@@ -1,8 +1,8 @@
 ﻿using System;
-using Commandos.IO.Files;
+using Commandos.IO.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Commandos.IO.Tests.Files
+namespace Commandos.IO.Tests.Helpers
 {
     [TestClass]
     public class IndexHelperTest
