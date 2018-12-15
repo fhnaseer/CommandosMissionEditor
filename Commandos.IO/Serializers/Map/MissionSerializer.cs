@@ -13,7 +13,8 @@ namespace Commandos.IO.Serializers.Map
                 MsbFileName = multipleRecords.GetStringValue(StringConstants.MsbFile),
                 BasFileName = multipleRecords.GetStringValue(StringConstants.BasFile),
                 Camera = CameraSerializer.GetCamera(multipleRecords.GetMultipleRecord(StringConstants.Camera)),
-                Briefing = BriefingSerializer.GetBriefing(multipleRecords.GetMultipleRecord(StringConstants.Briefing))
+                Briefing = BriefingSerializer.GetBriefing(multipleRecords.GetMultipleRecord(StringConstants.Briefing)),
+                Music = MusicSerializer.GetMusic(multipleRecords.GetMultipleRecord(StringConstants.Music))
             };
         }
     }

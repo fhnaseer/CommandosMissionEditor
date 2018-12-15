@@ -50,8 +50,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Characters\Backpack.cs" />
+    <Compile Include="Characters\Commandos\Commando.cs" />
+    <Compile Include="Characters\Commandos\CommandoAbilities.cs" />
+    <Compile Include="Characters\Commandos\Driver.cs" />
+    <Compile Include="Characters\Commandos\GreenBerret.cs" />
+    <Compile Include="Characters\Commandos\Marine.cs" />
+    <Compile Include="Characters\Commandos\Natasha.cs" />
+    <Compile Include="Characters\Commandos\Sapper.cs" />
+    <Compile Include="Characters\Commandos\Sniper.cs" />
+    <Compile Include="Characters\Commandos\Spy.cs" />
+    <Compile Include="Characters\Commandos\Thief.cs" />
+    <Compile Include="Characters\Commandos\Whisky.cs" />
+    <Compile Include="Characters\Commandos\Wilson.cs" />
+    <Compile Include="Common\Ability.cs" />
     <Compile Include="Common\BackgroundMusic.cs" />
     <Compile Include="Common\ItemCollections.cs" />
+    <Compile Include="Map\Abilities.cs" />
     <Compile Include="Map\Briefing.cs" />
     <Compile Include="Map\Camera.cs" />
     <Compile Include="GlobalSuppressions.cs" />
@@ -74,6 +89,7 @@
     </CodeAnalysisDictionary>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Characters\Enemies\" />
     <Folder Include="Files\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
