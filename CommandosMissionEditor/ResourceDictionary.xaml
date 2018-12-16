@@ -7,6 +7,18 @@
         <views:UploadMissionView />
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type viewModels:MapViewModel}">
+        <views:MapView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewModels:FilesViewModel}">
+        <views:FilesView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewModels:MusicViewModel}">
+        <views:MusicView />
+    </DataTemplate>
+
     <Style TargetType="Button">
         <Setter Property="Margin" Value="10" />
     </Style>

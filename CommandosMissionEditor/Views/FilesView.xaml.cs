@@ -1,11 +1,11 @@
 ﻿namespace CommandosMissionEditor.Views
 {
     /// <summary>
-    /// Interaction logic for UploadMissionView.xaml
+    /// Interaction logic for FilesView.xaml
     /// </summary>
-    public partial class UploadMissionView
+    public partial class FilesView
     {
-        public UploadMissionView()
+        public FilesView()
         {
             InitializeComponent();
         }

@@ -1,10 +1,11 @@
 ﻿using System.Windows.Input;
+using Commandos.IO.Files;
 
 namespace CommandosMissionEditor.ViewModels
 {
     public class UploadMissionViewModel : ViewModelBase
     {
-        private string _missionFilePath;
+        private string _missionFilePath = @"D:\Code\TestFiles\5G1A.MIS";
         public string MissionFilePath
         {
             get => _missionFilePath;
@@ -20,6 +21,10 @@ namespace CommandosMissionEditor.ViewModels
 
         internal void LoadMission()
         {
+            var mission = MisFileReader.ReadMisFile(MissionFilePath);
+            var window = new MainWindow();
+            window.Content = new MapViewModel(mission);
+            window.Show();
         }
     }
 }

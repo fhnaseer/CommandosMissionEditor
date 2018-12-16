@@ -1,12 +1,11 @@
-﻿using System.Windows;
-using CommandosMissionEditor.ViewModels;
+﻿using CommandosMissionEditor.ViewModels;
 
 namespace CommandosMissionEditor
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         public MainWindow()
         {
