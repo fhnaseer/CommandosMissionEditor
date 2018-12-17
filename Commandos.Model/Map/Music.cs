@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Commandos.Model.Common;
@@ -7,8 +7,8 @@ namespace Commandos.Model.Map
 {
     public class Music
     {
-        private List<BackgroundMusic> _backgroundMusics;
-        public List<BackgroundMusic> BackgroundMusics => _backgroundMusics ?? (_backgroundMusics = new List<BackgroundMusic>());
+        private ObservableCollection<BackgroundMusic> _backgroundMusics;
+        public ObservableCollection<BackgroundMusic> BackgroundMusics => _backgroundMusics ?? (_backgroundMusics = new ObservableCollection<BackgroundMusic>());
 
         public string StartingMusicEnvironment { get; set; }
 
