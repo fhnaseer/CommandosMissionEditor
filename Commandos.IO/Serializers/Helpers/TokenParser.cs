@@ -34,7 +34,7 @@ namespace Commandos.IO.Helpers
             var record = new Record();
             record.Name = tokens[indexes.nameIndex];
             if (indexes.recordDataType == RecordDataType.SingleDataRecord)
-                record.Data = ParseSingleValue(tokens, indexes.startIndex);
+                record.Data = ParseSingleDataRecord(tokens, indexes.startIndex);
             else if (indexes.recordDataType == RecordDataType.MultipleRecords)
                 record.Data = ParseMultipleRecords(tokens, indexes.startIndex, indexes.endIndex);
             else if (indexes.recordDataType == RecordDataType.MixedDataRecord)
