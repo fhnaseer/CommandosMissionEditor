@@ -87,5 +87,20 @@ namespace Commandos.IO.Entities
         {
             return int.Parse(((SingleDataRecord)record.Data).Data, CultureInfo.CurrentCulture);
         }
+
+        public static Record GetMultipleDataRecord(string name)
+        {
+            var record = new Record(name);
+            record.Data = new MultipleRecords();
+            return record;
+        }
+
+        public static Record GetSingleDataRecord(string name, string data)
+        {
+            var record = new Record(name);
+            var singleDataRecord = new SingleDataRecord(data);
+            record.Data = singleDataRecord;
+            return record;
+        }
     }
 }
