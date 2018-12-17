@@ -22,7 +22,8 @@ namespace CommandosMissionEditor.ViewModels
             {
                 return _missionViewModels ?? (_missionViewModels = new List<MissionViewModelBase>{
                     new FilesViewModel(_mission),
-                    new MusicViewModel(_mission)
+                    new MusicViewModel(_mission),
+                    new CameraViewModel(_mission)
                 });
             }
         }

@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="CommandosMissionEditor.Views.CameraView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewModels="clr-namespace:CommandosMissionEditor.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <d:UserControl.DataContext>
+        <viewModels:CameraViewModel />
+    </d:UserControl.DataContext>
+    <UserControl.Resources>
+        <ResourceDictionary Source="../ResourceDictionary.xaml" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Starting Position" />
+        <UniformGrid Grid.Row="0" Grid.Column="1" Columns="6" Rows="1">
+            <TextBlock Text="X" />
+            <TextBox Text="{Binding Mission.Camera.Position.X}" />
+            <TextBlock Text="Y" />
+            <TextBox Text="{Binding Mission.Camera.Position.Y}" />
+            <TextBlock Text="Z" />
+            <TextBox Text="{Binding Mission.Camera.Position.Z}" />
+        </UniformGrid>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Starting Area" />
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Mission.Camera.Area}" />
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Camera Direction" />
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Mission.Camera.CameraDirection}" />
+    </Grid>
+</UserControl>

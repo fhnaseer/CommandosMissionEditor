@@ -12,8 +12,8 @@ namespace Commandos.IO.Serializers.Map
             return new Camera
             {
                 Position = GetPosition(multipleRecords.GetMixedValues(StringConstants.Position)),
-                Escape = multipleRecords.GetStringValue(StringConstants.Escape),
-                CameraDirection = (CameraDirection)multipleRecords.GetIntegerValue(StringConstants.CameraDirection)
+                Area = multipleRecords.GetStringValue(StringConstants.Escape),
+                CameraDirection = multipleRecords.GetIntegerValue(StringConstants.CameraDirection)
             };
         }
 

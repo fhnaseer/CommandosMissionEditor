@@ -5,11 +5,11 @@ namespace Commandos.Model.Map
 {
     public class Camera
     {
-        public CameraDirection CameraDirection { get; set; }
+        public int CameraDirection { get; set; }
 
         public Position Position { get; set; }
 
-        public string Escape { get; set; }
+        public string Area { get; set; }
 
         #region Methods for Equality checks.
         // http://msdn.microsoft.com/en-us/library/dd183755.aspx
@@ -48,7 +48,7 @@ namespace Commandos.Model.Map
 
             return CameraDirection == other.CameraDirection &&
                 Position == other.Position &&
-                Escape == other.Escape;
+                Area == other.Area;
         }
 
         /// <summary>

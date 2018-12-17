@@ -2,7 +2,6 @@
 using Commandos.IO.Entities;
 using Commandos.IO.Helpers;
 using Commandos.IO.Serializers.Map;
-using Commandos.Model.Common;
 using Commandos.Model.Map;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -20,8 +19,8 @@ namespace Commandos.IO.Tests.Serializers.Map
             var expected = new Camera
             {
                 Position = new Model.Common.Position(1, 2, 0),
-                Escape = "EXTERIOR",
-                CameraDirection = CameraDirection.Zero
+                Area = "EXTERIOR",
+                CameraDirection = 0
             };
             var record = TokenParser.ParseTokens(tokens).GetMultipleRecord(StringConstants.Camera);
 

@@ -24,8 +24,8 @@ namespace Commandos.IO.Tests.Serializers.Map
                 Camera = new Camera
                 {
                     Position = new Position(1, 2, 0),
-                    Escape = "EXTERIOR",
-                    CameraDirection = CameraDirection.Zero
+                    Area = "EXTERIOR",
+                    CameraDirection = 0
                 },
                 Briefing = new Briefing
                 {
