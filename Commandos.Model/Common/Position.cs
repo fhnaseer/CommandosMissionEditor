@@ -5,21 +5,21 @@ namespace Commandos.Model.Common
     public class Position
     {
         public Position()
-            : this(0, 0, 0)
+            : this("0", "0", "0")
         { }
 
-        public Position(double x, double y, double z)
+        public Position(string x, string y, string z)
         {
             X = x;
             Y = y;
             Z = z;
         }
 
-        public double X { get; set; }
+        public string X { get; set; }
 
-        public double Y { get; set; }
+        public string Y { get; set; }
 
-        public double Z { get; set; }
+        public string Z { get; set; }
 
         #region Methods for Equality checks.
         // http://msdn.microsoft.com/en-us/library/dd183755.aspx

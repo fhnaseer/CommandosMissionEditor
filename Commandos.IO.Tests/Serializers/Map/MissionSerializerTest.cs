@@ -23,9 +23,9 @@ namespace Commandos.IO.Tests.Serializers.Map
                 BasFileName = "TU01.BAS",
                 Camera = new Camera
                 {
-                    Position = new Position(1, 2, 0),
+                    Position = new Position("1", "2", "0"),
                     Area = "EXTERIOR",
-                    CameraDirection = 0
+                    CameraDirection = "0"
                 },
                 Briefing = new Briefing
                 {

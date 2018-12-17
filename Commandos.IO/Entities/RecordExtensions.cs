@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+﻿using System.Collections.Generic;
 
 namespace Commandos.IO.Entities
 {
@@ -18,10 +18,10 @@ namespace Commandos.IO.Entities
             return null;
         }
 
-        public static MixedDataRecord GetMixedDataRecord(this MultipleRecords multipleRecords, string recordName)
+        public static IList<RecordData> GetMixedDataRecord(this MultipleRecords multipleRecords, string recordName)
         {
             if (multipleRecords.Records.TryGetValue(recordName, out Record record))
-                return record.Data as MixedDataRecord;
+                return ((MixedDataRecord)record.Data).Data;
             return null;
         }
 
@@ -37,15 +37,15 @@ namespace Commandos.IO.Entities
             return ((SingleDataRecord)values[indexNumber]).Data;
         }
 
-        public static double GetDoubleValue(this MixedDataRecord mixedDataRecord, int indexNumber)
-        {
-            return double.Parse(mixedDataRecord.GetStringValue(indexNumber), CultureInfo.CurrentCulture);
-        }
+        //public static double GetDoubleValue(this MixedDataRecord mixedDataRecord, int indexNumber)
+        //{
+        //    return double.Parse(mixedDataRecord.GetStringValue(indexNumber), CultureInfo.CurrentCulture);
+        //}
 
-        public static int GetIntegerValue(this MixedDataRecord mixedDataRecord, int indexNumber)
-        {
-            return int.Parse(mixedDataRecord.GetStringValue(indexNumber), CultureInfo.CurrentCulture);
-        }
+        //public static int GetIntegerValue(this MixedDataRecord mixedDataRecord, int indexNumber)
+        //{
+        //    return int.Parse(mixedDataRecord.GetStringValue(indexNumber), CultureInfo.CurrentCulture);
+        //}
 
         public static string GetStringValue(this MultipleRecords multipleRecords, string recordName)
         {
@@ -54,19 +54,19 @@ namespace Commandos.IO.Entities
             return null;
         }
 
-        public static double GetDoubleValue(this MultipleRecords multipleRecords, string recordName)
-        {
-            if (multipleRecords.Records.TryGetValue(recordName, out Record record))
-                return record.GetDoubleValue();
-            return 0;
-        }
+        //public static double GetDoubleValue(this MultipleRecords multipleRecords, string recordName)
+        //{
+        //    if (multipleRecords.Records.TryGetValue(recordName, out Record record))
+        //        return record.GetDoubleValue();
+        //    return 0;
+        //}
 
-        public static int GetIntegerValue(this MultipleRecords multipleRecords, string recordName)
-        {
-            if (multipleRecords.Records.TryGetValue(recordName, out Record record))
-                return record.GetIntegerValue();
-            return 0;
-        }
+        //public static int GetIntegerValue(this MultipleRecords multipleRecords, string recordName)
+        //{
+        //    if (multipleRecords.Records.TryGetValue(recordName, out Record record))
+        //        return record.GetIntegerValue();
+        //    return 0;
+        //}
 
         public static MultipleRecords GetMultipleRecords(this Record record)
         {
@@ -78,20 +78,42 @@ namespace Commandos.IO.Entities
             return ((SingleDataRecord)record.Data).Data;
         }
 
-        public static double GetDoubleValue(this Record record)
+        //public static double GetDoubleValue(this Record record)
+        //{
+        //    return double.Parse(((SingleDataRecord)record.Data).Data, CultureInfo.CurrentCulture);
+        //}
+
+        //public static int GetIntegerValue(this Record record)
+        //{
+        //    return int.Parse(((SingleDataRecord)record.Data).Data, CultureInfo.CurrentCulture);
+        //}
+
+        public static string GetStringValue(this RecordData recordData)
         {
-            return double.Parse(((SingleDataRecord)record.Data).Data, CultureInfo.CurrentCulture);
+            return ((SingleDataRecord)recordData).Data;
         }
 
-        public static int GetIntegerValue(this Record record)
-        {
-            return int.Parse(((SingleDataRecord)record.Data).Data, CultureInfo.CurrentCulture);
-        }
+        //public static double GetDoubleValue(this RecordData recordData)
+        //{
+        //    return double.Parse(((SingleDataRecord)recordData).Data, CultureInfo.CurrentCulture);
+        //}
+
+        //public static int GetIntegerValue(this RecordData recordData)
+        //{
+        //    return int.Parse(((SingleDataRecord)recordData).Data, CultureInfo.CurrentCulture);
+        //}
 
         public static Record GetMultipleDataRecord(string name)
         {
             var record = new Record(name);
             record.Data = new MultipleRecords();
+            return record;
+        }
+
+        public static Record GetMixedDataRecord(string name)
+        {
+            var record = new Record(name);
+            record.Data = new MixedDataRecord();
             return record;
         }
 
@@ -101,6 +123,17 @@ namespace Commandos.IO.Entities
             var singleDataRecord = new SingleDataRecord(data);
             record.Data = singleDataRecord;
             return record;
+        }
+
+        public static void AddSingleDataRecord(this MultipleRecords multipleRecords, string name, string data)
+        {
+            var singleDataRecord = GetSingleDataRecord(name, data);
+            multipleRecords.Records.Add(name, singleDataRecord);
+        }
+
+        public static void AddMixedDataRecord(this MultipleRecords multipleRecords, string name, Record data)
+        {
+            multipleRecords.Records.Add(name, data);
         }
     }
 }

@@ -5,7 +5,7 @@ namespace Commandos.Model.Map
 {
     public class Camera
     {
-        public int CameraDirection { get; set; }
+        public string CameraDirection { get; set; }
 
         public Position Position { get; set; }
 

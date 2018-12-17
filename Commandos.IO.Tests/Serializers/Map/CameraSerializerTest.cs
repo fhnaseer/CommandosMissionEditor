@@ -18,14 +18,33 @@ namespace Commandos.IO.Tests.Serializers.Map
             var tokens = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             var expected = new Camera
             {
-                Position = new Model.Common.Position(1, 2, 0),
+                Position = new Model.Common.Position("1", "2", "0"),
                 Area = "EXTERIOR",
-                CameraDirection = 0
+                CameraDirection = "0"
             };
             var record = TokenParser.ParseTokens(tokens).GetMultipleRecord(StringConstants.Camera);
 
             // Act,
             var actual = CameraSerializer.GetCamera(record);
+
+            // Assert,
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Camera_Read_WriteWorks()
+        {
+            // Arrange,
+            var expected = new Camera
+            {
+                Position = new Model.Common.Position("1", "2", "0"),
+                Area = "EXTERIOR",
+                CameraDirection = "0"
+            };
+
+            // Act,
+            var record = CameraSerializer.GetRecord(expected);
+            var actual = CameraSerializer.GetCamera(record.GetMultipleRecords());
 
             // Assert,
             Assert.AreEqual(expected, actual);

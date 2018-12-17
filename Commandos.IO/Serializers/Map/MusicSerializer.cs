@@ -11,9 +11,9 @@ namespace Commandos.IO.Serializers.Map
         {
             var music = new Music();
             var mixedValues = multipleRecords.GetMixedDataRecord(StringConstants.MusicList);
-            for (var i = 0; i < mixedValues.Data.Count; i++)
+            for (var i = 0; i < mixedValues.Count; i++)
             {
-                var musicValues = mixedValues.GetMixedDataRecord(i);
+                var musicValues = (MixedDataRecord)mixedValues[i];
                 music.BackgroundMusics.Add(new BackgroundMusic
                 {
                     MusicFileName = musicValues.GetStringValue(0),

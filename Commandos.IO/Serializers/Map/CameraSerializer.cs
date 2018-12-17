@@ -1,4 +1,5 @@
-﻿using Commandos.IO.Entities;
+﻿using System.Collections.Generic;
+using Commandos.IO.Entities;
 using Commandos.IO.Helpers;
 using Commandos.Model.Common;
 using Commandos.Model.Map;
@@ -12,24 +13,37 @@ namespace Commandos.IO.Serializers.Map
             return new Camera
             {
                 Position = GetPosition(multipleRecords.GetMixedDataRecord(StringConstants.Position)),
-                Area = multipleRecords.GetStringValue(StringConstants.Escape),
-                CameraDirection = multipleRecords.GetIntegerValue(StringConstants.CameraDirection)
+                Area = multipleRecords.GetStringValue(StringConstants.Area),
+                CameraDirection = multipleRecords.GetStringValue(StringConstants.CameraDirection)
             };
         }
 
-        private static Position GetPosition(MixedDataRecord mixedValues)
+        private static Position GetPosition(IList<RecordData> mixedDataRecord)
         {
-            var values = mixedValues.Data;
-            var x = mixedValues.GetDoubleValue(0);
-            var y = mixedValues.GetDoubleValue(1);
-            var z = mixedValues.GetDoubleValue(2);
+            var x = mixedDataRecord[0].GetStringValue();
+            var y = mixedDataRecord[1].GetStringValue();
+            var z = mixedDataRecord[2].GetStringValue();
             return new Position(x, y, z);
         }
 
-        //public static Record GetRecord(Camera camera)
-        //{
-        //    var record = new Record(StringConstants.Camera);
+        public static Record GetRecord(Camera camera)
+        {
+            var record = RecordExtensions.GetMultipleDataRecord(StringConstants.Camera);
+            var data = (MultipleRecords)record.Data;
+            data.AddSingleDataRecord(StringConstants.CameraDirection, camera.CameraDirection);
+            data.AddSingleDataRecord(StringConstants.Area, camera.Area);
+            data.AddMixedDataRecord(StringConstants.Position, GetPositionRecord(camera.Position));
+            return record;
+        }
 
-        //}
+        private static Record GetPositionRecord(Position position)
+        {
+            var record = RecordExtensions.GetMixedDataRecord(StringConstants.Position);
+            var data = (MixedDataRecord)record.Data;
+            data.Data.Add(new SingleDataRecord(position.X));
+            data.Data.Add(new SingleDataRecord(position.Y));
+            data.Data.Add(new SingleDataRecord(position.Z));
+            return record;
+        }
     }
 }
