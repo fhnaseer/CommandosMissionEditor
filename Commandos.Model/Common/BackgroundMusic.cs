@@ -8,6 +8,10 @@ namespace Commandos.Model.Common
 
         public string MusicFileName { get; set; }
 
+        public override string ToString()
+        {
+            return $"FileName: {MusicFileName} + Environment: {Environment}";
+        }
 
         #region Methods for Equality checks.
         // http://msdn.microsoft.com/en-us/library/dd183755.aspx

@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:CommandosMissionEditor.Views"
              xmlns:viewModels="clr-namespace:CommandosMissionEditor.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -14,6 +13,28 @@
         <ResourceDictionary Source="../ResourceDictionary.xaml" />
     </UserControl.Resources>
     <Grid>
-            
-    </Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Background Musics" />
+        <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Mission.Music.BackgroundMusics}" SelectedItem="{Binding SelectedBackgroundMusic}" />
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Music File Name (.wav)" />
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding MusicFileName, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Mission Environment" />
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Envirionment, UpdateSourceTrigger=PropertyChanged}" />
+        <UniformGrid Grid.Row="3" Grid.Column="1" Rows="1">
+            <Button Content="Add Music" Command="{Binding AddMusicCommand}" />
+            <Button Content="Remove Music" Command="{Binding RemoveMusicCommand}" />
+        </UniformGrid>
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Default Music" />
+        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Mission.Music.StartingMusicEnvironment}" />
+    </Grid>  
 </UserControl>
