@@ -12,7 +12,8 @@
     <UserControl.Resources>
         <ResourceDictionary Source="../ResourceDictionary.xaml" />
     </UserControl.Resources>
-    <Grid>
+    <DockPanel>
+            <Button DockPanel.Dock="Bottom" Content="Save" Command="{Binding SaveMissionCommand}" />
         <TabControl TabStripPlacement="Left" ItemsSource="{Binding MissionViewModels}" SelectedItem="{Binding SelectedViewModel}">
             <TabControl.ItemTemplate>
                 <!-- this is the header template-->
@@ -21,5 +22,5 @@
                 </DataTemplate>
             </TabControl.ItemTemplate>
         </TabControl>
-    </Grid>
+    </DockPanel>
 </UserControl>

@@ -28,5 +28,22 @@ namespace Commandos.IO.Tests.Serializers.Map
             // Assert,
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void Read_Write_Works()
+        {
+            // Arrange,
+            var expected = new Ficheros
+            {
+                FileName = "TU1A.STR"
+            };
+
+            // Act,
+            var record = FicherosSerializer.GetRecord(expected);
+            var actual = FicherosSerializer.GetFicheros(record.GetMultipleRecords());
+
+            // Assert,
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

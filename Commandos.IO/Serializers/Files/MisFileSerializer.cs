@@ -4,21 +4,20 @@ using System.IO;
 using System.Linq;
 using Commandos.IO.Entities;
 using Commandos.IO.Helpers;
+using Commandos.IO.Serializers.Files;
 using Commandos.IO.Serializers.Map;
 using Commandos.Model.Map;
 
 namespace Commandos.IO.Files
 {
-    public static class MisFileReader
+    public static class MisFileSerializer
     {
         public static Mission ReadMisFile(string path)
         {
-            var tokens = GetTokens(path);
-            var missionTokens = TokenParser.ParseTokens(tokens);
-            return MissionSerializer.GetMission(missionTokens);
+            return MissionSerializer.GetMission(GetMultipleRecords(path));
         }
 
-        public static MultipleRecords GetMultipleRecords(string path)
+        internal static MultipleRecords GetMultipleRecords(string path)
         {
             var tokens = GetTokens(path);
             return TokenParser.ParseTokens(tokens);
@@ -46,6 +45,17 @@ namespace Commandos.IO.Files
                     cleanedLines.Add(line);
             }
             return cleanedLines;
+        }
+
+        public static void WriteMisFile(string path, Mission mission)
+        {
+            if (mission is null)
+                throw new ArgumentNullException(nameof(mission));
+
+            var multipleRecords = MissionSerializer.GetMultipleRecords(mission);
+            var writer = new RecordWriter(multipleRecords);
+            var lines = writer.GetTextLines();
+            File.WriteAllLines(path, lines);
         }
     }
 }

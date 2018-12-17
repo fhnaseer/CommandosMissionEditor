@@ -13,5 +13,16 @@ namespace Commandos.IO.Serializers.Map
                 FileName = multipleRecords.GetStringValue(StringConstants.BriefingFile)
             };
         }
+
+        public static Record GetRecord(Briefing briefing)
+        {
+            var record = new Record(StringConstants.Briefing);
+            var recordValue = new MultipleRecords();
+            var briefingFileRecord = new Record(StringConstants.BriefingFile);
+            briefingFileRecord.Value = new SingleValue(briefing.FileName);
+            recordValue.Records.Add(StringConstants.BriefingFile, briefingFileRecord);
+            record.Value = recordValue;
+            return record;
+        }
     }
 }

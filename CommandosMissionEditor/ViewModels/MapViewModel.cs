@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Input;
 using Commandos.Model.Map;
 
 namespace CommandosMissionEditor.ViewModels
@@ -37,6 +38,15 @@ namespace CommandosMissionEditor.ViewModels
                 _selectedMissionViewModel = value;
                 OnPropertyChanged(nameof(SelectedMissionViewModel));
             }
+        }
+
+
+        private ICommand _saveMissionCommand;
+        public ICommand SaveMissionCommand => _saveMissionCommand ?? (_saveMissionCommand = new RelayCommand(SaveMission));
+
+        internal void SaveMission()
+        {
+
         }
     }
 }

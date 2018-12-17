@@ -54,7 +54,7 @@
     <Compile Include="Serializers\Map\BriefingSerializerTest.cs" />
     <Compile Include="Serializers\Map\CameraSerializerTest.cs" />
     <Compile Include="Serializers\Helpers\IndexHelperTest.cs" />
-    <Compile Include="Serializers\Files\MisFileReaderTest.cs" />
+    <Compile Include="Serializers\Files\MisFileSerializerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serializers\Map\MissionSerializerTest.cs" />
     <Compile Include="Serializers\Helpers\TokenParserTest.cs" />

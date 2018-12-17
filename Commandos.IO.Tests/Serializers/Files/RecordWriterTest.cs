@@ -18,7 +18,7 @@ namespace Commandos.IO.Tests.Serializers.Files
             // Arrange,
             var path = Path.Combine(TestContext.DeploymentDirectory, "5G1A.mis");
             var outputPath = Path.Combine(TestContext.DeploymentDirectory, "output.mis");
-            var input = MisFileReader.GetMultipleRecords(path);
+            var input = MisFileSerializer.GetMultipleRecords(path);
             var target = new RecordWriter(input);
 
             // Act,

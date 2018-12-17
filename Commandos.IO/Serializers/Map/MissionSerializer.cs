@@ -1,4 +1,5 @@
-﻿using Commandos.IO.Entities;
+﻿using System;
+using Commandos.IO.Entities;
 using Commandos.IO.Helpers;
 using Commandos.Model.Map;
 
@@ -17,6 +18,11 @@ namespace Commandos.IO.Serializers.Map
                 Music = MusicSerializer.GetMusic(multipleRecords.GetMultipleRecord(StringConstants.Music)),
                 Ficheros = FicherosSerializer.GetFicheros(multipleRecords.GetMultipleRecord(StringConstants.Ficheros))
             };
+        }
+
+        public static MultipleRecords GetMultipleRecords(Mission mission)
+        {
+            throw new NotImplementedException();
         }
     }
 }

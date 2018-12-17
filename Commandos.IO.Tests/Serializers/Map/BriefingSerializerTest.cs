@@ -28,5 +28,22 @@ namespace Commandos.IO.Tests.Serializers.Map
             // Assert,
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void Read_Write_Works()
+        {
+            // Arrange,
+            var expected = new Briefing
+            {
+                FileName = "TU01A.BRI"
+            };
+
+            // Act,
+            var record = BriefingSerializer.GetRecord(expected);
+            var actual = BriefingSerializer.GetBriefing(record.GetMultipleRecords());
+
+            // Assert,
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

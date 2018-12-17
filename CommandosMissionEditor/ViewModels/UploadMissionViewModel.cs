@@ -21,7 +21,7 @@ namespace CommandosMissionEditor.ViewModels
 
         internal void LoadMission()
         {
-            var mission = MisFileReader.ReadMisFile(MissionFilePath);
+            var mission = MisFileSerializer.ReadMisFile(MissionFilePath);
             var window = new MainWindow();
             window.Content = new MapViewModel(mission);
             window.Show();
