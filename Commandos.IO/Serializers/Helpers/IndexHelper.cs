@@ -11,18 +11,18 @@ namespace Commandos.IO.Helpers
 
     public static class IndexHelper
     {
-        internal static (int nameIndex, int startIndex, int endIndex, RecordValueType recordValueType) GetIndexes(string[] tokens, int startPoint)
+        internal static (int nameIndex, int startIndex, int endIndex, RecordDataType recordDataType) GetIndexes(string[] tokens, int startPoint)
         {
             var nameIndex = GetStartIndex(tokens, startPoint);
             var startIndex = nameIndex + 1;
             if (tokens[startIndex] == "[")
-                return (nameIndex, startIndex, GetEndIndex(tokens, startIndex, "[", "]"), RecordValueType.MultipleRecords);
+                return (nameIndex, startIndex, GetEndIndex(tokens, startIndex, "[", "]"), RecordDataType.MultipleRecords);
             else if (tokens[startIndex] == "(")
             {
-                return (nameIndex, startIndex, GetEndIndex(tokens, startIndex, "(", ")"), RecordValueType.MixedValues);
+                return (nameIndex, startIndex, GetEndIndex(tokens, startIndex, "(", ")"), RecordDataType.MixedDataRecord);
             }
             else
-                return (nameIndex, startIndex, startIndex, RecordValueType.SingleValue);
+                return (nameIndex, startIndex, startIndex, RecordDataType.SingleDataRecord);
         }
 
         private static int GetStartIndex(string[] tokens, int startPoint)

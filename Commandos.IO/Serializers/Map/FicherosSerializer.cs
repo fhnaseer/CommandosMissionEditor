@@ -19,9 +19,9 @@ namespace Commandos.IO.Serializers.Map
             var record = new Record(StringConstants.Ficheros);
             var recordValue = new MultipleRecords();
             var briefingFileRecord = new Record(StringConstants.FicherosStrFile);
-            briefingFileRecord.Value = new SingleValue(ficheros.FileName);
+            briefingFileRecord.Data = new SingleDataRecord(ficheros.FileName);
             recordValue.Records.Add(StringConstants.FicherosStrFile, briefingFileRecord);
-            record.Value = recordValue;
+            record.Data = recordValue;
             return record;
         }
     }

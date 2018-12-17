@@ -10,10 +10,10 @@ namespace Commandos.IO.Serializers.Map
         public static Music GetMusic(MultipleRecords multipleRecords)
         {
             var music = new Music();
-            var mixedValues = multipleRecords.GetMixedValues(StringConstants.MusicList);
-            for (var i = 0; i < mixedValues.Values.Count; i++)
+            var mixedValues = multipleRecords.GetMixedDataRecord(StringConstants.MusicList);
+            for (var i = 0; i < mixedValues.Data.Count; i++)
             {
-                var musicValues = mixedValues.GetMixedValues(i);
+                var musicValues = mixedValues.GetMixedDataRecord(i);
                 music.BackgroundMusics.Add(new BackgroundMusic
                 {
                     MusicFileName = musicValues.GetStringValue(0),

@@ -1,6 +1,6 @@
 ﻿namespace Commandos.IO.Entities
 {
-    public class Record : RecordValueBase
+    public class Record : RecordData
     {
         public Record()
         {
@@ -10,8 +10,8 @@
 
         public string Name { get; set; }
 
-        public RecordValueBase Value { get; set; }
+        public RecordData Data { get; set; }
 
-        public override string ToString() => $"{Name} {Value.ToString()}";
+        public override string ToString() => $"{Name} {Data.ToString()}";
     }
 }

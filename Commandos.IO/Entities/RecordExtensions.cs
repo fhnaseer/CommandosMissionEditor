@@ -7,7 +7,7 @@ namespace Commandos.IO.Entities
         public static MultipleRecords GetMultipleRecord(this MultipleRecords multipleRecords, string recordName)
         {
             if (multipleRecords.Records.TryGetValue(recordName, out Record record))
-                return record.Value as MultipleRecords;
+                return record.Data as MultipleRecords;
             return null;
         }
 
@@ -18,33 +18,33 @@ namespace Commandos.IO.Entities
             return null;
         }
 
-        public static MixedValues GetMixedValues(this MultipleRecords multipleRecords, string recordName)
+        public static MixedDataRecord GetMixedDataRecord(this MultipleRecords multipleRecords, string recordName)
         {
             if (multipleRecords.Records.TryGetValue(recordName, out Record record))
-                return record.Value as MixedValues;
+                return record.Data as MixedDataRecord;
             return null;
         }
 
-        public static MixedValues GetMixedValues(this MixedValues mixedValues, int indexNumber)
+        public static MixedDataRecord GetMixedDataRecord(this MixedDataRecord mixedDataRecord, int indexNumber)
         {
-            var values = mixedValues.Values;
-            return ((MixedValues)values[indexNumber]);
+            var values = mixedDataRecord.Data;
+            return ((MixedDataRecord)values[indexNumber]);
         }
 
-        public static string GetStringValue(this MixedValues mixedValues, int indexNumber)
+        public static string GetStringValue(this MixedDataRecord mixedDataRecord, int indexNumber)
         {
-            var values = mixedValues.Values;
-            return ((SingleValue)values[indexNumber]).Value;
+            var values = mixedDataRecord.Data;
+            return ((SingleDataRecord)values[indexNumber]).Data;
         }
 
-        public static double GetDoubleValue(this MixedValues mixedValues, int indexNumber)
+        public static double GetDoubleValue(this MixedDataRecord mixedDataRecord, int indexNumber)
         {
-            return double.Parse(mixedValues.GetStringValue(indexNumber), CultureInfo.CurrentCulture);
+            return double.Parse(mixedDataRecord.GetStringValue(indexNumber), CultureInfo.CurrentCulture);
         }
 
-        public static int GetIntegerValue(this MixedValues mixedValues, int indexNumber)
+        public static int GetIntegerValue(this MixedDataRecord mixedDataRecord, int indexNumber)
         {
-            return int.Parse(mixedValues.GetStringValue(indexNumber), CultureInfo.CurrentCulture);
+            return int.Parse(mixedDataRecord.GetStringValue(indexNumber), CultureInfo.CurrentCulture);
         }
 
         public static string GetStringValue(this MultipleRecords multipleRecords, string recordName)
@@ -70,22 +70,22 @@ namespace Commandos.IO.Entities
 
         public static MultipleRecords GetMultipleRecords(this Record record)
         {
-            return (MultipleRecords)record.Value;
+            return (MultipleRecords)record.Data;
         }
 
         public static string GetStringValue(this Record record)
         {
-            return ((SingleValue)record.Value).Value;
+            return ((SingleDataRecord)record.Data).Data;
         }
 
         public static double GetDoubleValue(this Record record)
         {
-            return double.Parse(((SingleValue)record.Value).Value, CultureInfo.CurrentCulture);
+            return double.Parse(((SingleDataRecord)record.Data).Data, CultureInfo.CurrentCulture);
         }
 
         public static int GetIntegerValue(this Record record)
         {
-            return int.Parse(((SingleValue)record.Value).Value, CultureInfo.CurrentCulture);
+            return int.Parse(((SingleDataRecord)record.Data).Data, CultureInfo.CurrentCulture);
         }
     }
 }

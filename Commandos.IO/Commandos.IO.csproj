@@ -53,12 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\MixedValues.cs" />
+    <Compile Include="Entities\MixedDataRecord.cs" />
     <Compile Include="Entities\Record.cs" />
     <Compile Include="Entities\RecordExtensions.cs" />
-    <Compile Include="Entities\RecordValueBase.cs" />
+    <Compile Include="Entities\RecordData.cs" />
     <Compile Include="Entities\MultipleRecords.cs" />
-    <Compile Include="Entities\SingleValue.cs" />
+    <Compile Include="Entities\SingleDataRecord.cs" />
     <Compile Include="Serializers\Files\RecordWriter.cs" />
     <Compile Include="Serializers\Helpers\TokenParser.cs" />
     <Compile Include="GlobalSuppressions.cs" />

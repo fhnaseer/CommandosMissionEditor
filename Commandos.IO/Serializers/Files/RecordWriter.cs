@@ -34,17 +34,17 @@ namespace Commandos.IO.Serializers.Files
 
         private void AppendRecord(Record record, int tabCount)
         {
-            if (record.Value is SingleValue singleValue)
-                AddLine($"{record.Name} {singleValue.Value}", tabCount);
-            else if (record.Value is MultipleRecords multipleRecords)
+            if (record.Data is SingleDataRecord singleDataRecord)
+                AddLine($"{record.Name} {singleDataRecord.Data}", tabCount);
+            else if (record.Data is MultipleRecords multipleRecords)
             {
                 AddLine(record.Name, tabCount);
                 AppendMultipleRecords(multipleRecords.Records.Values, tabCount);
             }
-            else if (record.Value is MixedValues mixedValues)
+            else if (record.Data is MixedDataRecord mixedDataRecord)
             {
                 AddLine(record.Name, tabCount);
-                AppendMixedValues(mixedValues.Values, tabCount);
+                AppendMixedDataRecord(mixedDataRecord.Data, tabCount);
             }
         }
 
@@ -57,28 +57,28 @@ namespace Commandos.IO.Serializers.Files
             AddSquareClosingBracket(tabCount);
         }
 
-        private void AppendMixedValues(IList<RecordValueBase> values, int tabCount)
+        private void AppendMixedDataRecord(IList<RecordData> data, int tabCount)
         {
             var childTabCount = tabCount + 1;
             AddRoundOpenningBracket(tabCount);
-            if (SameClass(values, typeof(SingleValue)))
-                AddSingleValues(values, childTabCount);
+            if (SameClass(data, typeof(SingleDataRecord)))
+                AddSingleDataRecords(data, childTabCount);
             else
             {
-                foreach (var v in values)
+                foreach (var d in data)
                 {
-                    if (v is SingleValue singleValue)
-                        AddLine(singleValue.Value, childTabCount);
-                    else if (v is MixedValues mixedValues)
-                        AppendMixedValues(mixedValues.Values, childTabCount);
-                    else if (v is MultipleRecords multipleRecords)
+                    if (d is SingleDataRecord singleDataRecord)
+                        AddLine(singleDataRecord.Data, childTabCount);
+                    else if (d is MixedDataRecord mixedDataRecord)
+                        AppendMixedDataRecord(mixedDataRecord.Data, childTabCount);
+                    else if (d is MultipleRecords multipleRecords)
                         AppendMultipleRecords(multipleRecords.Records.Values, childTabCount);
                 }
             }
             AddRoundClosingBracket(tabCount);
         }
 
-        private static bool SameClass(IList<RecordValueBase> items, Type objectType)
+        private static bool SameClass(IList<RecordData> items, Type objectType)
         {
             foreach (var item in items)
                 if (item.GetType() != objectType)
@@ -86,11 +86,11 @@ namespace Commandos.IO.Serializers.Files
             return true;
         }
 
-        private void AddSingleValues(IList<RecordValueBase> values, int tabCount)
+        private void AddSingleDataRecords(IList<RecordData> data, int tabCount)
         {
             var stringBuilder = new StringBuilder();
-            foreach (SingleValue v in values)
-                stringBuilder.Append($"{v} ");
+            foreach (SingleDataRecord d in data)
+                stringBuilder.Append($"{d} ");
             var finalString = stringBuilder.ToString().Trim();
             AddLine(finalString, tabCount);
         }

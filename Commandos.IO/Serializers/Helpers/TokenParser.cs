@@ -33,34 +33,34 @@ namespace Commandos.IO.Helpers
             var indexes = IndexHelper.GetIndexes(tokens, startIndex);
             var record = new Record();
             record.Name = tokens[indexes.nameIndex];
-            if (indexes.recordValueType == RecordValueType.SingleValue)
-                record.Value = ParseSingleValue(tokens, indexes.startIndex);
-            else if (indexes.recordValueType == RecordValueType.MultipleRecords)
-                record.Value = ParseMultipleRecords(tokens, indexes.startIndex, indexes.endIndex);
-            else if (indexes.recordValueType == RecordValueType.MixedValues)
-                record.Value = ParseMixedRecords(tokens, indexes.startIndex, indexes.endIndex);
+            if (indexes.recordDataType == RecordDataType.SingleDataRecord)
+                record.Data = ParseSingleValue(tokens, indexes.startIndex);
+            else if (indexes.recordDataType == RecordDataType.MultipleRecords)
+                record.Data = ParseMultipleRecords(tokens, indexes.startIndex, indexes.endIndex);
+            else if (indexes.recordDataType == RecordDataType.MixedDataRecord)
+                record.Data = ParseMixedRecords(tokens, indexes.startIndex, indexes.endIndex);
             return record;
         }
 
-        private static MixedValues ParseMixedRecords(string[] tokens, int startIndex, int endIndex)
+        private static MixedDataRecord ParseMixedRecords(string[] tokens, int startIndex, int endIndex)
         {
-            var record = new MixedValues();
+            var record = new MixedDataRecord();
             for (var i = startIndex + 1; i < endIndex; i++)
             {
                 int end;
                 if (tokens[i] == "(")
                 {
                     end = IndexHelper.GetEndIndex(tokens, i, BracketType.RoundBracket);
-                    record.Values.Add(ParseMixedRecords(tokens, i, end));
+                    record.Data.Add(ParseMixedRecords(tokens, i, end));
                 }
                 else if (tokens[i] == "[")
                 {
                     end = IndexHelper.GetEndIndex(tokens, i, BracketType.SquareBracket);
-                    record.Values.Add(ParseMultipleRecords(tokens, i, end));
+                    record.Data.Add(ParseMultipleRecords(tokens, i, end));
                 }
                 else
                 {
-                    record.Values.Add(ParseSingleValue(tokens, i));
+                    record.Data.Add(ParseSingleDataRecord(tokens, i));
                     end = i;
                 }
                 i = end;
@@ -68,9 +68,9 @@ namespace Commandos.IO.Helpers
             return record;
         }
 
-        private static SingleValue ParseSingleValue(string[] tokens, int startIndex)
+        private static SingleDataRecord ParseSingleDataRecord(string[] tokens, int startIndex)
         {
-            return new SingleValue { Value = tokens[startIndex] };
+            return new SingleDataRecord { Data = tokens[startIndex] };
         }
     }
 }

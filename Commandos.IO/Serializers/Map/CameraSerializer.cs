@@ -11,19 +11,25 @@ namespace Commandos.IO.Serializers.Map
         {
             return new Camera
             {
-                Position = GetPosition(multipleRecords.GetMixedValues(StringConstants.Position)),
+                Position = GetPosition(multipleRecords.GetMixedDataRecord(StringConstants.Position)),
                 Area = multipleRecords.GetStringValue(StringConstants.Escape),
                 CameraDirection = multipleRecords.GetIntegerValue(StringConstants.CameraDirection)
             };
         }
 
-        private static Position GetPosition(MixedValues mixedValues)
+        private static Position GetPosition(MixedDataRecord mixedValues)
         {
-            var values = mixedValues.Values;
+            var values = mixedValues.Data;
             var x = mixedValues.GetDoubleValue(0);
             var y = mixedValues.GetDoubleValue(1);
             var z = mixedValues.GetDoubleValue(2);
             return new Position(x, y, z);
         }
+
+        //public static Record GetRecord(Camera camera)
+        //{
+        //    var record = new Record(StringConstants.Camera);
+
+        //}
     }
 }
