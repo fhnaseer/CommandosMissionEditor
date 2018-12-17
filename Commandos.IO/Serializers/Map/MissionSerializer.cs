@@ -14,7 +14,8 @@ namespace Commandos.IO.Serializers.Map
                 BasFileName = multipleRecords.GetStringValue(StringConstants.BasFile),
                 Camera = CameraSerializer.GetCamera(multipleRecords.GetMultipleRecord(StringConstants.Camera)),
                 Briefing = BriefingSerializer.GetBriefing(multipleRecords.GetMultipleRecord(StringConstants.Briefing)),
-                Music = MusicSerializer.GetMusic(multipleRecords.GetMultipleRecord(StringConstants.Music))
+                Music = MusicSerializer.GetMusic(multipleRecords.GetMultipleRecord(StringConstants.Music)),
+                Ficheros = FicherosSerializer.GetFicheros(multipleRecords.GetMultipleRecord(StringConstants.Ficheros))
             };
         }
     }

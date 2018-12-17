@@ -8,6 +8,10 @@ namespace CommandosMissionEditor.ViewModels
         {
         }
 
+        internal FilesViewModel() : base(null)
+        {
+        }
+
         public override string TabName => "Files";
     }
 }

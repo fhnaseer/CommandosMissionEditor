@@ -8,6 +8,10 @@ namespace CommandosMissionEditor.ViewModels
         {
         }
 
+        internal MusicViewModel() : base(null)
+        {
+        }
+
         public override string TabName => "Music";
     }
 }
