@@ -23,7 +23,7 @@ namespace Commandos.IO.Tests.Serializers.Map
             expected.BackgroundMusics.Add(new Model.Common.BackgroundMusic { Environment = "EXTERIOR", MusicFileName = "M_BU_Ext.WAV" });
             expected.BackgroundMusics.Add(new Model.Common.BackgroundMusic { Environment = "AGUA", MusicFileName = "M_BU_Agu.WAV" });
             expected.BackgroundMusics.Add(new Model.Common.BackgroundMusic { Environment = "INTERIOR", MusicFileName = "M_BU_Int.WAV" });
-            var record = TokenParser.ParseTokens(tokens).GetMultipleRecord(StringConstants.Music);
+            var record = TokenParser.ParseTokens(tokens).GetMultipleRecord(MusicSerializer.Music);
 
             // Act,
             var actual = MusicSerializer.GetMusic(record);

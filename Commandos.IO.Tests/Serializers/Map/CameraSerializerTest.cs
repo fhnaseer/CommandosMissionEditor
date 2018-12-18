@@ -22,7 +22,7 @@ namespace Commandos.IO.Tests.Serializers.Map
                 Area = "EXTERIOR",
                 CameraDirection = "0"
             };
-            var record = TokenParser.ParseTokens(tokens).GetMultipleRecord(StringConstants.Camera);
+            var record = TokenParser.ParseTokens(tokens).GetMultipleRecord(CameraSerializer.Camera);
 
             // Act,
             var actual = CameraSerializer.GetCamera(record);

@@ -8,13 +8,16 @@ namespace Commandos.IO.Serializers.Map
 {
     public static class CameraSerializer
     {
+        public const string Camera = ".VISORES";
+        public const string CameraDirection = ".CAMARA";
+
         public static Camera GetCamera(MultipleRecords multipleRecords)
         {
             return new Camera
             {
                 Position = GetPosition(multipleRecords.GetMixedDataRecord(StringConstants.Position)),
                 Area = multipleRecords.GetStringValue(StringConstants.Area),
-                CameraDirection = multipleRecords.GetStringValue(StringConstants.CameraDirection)
+                CameraDirection = multipleRecords.GetStringValue(CameraDirection)
             };
         }
 
@@ -28,9 +31,9 @@ namespace Commandos.IO.Serializers.Map
 
         public static Record GetRecord(Camera camera)
         {
-            var record = RecordExtensions.GetMultipleDataRecord(StringConstants.Camera);
+            var record = RecordExtensions.GetMultipleDataRecord(Camera);
             var data = (MultipleRecords)record.Data;
-            data.AddSingleDataRecord(StringConstants.CameraDirection, camera.CameraDirection);
+            data.AddSingleDataRecord(CameraDirection, camera.CameraDirection);
             data.AddSingleDataRecord(StringConstants.Area, camera.Area);
             data.AddMixedDataRecord(StringConstants.Position, GetPositionRecord(camera.Position));
             return record;
