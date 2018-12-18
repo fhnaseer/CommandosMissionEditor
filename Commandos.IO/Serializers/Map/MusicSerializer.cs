@@ -24,5 +24,22 @@ namespace Commandos.IO.Serializers.Map
             return music;
         }
 
+        public static Record GetRecord(Music music)
+        {
+            var record = RecordExtensions.GetMultipleDataRecord(StringConstants.Music);
+            var data = (MultipleRecords)record.Data;
+            data.AddSingleDataRecord(StringConstants.StartingMusicEnvironment, music.StartingMusicEnvironment);
+            var musicRecord = RecordExtensions.GetMixedDataRecord(StringConstants.MusicList);
+            var musicData = (MixedDataRecord)musicRecord.Data;
+            foreach (var background in music.BackgroundMusics)
+            {
+                var mixedMusicRecord = new MixedDataRecord();
+                mixedMusicRecord.Data.Add(new SingleDataRecord(background.MusicFileName));
+                mixedMusicRecord.Data.Add(new SingleDataRecord(background.Environment));
+                musicData.Data.Add(mixedMusicRecord);
+            }
+            data.AddMixedDataRecord(StringConstants.MusicList, musicRecord);
+            return record;
+        }
     }
 }

@@ -74,6 +74,8 @@
     <Compile Include="Map\Mission.cs" />
     <Compile Include="Common\Position.cs" />
     <Compile Include="Map\Music.cs" />
+    <Compile Include="Map\NotParsed.cs" />
+    <Compile Include="Map\World.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

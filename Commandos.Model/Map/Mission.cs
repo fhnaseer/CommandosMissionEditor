@@ -10,17 +10,50 @@ namespace Commandos.Model.Map
 
         public string BasFileName { get; set; }
 
-        public Camera Camera { get; set; }
+        private Camera _camera;
+        public Camera Camera
+        {
+            get => _camera ?? (_camera = new Camera());
+            set => _camera = value;
+        }
 
-        public Briefing Briefing { get; set; }
+        private Briefing _briefing;
+        public Briefing Briefing
+        {
+            get => _briefing ?? (_briefing = new Briefing());
+            set => _briefing = value;
+        }
 
-        public Music Music { get; set; }
+        private Music _music;
+        public Music Music
+        {
+            get => _music ?? (_music = new Music());
+            set => _music = value;
+        }
 
-        public Ficheros Ficheros { get; set; }
+        private Ficheros _ficheros;
+        public Ficheros Ficheros
+        {
+            get => _ficheros ?? (_ficheros = new Ficheros());
+            set => _ficheros = value;
+        }
+
+        private Abilities _abilities;
+        public Abilities Abilities
+        {
+            get => _abilities ?? (_abilities = new Abilities(null));
+            set => _abilities = value;
+        }
+
+        private World _world;
+        public World World
+        {
+            get => _world ?? (_world = new World(null));
+            set => _world = value;
+        }
 
         private List<Commando> _commandos;
         public IList<Commando> Commandos => _commandos ?? (_commandos = new List<Commando>());
-
 
         #region Methods for Equality checks.
         // http://msdn.microsoft.com/en-us/library/dd183755.aspx
@@ -60,7 +93,9 @@ namespace Commandos.Model.Map
             return MsbFileName == other.MsbFileName &&
                 BasFileName == other.BasFileName &&
                 Camera == other.Camera &&
-                Briefing == other.Briefing;
+                Briefing == other.Briefing &&
+                Music == other.Music &&
+                Ficheros == other.Ficheros;
         }
 
         /// <summary>

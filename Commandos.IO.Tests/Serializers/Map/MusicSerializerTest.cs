@@ -31,5 +31,25 @@ namespace Commandos.IO.Tests.Serializers.Map
             // Assert,
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void Read_Write_Works()
+        {
+            // Arrange,
+            var expected = new Music
+            {
+                StartingMusicEnvironment = "INTERIOR"
+            };
+            expected.BackgroundMusics.Add(new Model.Common.BackgroundMusic { Environment = "EXTERIOR", MusicFileName = "M_BU_Ext.WAV" });
+            expected.BackgroundMusics.Add(new Model.Common.BackgroundMusic { Environment = "AGUA", MusicFileName = "M_BU_Agu.WAV" });
+            expected.BackgroundMusics.Add(new Model.Common.BackgroundMusic { Environment = "INTERIOR", MusicFileName = "M_BU_Int.WAV" });
+
+            // Act,
+            var record = MusicSerializer.GetRecord(expected);
+            var actual = MusicSerializer.GetMusic(record.GetMultipleRecords());
+
+            // Assert,
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
