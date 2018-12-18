@@ -24,6 +24,24 @@ namespace Commandos.IO.Tests.Files
 
             // Assert,
             Assert.AreEqual(expected, actual);
+            File.Delete(outputPath);
+        }
+
+        [TestMethod]
+        public void MisFile_Read_Write_Works_WrongBrackets()
+        {
+            // Arrange,
+            var inputPath = Path.Combine(TestContext.DeploymentDirectory, "TU01A.mis");
+            var outputPath = Path.Combine(TestContext.DeploymentDirectory, "directOutput.mis");
+            var expected = MisFileSerializer.ReadMisFile(inputPath);
+
+            // Act,
+            MisFileSerializer.WriteMisFile(outputPath, expected);
+            var actual = MisFileSerializer.ReadMisFile(outputPath);
+
+            // Assert,
+            Assert.AreEqual(expected, actual);
+            File.Delete(outputPath);
         }
 
         [TestMethod]
@@ -44,6 +62,8 @@ namespace Commandos.IO.Tests.Files
 
             // Assert,
             CollectionAssert.AreEqual(expected, actual);
+            File.Delete(firstOutputPath);
+            File.Delete(secondOutputPath);
         }
     }
 }
