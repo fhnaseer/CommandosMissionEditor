@@ -3,12 +3,14 @@ using Commandos.Model.Map;
 
 namespace Commandos.IO.Serializers.Map
 {
-    public static class BriefingSerializer
+    public class BriefingSerializer : RecordSerializerBase<Briefing>
     {
         public const string Briefing = ".BRIEFING";
         public const string BriefingFile = ".INICIAL";
 
-        public static Briefing GetBriefing(MultipleRecords multipleRecords)
+        public override string RecordName => Briefing;
+
+        public override Briefing Serialize(MultipleRecords multipleRecords)
         {
             return new Briefing
             {
@@ -16,12 +18,6 @@ namespace Commandos.IO.Serializers.Map
             };
         }
 
-        public static Record GetRecord(Briefing briefing)
-        {
-            var record = RecordExtensions.GetMultipleDataRecord(Briefing);
-            var fileRecord = RecordExtensions.GetSingleDataRecord(BriefingFile, briefing.FileName);
-            ((MultipleRecords)record.Data).Records.Add(BriefingFile, fileRecord);
-            return record;
-        }
+        public override string GetMultipleRecordString(Briefing briefing) => $"[ {BriefingFile} {briefing.FileName} ]";
     }
 }

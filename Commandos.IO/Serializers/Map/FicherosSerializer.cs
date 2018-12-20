@@ -3,12 +3,14 @@ using Commandos.Model.Map;
 
 namespace Commandos.IO.Serializers.Map
 {
-    public static class FicherosSerializer
+    public class FicherosSerializer : RecordSerializerBase<Ficheros>
     {
         public const string Ficheros = ".FICHEROS";
         public const string FicherosStrFile = ".STR";
 
-        public static Ficheros GetFicheros(MultipleRecords multipleRecords)
+        public override string RecordName => Ficheros;
+
+        public override Ficheros Serialize(MultipleRecords multipleRecords)
         {
             return new Ficheros
             {
@@ -16,12 +18,6 @@ namespace Commandos.IO.Serializers.Map
             };
         }
 
-        public static Record GetRecord(Ficheros ficheros)
-        {
-            var record = RecordExtensions.GetMultipleDataRecord(Ficheros);
-            var fileRecord = RecordExtensions.GetSingleDataRecord(FicherosStrFile, ficheros.FileName);
-            ((MultipleRecords)record.Data).Records.Add(FicherosStrFile, fileRecord);
-            return record;
-        }
+        public override string GetMultipleRecordString(Ficheros input) => $"[ {FicherosStrFile} {input.FileName} ]";
     }
 }

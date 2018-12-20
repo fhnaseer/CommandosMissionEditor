@@ -6,12 +6,14 @@ using Commandos.Model.Map;
 
 namespace Commandos.IO.Serializers.Map
 {
-    public static class CameraSerializer
+    public class CameraSerializer : RecordSerializerBase<Camera>
     {
         public const string Camera = ".VISORES";
         public const string CameraDirection = ".CAMARA";
 
-        public static Camera GetCamera(MultipleRecords multipleRecords)
+        public override string RecordName => Camera;
+
+        public override Camera Serialize(MultipleRecords multipleRecords)
         {
             return new Camera
             {
@@ -29,24 +31,8 @@ namespace Commandos.IO.Serializers.Map
             return new Position(x, y, z);
         }
 
-        public static Record GetRecord(Camera camera)
-        {
-            var record = RecordExtensions.GetMultipleDataRecord(Camera);
-            var data = (MultipleRecords)record.Data;
-            data.AddSingleDataRecord(CameraDirection, camera.CameraDirection);
-            data.AddSingleDataRecord(StringConstants.Area, camera.Area);
-            data.AddMixedDataRecord(StringConstants.Position, GetPositionRecord(camera.Position));
-            return record;
-        }
+        public override string GetMultipleRecordString(Camera input) => $"[ {CameraDirection} {input.CameraDirection} {StringConstants.Area} {input.Area} {GetPositionRecordString(input.Position)} ]";
 
-        private static Record GetPositionRecord(Position position)
-        {
-            var record = RecordExtensions.GetMixedDataRecord(StringConstants.Position);
-            var data = (MixedDataRecord)record.Data;
-            data.Data.Add(new SingleDataRecord(position.X));
-            data.Data.Add(new SingleDataRecord(position.Y));
-            data.Data.Add(new SingleDataRecord(position.Z));
-            return record;
-        }
+        private static string GetPositionRecordString(Position position) => $"{StringConstants.Position} ( {position.X} {position.Y} {position.Z} )";
     }
 }

@@ -60,6 +60,7 @@
     <Compile Include="Entities\MultipleRecords.cs" />
     <Compile Include="Entities\SingleDataRecord.cs" />
     <Compile Include="Serializers\Files\RecordWriter.cs" />
+    <Compile Include="Serializers\Helpers\SerializerHelper.cs" />
     <Compile Include="Serializers\Helpers\TokenParser.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Serializers\Map\BriefingSerializer.cs" />
@@ -67,11 +68,11 @@
     <Compile Include="Serializers\Files\MisFileSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serializers\Map\FicherosSerializer.cs" />
-    <Compile Include="Serializers\Map\FileSerializer.cs" />
     <Compile Include="Serializers\Map\MissionSerializer.cs" />
     <Compile Include="Serializers\Map\MusicSerializer.cs" />
     <Compile Include="Serializers\Helpers\StringConstants.cs" />
     <Compile Include="Serializers\Map\CameraSerializer.cs" />
+    <Compile Include="Serializers\Map\RecordSerializerBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

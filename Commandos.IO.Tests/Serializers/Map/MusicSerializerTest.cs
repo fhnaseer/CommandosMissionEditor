@@ -24,9 +24,10 @@ namespace Commandos.IO.Tests.Serializers.Map
             expected.BackgroundMusics.Add(new Model.Common.BackgroundMusic { Environment = "AGUA", MusicFileName = "M_BU_Agu.WAV" });
             expected.BackgroundMusics.Add(new Model.Common.BackgroundMusic { Environment = "INTERIOR", MusicFileName = "M_BU_Int.WAV" });
             var record = TokenParser.ParseTokens(tokens).GetMultipleRecord(MusicSerializer.Music);
+            var target = new MusicSerializer();
 
             // Act,
-            var actual = MusicSerializer.GetMusic(record);
+            var actual = target.Serialize(record);
 
             // Assert,
             Assert.AreEqual(expected, actual);
@@ -43,10 +44,11 @@ namespace Commandos.IO.Tests.Serializers.Map
             expected.BackgroundMusics.Add(new Model.Common.BackgroundMusic { Environment = "EXTERIOR", MusicFileName = "M_BU_Ext.WAV" });
             expected.BackgroundMusics.Add(new Model.Common.BackgroundMusic { Environment = "AGUA", MusicFileName = "M_BU_Agu.WAV" });
             expected.BackgroundMusics.Add(new Model.Common.BackgroundMusic { Environment = "INTERIOR", MusicFileName = "M_BU_Int.WAV" });
+            var target = new MusicSerializer();
 
             // Act,
-            var record = MusicSerializer.GetRecord(expected);
-            var actual = MusicSerializer.GetMusic(record.GetMultipleRecords());
+            var record = target.Deserialize(expected);
+            var actual = target.Serialize(record.GetMultipleRecords());
 
             // Assert,
             Assert.AreEqual(expected, actual);

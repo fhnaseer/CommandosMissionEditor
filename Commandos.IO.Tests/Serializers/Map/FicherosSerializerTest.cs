@@ -21,9 +21,10 @@ namespace Commandos.IO.Tests.Serializers.Map
                 FileName = "TU1A.STR"
             };
             var record = TokenParser.ParseTokens(tokens).GetMultipleRecord(FicherosSerializer.Ficheros);
+            var target = new FicherosSerializer();
 
             // Act,
-            var actual = FicherosSerializer.GetFicheros(record);
+            var actual = target.Serialize(record);
 
             // Assert,
             Assert.AreEqual(expected, actual);
@@ -37,10 +38,11 @@ namespace Commandos.IO.Tests.Serializers.Map
             {
                 FileName = "TU1A.STR"
             };
+            var target = new FicherosSerializer();
 
             // Act,
-            var record = FicherosSerializer.GetRecord(expected);
-            var actual = FicherosSerializer.GetFicheros(record.GetMultipleRecords());
+            var record = target.Deserialize(expected);
+            var actual = target.Serialize(record.GetMultipleRecords());
 
             // Assert,
             Assert.AreEqual(expected, actual);
