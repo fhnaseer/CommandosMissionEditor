@@ -63,10 +63,17 @@
     <Compile Include="Characters\Commandos\Thief.cs" />
     <Compile Include="Characters\Commandos\Whisky.cs" />
     <Compile Include="Characters\Commandos\Wilson.cs" />
+    <Compile Include="Characters\Enemies\Actions\CustomAction.cs" />
+    <Compile Include="Characters\Enemies\Actions\EnemyAction.cs" />
+    <Compile Include="Characters\Enemies\Actions\EnemyActions.cs" />
+    <Compile Include="Characters\Enemies\Actions\BodyActions.cs" />
+    <Compile Include="Characters\Enemies\Actions\MovementActions.cs" />
     <Compile Include="Common\Ability.cs" />
     <Compile Include="Common\BackgroundMusic.cs" />
+    <Compile Include="Common\Enums.cs" />
     <Compile Include="Common\ItemCollections.cs" />
     <Compile Include="Map\Abilities.cs" />
+    <Compile Include="Map\Administration.cs" />
     <Compile Include="Map\Briefing.cs" />
     <Compile Include="Map\Camera.cs" />
     <Compile Include="GlobalSuppressions.cs" />
@@ -75,6 +82,10 @@
     <Compile Include="Common\Position.cs" />
     <Compile Include="Map\Music.cs" />
     <Compile Include="Map\NotParsed.cs" />
+    <Compile Include="Map\MissionObjects.cs" />
+    <Compile Include="Map\Patrols.cs" />
+    <Compile Include="Map\SoundAreas.cs" />
+    <Compile Include="Map\SpecialAreas.cs" />
     <Compile Include="Map\World.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -91,7 +102,6 @@
     </CodeAnalysisDictionary>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Characters\Enemies\" />
     <Folder Include="Files\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

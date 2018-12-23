@@ -21,5 +21,7 @@ namespace Commandos.IO.Serializers.Helpers
         private MusicSerializer _musicSerializer;
         public MusicSerializer MusicSerializer => _musicSerializer ?? (_musicSerializer = new MusicSerializer());
 
+        private WorldSerializer _worldSerializer;
+        public WorldSerializer WorldSerializer => _worldSerializer ?? (_worldSerializer = new WorldSerializer());
     }
 }

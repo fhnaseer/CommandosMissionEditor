@@ -48,7 +48,7 @@ namespace Commandos.Model.Map
         private World _world;
         public World World
         {
-            get => _world ?? (_world = new World(null));
+            get => _world ?? (_world = new World());
             set => _world = value;
         }
 

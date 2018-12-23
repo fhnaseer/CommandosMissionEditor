@@ -11,6 +11,13 @@ namespace Commandos.IO.Entities
             return null;
         }
 
+        public static MixedDataRecord GetMixedDataRecordTemp(this MultipleRecords multipleRecords, string recordName)
+        {
+            if (multipleRecords.Records.TryGetValue(recordName, out Record record))
+                return record.Data as MixedDataRecord;
+            return null;
+        }
+
         public static Record GetRecord(this MultipleRecords multipleRecords, string recordName)
         {
             if (multipleRecords.Records.TryGetValue(recordName, out Record record))
@@ -123,6 +130,22 @@ namespace Commandos.IO.Entities
             var singleDataRecord = new SingleDataRecord(data);
             record.Data = singleDataRecord;
             return record;
+        }
+
+        public static void AddMultipleRecords(this MultipleRecords multipleRecords, string recordName, object recordData)
+        {
+            var abilitiesRecord = new Record();
+            abilitiesRecord.Data = (MultipleRecords)recordData;
+            abilitiesRecord.Name = recordName;
+            multipleRecords.Records.Add(recordName, abilitiesRecord);
+        }
+
+        public static void AddMixedDataRecord(this MultipleRecords multipleRecords, string recordName, object recordData)
+        {
+            var abilitiesRecord = new Record();
+            abilitiesRecord.Data = recordData as RecordData;
+            abilitiesRecord.Name = recordName;
+            multipleRecords.Records.Add(recordName, abilitiesRecord);
         }
 
         public static void AddSingleDataRecord(this MultipleRecords multipleRecords, string name, string data)

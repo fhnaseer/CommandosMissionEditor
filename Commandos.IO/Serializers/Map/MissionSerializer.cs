@@ -21,7 +21,7 @@ namespace Commandos.IO.Serializers.Map
                 Music = SerializerHelper.Instance.MusicSerializer.Serialize(multipleRecords.GetMultipleRecord(MusicSerializer.Music)),
                 Ficheros = SerializerHelper.Instance.FicherosSerializer.Serialize(multipleRecords.GetMultipleRecord(FicherosSerializer.Ficheros)),
                 Abilities = new Abilities(multipleRecords.GetMultipleRecord(StringConstants.Abilities)),
-                World = new World(multipleRecords.GetMultipleRecord(StringConstants.World))
+                World = SerializerHelper.Instance.WorldSerializer.Serialize(multipleRecords.GetMultipleRecord(StringConstants.World))
             };
         }
 
@@ -34,12 +34,8 @@ namespace Commandos.IO.Serializers.Map
             records.Records.Add(BriefingSerializer.Briefing, SerializerHelper.Instance.BriefingSerializer.Deserialize(mission.Briefing));
             records.Records.Add(MusicSerializer.Music, SerializerHelper.Instance.MusicSerializer.Deserialize(mission.Music));
             records.Records.Add(FicherosSerializer.Ficheros, SerializerHelper.Instance.FicherosSerializer.Deserialize(mission.Ficheros));
-            var abilitiesRecord = new Record(StringConstants.Abilities);
-            abilitiesRecord.Data = (MultipleRecords)mission.Abilities.MultipleRecords;
-            records.Records.Add(StringConstants.Abilities, abilitiesRecord);
-            var worldRecord = new Record(StringConstants.World);
-            worldRecord.Data = (MultipleRecords)mission.World.MultipleRecords;
-            records.Records.Add(StringConstants.World, worldRecord);
+            records.AddMultipleRecords(StringConstants.Abilities, mission.Abilities.MultipleRecords);
+            records.Records.Add(WorldSerializer.World, SerializerHelper.Instance.WorldSerializer.Deserialize(mission.World));
             return records;
         }
     }
