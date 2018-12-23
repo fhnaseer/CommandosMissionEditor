@@ -10,8 +10,9 @@ namespace Commandos.IO.Serializers.Map
 
         public override string RecordName => Ficheros;
 
-        public override Ficheros Serialize(MultipleRecords multipleRecords)
+        public override Ficheros Serialize(Record record)
         {
+            var multipleRecords = record.GetMultipleRecords();
             return new Ficheros
             {
                 FileName = multipleRecords.GetStringValue(FicherosStrFile)

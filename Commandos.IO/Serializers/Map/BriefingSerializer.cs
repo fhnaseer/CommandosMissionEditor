@@ -10,8 +10,9 @@ namespace Commandos.IO.Serializers.Map
 
         public override string RecordName => Briefing;
 
-        public override Briefing Serialize(MultipleRecords multipleRecords)
+        public override Briefing Serialize(Record record)
         {
+            var multipleRecords = record.GetMultipleRecords();
             return new Briefing
             {
                 FileName = multipleRecords.GetStringValue(BriefingFile)

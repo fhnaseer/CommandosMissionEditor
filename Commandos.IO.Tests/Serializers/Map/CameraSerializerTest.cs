@@ -22,7 +22,7 @@ namespace Commandos.IO.Tests.Serializers.Map
                 Area = "EXTERIOR",
                 CameraDirection = "0"
             };
-            var record = TokenParser.ParseTokens(tokens).GetMultipleRecord(CameraSerializer.Camera);
+            var record = TokenParser.ParseTokens(tokens).GetRecord(CameraSerializer.Camera);
             var target = new CameraSerializer();
 
             // Act,
@@ -46,7 +46,7 @@ namespace Commandos.IO.Tests.Serializers.Map
 
             // Act,
             var record = target.Deserialize(expected);
-            var actual = target.Serialize(record.GetMultipleRecords());
+            var actual = target.Serialize(record);
 
             // Assert,
             Assert.AreEqual(expected, actual);

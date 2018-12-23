@@ -15,14 +15,15 @@ namespace Commandos.IO.Serializers.Map
 
         public override string RecordName => World;
 
-        public override World Serialize(MultipleRecords multipleRecords)
+        public override World Serialize(Record record)
         {
+            var multipleRecords = record.GetMultipleRecords();
             var world = new World
             {
                 GscFileName = multipleRecords.GetStringValue(GscFile),
                 Administration = new Administration(multipleRecords.GetMultipleRecord(Administration)),
                 MissionObjects = new MissionObjects(multipleRecords.GetMixedDataRecordTemp(MissionObjects)),
-                Patrols = new Patrols(multipleRecords.GetMixedDataRecordTemp(Patrols)),
+                EnemyPatrols = PatrolsSerializer.Serialize(multipleRecords.GetRecord(Patrols)),
                 SpecialAreas = new SpecialAreas(multipleRecords.GetMixedDataRecordTemp(SpecialAreas)),
                 SoundAreas = new SoundAreas(multipleRecords.GetMixedDataRecordTemp(SoundAreas)),
             };
@@ -42,7 +43,7 @@ namespace Commandos.IO.Serializers.Map
                 records.Records.Add(GscFile, RecordExtensions.GetSingleDataRecord(GscFile, input.GscFileName));
             records.AddMultipleRecords(Administration, input.Administration.MultipleRecords);
             records.AddMixedDataRecord(MissionObjects, input.MissionObjects.MultipleRecords);
-            records.AddMixedDataRecord(Patrols, input.Patrols.MultipleRecords);
+            //records.AddMixedDataRecord(Patrols, input.Patrols.MultipleRecords);
             records.AddMixedDataRecord(SpecialAreas, input.SpecialAreas.MultipleRecords);
             records.AddMixedDataRecord(SoundAreas, input.SoundAreas.MultipleRecords);
             record.Data = records;

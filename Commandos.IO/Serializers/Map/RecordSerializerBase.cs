@@ -1,12 +1,13 @@
 ﻿using System;
 using Commandos.IO.Entities;
 using Commandos.IO.Helpers;
+using Commandos.IO.Serializers.Helpers;
 
 namespace Commandos.IO.Serializers.Map
 {
     public abstract class RecordSerializerBase<T>
     {
-        public abstract T Serialize(MultipleRecords multipleRecords);
+        public abstract T Serialize(Record record);
 
         public abstract string RecordName { get; }
 
@@ -19,5 +20,17 @@ namespace Commandos.IO.Serializers.Map
             var multipleRecords = TokenParser.ParseTokens(tokens);
             return new Record(RecordName) { Data = multipleRecords };
         }
+
+        public SerializerHelper SerializerHelper => SerializerHelper.Instance;
+
+        public CameraSerializer CameraSerializer => SerializerHelper.CameraSerializer;
+
+        public FicherosSerializer FicherosSerializer => SerializerHelper.FicherosSerializer;
+
+        public MusicSerializer MusicSerializer => SerializerHelper.MusicSerializer;
+
+        public WorldSerializer WorldSerializer => SerializerHelper.WorldSerializer;
+
+        public PatrolsSerializer PatrolsSerializer => SerializerHelper.PatrolsSerializer;
     }
 }

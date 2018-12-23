@@ -16,12 +16,12 @@ namespace Commandos.IO.Serializers.Map
             {
                 MsbFileName = multipleRecords.GetStringValue(MsbFile),
                 BasFileName = multipleRecords.GetStringValue(BasFile),
-                Camera = SerializerHelper.Instance.CameraSerializer.Serialize(multipleRecords.GetMultipleRecord(CameraSerializer.Camera)),
-                Briefing = SerializerHelper.Instance.BriefingSerializer.Serialize(multipleRecords.GetMultipleRecord(BriefingSerializer.Briefing)),
-                Music = SerializerHelper.Instance.MusicSerializer.Serialize(multipleRecords.GetMultipleRecord(MusicSerializer.Music)),
-                Ficheros = SerializerHelper.Instance.FicherosSerializer.Serialize(multipleRecords.GetMultipleRecord(FicherosSerializer.Ficheros)),
+                Camera = SerializerHelper.Instance.CameraSerializer.Serialize(multipleRecords.GetRecord(CameraSerializer.Camera)),
+                Briefing = SerializerHelper.Instance.BriefingSerializer.Serialize(multipleRecords.GetRecord(BriefingSerializer.Briefing)),
+                Music = SerializerHelper.Instance.MusicSerializer.Serialize(multipleRecords.GetRecord(MusicSerializer.Music)),
+                Ficheros = SerializerHelper.Instance.FicherosSerializer.Serialize(multipleRecords.GetRecord(FicherosSerializer.Ficheros)),
                 Abilities = new Abilities(multipleRecords.GetMultipleRecord(StringConstants.Abilities)),
-                World = SerializerHelper.Instance.WorldSerializer.Serialize(multipleRecords.GetMultipleRecord(StringConstants.World))
+                World = SerializerHelper.Instance.WorldSerializer.Serialize(multipleRecords.GetRecord(StringConstants.World))
             };
         }
 

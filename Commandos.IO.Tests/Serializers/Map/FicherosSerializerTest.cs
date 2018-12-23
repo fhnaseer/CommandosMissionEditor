@@ -20,7 +20,7 @@ namespace Commandos.IO.Tests.Serializers.Map
             {
                 FileName = "TU1A.STR"
             };
-            var record = TokenParser.ParseTokens(tokens).GetMultipleRecord(FicherosSerializer.Ficheros);
+            var record = TokenParser.ParseTokens(tokens).GetRecord(FicherosSerializer.Ficheros);
             var target = new FicherosSerializer();
 
             // Act,
@@ -42,7 +42,7 @@ namespace Commandos.IO.Tests.Serializers.Map
 
             // Act,
             var record = target.Deserialize(expected);
-            var actual = target.Serialize(record.GetMultipleRecords());
+            var actual = target.Serialize(record);
 
             // Assert,
             Assert.AreEqual(expected, actual);

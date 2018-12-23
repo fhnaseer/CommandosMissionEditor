@@ -23,5 +23,9 @@ namespace Commandos.IO.Serializers.Helpers
 
         private WorldSerializer _worldSerializer;
         public WorldSerializer WorldSerializer => _worldSerializer ?? (_worldSerializer = new WorldSerializer());
+
+        private PatrolsSerializer _patrolsSerializer;
+        public PatrolsSerializer PatrolsSerializer => _patrolsSerializer ?? (_patrolsSerializer = new PatrolsSerializer());
+
     }
 }

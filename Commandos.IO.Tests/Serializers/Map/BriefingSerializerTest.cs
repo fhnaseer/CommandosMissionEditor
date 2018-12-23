@@ -20,7 +20,7 @@ namespace Commandos.IO.Tests.Serializers.Map
             {
                 FileName = "TU01A.BRI"
             };
-            var record = TokenParser.ParseTokens(tokens).GetMultipleRecord(BriefingSerializer.Briefing);
+            var record = TokenParser.ParseTokens(tokens).GetRecord(BriefingSerializer.Briefing);
             var target = new BriefingSerializer();
 
             // Act,
@@ -42,7 +42,7 @@ namespace Commandos.IO.Tests.Serializers.Map
 
             // Act,
             var record = target.Deserialize(expected);
-            var actual = target.Serialize(record.GetMultipleRecords());
+            var actual = target.Serialize(record);
 
             // Assert,
             Assert.AreEqual(expected, actual);

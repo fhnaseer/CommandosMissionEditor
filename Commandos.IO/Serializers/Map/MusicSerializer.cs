@@ -14,8 +14,9 @@ namespace Commandos.IO.Serializers.Map
 
         public override string RecordName => Music;
 
-        public override Music Serialize(MultipleRecords multipleRecords)
+        public override Music Serialize(Record record)
         {
+            var multipleRecords = record.GetMultipleRecords();
             var music = new Music();
             var mixedValues = multipleRecords.GetMixedDataRecord(MusicList);
             for (var i = 0; i < mixedValues.Count; i++)

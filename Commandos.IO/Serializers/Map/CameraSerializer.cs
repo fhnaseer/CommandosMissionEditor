@@ -13,8 +13,9 @@ namespace Commandos.IO.Serializers.Map
 
         public override string RecordName => Camera;
 
-        public override Camera Serialize(MultipleRecords multipleRecords)
+        public override Camera Serialize(Record record)
         {
+            var multipleRecords = record.GetMultipleRecords();
             return new Camera
             {
                 Position = GetPosition(multipleRecords.GetMixedDataRecord(StringConstants.Position)),

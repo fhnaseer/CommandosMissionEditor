@@ -72,6 +72,7 @@
     <Compile Include="Serializers\Map\MusicSerializer.cs" />
     <Compile Include="Serializers\Helpers\StringConstants.cs" />
     <Compile Include="Serializers\Map\CameraSerializer.cs" />
+    <Compile Include="Serializers\Map\PatrolsSerializer.cs" />
     <Compile Include="Serializers\Map\RecordSerializerBase.cs" />
     <Compile Include="Serializers\Map\WorldSerializer.cs" />
   </ItemGroup>
