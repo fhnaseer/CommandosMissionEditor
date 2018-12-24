@@ -43,7 +43,7 @@ namespace Commandos.IO.Serializers.Map
                 records.Records.Add(GscFile, RecordExtensions.GetSingleDataRecord(GscFile, input.GscFileName));
             records.AddMultipleRecords(Administration, input.Administration.MultipleRecords);
             records.AddMixedDataRecord(MissionObjects, input.MissionObjects.MultipleRecords);
-            //records.AddMixedDataRecord(Patrols, input.Patrols.MultipleRecords);
+            records.AddMixedDataRecord(Patrols, PatrolsSerializer.Deserialize(input.EnemyPatrols));
             records.AddMixedDataRecord(SpecialAreas, input.SpecialAreas.MultipleRecords);
             records.AddMixedDataRecord(SoundAreas, input.SoundAreas.MultipleRecords);
             record.Data = records;

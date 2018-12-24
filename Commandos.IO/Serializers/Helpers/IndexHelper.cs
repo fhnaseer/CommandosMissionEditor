@@ -28,6 +28,9 @@ namespace Commandos.IO.Helpers
         private static int GetStartIndex(string[] tokens, int startPoint)
         {
             for (var i = startPoint; i < tokens.Length; i++)
+                //if (tokens[i] == "(" || tokens[i] == ")" || tokens[i] == "[" || tokens[i] == "]")
+                //    continue;
+                //else
                 if (tokens[i].StartsWith(".", System.StringComparison.CurrentCultureIgnoreCase))
                     return i;
             throw new InvalidDataException($"Token not found,");

@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using Commandos.IO.Entities;
+﻿using Commandos.IO.Entities;
 using Commandos.IO.Helpers;
-using Commandos.Model.Common;
 using Commandos.Model.Map;
 
 namespace Commandos.IO.Serializers.Map
@@ -18,22 +16,12 @@ namespace Commandos.IO.Serializers.Map
             var multipleRecords = record.GetMultipleRecords();
             return new Camera
             {
-                Position = GetPosition(multipleRecords.GetMixedDataRecord(StringConstants.Position)),
-                Area = multipleRecords.GetStringValue(StringConstants.Area),
+                Position = Helpers.SerializerHelper.GetPosition(multipleRecords),
+                Area = Helpers.SerializerHelper.GetArea(multipleRecords),
                 CameraDirection = multipleRecords.GetStringValue(CameraDirection)
             };
         }
 
-        private static Position GetPosition(IList<RecordData> mixedDataRecord)
-        {
-            var x = mixedDataRecord[0].GetStringValue();
-            var y = mixedDataRecord[1].GetStringValue();
-            var z = mixedDataRecord[2].GetStringValue();
-            return new Position(x, y, z);
-        }
-
-        public override string GetMultipleRecordString(Camera input) => $"[ {CameraDirection} {input.CameraDirection} {StringConstants.Area} {input.Area} {GetPositionRecordString(input.Position)} ]";
-
-        private static string GetPositionRecordString(Position position) => $"{StringConstants.Position} ( {position.X} {position.Y} {position.Z} )";
+        public override string GetMultipleRecordString(Camera input) => $"[ {CameraDirection} {input.CameraDirection} {StringConstants.Area} {input.Area} {Helpers.SerializerHelper.GetPositionRecordString(input.Position)} ]";
     }
 }

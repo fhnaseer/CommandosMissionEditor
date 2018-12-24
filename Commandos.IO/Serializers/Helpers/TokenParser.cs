@@ -11,7 +11,8 @@ namespace Commandos.IO.Helpers
             if (tokens is null)
                 throw new ArgumentNullException(nameof(tokens));
             if (tokens[0] != "[" && tokens[tokens.Length - 1] != "]")
-                throw new InvalidDataException("Invalid data,");
+                if (tokens[0] != "(" && tokens[tokens.Length - 1] != ")")
+                    throw new InvalidDataException("Invalid data,");
             return ParseMultipleRecords(tokens, 0, tokens.Length - 1);
         }
 
@@ -51,16 +52,16 @@ namespace Commandos.IO.Helpers
                 if (tokens[i] == "(")
                 {
                     end = IndexHelper.GetEndIndex(tokens, i, BracketType.RoundBracket);
-                    record.Data.Add(ParseMixedRecords(tokens, i, end));
+                    record.Records.Add(ParseMixedRecords(tokens, i, end));
                 }
                 else if (tokens[i] == "[")
                 {
                     end = IndexHelper.GetEndIndex(tokens, i, BracketType.SquareBracket);
-                    record.Data.Add(ParseMultipleRecords(tokens, i, end));
+                    record.Records.Add(ParseMultipleRecords(tokens, i, end));
                 }
                 else
                 {
-                    record.Data.Add(ParseSingleDataRecord(tokens, i));
+                    record.Records.Add(ParseSingleDataRecord(tokens, i));
                     end = i;
                 }
                 i = end;

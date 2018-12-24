@@ -44,7 +44,7 @@ namespace Commandos.IO.Serializers.Files
             else if (record.Data is MixedDataRecord mixedDataRecord)
             {
                 AddLine(record.Name, tabCount);
-                AppendMixedDataRecord(mixedDataRecord.Data, tabCount);
+                AppendMixedDataRecord(mixedDataRecord.Records, tabCount);
             }
         }
 
@@ -70,7 +70,7 @@ namespace Commandos.IO.Serializers.Files
                     if (d is SingleDataRecord singleDataRecord)
                         AddLine(singleDataRecord.Data, childTabCount);
                     else if (d is MixedDataRecord mixedDataRecord)
-                        AppendMixedDataRecord(mixedDataRecord.Data, childTabCount);
+                        AppendMixedDataRecord(mixedDataRecord.Records, childTabCount);
                     else if (d is MultipleRecords multipleRecords)
                         AppendMultipleRecords(multipleRecords.Records.Values, childTabCount);
                 }

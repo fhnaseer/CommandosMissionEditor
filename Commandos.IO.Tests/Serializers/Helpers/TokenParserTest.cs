@@ -36,9 +36,9 @@ namespace Commandos.IO.Tests.Files
             // Assert,
             Assert.AreEqual(".XYZ", actual.Name);
             var values = (MixedDataRecord)actual.Data;
-            Assert.AreEqual("1", values.Data[0].ToString());
-            Assert.AreEqual("2", values.Data[1].ToString());
-            Assert.AreEqual("0", values.Data[2].ToString());
+            Assert.AreEqual("1", values.Records[0].ToString());
+            Assert.AreEqual("2", values.Records[1].ToString());
+            Assert.AreEqual("0", values.Records[2].ToString());
         }
 
         [TestMethod]
@@ -54,10 +54,10 @@ namespace Commandos.IO.Tests.Files
             // Assert,
             Assert.AreEqual(".MUSICAS", actual.Name);
             var values = (MixedDataRecord)actual.Data;
-            Assert.AreEqual("Battle.WAV", ((MixedDataRecord)values.Data[0]).Data[0].ToString());
-            Assert.AreEqual("EXTERIOR", ((MixedDataRecord)values.Data[0]).Data[1].ToString());
-            Assert.AreEqual("Shadows.WAV", ((MixedDataRecord)values.Data[1]).Data[0].ToString());
-            Assert.AreEqual("INTERIOR", ((MixedDataRecord)values.Data[1]).Data[1].ToString());
+            Assert.AreEqual("Battle.WAV", ((MixedDataRecord)values.Records[0]).Records[0].ToString());
+            Assert.AreEqual("EXTERIOR", ((MixedDataRecord)values.Records[0]).Records[1].ToString());
+            Assert.AreEqual("Shadows.WAV", ((MixedDataRecord)values.Records[1]).Records[0].ToString());
+            Assert.AreEqual("INTERIOR", ((MixedDataRecord)values.Records[1]).Records[1].ToString());
         }
 
         [TestMethod]
@@ -94,7 +94,7 @@ namespace Commandos.IO.Tests.Files
 
             // Assert,
             Assert.AreEqual(".PUERTAS", actual.Name);
-            var records = ((MultipleRecords)((MixedDataRecord)actual.Data).Data[0]).Records;
+            var records = ((MultipleRecords)((MixedDataRecord)actual.Data).Records[0]).Records;
             Assert.IsTrue(records.ContainsKey(".TOKEN"));
             Assert.IsTrue(records.ContainsKey(".FLAGS"));
             //Assert.AreEqual(".TOKEN", records.Values[0].Name);

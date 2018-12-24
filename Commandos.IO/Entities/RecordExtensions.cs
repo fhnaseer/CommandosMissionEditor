@@ -28,19 +28,25 @@ namespace Commandos.IO.Entities
         public static IList<RecordData> GetMixedDataRecord(this MultipleRecords multipleRecords, string recordName)
         {
             if (multipleRecords.Records.TryGetValue(recordName, out Record record))
-                return ((MixedDataRecord)record.Data).Data;
+                return ((MixedDataRecord)record.Data).Records;
             return null;
+        }
+
+        public static MultipleRecords GetMultipleRecords(this MixedDataRecord mixedDataRecord, int indexNumber)
+        {
+            var values = mixedDataRecord.Records;
+            return (MultipleRecords)values[indexNumber];
         }
 
         public static MixedDataRecord GetMixedDataRecord(this MixedDataRecord mixedDataRecord, int indexNumber)
         {
-            var values = mixedDataRecord.Data;
+            var values = mixedDataRecord.Records;
             return ((MixedDataRecord)values[indexNumber]);
         }
 
         public static string GetStringValue(this MixedDataRecord mixedDataRecord, int indexNumber)
         {
-            var values = mixedDataRecord.Data;
+            var values = mixedDataRecord.Records;
             return ((SingleDataRecord)values[indexNumber]).Data;
         }
 
@@ -80,6 +86,11 @@ namespace Commandos.IO.Entities
             return (MultipleRecords)record.Data;
         }
 
+        public static IList<RecordData> GetRecords(this Record record)
+        {
+            return ((MixedDataRecord)record.Data).Records;
+        }
+
         public static string GetStringValue(this Record record)
         {
             return ((SingleDataRecord)record.Data).Data;
@@ -97,7 +108,9 @@ namespace Commandos.IO.Entities
 
         public static string GetStringValue(this RecordData recordData)
         {
-            return ((SingleDataRecord)recordData).Data;
+            if (recordData is SingleDataRecord singleRecordData)
+                return singleRecordData.Data;
+            return null;
         }
 
         //public static double GetDoubleValue(this RecordData recordData)

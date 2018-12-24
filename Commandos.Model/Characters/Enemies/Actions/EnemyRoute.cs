@@ -1,29 +1,19 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Commandos.Model.Characters.Enemies.Actions;
-using Commandos.Model.Common;
 
-namespace Commandos.Model.Map
+namespace Commandos.Model.Characters.Enemies.Actions
 {
-    public class EnemyPatrol : MissionObject
+    public class EnemyRoute
     {
-        public string Angle { get; set; }
+        public string RouteName { get; set; }
 
-        public string ColumnsCount { get; set; }
+        public string Speed { get; set; }
 
-        public string RowsCount { get; set; }
+        public string ActionRepeatType { get; set; }
 
-        public string SoldiersFileName { get; set; }
-
-        public string LeaderFileName { get; set; }
-
-        private ObservableCollection<EnemyRoute> _routes;
-        public ObservableCollection<EnemyRoute> Routes => _routes ?? (_routes = new ObservableCollection<EnemyRoute>());
-
-        public string DefaultRoute { get; set; }
-
-        public string EventRoute { get; set; }
+        private ObservableCollection<EnemyAction> _actions;
+        public ObservableCollection<EnemyAction> Actions => _actions ?? (_actions = new ObservableCollection<EnemyAction>());
 
         #region Methods for Equality checks.
         // http://msdn.microsoft.com/en-us/library/dd183755.aspx
@@ -40,17 +30,17 @@ namespace Commandos.Model.Map
         [ExcludeFromCodeCoverage]
         public override bool Equals(object obj)
         {
-            return Equals(obj as EnemyPatrol);
+            return Equals(obj as EnemyRoute);
         }
 
         /// <summary>
-        /// Determines whether the specified EnemyPatrol is equal to the current EnemyPatrol.
+        /// Determines whether the specified EnemyActions is equal to the current EnemyActions.
         /// </summary>
-        /// <param name="other">The EnemyPatrol to compare with the current EnemyPatrol.</param>
-        /// <returns>true if the specified EnemyPatrol is equal to the current EnemyPatrol;
+        /// <param name="other">The EnemyActions to compare with the current EnemyActions.</param>
+        /// <returns>true if the specified EnemyActions is equal to the current EnemyActions;
         /// otherwise, false.</returns>
         [ExcludeFromCodeCoverage]
-        internal bool Equals(EnemyPatrol other)
+        internal bool Equals(EnemyRoute other)
         {
             // If parameter is null, return false.
             if (other is null)
@@ -60,9 +50,8 @@ namespace Commandos.Model.Map
             if (ReferenceEquals(this, other))
                 return true;
 
-            return (Angle == other.Angle && ColumnsCount == other.ColumnsCount && RowsCount == other.RowsCount &&
-                SoldiersFileName == other.SoldiersFileName && LeaderFileName == other.LeaderFileName &&
-                Routes.Count == other.Routes.Count && Routes.SequenceEqual(other.Routes));
+            return RouteName == other.RouteName && Speed == other.Speed && ActionRepeatType == other.ActionRepeatType &&
+                Actions.Count == other.Actions.Count && Actions.SequenceEqual(other.Actions);
         }
 
         /// <summary>
@@ -78,14 +67,14 @@ namespace Commandos.Model.Map
         }
 
         /// <summary>
-        /// Overrides equal operator for EnemyPatrol.
+        /// Overrides equal operator for EnemyActions.
         /// </summary>
-        /// <param name="left">Left EnemyPatrol.</param>
-        /// <param name="right">Right EnemyPatrol</param>
-        /// <returns>true if the left EnemyPatrol is equal to the right EnemyPatrol;
+        /// <param name="left">Left EnemyActions.</param>
+        /// <param name="right">Right EnemyActions</param>
+        /// <returns>true if the left EnemyActions is equal to the right EnemyActions;
         /// otherwise, false. </returns>
         [ExcludeFromCodeCoverage]
-        public static bool operator ==(EnemyPatrol left, EnemyPatrol right)
+        public static bool operator ==(EnemyRoute left, EnemyRoute right)
         {
             // Check for null on left side.
             if (left is null)
@@ -104,14 +93,14 @@ namespace Commandos.Model.Map
         }
 
         /// <summary>
-        /// Overrides not equal operator for EnemyPatrol.
+        /// Overrides not equal operator for EnemyActions.
         /// </summary>
-        /// <param name="left">Left EnemyPatrol.</param>
-        /// <param name="right">Right EnemyPatrol</param>
-        /// <returns>true if the left EnemyPatrol is not equal to the right EnemyPatrol;
+        /// <param name="left">Left EnemyActions.</param>
+        /// <param name="right">Right EnemyActions</param>
+        /// <returns>true if the left EnemyActions is not equal to the right EnemyActions;
         /// otherwise, false. </returns>
         [ExcludeFromCodeCoverage]
-        public static bool operator !=(EnemyPatrol left, EnemyPatrol right)
+        public static bool operator !=(EnemyRoute left, EnemyRoute right)
         {
             return !(left == right);
         }

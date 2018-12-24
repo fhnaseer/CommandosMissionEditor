@@ -1,4 +1,7 @@
-﻿using Commandos.IO.Serializers.Map;
+﻿using Commandos.IO.Entities;
+using Commandos.IO.Helpers;
+using Commandos.IO.Serializers.Map;
+using Commandos.Model.Common;
 
 namespace Commandos.IO.Serializers.Helpers
 {
@@ -27,5 +30,31 @@ namespace Commandos.IO.Serializers.Helpers
         private PatrolsSerializer _patrolsSerializer;
         public PatrolsSerializer PatrolsSerializer => _patrolsSerializer ?? (_patrolsSerializer = new PatrolsSerializer());
 
+        public static Position GetPosition(MultipleRecords multipleRecords)
+        {
+            var mixedDataRecord = multipleRecords.GetMixedDataRecord(StringConstants.Position);
+            var x = mixedDataRecord[0].GetStringValue();
+            var y = mixedDataRecord[1].GetStringValue();
+            var z = mixedDataRecord[2].GetStringValue();
+            return new Position(x, y, z);
+        }
+
+        public static string GetArea(MultipleRecords multipleRecords) => multipleRecords.GetStringValue(StringConstants.Area);
+
+        public static string GetSpeed(MultipleRecords multipleRecords) => multipleRecords.GetStringValue(StringConstants.Speed);
+
+        public static string GetMovementType(MultipleRecords multipleRecords) => multipleRecords.GetStringValue(StringConstants.MovementType);
+
+        public static string GetPositionRecordString(Position position) => $"{StringConstants.Position} ( {position.X} {position.Y} {position.Z} )";
+
+        public static string GetAreaRecordString(string area) => $"{StringConstants.Area} {area}";
+
+        public static string GetSpeedRecordString(string speed) => $"{StringConstants.Speed} {speed}";
+
+        public static string GetMovementTypeRecordString(string movementType) => $"{StringConstants.MovementType} {movementType}";
+
+        public static string GetActionTypeRecordString(string actionType) => $"{StringConstants.EnemyActionType} {actionType}";
+
+        internal static object GetAngleRecordString(string angle) => $"{StringConstants.Angle} {angle}";
     }
 }

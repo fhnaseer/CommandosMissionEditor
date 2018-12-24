@@ -59,6 +59,7 @@
     <Compile Include="Serializers\Map\MissionSerializerTest.cs" />
     <Compile Include="Serializers\Helpers\TokenParserTest.cs" />
     <Compile Include="Serializers\Map\MusicSerializerTest.cs" />
+    <Compile Include="Serializers\Map\PatrolSerializerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
