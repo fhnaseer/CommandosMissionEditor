@@ -23,7 +23,7 @@ namespace CommandosMissionEditor.ViewModels
         {
             var mission = MisFileSerializer.ReadMisFile(MissionFilePath);
             var window = new MainWindow();
-            window.Content = new MapViewModel(mission);
+            window.Content = new EditMissionViewModel(mission);
             window.Show();
         }
     }

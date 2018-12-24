@@ -15,6 +15,8 @@ namespace Commandos.Model.Characters.Enemies.Actions
         private ObservableCollection<EnemyAction> _actions;
         public ObservableCollection<EnemyAction> Actions => _actions ?? (_actions = new ObservableCollection<EnemyAction>());
 
+        public override string ToString() => RouteName;
+
         #region Methods for Equality checks.
         // http://msdn.microsoft.com/en-us/library/dd183755.aspx
         // Why ExcludeFromCodeCoverage? This code is used in multiple places and is heavily unit-tested.

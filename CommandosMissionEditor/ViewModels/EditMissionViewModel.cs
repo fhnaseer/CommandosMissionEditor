@@ -5,16 +5,16 @@ using Commandos.Model.Map;
 
 namespace CommandosMissionEditor.ViewModels
 {
-    public class MapViewModel : ViewModelBase
+    public class EditMissionViewModel : ViewModelBase
     {
         private readonly Mission _mission;
 
-        public MapViewModel(Mission mission)
+        public EditMissionViewModel(Mission mission)
         {
             _mission = mission;
         }
 
-        internal MapViewModel() { }
+        internal EditMissionViewModel() { }
 
         private List<MissionViewModelBase> _missionViewModels;
         public IList<MissionViewModelBase> MissionViewModels
@@ -24,7 +24,8 @@ namespace CommandosMissionEditor.ViewModels
                 return _missionViewModels ?? (_missionViewModels = new List<MissionViewModelBase>{
                     new FilesViewModel(_mission),
                     new MusicViewModel(_mission),
-                    new CameraViewModel(_mission)
+                    new CameraViewModel(_mission),
+                    new PatrolsViewModel(_mission)
                 });
             }
         }
@@ -39,7 +40,6 @@ namespace CommandosMissionEditor.ViewModels
                 OnPropertyChanged(nameof(SelectedMissionViewModel));
             }
         }
-
 
         private ICommand _saveMissionCommand;
         public ICommand SaveMissionCommand => _saveMissionCommand ?? (_saveMissionCommand = new RelayCommand(SaveMission));

@@ -1,11 +1,11 @@
 ﻿namespace CommandosMissionEditor.Views
 {
     /// <summary>
-    /// Interaction logic for MissionView.xaml
+    /// Interaction logic for PatrolsView.xaml
     /// </summary>
-    public partial class MapView
+    public partial class PatrolsView
     {
-        public MapView()
+        public PatrolsView()
         {
             InitializeComponent();
         }

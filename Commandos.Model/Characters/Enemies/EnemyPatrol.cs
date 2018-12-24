@@ -25,6 +25,8 @@ namespace Commandos.Model.Map
 
         public string EventRoute { get; set; }
 
+        public override string ToString() => TokenId;
+
         #region Methods for Equality checks.
         // http://msdn.microsoft.com/en-us/library/dd183755.aspx
         // Why ExcludeFromCodeCoverage? This code is used in multiple places and is heavily unit-tested.
