@@ -33,6 +33,11 @@ namespace Commandos.IO.Helpers
         {
             var indexes = IndexHelper.GetIndexes(tokens, startIndex);
             var record = new Record();
+            if (tokens[indexes.nameIndex] == ".ENTES")
+            {
+                record = new Record();
+            }
+
             record.Name = tokens[indexes.nameIndex];
             if (indexes.recordDataType == RecordDataType.SingleDataRecord)
                 record.Data = ParseSingleDataRecord(tokens, indexes.startIndex);
@@ -48,6 +53,10 @@ namespace Commandos.IO.Helpers
             var record = new MixedDataRecord();
             for (var i = startIndex + 1; i < endIndex; i++)
             {
+                if (tokens[i] == ".ENTES")
+                {
+                    record = new MixedDataRecord();
+                }
                 int end;
                 if (tokens[i] == "(")
                 {

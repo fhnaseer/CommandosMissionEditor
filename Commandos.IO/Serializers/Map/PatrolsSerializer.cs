@@ -54,7 +54,7 @@ namespace Commandos.IO.Serializers.Map
                 patrol.SoldiersFileName = multipleRecords.GetStringValue(SoldierFileName);
                 patrol.LeaderFileName = multipleRecords.GetStringValue(LeaderFileName);
                 var eventsRecord = multipleRecords.GetMixedDataRecord(EventsRoute);
-                if (eventsRecord != null)
+                if (eventsRecord != null && eventsRecord.Count != 0)
                     patrol.EventRoute = eventsRecord[0].GetStringValue();
                 AddPatrolRoutes(patrol, multipleRecords.GetMultipleRecord(Patrol).GetMultipleRecord(EnemyAction));
                 patrols.Add(patrol);

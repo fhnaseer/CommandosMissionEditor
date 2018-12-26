@@ -77,5 +77,17 @@ namespace Commandos.IO.Tests.Files
 
             // Assert,
         }
+
+        [TestMethod]
+        public void InvalidSpaces_Check()
+        {
+            // Arrange,
+            var inputPath = Path.Combine(TestContext.DeploymentDirectory, "InvalidSpaces.mis");
+
+            // Act,
+            var target = MisFileSerializer.ReadMisFile(inputPath);
+
+            // Assert,
+        }
     }
 }

@@ -66,6 +66,9 @@
     <None Include="TestFiles\5G1A.MIS">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="TestFiles\InvalidSpaces.mis">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="TestFiles\MultilineComments.mis">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -29,6 +29,10 @@ namespace Commandos.IO.Files
             var lines = File.ReadAllLines(path).ToList();
             lines = GetCleanedLines(lines);
             var fullText = string.Join(" ", lines);
+            fullText = fullText.Replace("[", " [ ");
+            fullText = fullText.Replace("]", " ] ");
+            fullText = fullText.Replace("(", " ( ");
+            fullText = fullText.Replace(")", " ) ");
             var commentPattern = @"/\*(?:(?!\*/).)*\*/";
             var matches = Regex.Matches(fullText, commentPattern);
             foreach (Match match in matches)
@@ -49,6 +53,8 @@ namespace Commandos.IO.Files
                     continue;
                 else if (index > 0)
                     text = line.Substring(0, index).Trim();
+                //cleanedLines.Add(line);
+
                 AddCleanedLines(text, cleanedLines);
             }
             return cleanedLines;
@@ -56,6 +62,7 @@ namespace Commandos.IO.Files
 
         private static void AddCleanedLines(string line, List<string> lines)
         {
+            line = line.Trim();
             if (line.StartsWith("[", StringComparison.CurrentCultureIgnoreCase) || line.StartsWith("]", StringComparison.CurrentCultureIgnoreCase) ||
                 line.StartsWith("(", StringComparison.CurrentCultureIgnoreCase) || line.StartsWith(")", StringComparison.CurrentCultureIgnoreCase))
             {
