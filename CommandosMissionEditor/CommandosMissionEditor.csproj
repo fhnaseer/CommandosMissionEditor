@@ -68,14 +68,20 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="RelayCommand.cs" />
+    <Compile Include="ViewModels\AddPatrolViewModel.cs" />
     <Compile Include="ViewModels\CameraViewModel.cs" />
     <Compile Include="ViewModels\FilesViewModel.cs" />
     <Compile Include="ViewModels\EditMissionViewModel.cs" />
     <Compile Include="ViewModels\MissionViewModelBase.cs" />
     <Compile Include="ViewModels\MusicViewModel.cs" />
+    <Compile Include="ViewModels\PatrolActionViewModel.cs" />
+    <Compile Include="ViewModels\PatrolRouteViewModel.cs" />
     <Compile Include="ViewModels\PatrolsViewModel.cs" />
     <Compile Include="ViewModels\UploadMissionViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\AddPatrolView.xaml.cs">
+      <DependentUpon>AddPatrolView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CameraView.xaml.cs">
       <DependentUpon>CameraView.xaml</DependentUpon>
     </Compile>
@@ -87,6 +93,12 @@
     </Compile>
     <Compile Include="Views\MusicView.xaml.cs">
       <DependentUpon>MusicView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PatrolActionView.xaml.cs">
+      <DependentUpon>PatrolActionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PatrolRouteView.xaml.cs">
+      <DependentUpon>PatrolRouteView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PatrolsView.xaml.cs">
       <DependentUpon>PatrolsView.xaml</DependentUpon>
@@ -111,6 +123,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\AddPatrolView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CameraView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -124,6 +140,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MusicView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PatrolActionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PatrolRouteView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

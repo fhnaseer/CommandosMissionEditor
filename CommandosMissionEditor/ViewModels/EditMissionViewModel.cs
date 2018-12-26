@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Input;
 using Commandos.Model.Map;
 
@@ -27,17 +26,6 @@ namespace CommandosMissionEditor.ViewModels
                     new CameraViewModel(_mission),
                     new PatrolsViewModel(_mission)
                 });
-            }
-        }
-
-        private MissionViewModelBase _selectedMissionViewModel;
-        public MissionViewModelBase SelectedMissionViewModel
-        {
-            get => _selectedMissionViewModel ?? (_selectedMissionViewModel = MissionViewModels.FirstOrDefault());
-            set
-            {
-                _selectedMissionViewModel = value;
-                OnPropertyChanged(nameof(SelectedMissionViewModel));
             }
         }
 

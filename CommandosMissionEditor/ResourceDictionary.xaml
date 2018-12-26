@@ -1,6 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:CommandosMissionEditor"
                     xmlns:views="clr-namespace:CommandosMissionEditor.Views"
                     xmlns:viewModels="clr-namespace:CommandosMissionEditor.ViewModels">
     <DataTemplate DataType="{x:Type viewModels:UploadMissionViewModel}">
@@ -25,6 +24,18 @@
 
     <DataTemplate DataType="{x:Type viewModels:PatrolsViewModel}">
         <views:PatrolsView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewModels:AddPatrolViewModel}">
+        <views:AddPatrolView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewModels:PatrolActionViewModel}">
+        <views:PatrolActionView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewModels:PatrolRouteViewModel}">
+        <views:PatrolRouteView />
     </DataTemplate>
 
     <Style TargetType="Button">

@@ -12,86 +12,12 @@
     <UserControl.Resources>
         <ResourceDictionary Source="../ResourceDictionary.xaml" />
     </UserControl.Resources>
-    <StackPanel>
-        <GroupBox Header="Patrols" Margin="10 10 10 0">
-            <StackPanel>
-                <UniformGrid Rows="1">
-                    <TextBlock Text="Patrols" />
-                    <ComboBox ItemsSource="{Binding Mission.World.EnemyPatrols}" SelectedItem="{Binding SelectedEnemyPatrol}" />
-                    <Button Content="Edit Selected" Command="{Binding EditSelectedPatrolCommand}" />
-                    <Button Content="Remove Selected" Command="{Binding RemoveSelectedPatrolCommand}" />
-                </UniformGrid>
-                <UniformGrid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Columns="4">
-                    <TextBlock Text="Token Id" />
-                    <TextBox Text="{Binding CurrentEnemyPatrol.TokenId}" />
-                    <TextBlock Text="Starting Position" />
-                    <UniformGrid Rows="1">
-                        <TextBox Text="{Binding CurrentEnemyPatrol.Position.X}" />
-                        <TextBox Text="{Binding CurrentEnemyPatrol.Position.Y}" />
-                        <TextBox Text="{Binding CurrentEnemyPatrol.Position.Z}" />
-                    </UniformGrid>
-                    <TextBlock Text="Area" />
-                    <TextBox Text="{Binding CurrentEnemyPatrol.Area}" />
-                    <TextBlock Text="Angle" />
-                    <TextBox Text="{Binding CurrentEnemyPatrol.Angle}" />
-                    <TextBlock Text="Columns Count" />
-                    <TextBox Text="{Binding CurrentEnemyPatrol.ColumnsCount}" />
-                    <TextBlock Text="Rows Count" />
-                    <TextBox Text="{Binding CurrentEnemyPatrol.RowsCount}" />
-                    <TextBlock Text="Soldiers File Name" />
-                    <TextBox Text="{Binding CurrentEnemyPatrol.SoldiersFileName}" />
-                    <TextBlock Text="Leader File Name" />
-                    <TextBox Text="{Binding CurrentEnemyPatrol.LeaderFileName}" />
-                </UniformGrid>
-                <UniformGrid Grid.Row="3" Grid.Column="1" Rows="1">
-                    <Button Content="Add Patrol" Command="{Binding AddPatrolCommand}" />
-                    <Button Content="Clear Patrol Information" Command="{Binding ClearPatrolCommand}" />
-                </UniformGrid>
-            </StackPanel>
-        </GroupBox>
-        <GroupBox Header="Routes" Margin="10 10 10 0">
-            <StackPanel>
-                <UniformGrid Rows="1">
-                    <TextBlock Text="Routes" />
-                    <ComboBox ItemsSource="{Binding CurrentEnemyPatrol.Routes}" SelectedItem="{Binding SelectedEnemyRoute}" />
-                    <Button Content="Edit Selected" Command="{Binding EditSelectedRouteCommand}" />
-                    <Button Content="Remove Selected" Command="{Binding RemoveSelectedRouteCommand}" />
-                </UniformGrid>
-                <UniformGrid Columns="4">
-                    <TextBlock Text="Name" />
-                    <TextBox Text="{Binding CurrentEnemyRoute.RouteName}" />
-                    <TextBlock Text="Speed" />
-                    <TextBox Text="{Binding CurrentEnemyRoute.Speed}" />
-                    <TextBlock Text="Repeat Type" />
-                    <TextBox Text="{Binding CurrentEnemyRoute.ActionRepeatType}" />
-                    <Button Content="Add Route" Command="{Binding AddRouteCommand}" />
-                    <Button Content="Clear Route Information" Command="{Binding ClearRouteCommand}" />
-                </UniformGrid>
-            </StackPanel>
-        </GroupBox>
-        <GroupBox Header="Actions">
-            <StackPanel>
-                <UniformGrid Rows="1">
-                    <TextBlock Text="Actions" />
-                    <ComboBox ItemsSource="{Binding CurrentEnemyRoute.Actions}" SelectedItem="{Binding SelectedEnemyAction}" />
-                    <Button Content="Edit Selected" Command="{Binding EditSelectedActionCommand}" />
-                    <Button Content="Remove Selected" Command="{Binding RemoveSelectedActionCommand}" />
-                </UniformGrid>
-                <UniformGrid Columns="4">
-                    <TextBlock Text="Movement Type" />
-                    <TextBox Text="{Binding CurrentEnemyAction.MovementType}" />
-                    <TextBlock Text="Area" />
-                    <TextBox Text="{Binding CurrentEnemyAction.Area}" />
-                    <TextBlock Text="Position" />
-                    <UniformGrid Rows="1">
-                        <TextBox Text="{Binding CurrentEnemyAction.Position.X}" />
-                        <TextBox Text="{Binding CurrentEnemyAction.Position.Y}" />
-                        <TextBox Text="{Binding CurrentEnemyAction.Position.Z}" />
-                    </UniformGrid>
-                    <Button Content="Add Action" Command="{Binding AddActionCommand}" />
-                    <Button Content="Clear Action Information" Command="{Binding ClearActionCommand}" />
-                </UniformGrid>
-            </StackPanel>
-        </GroupBox>
-    </StackPanel>
+    <TabControl ItemsSource="{Binding PatrolsViewModels}" >
+        <TabControl.ItemTemplate>
+            <!-- this is the header template-->
+            <DataTemplate>
+                <TextBlock Text="{Binding TabName}"  Width="100" />
+            </DataTemplate>
+        </TabControl.ItemTemplate>
+    </TabControl>
 </UserControl>
