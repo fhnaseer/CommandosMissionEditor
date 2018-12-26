@@ -21,6 +21,11 @@ namespace Commandos.Model.Common
 
         public string Z { get; set; }
 
+        public override string ToString()
+        {
+            return $"X: {X} Y: {Y} Z: {Z}";
+        }
+
         #region Methods for Equality checks.
         // http://msdn.microsoft.com/en-us/library/dd183755.aspx
         // Why ExcludeFromCodeCoverage? This code is used in multiple places and is heavily unit-tested.

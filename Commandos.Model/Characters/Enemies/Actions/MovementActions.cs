@@ -18,6 +18,10 @@ namespace Commandos.Model.Characters.Enemies.Actions
 
         public string Area { get; set; }
 
+        public override string ToString()
+        {
+            return $"{ActionName} {Position.ToString()}";
+        }
 
         #region Methods for Equality checks.
         // http://msdn.microsoft.com/en-us/library/dd183755.aspx
