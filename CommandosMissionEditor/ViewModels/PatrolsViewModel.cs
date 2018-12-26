@@ -20,8 +20,8 @@ namespace CommandosMissionEditor.ViewModels
             {
                 return _patrolsViewModels ?? (_patrolsViewModels = new List<MissionViewModelBase>{
                     new AddPatrolViewModel(Mission),
-                    new PatrolRouteViewModel(Mission),
-                    new PatrolActionViewModel(Mission),
+                    new AddPatrolRouteViewModel(Mission),
+                    new AddPatrolActionViewModel(Mission),
                 });
             }
         }

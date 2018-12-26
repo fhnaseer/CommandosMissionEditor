@@ -4,13 +4,13 @@ using Commandos.Model.Map;
 
 namespace CommandosMissionEditor.ViewModels
 {
-    public class PatrolRouteViewModel : MissionViewModelBase
+    public class AddPatrolRouteViewModel : MissionViewModelBase
     {
-        public PatrolRouteViewModel(Mission mission) : base(mission)
+        public AddPatrolRouteViewModel(Mission mission) : base(mission)
         {
         }
 
-        internal PatrolRouteViewModel() : base(null) { }
+        internal AddPatrolRouteViewModel() : base(null) { }
 
         public override string TabName => "Routes";
 
@@ -67,7 +67,7 @@ namespace CommandosMissionEditor.ViewModels
         }
 
         private ICommand _addRouteCommand;
-        public ICommand AddRouteCommand => _addRouteCommand ?? (_addRouteCommand = new RelayCommand(AddRoute));
+        public ICommand AddRouteCommand => _addRouteCommand ?? (_addRouteCommand = new RelayCommand(AddRoute, () => !ReferenceEquals(SelectedEnemyRoute, CurrentEnemyRoute)));
 
         internal void AddRoute()
         {

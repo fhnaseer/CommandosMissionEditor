@@ -30,12 +30,12 @@
         <views:AddPatrolView />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type viewModels:PatrolActionViewModel}">
-        <views:PatrolActionView />
+    <DataTemplate DataType="{x:Type viewModels:AddPatrolActionViewModel}">
+        <views:AddPatrolActionView />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type viewModels:PatrolRouteViewModel}">
-        <views:PatrolRouteView />
+    <DataTemplate DataType="{x:Type viewModels:AddPatrolRouteViewModel}">
+        <views:AddPatrolRouteView />
     </DataTemplate>
 
     <Style TargetType="Button">

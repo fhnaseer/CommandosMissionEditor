@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="CommandosMissionEditor.Views.PatrolRouteView"
+﻿<UserControl x:Class="CommandosMissionEditor.Views.AddPatrolRouteView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <d:UserControl.DataContext>
-        <viewModels:PatrolRouteViewModel/>
+        <viewModels:AddPatrolRouteViewModel/>
     </d:UserControl.DataContext>
     <UserControl.Resources>
         <ResourceDictionary Source="../ResourceDictionary.xaml" />
@@ -36,8 +36,8 @@
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Routes" />
         <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SelectedEnemyPatrol.Routes}" SelectedItem="{Binding SelectedEnemyRoute}" />
         <UniformGrid Grid.Row="2" Grid.Column="1" Rows="1">
-            <Button Content="Edit Selected" Command="{Binding EditSelectedPatrolCommand}" />
-            <Button Content="Remove Selected" Command="{Binding RemoveSelectedPatrolCommand}" />
+            <Button Content="Edit Selected" Command="{Binding EditSelectedRouteCommand}" />
+            <Button Content="Remove Selected" Command="{Binding RemoveSelectedRouteCommand}" />
         </UniformGrid>
         <TextBlock Grid.Row="3" Grid.Column="0" Text="Name" />
         <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding CurrentEnemyRoute.RouteName}" />

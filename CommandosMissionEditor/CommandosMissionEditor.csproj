@@ -74,8 +74,8 @@
     <Compile Include="ViewModels\EditMissionViewModel.cs" />
     <Compile Include="ViewModels\MissionViewModelBase.cs" />
     <Compile Include="ViewModels\MusicViewModel.cs" />
-    <Compile Include="ViewModels\PatrolActionViewModel.cs" />
-    <Compile Include="ViewModels\PatrolRouteViewModel.cs" />
+    <Compile Include="ViewModels\AddPatrolActionViewModel.cs" />
+    <Compile Include="ViewModels\AddPatrolRouteViewModel.cs" />
     <Compile Include="ViewModels\PatrolsViewModel.cs" />
     <Compile Include="ViewModels\UploadMissionViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
@@ -94,11 +94,11 @@
     <Compile Include="Views\MusicView.xaml.cs">
       <DependentUpon>MusicView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PatrolActionView.xaml.cs">
-      <DependentUpon>PatrolActionView.xaml</DependentUpon>
+    <Compile Include="Views\AddPatrolActionView.xaml.cs">
+      <DependentUpon>AddPatrolActionView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PatrolRouteView.xaml.cs">
-      <DependentUpon>PatrolRouteView.xaml</DependentUpon>
+    <Compile Include="Views\AddPatrolRouteView.xaml.cs">
+      <DependentUpon>AddPatrolRouteView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PatrolsView.xaml.cs">
       <DependentUpon>PatrolsView.xaml</DependentUpon>
@@ -143,11 +143,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PatrolActionView.xaml">
+    <Page Include="Views\AddPatrolActionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PatrolRouteView.xaml">
+    <Page Include="Views\AddPatrolRouteView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -4,13 +4,13 @@ using Commandos.Model.Map;
 
 namespace CommandosMissionEditor.ViewModels
 {
-    public class PatrolActionViewModel : MissionViewModelBase
+    public class AddPatrolActionViewModel : MissionViewModelBase
     {
-        public PatrolActionViewModel(Mission mission) : base(mission)
+        public AddPatrolActionViewModel(Mission mission) : base(mission)
         {
         }
 
-        internal PatrolActionViewModel() : base(null) { }
+        internal AddPatrolActionViewModel() : base(null) { }
 
         public override string TabName => "Actions";
 
@@ -47,7 +47,7 @@ namespace CommandosMissionEditor.ViewModels
             }
         }
 
-        private EnemyAction _currentEnemyAction;// = new EnemyAction();
+        private EnemyAction _currentEnemyAction = new MoveAction();
         public EnemyAction CurrentEnemyAction
         {
             get => _currentEnemyAction;
@@ -78,12 +78,12 @@ namespace CommandosMissionEditor.ViewModels
         }
 
         private ICommand _addActionCommand;
-        public ICommand AddActionCommand => _addActionCommand ?? (_addActionCommand = new RelayCommand(AddAction));
+        public ICommand AddActionCommand => _addActionCommand ?? (_addActionCommand = new RelayCommand(AddAction, () => !ReferenceEquals(SelectedEnemyAction, CurrentEnemyAction)));
 
         internal void AddAction()
         {
             SelectedEnemyRoute.Actions.Add(CurrentEnemyAction);
-            SelectedEnemyAction = null;
+            CurrentEnemyAction = new MoveAction();
         }
 
         private ICommand _clearActionCommand;
@@ -91,7 +91,7 @@ namespace CommandosMissionEditor.ViewModels
 
         internal void ClearAction()
         {
-            //CurrentEnemyAction = new EnemyAction();
+            CurrentEnemyAction = new MoveAction();
         }
     }
 }

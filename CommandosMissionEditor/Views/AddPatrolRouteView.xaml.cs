@@ -3,9 +3,9 @@
     /// <summary>
     /// Interaction logic for PatrolRouteView.xaml
     /// </summary>
-    public partial class PatrolRouteView
+    public partial class AddPatrolRouteView
     {
-        public PatrolRouteView()
+        public AddPatrolRouteView()
         {
             InitializeComponent();
         }

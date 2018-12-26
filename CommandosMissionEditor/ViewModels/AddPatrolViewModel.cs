@@ -55,7 +55,7 @@ namespace CommandosMissionEditor.ViewModels
         }
 
         private ICommand _addPatrolCommand;
-        public ICommand AddPatrolCommand => _addPatrolCommand ?? (_addPatrolCommand = new RelayCommand(AddPatrol));
+        public ICommand AddPatrolCommand => _addPatrolCommand ?? (_addPatrolCommand = new RelayCommand(AddPatrol, () => !ReferenceEquals(SelectedEnemyPatrol, CurrentEnemyPatrol)));
 
         internal void AddPatrol()
         {
