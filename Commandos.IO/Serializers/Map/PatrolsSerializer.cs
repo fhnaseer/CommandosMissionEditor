@@ -33,6 +33,9 @@ namespace Commandos.IO.Serializers.Map
         public override ObservableCollection<EnemyPatrol> Serialize(Record record)
         {
             var patrols = new ObservableCollection<EnemyPatrol>();
+            if (record == null)
+                return patrols;
+
             var patrolRecords = record.GetRecords();
             foreach (var patrolRecord in patrolRecords)
             {

@@ -65,5 +65,17 @@ namespace Commandos.IO.Tests.Files
             File.Delete(firstOutputPath);
             File.Delete(secondOutputPath);
         }
+
+        [TestMethod]
+        public void MultilineComments_Check()
+        {
+            // Arrange,
+            var inputPath = Path.Combine(TestContext.DeploymentDirectory, "MultilineComments.mis");
+
+            // Act,
+            var target = MisFileSerializer.ReadMisFile(inputPath);
+
+            // Assert,
+        }
     }
 }

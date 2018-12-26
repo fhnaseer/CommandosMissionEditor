@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Commandos.IO.Entities;
 using Commandos.IO.Helpers;
 using Commandos.IO.Serializers.Files;
@@ -28,6 +29,10 @@ namespace Commandos.IO.Files
             var lines = File.ReadAllLines(path).ToList();
             lines = GetCleanedLines(lines);
             var fullText = string.Join(" ", lines);
+            var commentPattern = @"/\*(?:(?!\*/).)*\*/";
+            var matches = Regex.Matches(fullText, commentPattern);
+            foreach (Match match in matches)
+                fullText = fullText.Replace(match.Value, " ");
             return fullText.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
         }
 
@@ -45,7 +50,6 @@ namespace Commandos.IO.Files
                 else if (index > 0)
                     text = line.Substring(0, index).Trim();
                 AddCleanedLines(text, cleanedLines);
-                //cleanedLines.Add(line);
             }
             return cleanedLines;
         }
