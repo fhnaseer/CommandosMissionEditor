@@ -30,13 +30,13 @@ namespace Commandos.IO.Serializers.Helpers
         private PatrolsSerializer _patrolsSerializer;
         public PatrolsSerializer PatrolsSerializer => _patrolsSerializer ?? (_patrolsSerializer = new PatrolsSerializer());
 
-        public static void SerializeIPosition(IPosition target, MultipleRecords multipleRecords)
+        public static void PopulateIPosition(IPosition target, MultipleRecords multipleRecords)
         {
             target.Position = GetPosition(multipleRecords);
             target.Area = GetArea(multipleRecords);
         }
 
-        public static Position GetPosition(MultipleRecords multipleRecords)
+        private static Position GetPosition(MultipleRecords multipleRecords)
         {
             var mixedDataRecord = multipleRecords.GetMixedDataRecord(StringConstants.Position);
             var x = mixedDataRecord[0].GetStringValue();
@@ -45,7 +45,7 @@ namespace Commandos.IO.Serializers.Helpers
             return new Position(x, y, z);
         }
 
-        public static string GetArea(MultipleRecords multipleRecords) => multipleRecords.GetStringValue(StringConstants.Area);
+        private static string GetArea(MultipleRecords multipleRecords) => multipleRecords.GetStringValue(StringConstants.Area);
 
         public static string GetSpeed(MultipleRecords multipleRecords) => multipleRecords.GetStringValue(StringConstants.Speed);
 
@@ -53,9 +53,9 @@ namespace Commandos.IO.Serializers.Helpers
 
         public static string GetIPositionRecordString(IPosition target) => $"{StringConstants.Position} ( {target.Position.X} {target.Position.Y} {target.Position.Z} ) {StringConstants.Area} {target.Area}";
 
-        public static string GetPositionRecordString(Position position) => $"{StringConstants.Position} ( {position.X} {position.Y} {position.Z} )";
+        private static string GetPositionRecordString(Position position) => $"{StringConstants.Position} ( {position.X} {position.Y} {position.Z} )";
 
-        public static string GetAreaRecordString(string area) => $"{StringConstants.Area} {area}";
+        private static string GetAreaRecordString(string area) => $"{StringConstants.Area} {area}";
 
         public static string GetSpeedRecordString(string speed) => $"{StringConstants.Speed} {speed}";
 

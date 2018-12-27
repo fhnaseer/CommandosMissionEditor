@@ -1,6 +1,6 @@
 ﻿namespace Commandos.Model.Common
 {
-    public abstract class MissionObject
+    public abstract class MissionObject : IPosition
     {
         public string TokenId { get; set; }
 

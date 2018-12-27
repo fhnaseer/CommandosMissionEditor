@@ -14,7 +14,7 @@ namespace Commandos.IO.Serializers.Map
         {
             var multipleRecords = record.GetMultipleRecords();
             var camera = new Camera();
-            Helpers.SerializerHelper.SerializeIPosition(camera, multipleRecords);
+            Helpers.SerializerHelper.PopulateIPosition(camera, multipleRecords);
             camera.CameraDirection = multipleRecords.GetStringValue(CameraDirection);
             return camera;
         }

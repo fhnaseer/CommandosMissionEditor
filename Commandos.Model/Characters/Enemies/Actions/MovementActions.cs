@@ -3,7 +3,7 @@ using Commandos.Model.Common;
 
 namespace Commandos.Model.Characters.Enemies.Actions
 {
-    public class MoveAction : EnemyAction
+    public class MoveAction : EnemyAction, IPosition
     {
         public override string ActionName => "Move";
 

@@ -46,8 +46,7 @@ namespace Commandos.IO.Serializers.Map
                 var patrol = new EnemyPatrol();
                 var multipleRecords = mixedDataRecord.GetMultipleRecords(1);
                 patrol.TokenId = multipleRecords.GetStringValue(StringConstants.TokenId);
-                patrol.Position = Helpers.SerializerHelper.GetPosition(multipleRecords);
-                patrol.Area = Helpers.SerializerHelper.GetArea(multipleRecords);
+                Helpers.SerializerHelper.PopulateIPosition(patrol, multipleRecords);
                 patrol.Angle = multipleRecords.GetStringValue(StringConstants.Angle);
                 patrol.ColumnsCount = multipleRecords.GetStringValue(ColumnsCount);
                 patrol.RowsCount = multipleRecords.GetStringValue(RowsCount);
@@ -87,8 +86,7 @@ namespace Commandos.IO.Serializers.Map
                 {
                     var multipleRecords = mixedDataRecord.GetMultipleRecords(1);
                     var action = new MoveAction();
-                    action.Position = Helpers.SerializerHelper.GetPosition(multipleRecords);
-                    action.Area = Helpers.SerializerHelper.GetArea(multipleRecords);
+                    Helpers.SerializerHelper.PopulateIPosition(action, multipleRecords);
                     action.MovementType = Helpers.SerializerHelper.GetMovementType(multipleRecords);
                     enemyActions.Actions.Add(action);
                 }
@@ -100,7 +98,6 @@ namespace Commandos.IO.Serializers.Map
             var recordString = GetMultipleRecordString(input);
             var tokens = recordString.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
             return TokenParser.ParseTokens(tokens, 0);
-            //return new Record(RecordName) { Data = multipleRecords.Data };
         }
 
         public override string GetMultipleRecordString(ObservableCollection<EnemyPatrol> input)
@@ -113,8 +110,8 @@ namespace Commandos.IO.Serializers.Map
             var stringBuilder = new StringBuilder();
             stringBuilder.Append($"[ {Patrols} ( ");
             foreach (var patrol in patrols)
-                stringBuilder.Append($"( {OnePatrol} [ {GetEnemyRoutesRecordString(patrol)} {StringConstants.TokenId} {patrol.TokenId} {Helpers.SerializerHelper.GetPositionRecordString(patrol.Position)} {GetEventsRouteRecordString(patrol)} " +
-                    $"{Helpers.SerializerHelper.GetAreaRecordString(patrol.Area)} {Helpers.SerializerHelper.GetAngleRecordString(patrol.Angle)} .EMPIEZA PATRULLANDO " +
+                stringBuilder.Append($"( {OnePatrol} [ {GetEnemyRoutesRecordString(patrol)} {StringConstants.TokenId} {patrol.TokenId} {GetEventsRouteRecordString(patrol)} " +
+                    $"{Helpers.SerializerHelper.GetIPositionRecordString(patrol)} {Helpers.SerializerHelper.GetAngleRecordString(patrol.Angle)} .EMPIEZA PATRULLANDO " +
                     $"{ColumnsCount} {patrol.ColumnsCount} {RowsCount} {patrol.RowsCount} {SoldierFileName} {patrol.SoldiersFileName} {LeaderFileName} {patrol.LeaderFileName} " +
                     $".DETIENE 0 ] ) ");
             stringBuilder.Append($") ]");
@@ -147,7 +144,7 @@ namespace Commandos.IO.Serializers.Map
             foreach (var action in actions)
             {
                 if (action is MoveAction moveAction)
-                    stringBuilder.Append($"( {MoveAction} [ {StringConstants.MovementType} {moveAction.MovementType} {Helpers.SerializerHelper.GetPositionRecordString(moveAction.Position)} {Helpers.SerializerHelper.GetAreaRecordString(moveAction.Area)} ] ) ");
+                    stringBuilder.Append($"( {MoveAction} [ {Helpers.SerializerHelper.GetMovementTypeRecordString(moveAction.MovementType)} {Helpers.SerializerHelper.GetIPositionRecordString(moveAction)} ] ) ");
             }
             stringBuilder.Append(")");
             return stringBuilder.ToString();
