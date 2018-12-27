@@ -31,37 +31,37 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Patrols" />
-        <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Mission.World.EnemyPatrols}" SelectedItem="{Binding SelectedEnemyPatrol}" />
+        <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding ItemCollection}" SelectedItem="{Binding SelectedItem}" />
         <UniformGrid Grid.Row="1" Grid.Column="1" Rows="1">
-            <Button Content="Edit Selected" Command="{Binding EditSelectedPatrolCommand}" />
-            <Button Content="Remove Selected" Command="{Binding RemoveSelectedPatrolCommand}" />
+            <Button Content="Edit Selected" Command="{Binding EditSelectedItemCommand}" />
+            <Button Content="Remove Selected" Command="{Binding RemoveSelectedItemCommand}" />
         </UniformGrid>
         <TextBlock Grid.Row="2" Grid.Column="0" Text="Token Id" />
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding CurrentEnemyPatrol.TokenId}" />
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding CurrentItem.TokenId}" />
         <TextBlock Grid.Row="3" Grid.Column="0" Text="Starting Position" />
         <UniformGrid Grid.Row="3" Grid.Column="1" Rows="1">
             <TextBlock Text="X" />
-            <TextBox Text="{Binding CurrentEnemyPatrol.Position.X}" />
+            <TextBox Text="{Binding CurrentItem.Position.X}" />
             <TextBlock Text="Y" />
-            <TextBox Text="{Binding CurrentEnemyPatrol.Position.Y}" />
+            <TextBox Text="{Binding CurrentItem.Position.Y}" />
             <TextBlock Text="Z" />
-            <TextBox Text="{Binding CurrentEnemyPatrol.Position.Z}" />
+            <TextBox Text="{Binding CurrentItem.Position.Z}" />
         </UniformGrid>
         <TextBlock Grid.Row="4" Grid.Column="0" Text="Area" />
-        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding CurrentEnemyPatrol.Area}" />
+        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding CurrentItem.Area}" />
         <TextBlock Grid.Row="5" Grid.Column="0" Text="Angle" />
-        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding CurrentEnemyPatrol.Angle}" />
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding CurrentItem.Angle}" />
         <TextBlock Grid.Row="6" Grid.Column="0" Text="Columns Count" />
-        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding CurrentEnemyPatrol.ColumnsCount}" />
+        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding CurrentItem.ColumnsCount}" />
         <TextBlock Grid.Row="7" Grid.Column="0" Text="Rows Count" />
-        <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding CurrentEnemyPatrol.RowsCount}" />
+        <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding CurrentItem.RowsCount}" />
         <TextBlock Grid.Row="8" Grid.Column="0" Text="Soldiers File Name" />
-        <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding CurrentEnemyPatrol.SoldiersFileName}" />
+        <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding CurrentItem.SoldiersFileName}" />
         <TextBlock Grid.Row="9" Grid.Column="0" Text="Leader File Name" />
-        <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding CurrentEnemyPatrol.LeaderFileName}" />
+        <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding CurrentItem.LeaderFileName}" />
         <UniformGrid Grid.Row="10" Grid.Column="1" Rows="1">
-            <Button Content="Add Patrol" Command="{Binding AddPatrolCommand}" />
-            <Button Content="Clear Patrol Information" Command="{Binding ClearPatrolCommand}" />
+            <Button Content="Add" Command="{Binding AddItemCommand}" />
+            <Button Content="Clear Information" Command="{Binding ClearItemCommand}" />
         </UniformGrid>
     </Grid>
 </UserControl>
