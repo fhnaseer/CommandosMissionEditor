@@ -14,7 +14,7 @@
     </UserControl.Resources>
     <DockPanel>
             <Button DockPanel.Dock="Bottom" Content="Save" Command="{Binding SaveMissionCommand}" />
-        <TabControl TabStripPlacement="Left" ItemsSource="{Binding MissionViewModels}" SelectedItem="{Binding SelectedViewModel}">
+        <TabControl TabStripPlacement="Left" ItemsSource="{Binding ViewModels}" >
             <TabControl.ItemTemplate>
                 <!-- this is the header template-->
                 <DataTemplate>

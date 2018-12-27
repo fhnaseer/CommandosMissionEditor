@@ -69,18 +69,24 @@
     </ApplicationDefinition>
     <Compile Include="RelayCommand.cs" />
     <Compile Include="ViewModels\AddPatrolViewModel.cs" />
+    <Compile Include="ViewModels\AddSoldierViewModel.cs" />
     <Compile Include="ViewModels\CameraViewModel.cs" />
     <Compile Include="ViewModels\FilesViewModel.cs" />
     <Compile Include="ViewModels\EditMissionViewModel.cs" />
+    <Compile Include="ViewModels\MissionCollectionViewModelBase.cs" />
     <Compile Include="ViewModels\MissionViewModelBase.cs" />
     <Compile Include="ViewModels\MusicViewModel.cs" />
     <Compile Include="ViewModels\AddPatrolActionViewModel.cs" />
     <Compile Include="ViewModels\AddPatrolRouteViewModel.cs" />
     <Compile Include="ViewModels\PatrolsViewModel.cs" />
+    <Compile Include="ViewModels\SoldiersViewModel.cs" />
     <Compile Include="ViewModels\UploadMissionViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\AddPatrolView.xaml.cs">
       <DependentUpon>AddPatrolView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddSoldierView.xaml.cs">
+      <DependentUpon>AddSoldierView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CameraView.xaml.cs">
       <DependentUpon>CameraView.xaml</DependentUpon>
@@ -103,6 +109,9 @@
     <Compile Include="Views\PatrolsView.xaml.cs">
       <DependentUpon>PatrolsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SoldiersView.xaml.cs">
+      <DependentUpon>SoldiersView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UploadMissionView.xaml.cs">
       <DependentUpon>UploadMissionView.xaml</DependentUpon>
     </Compile>
@@ -124,6 +133,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AddPatrolView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddSoldierView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -152,6 +165,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PatrolsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SoldiersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

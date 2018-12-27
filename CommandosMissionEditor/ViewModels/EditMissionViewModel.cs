@@ -4,29 +4,23 @@ using Commandos.Model.Map;
 
 namespace CommandosMissionEditor.ViewModels
 {
-    public class EditMissionViewModel : ViewModelBase
+    public class EditMissionViewModel : MissionCollectionViewModelBase
     {
-        private readonly Mission _mission;
+        public EditMissionViewModel(Mission mission) : base(mission) { }
 
-        public EditMissionViewModel(Mission mission)
+        internal EditMissionViewModel() : base(null) { }
+
+        public override string TabName => "Mission";
+
+        public override IList<MissionViewModelBase> GetViewModelCollection()
         {
-            _mission = mission;
-        }
-
-        internal EditMissionViewModel() { }
-
-        private List<MissionViewModelBase> _missionViewModels;
-        public IList<MissionViewModelBase> MissionViewModels
-        {
-            get
-            {
-                return _missionViewModels ?? (_missionViewModels = new List<MissionViewModelBase>{
-                    new FilesViewModel(_mission),
-                    new MusicViewModel(_mission),
-                    new CameraViewModel(_mission),
-                    new PatrolsViewModel(_mission)
-                });
-            }
+            return new List<MissionViewModelBase>{
+                new FilesViewModel(Mission),
+                new MusicViewModel(Mission),
+                new CameraViewModel(Mission),
+                new PatrolsViewModel(Mission),
+                new SoldiersViewModel(Mission)
+            };
         }
 
         private ICommand _saveMissionCommand;

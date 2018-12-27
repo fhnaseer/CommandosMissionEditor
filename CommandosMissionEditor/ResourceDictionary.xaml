@@ -38,6 +38,14 @@
         <views:AddPatrolRouteView />
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type viewModels:SoldiersViewModel}">
+        <views:SoldiersView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewModels:AddSoldierViewModel}">
+        <views:AddSoldierView />
+    </DataTemplate>
+
     <Style TargetType="Button">
         <Setter Property="Margin" Value="10" />
     </Style>

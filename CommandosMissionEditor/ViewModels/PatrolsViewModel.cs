@@ -3,7 +3,7 @@ using Commandos.Model.Map;
 
 namespace CommandosMissionEditor.ViewModels
 {
-    public class PatrolsViewModel : MissionViewModelBase
+    public class PatrolsViewModel : MissionCollectionViewModelBase
     {
         public PatrolsViewModel(Mission mission) : base(mission)
         {
@@ -13,17 +13,13 @@ namespace CommandosMissionEditor.ViewModels
 
         public override string TabName => "Patrols";
 
-        private List<MissionViewModelBase> _patrolsViewModels;
-        public IList<MissionViewModelBase> PatrolsViewModels
+        public override IList<MissionViewModelBase> GetViewModelCollection()
         {
-            get
-            {
-                return _patrolsViewModels ?? (_patrolsViewModels = new List<MissionViewModelBase>{
-                    new AddPatrolViewModel(Mission),
-                    new AddPatrolRouteViewModel(Mission),
-                    new AddPatrolActionViewModel(Mission),
-                });
-            }
+            return new List<MissionViewModelBase>{
+                new AddPatrolViewModel(Mission),
+                new AddPatrolRouteViewModel(Mission),
+                new AddPatrolActionViewModel(Mission),
+            };
         }
     }
 }
