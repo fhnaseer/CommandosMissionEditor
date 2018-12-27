@@ -2,7 +2,7 @@
 using Commandos.IO.Entities;
 using Commandos.IO.Helpers;
 using Commandos.IO.Serializers.Map;
-using Commandos.Model.Map;
+using Commandos.IO.Tests.Serializers.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Commandos.IO.Tests.Serializers.Map
@@ -14,12 +14,9 @@ namespace Commandos.IO.Tests.Serializers.Map
         public void GetBriefing_Works()
         {
             // Arrange,
-            const string text = "[ .BRIEFING [ .INICIAL TU01A.BRI ]";
+            var text = SampleStrings.GetRecordString(SampleStrings.BriefingString);
             var tokens = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            var expected = new Briefing
-            {
-                FileName = "TU01A.BRI"
-            };
+            var expected = SampleObjects.Briefing;
             var record = TokenParser.ParseTokens(tokens).GetRecord(BriefingSerializer.Briefing);
             var target = new BriefingSerializer();
 
@@ -34,10 +31,7 @@ namespace Commandos.IO.Tests.Serializers.Map
         public void Read_Write_Works()
         {
             // Arrange,
-            var expected = new Briefing
-            {
-                FileName = "TU01A.BRI"
-            };
+            var expected = SampleObjects.Briefing;
             var target = new BriefingSerializer();
 
             // Act,

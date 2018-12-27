@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Serializers\Files\RecordWriterTest.cs" />
+    <Compile Include="Serializers\Helpers\SampleObjects.cs" />
     <Compile Include="Serializers\Map\FicherosSerializerTest.cs" />
     <Compile Include="Serializers\Map\BriefingSerializerTest.cs" />
     <Compile Include="Serializers\Map\CameraSerializerTest.cs" />

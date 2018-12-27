@@ -2,7 +2,7 @@
 using Commandos.IO.Entities;
 using Commandos.IO.Helpers;
 using Commandos.IO.Serializers.Map;
-using Commandos.Model.Map;
+using Commandos.IO.Tests.Serializers.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Commandos.IO.Tests.Serializers.Map
@@ -14,12 +14,9 @@ namespace Commandos.IO.Tests.Serializers.Map
         public void GetFicheros_Works()
         {
             // Arrange,
-            const string text = "[ .FICHEROS [ .STR TU1A.STR ] ]";
+            var text = SampleStrings.GetRecordString(SampleStrings.FicherosString);
             var tokens = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            var expected = new Ficheros
-            {
-                FileName = "TU1A.STR"
-            };
+            var expected = SampleObjects.Ficheros;
             var record = TokenParser.ParseTokens(tokens).GetRecord(FicherosSerializer.Ficheros);
             var target = new FicherosSerializer();
 
@@ -34,10 +31,7 @@ namespace Commandos.IO.Tests.Serializers.Map
         public void Read_Write_Works()
         {
             // Arrange,
-            var expected = new Ficheros
-            {
-                FileName = "TU1A.STR"
-            };
+            var expected = SampleObjects.Ficheros;
             var target = new FicherosSerializer();
 
             // Act,

@@ -2,7 +2,7 @@
 using Commandos.IO.Entities;
 using Commandos.IO.Helpers;
 using Commandos.IO.Serializers.Map;
-using Commandos.Model.Map;
+using Commandos.IO.Tests.Serializers.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Commandos.IO.Tests.Serializers.Map
@@ -14,14 +14,9 @@ namespace Commandos.IO.Tests.Serializers.Map
         public void GetCamera_Works()
         {
             // Arrange,
-            const string text = "[ .VISORES [ .XYZ ( 1 2 0 ) .ESC EXTERIOR .CAMARA 0 ] ]";
+            var text = SampleStrings.GetRecordString(SampleStrings.CameraString);
             var tokens = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            var expected = new Camera
-            {
-                Position = new Model.Common.Position("1", "2", "0"),
-                Area = "EXTERIOR",
-                CameraDirection = "0"
-            };
+            var expected = SampleObjects.Camera;
             var record = TokenParser.ParseTokens(tokens).GetRecord(CameraSerializer.Camera);
             var target = new CameraSerializer();
 
@@ -36,12 +31,7 @@ namespace Commandos.IO.Tests.Serializers.Map
         public void Camera_Read_WriteWorks()
         {
             // Arrange,
-            var expected = new Camera
-            {
-                Position = new Model.Common.Position("1", "2", "0"),
-                Area = "EXTERIOR",
-                CameraDirection = "0"
-            };
+            var expected = SampleObjects.Camera;
             var target = new CameraSerializer();
 
             // Act,

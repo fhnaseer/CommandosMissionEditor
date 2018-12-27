@@ -2,7 +2,7 @@
 using Commandos.IO.Entities;
 using Commandos.IO.Helpers;
 using Commandos.IO.Serializers.Map;
-using Commandos.Model.Map;
+using Commandos.IO.Tests.Serializers.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Commandos.IO.Tests.Serializers.Map
@@ -14,15 +14,9 @@ namespace Commandos.IO.Tests.Serializers.Map
         public void GetMusic_Works()
         {
             // Arrange,
-            const string text = "[ .MUSICA  [ .MUSICAS (  ( M_BU_Ext.WAV EXTERIOR ) ( M_BU_Agu.WAV AGUA ) ( M_BU_Int.WAV INTERIOR ) ) .MUSICA_POR_DEFECTO INTERIOR ] ]";
+            var text = SampleStrings.GetRecordString(SampleStrings.MusicString);
             var tokens = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            var expected = new Music
-            {
-                StartingMusicEnvironment = "INTERIOR"
-            };
-            expected.BackgroundMusics.Add(new Model.Common.BackgroundMusic { Environment = "EXTERIOR", MusicFileName = "M_BU_Ext.WAV" });
-            expected.BackgroundMusics.Add(new Model.Common.BackgroundMusic { Environment = "AGUA", MusicFileName = "M_BU_Agu.WAV" });
-            expected.BackgroundMusics.Add(new Model.Common.BackgroundMusic { Environment = "INTERIOR", MusicFileName = "M_BU_Int.WAV" });
+            var expected = SampleObjects.Music;
             var record = TokenParser.ParseTokens(tokens).GetRecord(MusicSerializer.Music);
             var target = new MusicSerializer();
 
@@ -37,13 +31,7 @@ namespace Commandos.IO.Tests.Serializers.Map
         public void Read_Write_Works()
         {
             // Arrange,
-            var expected = new Music
-            {
-                StartingMusicEnvironment = "INTERIOR"
-            };
-            expected.BackgroundMusics.Add(new Model.Common.BackgroundMusic { Environment = "EXTERIOR", MusicFileName = "M_BU_Ext.WAV" });
-            expected.BackgroundMusics.Add(new Model.Common.BackgroundMusic { Environment = "AGUA", MusicFileName = "M_BU_Agu.WAV" });
-            expected.BackgroundMusics.Add(new Model.Common.BackgroundMusic { Environment = "INTERIOR", MusicFileName = "M_BU_Int.WAV" });
+            var expected = SampleObjects.Music;
             var target = new MusicSerializer();
 
             // Act,
