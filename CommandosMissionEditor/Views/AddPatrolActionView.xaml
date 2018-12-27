@@ -32,27 +32,27 @@
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Routes" />
         <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SelectedEnemyPatrol.Routes}" SelectedItem="{Binding SelectedEnemyRoute}" />
         <TextBlock Grid.Row="2" Grid.Column="0" Text="Actions" />
-        <ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding SelectedEnemyRoute.Actions}" SelectedItem="{Binding SelectedEnemyAction}" />
+        <ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding ItemCollection}" SelectedItem="{Binding SelectedItem}" />
         <UniformGrid Grid.Row="3" Grid.Column="1" Rows="1">
-            <Button Content="Edit Selected" Command="{Binding EditSelectedActionCommand}" />
-            <Button Content="Remove Selected" Command="{Binding RemoveSelectedActionCommand}" />
+            <Button Content="Edit Selected" Command="{Binding EditSelectedItemCommand}" />
+            <Button Content="Remove Selected" Command="{Binding RemoveSelectedItemCommand}" />
         </UniformGrid>
         <TextBlock Grid.Row="4" Grid.Column="0" Text="Movement Type" />
-        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding CurrentEnemyAction.MovementType}" />
+        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding CurrentItem.MovementType}" />
         <TextBlock Grid.Row="5" Grid.Column="0" Text="Area" />
-        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding CurrentEnemyAction.Area}" />
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding CurrentItem.Area}" />
         <TextBlock Grid.Row="6" Grid.Column="0" Text="Position" />
         <UniformGrid Grid.Row="6" Grid.Column="1" Rows="1">
             <TextBlock Text="X" />
-            <TextBox Text="{Binding CurrentEnemyAction.Position.X}" />
+            <TextBox Text="{Binding CurrentItem.Position.X}" />
             <TextBlock Text="Y" />
-            <TextBox Text="{Binding CurrentEnemyAction.Position.Y}" />
+            <TextBox Text="{Binding CurrentItem.Position.Y}" />
             <TextBlock Text="Z" />
-            <TextBox Text="{Binding CurrentEnemyAction.Position.Z}" />
+            <TextBox Text="{Binding CurrentItem.Position.Z}" />
         </UniformGrid>
         <UniformGrid Grid.Row="7" Grid.Column="1" Rows="1">
-            <Button Content="Add Action" Command="{Binding AddActionCommand}" />
-            <Button Content="Clear Action Information" Command="{Binding ClearActionCommand}" />
+            <Button Content="Add" Command="{Binding AddItemCommand}" />
+            <Button Content="Clear Information" Command="{Binding ClearItemCommand}" />
         </UniformGrid>
     </Grid>
 </UserControl>

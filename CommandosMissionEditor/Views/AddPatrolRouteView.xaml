@@ -34,20 +34,20 @@
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Patrols" />
         <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Mission.World.EnemyPatrols}" SelectedItem="{Binding SelectedEnemyPatrol}" />
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Routes" />
-        <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SelectedEnemyPatrol.Routes}" SelectedItem="{Binding SelectedEnemyRoute}" />
+        <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding ItemCollection}" SelectedItem="{Binding SelectedItem}" />
         <UniformGrid Grid.Row="2" Grid.Column="1" Rows="1">
-            <Button Content="Edit Selected" Command="{Binding EditSelectedRouteCommand}" />
-            <Button Content="Remove Selected" Command="{Binding RemoveSelectedRouteCommand}" />
+            <Button Content="Edit Selected" Command="{Binding EditSelectedItemCommand}" />
+            <Button Content="Remove Selected" Command="{Binding RemoveSelectedItemCommand}" />
         </UniformGrid>
         <TextBlock Grid.Row="3" Grid.Column="0" Text="Name" />
-        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding CurrentEnemyRoute.RouteName}" />
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding CurrentItem.RouteName}" />
         <TextBlock Grid.Row="4" Grid.Column="0" Text="Speed" />
-        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding CurrentEnemyRoute.Speed}" />
+        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding CurrentItem.Speed}" />
         <TextBlock Grid.Row="5" Grid.Column="0" Text="Repeat Type" />
-        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding CurrentEnemyRoute.ActionRepeatType}" />
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding CurrentItem.ActionRepeatType}" />
         <UniformGrid Grid.Row="6" Grid.Column="1" Rows="1">
-            <Button Content="Add Route" Command="{Binding AddRouteCommand}" />
-            <Button Content="Clear Route Information" Command="{Binding ClearRouteCommand}" />
+            <Button Content="Add" Command="{Binding AddItemCommand}" />
+            <Button Content="Clear Information" Command="{Binding ClearItemCommand}" />
         </UniformGrid>
     </Grid>
 </UserControl>

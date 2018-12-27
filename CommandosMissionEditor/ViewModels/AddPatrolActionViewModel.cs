@@ -1,10 +1,10 @@
-﻿using System.Windows.Input;
+﻿using System.Collections.ObjectModel;
 using Commandos.Model.Characters.Enemies.Actions;
 using Commandos.Model.Map;
 
 namespace CommandosMissionEditor.ViewModels
 {
-    public class AddPatrolActionViewModel : MissionViewModelBase
+    public class AddPatrolActionViewModel : AddItemViewModelBase<EnemyAction>
     {
         public AddPatrolActionViewModel(Mission mission) : base(mission)
         {
@@ -14,6 +14,8 @@ namespace CommandosMissionEditor.ViewModels
 
         public override string TabName => "Actions";
 
+        public override ObservableCollection<EnemyAction> ItemCollection => SelectedEnemyRoute.Actions;
+
         private EnemyPatrol _selectedEnemyPatrol;
         public EnemyPatrol SelectedEnemyPatrol
         {
@@ -22,6 +24,7 @@ namespace CommandosMissionEditor.ViewModels
             {
                 _selectedEnemyPatrol = value;
                 OnPropertyChanged(nameof(SelectedEnemyPatrol));
+                SelectedEnemyRoute = null;
             }
         }
 
@@ -33,65 +36,8 @@ namespace CommandosMissionEditor.ViewModels
             {
                 _selectedEnemyRoute = value;
                 OnPropertyChanged(nameof(SelectedEnemyRoute));
+                OnPropertyChanged(nameof(ItemCollection));
             }
-        }
-
-        private EnemyAction _selectedEnemyAction;
-        public EnemyAction SelectedEnemyAction
-        {
-            get => _selectedEnemyAction;
-            set
-            {
-                _selectedEnemyAction = value;
-                OnPropertyChanged(nameof(SelectedEnemyAction));
-            }
-        }
-
-        private EnemyAction _currentEnemyAction = new MoveAction();
-        public EnemyAction CurrentEnemyAction
-        {
-            get => _currentEnemyAction;
-            set
-            {
-                _currentEnemyAction = value;
-                OnPropertyChanged(nameof(CurrentEnemyAction));
-            }
-        }
-
-        private ICommand _removeSelectedActionCommand;
-        public ICommand RemoveSelectedActionCommand => _removeSelectedActionCommand ?? (_removeSelectedActionCommand = new RelayCommand(RemoveSelectedAction, CanRemoveSelectedAction));
-
-        internal bool CanRemoveSelectedAction() { return SelectedEnemyAction != null; }
-
-        internal void RemoveSelectedAction()
-        {
-            SelectedEnemyRoute.Actions.Remove(SelectedEnemyAction);
-            SelectedEnemyAction = null;
-        }
-
-        private ICommand _editSelectedActionCommand;
-        public ICommand EditSelectedActionCommand => _editSelectedActionCommand ?? (_editSelectedActionCommand = new RelayCommand(EditSelectedAction, CanRemoveSelectedAction));
-
-        internal void EditSelectedAction()
-        {
-            CurrentEnemyAction = SelectedEnemyAction;
-        }
-
-        private ICommand _addActionCommand;
-        public ICommand AddActionCommand => _addActionCommand ?? (_addActionCommand = new RelayCommand(AddAction, () => !ReferenceEquals(SelectedEnemyAction, CurrentEnemyAction)));
-
-        internal void AddAction()
-        {
-            SelectedEnemyRoute.Actions.Add(CurrentEnemyAction);
-            CurrentEnemyAction = new MoveAction();
-        }
-
-        private ICommand _clearActionCommand;
-        public ICommand ClearActionCommand => _clearActionCommand ?? (_clearActionCommand = new RelayCommand(ClearAction));
-
-        internal void ClearAction()
-        {
-            CurrentEnemyAction = new MoveAction();
         }
     }
 }
