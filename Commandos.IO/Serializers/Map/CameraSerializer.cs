@@ -1,5 +1,4 @@
 ﻿using Commandos.IO.Entities;
-using Commandos.IO.Helpers;
 using Commandos.Model.Map;
 
 namespace Commandos.IO.Serializers.Map
@@ -14,14 +13,12 @@ namespace Commandos.IO.Serializers.Map
         public override Camera Serialize(Record record)
         {
             var multipleRecords = record.GetMultipleRecords();
-            return new Camera
-            {
-                Position = Helpers.SerializerHelper.GetPosition(multipleRecords),
-                Area = Helpers.SerializerHelper.GetArea(multipleRecords),
-                CameraDirection = multipleRecords.GetStringValue(CameraDirection)
-            };
+            var camera = new Camera();
+            Helpers.SerializerHelper.SerializeIPosition(camera, multipleRecords);
+            camera.CameraDirection = multipleRecords.GetStringValue(CameraDirection);
+            return camera;
         }
 
-        public override string GetMultipleRecordString(Camera input) => $"[ {CameraDirection} {input.CameraDirection} {StringConstants.Area} {input.Area} {Helpers.SerializerHelper.GetPositionRecordString(input.Position)} ]";
+        public override string GetMultipleRecordString(Camera input) => $"[ {CameraDirection} {input.CameraDirection} {Helpers.SerializerHelper.GetIPositionRecordString(input)} ]";
     }
 }

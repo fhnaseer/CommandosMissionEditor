@@ -3,7 +3,7 @@ using Commandos.Model.Common;
 
 namespace Commandos.Model.Map
 {
-    public class Camera
+    public class Camera : IPosition
     {
         public string CameraDirection { get; set; }
 

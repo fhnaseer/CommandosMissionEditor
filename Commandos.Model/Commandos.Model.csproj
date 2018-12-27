@@ -71,6 +71,7 @@
     <Compile Include="Common\Ability.cs" />
     <Compile Include="Common\BackgroundMusic.cs" />
     <Compile Include="Common\Enums.cs" />
+    <Compile Include="Common\IPosition.cs" />
     <Compile Include="Common\ItemCollections.cs" />
     <Compile Include="Common\MissionObject.cs" />
     <Compile Include="Map\Abilities.cs" />

@@ -30,6 +30,12 @@ namespace Commandos.IO.Serializers.Helpers
         private PatrolsSerializer _patrolsSerializer;
         public PatrolsSerializer PatrolsSerializer => _patrolsSerializer ?? (_patrolsSerializer = new PatrolsSerializer());
 
+        public static void SerializeIPosition(IPosition target, MultipleRecords multipleRecords)
+        {
+            target.Position = GetPosition(multipleRecords);
+            target.Area = GetArea(multipleRecords);
+        }
+
         public static Position GetPosition(MultipleRecords multipleRecords)
         {
             var mixedDataRecord = multipleRecords.GetMixedDataRecord(StringConstants.Position);
@@ -44,6 +50,8 @@ namespace Commandos.IO.Serializers.Helpers
         public static string GetSpeed(MultipleRecords multipleRecords) => multipleRecords.GetStringValue(StringConstants.Speed);
 
         public static string GetMovementType(MultipleRecords multipleRecords) => multipleRecords.GetStringValue(StringConstants.MovementType);
+
+        public static string GetIPositionRecordString(IPosition target) => $"{StringConstants.Position} ( {target.Position.X} {target.Position.Y} {target.Position.Z} ) {StringConstants.Area} {target.Area}";
 
         public static string GetPositionRecordString(Position position) => $"{StringConstants.Position} ( {position.X} {position.Y} {position.Z} )";
 
