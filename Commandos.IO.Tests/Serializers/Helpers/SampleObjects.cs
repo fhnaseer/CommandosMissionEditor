@@ -30,17 +30,33 @@ namespace Commandos.IO.Tests.Serializers.Helpers
 
         public static string MusicString = ".MUSICA  [ .MUSICAS (  ( M_BU_Ext.WAV EXTERIOR ) ( M_BU_Agu.WAV AGUA ) ( M_BU_Int.WAV INTERIOR ) ) .MUSICA_POR_DEFECTO INTERIOR ]";
 
-        public static string MoveActionString = $"IR_A_PUNTO [ .MODO ANDANDO {IPositionString} ]";
+        public static string MoveActionString = $"( IR_A_PUNTO [ .MODO ANDANDO {IPositionString} ] )";
 
-        public static string RotateActionString = $"ENCARARSE [ .ANGULO 90 ]";
+        public static string RotateActionString = $"( ENCARARSE [ .ANGULO 90 ] )";
 
-        public static string PauseActionString = $"ESPERAR [ .TIEMPO 300 ]";
+        public static string PauseActionString = $"( ESPERAR [ .TIEMPO 300 ] )";
 
-        public static string ActionsString = $".ESCALAS ( ( {MoveActionString} ) ( {RotateActionString} ) ( {PauseActionString} ) )";
+        public static string EnterDoorActionString = $"( IR_A_TRANSFER [ .MODO ANDANDO .IDA Door1 ] )";
 
-        public static string RouteString = $"[ .NOMBRE DEFAULT .VEL 1.5 .TIPO STOPPED {ActionsString} ]";
+        public static string MovementActionsString = $".ESCALAS ( {MoveActionString} {RotateActionString} {PauseActionString} {EnterDoorActionString} )";
 
-        public static string RoutesString = $".PATRULLAJE [ .RECPATRULLA [ .RUTAS ( {RouteString} ) .RUTA_POR_DEFECTO DEFAULT ] ]";
+        public static string LieDownActionString = "( AGACHARSE [ ] )";
+
+        public static string GetUpActionString = "( LEVANTARSE [ ] )";
+
+        public static string KneelDownActionString = "( ARRODILLARSE [ ] )";
+
+        public static string DiveInActionString = "( BUCEAR [ ] )";
+
+        public static string DiveOutActionString = "( EMERGER [ ] )";
+
+        public static string BodyActionsString = $".ESCALAS ( {LieDownActionString} {GetUpActionString} {KneelDownActionString} {DiveInActionString} {DiveOutActionString} )";
+
+        public static string MovementRouteString = $"[ .NOMBRE DEFAULT .VEL 1.5 .TIPO STOPPED {MovementActionsString} ]";
+
+        public static string BodyRouteString = $"[ .NOMBRE BODY .VEL 1.5 .TIPO STOPPED {BodyActionsString} ]";
+
+        public static string RoutesString = $".PATRULLAJE [ .RECPATRULLA [ .RUTAS ( {MovementRouteString} {BodyRouteString} ) .RUTA_POR_DEFECTO DEFAULT ] ]";
 
         public static string PatrolString = $"( EntePatrulla [ {RoutesString} .TOKEN PAT0001 {IPositionString} .ANGULO 0 .EMPIEZA PATRULLANDO .NCOLUMNAS 3.0 .NSOLDADOSCOLUMNA 3.0 .ANIMSOLDADO ALEMET.ANI .ANIMSARGENTO ALEOFI.ANI .DETIENE 0 ] )";
 
@@ -111,7 +127,13 @@ namespace Commandos.IO.Tests.Serializers.Helpers
             Time = "300"
         };
 
-        public static EnemyRoute EnemyRoute
+        public static EnterDoorAction EnterDoorAction => new EnterDoorAction
+        {
+            MovementType = "ANDANDO",
+            DoorName = "Door1"
+        };
+
+        public static EnemyRoute MovementEnemyRoute
         {
             get
             {
@@ -124,6 +146,26 @@ namespace Commandos.IO.Tests.Serializers.Helpers
                 route.Actions.Add(MoveAction);
                 route.Actions.Add(RotateAction);
                 route.Actions.Add(PauseAction);
+                route.Actions.Add(EnterDoorAction);
+                return route;
+            }
+        }
+
+        public static EnemyRoute BodyEnemyRoute
+        {
+            get
+            {
+                var route = new EnemyRoute
+                {
+                    RouteName = "BODY",
+                    Speed = "1.5",
+                    ActionRepeatType = "STOPPED"
+                };
+                route.Actions.Add(new LieDownAction());
+                route.Actions.Add(new GetUpAction());
+                route.Actions.Add(new KneelDownAction());
+                route.Actions.Add(new DiveInAction());
+                route.Actions.Add(new DiveOutAction());
                 return route;
             }
         }
@@ -144,7 +186,8 @@ namespace Commandos.IO.Tests.Serializers.Helpers
                     DefaultRoute = "DEFAULT",
                     Position = Position
                 };
-                patrol.Routes.Add(EnemyRoute);
+                patrol.Routes.Add(MovementEnemyRoute);
+                patrol.Routes.Add(BodyEnemyRoute);
                 return patrol;
             }
         }
@@ -160,7 +203,8 @@ namespace Commandos.IO.Tests.Serializers.Helpers
                     Position = Position,
                     Area = Area
                 };
-                soldier.Routes.Add(EnemyRoute);
+                soldier.Routes.Add(MovementEnemyRoute);
+                soldier.Routes.Add(BodyEnemyRoute);
                 return soldier;
             }
         }

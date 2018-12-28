@@ -15,13 +15,13 @@
         public override string ActionName => "Kneel Down";
     }
 
-    public class DiveUnderwaterAction : EnemyAction
+    public class DiveInAction : EnemyAction
     {
-        public override string ActionName => "Dive Underwater";
+        public override string ActionName => "Dive In";
     }
 
-    public class ComeOutOfWaterAction : EnemyAction
+    public class DiveOutAction : EnemyAction
     {
-        public override string ActionName => "Come out of Water";
+        public override string ActionName => "Dive Out";
     }
 }

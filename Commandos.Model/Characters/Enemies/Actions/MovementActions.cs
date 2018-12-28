@@ -17,7 +17,7 @@ namespace Commandos.Model.Characters.Enemies.Actions
 
         public string Area { get; set; }
 
-        public override string ToString() => $"{ActionName} {Position.ToString()}";
+        public override string ToString() => $"{ActionName} {Position.ToString()} {MovementType} {Area}";
     }
 
     public class PauseAction : EnemyAction
@@ -36,5 +36,16 @@ namespace Commandos.Model.Characters.Enemies.Actions
         public string Angle { get; set; }
 
         public override string ToString() => $"{ActionName} {Angle}";
+    }
+
+    public class EnterDoorAction : EnemyAction
+    {
+        public override string ActionName => "Enter Door";
+
+        public string MovementType { get; set; }
+
+        public string DoorName { get; set; }
+
+        public override string ToString() => $"{ActionName} {DoorName} {MovementType}";
     }
 }
