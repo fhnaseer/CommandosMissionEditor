@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="CommandosMissionEditor.Views.AddPatrolActionView"
+﻿<UserControl x:Class="CommandosMissionEditor.Views.AddEnemyActionView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <d:UserControl.DataContext>
-        <viewModels:AddPatrolActionViewModel/>
+        <viewModels:AddEnemyActionViewModel/>
     </d:UserControl.DataContext>
     <UserControl.Resources>
         <ResourceDictionary Source="../ResourceDictionary.xaml" />
@@ -27,10 +27,10 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="Patrols" />
-        <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Mission.World.EnemyPatrols}" SelectedItem="{Binding SelectedEnemyPatrol}" />
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding CollectionName}" />
+        <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Enemies}" SelectedItem="{Binding SelectedEnemy}" />
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Routes" />
-        <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SelectedEnemyPatrol.Routes}" SelectedItem="{Binding SelectedEnemyRoute}" />
+        <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SelectedEnemy.Routes}" SelectedItem="{Binding SelectedEnemyRoute}" />
         <TextBlock Grid.Row="2" Grid.Column="0" Text="Actions" />
         <UniformGrid Grid.Row="2" Grid.Column="1" Rows="1">
             <ComboBox ItemsSource="{Binding ItemCollection}" SelectedItem="{Binding SelectedItem}" />

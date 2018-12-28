@@ -2,5 +2,9 @@
 {
     public class Soldier : EnemyCharacter
     {
+        public override string ToString()
+        {
+            return TokenId;
+        }
     }
 }

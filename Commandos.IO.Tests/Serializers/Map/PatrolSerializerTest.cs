@@ -4,7 +4,7 @@ using Commandos.IO.Entities;
 using Commandos.IO.Helpers;
 using Commandos.IO.Serializers.Map;
 using Commandos.IO.Tests.Serializers.Helpers;
-using Commandos.Model.Map;
+using Commandos.Model.Characters;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Commandos.IO.Tests.Serializers.Map
@@ -37,7 +37,7 @@ namespace Commandos.IO.Tests.Serializers.Map
             var target = new PatrolsSerializer();
 
             // Act,
-            var record = target.Deserialize(new ObservableCollection<EnemyPatrol> { expected });
+            var record = target.Deserialize(new ObservableCollection<EnemyCharacter> { expected });
             var actual = target.Serialize(record);
 
             // Assert,

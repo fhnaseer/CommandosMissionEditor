@@ -5,11 +5,12 @@ using System.Text;
 using Commandos.IO.Entities;
 using Commandos.IO.Helpers;
 using Commandos.IO.Serializers.Helpers;
+using Commandos.Model.Characters;
 using Commandos.Model.Map;
 
 namespace Commandos.IO.Serializers.Map
 {
-    public class PatrolsSerializer : RecordSerializerBase<ObservableCollection<EnemyPatrol>>
+    public class PatrolsSerializer : RecordSerializerBase<ObservableCollection<EnemyCharacter>>
     {
         public const string Patrols = ".ENTES";
         private const string OnePatrol = "EntePatrulla";
@@ -21,9 +22,9 @@ namespace Commandos.IO.Serializers.Map
 
         public override string RecordName => Patrols;
 
-        public override ObservableCollection<EnemyPatrol> Serialize(Record record)
+        public override ObservableCollection<EnemyCharacter> Serialize(Record record)
         {
-            var patrols = new ObservableCollection<EnemyPatrol>();
+            var patrols = new ObservableCollection<EnemyCharacter>();
             if (record == null)
                 return patrols;
 
@@ -50,23 +51,23 @@ namespace Commandos.IO.Serializers.Map
             return patrols;
         }
 
-        public override Record Deserialize(ObservableCollection<EnemyPatrol> input)
+        public override Record Deserialize(ObservableCollection<EnemyCharacter> input)
         {
             var recordString = GetMultipleRecordString(input);
             var tokens = recordString.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
             return TokenParser.ParseTokens(tokens, 0);
         }
 
-        public override string GetMultipleRecordString(ObservableCollection<EnemyPatrol> input)
+        public override string GetMultipleRecordString(ObservableCollection<EnemyCharacter> input)
         {
             return $"{GetPatrolListRecordString(input)}";
         }
 
-        private static string GetPatrolListRecordString(ICollection<EnemyPatrol> patrols)
+        private static string GetPatrolListRecordString(ICollection<EnemyCharacter> patrols)
         {
             var stringBuilder = new StringBuilder();
             stringBuilder.Append($"[ {Patrols} ( ");
-            foreach (var patrol in patrols)
+            foreach (EnemyPatrol patrol in patrols)
                 stringBuilder.Append($"( {OnePatrol} [ {EnemyRouteHelper.GetEnemyRoutesRecordString(patrol)}  {SerializerHelper.GetCharacterRecordString(patrol)} {EnemyRouteHelper.GetEventsRouteRecordString(patrol)} " +
                     $"{ColumnsCount} {patrol.ColumnsCount} {RowsCount} {patrol.RowsCount} {SoldierFileName} {patrol.SoldiersFileName} {LeaderFileName} {patrol.LeaderFileName} " +
                     $".DETIENE 0 ] ) ");

@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows;
+using Commandos.Model.Characters;
 using Commandos.Model.Characters.Enemies.Actions;
+using Commandos.Model.Common;
 using Commandos.Model.Map;
 
 namespace CommandosMissionEditor.ViewModels
 {
-    public class AddPatrolActionViewModel : AddItemViewModelBase<EnemyAction>
+    public class AddEnemyActionViewModel : AddEnemyViewModelBase<EnemyAction>
     {
-        public AddPatrolActionViewModel(Mission mission) : base(mission)
+        public AddEnemyActionViewModel(Mission mission, CharacterType characterType, ObservableCollection<EnemyCharacter> enemyCharacters) : base(mission, characterType, enemyCharacters)
         {
         }
 
-        internal AddPatrolActionViewModel() : base(null) { }
+        internal AddEnemyActionViewModel() : base(null, CharacterType.Soldier, null) { }
 
         public override string TabName => "Actions";
 
@@ -29,14 +31,14 @@ namespace CommandosMissionEditor.ViewModels
         public Visibility IsRotateAction => SelectedItem is RotateAction ? Visibility.Visible : Visibility.Collapsed;
         public Visibility IsPauseAction => SelectedItem is PauseAction ? Visibility.Visible : Visibility.Collapsed;
 
-        private EnemyPatrol _selectedEnemyPatrol;
-        public EnemyPatrol SelectedEnemyPatrol
+        private EnemyCharacter _selectedEnemy;
+        public EnemyCharacter SelectedEnemy
         {
-            get => _selectedEnemyPatrol;
+            get => _selectedEnemy;
             set
             {
-                _selectedEnemyPatrol = value;
-                OnPropertyChanged(nameof(SelectedEnemyPatrol));
+                _selectedEnemy = value;
+                OnPropertyChanged(nameof(SelectedEnemy));
                 SelectedEnemyRoute = null;
             }
         }

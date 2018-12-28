@@ -26,24 +26,20 @@
         <views:PatrolsView />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type viewModels:AddPatrolViewModel}">
-        <views:AddPatrolView />
+    <DataTemplate DataType="{x:Type viewModels:AddEnemyItemViewModel}">
+        <views:AddEnemyItemView />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type viewModels:AddPatrolActionViewModel}">
-        <views:AddPatrolActionView />
+    <DataTemplate DataType="{x:Type viewModels:AddEnemyActionViewModel}">
+        <views:AddEnemyActionView />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type viewModels:AddPatrolRouteViewModel}">
-        <views:AddPatrolRouteView />
+    <DataTemplate DataType="{x:Type viewModels:AddEnemyRouteViewModel}">
+        <views:AddEnemyRouteView />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type viewModels:SoldiersViewModel}">
         <views:SoldiersView />
-    </DataTemplate>
-
-    <DataTemplate DataType="{x:Type viewModels:AddSoldierViewModel}">
-        <views:AddSoldierView />
     </DataTemplate>
 
     <Style TargetType="Button">

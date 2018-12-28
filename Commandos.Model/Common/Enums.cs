@@ -13,4 +13,11 @@
         Stopped,
         BackAndForth
     }
+
+    public enum CharacterType
+    {
+        Commando,
+        Soldier,
+        EnemyPatrol
+    }
 }

@@ -16,9 +16,9 @@ namespace CommandosMissionEditor.ViewModels
         public override IList<MissionViewModelBase> GetViewModelCollection()
         {
             return new List<MissionViewModelBase>{
-                new AddPatrolViewModel(Mission),
-                new AddPatrolRouteViewModel(Mission),
-                new AddPatrolActionViewModel(Mission),
+                new AddEnemyItemViewModel(Mission, Commandos.Model.Common.CharacterType.EnemyPatrol, Mission.World.Patrols),
+                new AddEnemyRouteViewModel(Mission, Commandos.Model.Common.CharacterType.EnemyPatrol, Mission.World.Patrols),
+                new AddEnemyActionViewModel(Mission, Commandos.Model.Common.CharacterType.EnemyPatrol, Mission.World.Patrols)
             };
         }
     }

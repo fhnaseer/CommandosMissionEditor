@@ -1,5 +1,5 @@
 ﻿using System.Collections.ObjectModel;
-using Commandos.Model.Characters.Enemies;
+using Commandos.Model.Characters;
 
 namespace Commandos.Model.Map
 {
@@ -11,17 +11,11 @@ namespace Commandos.Model.Map
 
         public MissionObjects MissionObjects { get; set; }
 
-        private ObservableCollection<Soldier> _soldiers;
-        public ObservableCollection<Soldier> Soldiers => _soldiers ?? (_soldiers = new ObservableCollection<Soldier>());
+        private ObservableCollection<EnemyCharacter> _soldiers;
+        public ObservableCollection<EnemyCharacter> Soldiers => _soldiers ?? (_soldiers = new ObservableCollection<EnemyCharacter>());
 
-        private ObservableCollection<EnemyPatrol> _enemyPatrols;
-#pragma warning disable CA2227 // Collection properties should be read only
-        public ObservableCollection<EnemyPatrol> EnemyPatrols
-#pragma warning restore CA2227 // Collection properties should be read only
-        {
-            get => _enemyPatrols ?? (_enemyPatrols = new ObservableCollection<EnemyPatrol>());
-            set => _enemyPatrols = value;
-        }
+        private ObservableCollection<EnemyCharacter> _patrols;
+        public ObservableCollection<EnemyCharacter> Patrols => _patrols ?? (_patrols = new ObservableCollection<EnemyCharacter>());
 
         public SpecialAreas SpecialAreas { get; set; }
 

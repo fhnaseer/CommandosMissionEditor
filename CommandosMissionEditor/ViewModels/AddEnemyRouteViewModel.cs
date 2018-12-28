@@ -1,36 +1,38 @@
 ﻿using System.Collections.ObjectModel;
+using Commandos.Model.Characters;
 using Commandos.Model.Characters.Enemies.Actions;
+using Commandos.Model.Common;
 using Commandos.Model.Map;
 
 namespace CommandosMissionEditor.ViewModels
 {
-    public class AddPatrolRouteViewModel : AddItemViewModelBase<EnemyRoute>
+    public class AddEnemyRouteViewModel : AddEnemyViewModelBase<EnemyRoute>
     {
-        public AddPatrolRouteViewModel(Mission mission) : base(mission)
+        public AddEnemyRouteViewModel(Mission mission, CharacterType characterType, ObservableCollection<EnemyCharacter> enemyCharacters) : base(mission, characterType, enemyCharacters)
         {
         }
 
-        internal AddPatrolRouteViewModel() : base(null) { }
+        internal AddEnemyRouteViewModel() : base(null, CharacterType.Soldier, null) { }
 
         public override string TabName => "Routes";
 
-        public override ObservableCollection<EnemyRoute> ItemCollection => SelectedEnemyPatrol?.Routes;
+        public override ObservableCollection<EnemyRoute> ItemCollection => SelectedEnemy?.Routes;
 
         public override void LoadDefaultItem()
         {
             if (ItemCollection is null) return;
             foreach (var item in ItemCollection)
             {
-                if (item.RouteName == SelectedEnemyPatrol.DefaultRoute)
+                if (item.RouteName == SelectedEnemy.DefaultRoute)
                     DefaultItem = item;
-                if (item.RouteName == SelectedEnemyPatrol.EventRoute)
+                if (item.RouteName == SelectedEnemy.EventRoute)
                     EventRoute = item;
             }
         }
 
         public override void OnDefaultItemChanged()
         {
-            SelectedEnemyPatrol.DefaultRoute = DefaultItem.RouteName;
+            SelectedEnemy.DefaultRoute = DefaultItem.RouteName;
         }
 
         private EnemyRoute _eventRoute;
@@ -40,19 +42,19 @@ namespace CommandosMissionEditor.ViewModels
             set
             {
                 _eventRoute = value;
-                SelectedEnemyPatrol.EventRoute = _eventRoute.RouteName;
+                SelectedEnemy.EventRoute = _eventRoute.RouteName;
                 OnPropertyChanged(nameof(EventRoute));
             }
         }
 
-        private EnemyPatrol _selectedEnemyPatrol;
-        public EnemyPatrol SelectedEnemyPatrol
+        private EnemyCharacter _selectedEnemy;
+        public EnemyCharacter SelectedEnemy
         {
-            get => _selectedEnemyPatrol;
+            get => _selectedEnemy;
             set
             {
-                _selectedEnemyPatrol = value;
-                OnPropertyChanged(nameof(SelectedEnemyPatrol));
+                _selectedEnemy = value;
+                OnPropertyChanged(nameof(SelectedEnemy));
                 OnPropertyChanged(nameof(ItemCollection));
                 OnPropertyChanged(nameof(DefaultItem));
             }
