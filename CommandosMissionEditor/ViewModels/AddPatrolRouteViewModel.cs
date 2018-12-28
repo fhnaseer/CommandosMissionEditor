@@ -14,10 +14,11 @@ namespace CommandosMissionEditor.ViewModels
 
         public override string TabName => "Routes";
 
-        public override ObservableCollection<EnemyRoute> ItemCollection => SelectedEnemyPatrol.Routes;
+        public override ObservableCollection<EnemyRoute> ItemCollection => SelectedEnemyPatrol?.Routes;
 
         public override void LoadDefaultItem()
         {
+            if (ItemCollection is null) return;
             foreach (var item in ItemCollection)
             {
                 if (item.RouteName == SelectedEnemyPatrol.DefaultRoute)
@@ -27,7 +28,7 @@ namespace CommandosMissionEditor.ViewModels
             }
         }
 
-        public override void UpdateDefaultItem()
+        public override void OnDefaultItemChanged()
         {
             SelectedEnemyPatrol.DefaultRoute = DefaultItem.RouteName;
         }
@@ -55,13 +56,6 @@ namespace CommandosMissionEditor.ViewModels
                 OnPropertyChanged(nameof(ItemCollection));
                 OnPropertyChanged(nameof(DefaultItem));
             }
-        }
-
-        public override void ClearItem()
-        {
-            SelectedItem.RouteName = string.Empty;
-            SelectedItem.Speed = string.Empty;
-            SelectedItem.ActionRepeatType = string.Empty;
         }
     }
 }

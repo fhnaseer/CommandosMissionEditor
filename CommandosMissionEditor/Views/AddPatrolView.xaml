@@ -59,8 +59,5 @@
         <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding SelectedItem.SoldiersFileName}" />
         <TextBlock Grid.Row="9" Grid.Column="0" Text="Leader File Name" />
         <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding SelectedItem.LeaderFileName}" />
-        <UniformGrid Grid.Row="10" Grid.Column="1" Rows="1">
-            <Button Content="Clear Information" Command="{Binding ClearItemCommand}" />
-        </UniformGrid>
     </Grid>
 </UserControl>

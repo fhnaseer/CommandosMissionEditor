@@ -26,15 +26,9 @@ namespace CommandosMissionEditor.ViewModels
                     DefaultItem = item;
         }
 
-        public override void UpdateDefaultItem()
+        public override void OnDefaultItemChanged()
         {
             Mission.Music.StartingMusicEnvironment = DefaultItem.Environment;
-        }
-
-        public override void ClearItem()
-        {
-            SelectedItem.MusicFileName = string.Empty;
-            SelectedItem.Environment = string.Empty;
         }
     }
 }

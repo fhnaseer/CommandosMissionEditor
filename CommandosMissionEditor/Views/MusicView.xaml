@@ -34,9 +34,6 @@
         <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedItem.MusicFileName, UpdateSourceTrigger=PropertyChanged}" />
         <TextBlock Grid.Row="3" Grid.Column="0" Text="Mission Environment" />
         <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SelectedItem.Environment, UpdateSourceTrigger=PropertyChanged}" />
-        <UniformGrid Grid.Row="4" Grid.Column="1" Rows="1">
-            <Button Content="Clear Information" Command="{Binding ClearItemCommand}" />
-        </UniformGrid>
         <TextBlock Grid.Row="5" Grid.Column="0" Text="Default Music" />
         <ComboBox Grid.Row="5" Grid.Column="1" ItemsSource="{Binding ItemCollection}" SelectedItem="{Binding DefaultItem}" />
     </Grid>  

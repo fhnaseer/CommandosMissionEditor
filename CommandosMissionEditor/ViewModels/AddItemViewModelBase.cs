@@ -19,9 +19,12 @@ namespace CommandosMissionEditor.ViewModels
             set
             {
                 _selectedItem = value;
+                OnSelectedItemChanged();
                 OnPropertyChanged(nameof(SelectedItem));
             }
         }
+
+        public virtual void OnSelectedItemChanged() { }
 
         private T _defaultItem;
         public T DefaultItem
@@ -35,13 +38,13 @@ namespace CommandosMissionEditor.ViewModels
             set
             {
                 _defaultItem = value;
-                UpdateDefaultItem();
+                OnDefaultItemChanged();
                 OnPropertyChanged(nameof(DefaultItem));
             }
         }
 
         public virtual void LoadDefaultItem() { }
-        public virtual void UpdateDefaultItem() { }
+        public virtual void OnDefaultItemChanged() { }
 
         private ICommand _removeSelectedItemCommand;
         public ICommand RemoveSelectedItemCommand => _removeSelectedItemCommand ?? (_removeSelectedItemCommand = new RelayCommand(RemoveSelectedItem, CanRemoveSelectedItem));
@@ -63,10 +66,5 @@ namespace CommandosMissionEditor.ViewModels
             ItemCollection.Add(item);
             SelectedItem = item;
         }
-
-        private ICommand _clearItemCommand;
-        public ICommand ClearItemCommand => _clearItemCommand ?? (_clearItemCommand = new RelayCommand(ClearItem));
-
-        public virtual void ClearItem() { }
     }
 }
