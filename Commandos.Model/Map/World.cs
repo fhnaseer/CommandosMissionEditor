@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using Commandos.Model.Characters.Enemies;
 
 namespace Commandos.Model.Map
 {
@@ -9,6 +10,9 @@ namespace Commandos.Model.Map
         public Administration Administration { get; set; }
 
         public MissionObjects MissionObjects { get; set; }
+
+        private ObservableCollection<Soldier> _soldiers;
+        public ObservableCollection<Soldier> Soldiers => _soldiers ?? (_soldiers = new ObservableCollection<Soldier>());
 
         private ObservableCollection<EnemyPatrol> _enemyPatrols;
 #pragma warning disable CA2227 // Collection properties should be read only

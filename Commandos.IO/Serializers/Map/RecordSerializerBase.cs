@@ -32,5 +32,7 @@ namespace Commandos.IO.Serializers.Map
         public WorldSerializer WorldSerializer => SerializerHelper.WorldSerializer;
 
         public PatrolsSerializer PatrolsSerializer => SerializerHelper.PatrolsSerializer;
+
+        public SoldiersSerializer SoldiersSerializer => SerializerHelper.SoldiersSerializer;
     }
 }

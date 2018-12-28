@@ -32,9 +32,12 @@ namespace Commandos.IO.Serializers.Map
                 var soldier = new Soldier();
                 SerializerHelper.PopulateCharacter(soldier, soldierRecord);
                 var movementRecord = GetMovementInfoRecord(soldierRecord);
-                if (movementRecord == null)
+                if (movementRecord == null || movementRecord.Records.Count == 0)
                     continue;
-                EnemyRouteHelper.PopulateRoutes(soldier, EnemyRouteHelper.GetRoutesMultipleRecords(movementRecord));
+                var routesRecord = EnemyRouteHelper.GetRoutesMultipleRecords(movementRecord);
+                if (routesRecord == null || movementRecord.Records.Count == 0)
+                    continue;
+                EnemyRouteHelper.PopulateRoutes(soldier, routesRecord);
                 soldiers.Add(soldier);
             }
             return soldiers;

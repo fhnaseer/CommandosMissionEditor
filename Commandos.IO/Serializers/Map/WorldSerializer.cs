@@ -27,6 +27,10 @@ namespace Commandos.IO.Serializers.Map
                 SpecialAreas = new SpecialAreas(multipleRecords.GetMixedDataRecordTemp(SpecialAreas)),
                 SoundAreas = new SoundAreas(multipleRecords.GetMixedDataRecordTemp(SoundAreas)),
             };
+            var soldiers = SoldiersSerializer.Serialize(multipleRecords.GetRecord(MissionObjects));
+            foreach (var soldier in soldiers)
+                world.Soldiers.Add(soldier);
+
             return world;
         }
 

@@ -67,8 +67,7 @@ namespace Commandos.IO.Serializers.Map
             var stringBuilder = new StringBuilder();
             stringBuilder.Append($"[ {Patrols} ( ");
             foreach (var patrol in patrols)
-                stringBuilder.Append($"( {OnePatrol} [ {EnemyRouteHelper.GetEnemyRoutesRecordString(patrol)} {StringConstants.TokenId} {patrol.TokenId} {EnemyRouteHelper.GetEventsRouteRecordString(patrol)} " +
-                    $"{SerializerHelper.GetIPositionRecordString(patrol)} {SerializerHelper.GetAngleRecordString(patrol.Angle)} .EMPIEZA PATRULLANDO " +
+                stringBuilder.Append($"( {OnePatrol} [ {EnemyRouteHelper.GetEnemyRoutesRecordString(patrol)}  {SerializerHelper.GetCharacterRecordString(patrol)} {EnemyRouteHelper.GetEventsRouteRecordString(patrol)} " +
                     $"{ColumnsCount} {patrol.ColumnsCount} {RowsCount} {patrol.RowsCount} {SoldierFileName} {patrol.SoldiersFileName} {LeaderFileName} {patrol.LeaderFileName} " +
                     $".DETIENE 0 ] ) ");
             stringBuilder.Append($") ]");

@@ -46,6 +46,7 @@ namespace Commandos.IO.Serializers.Helpers
             foreach (var record in records)
             {
                 var mixedDataRecord = record as MixedDataRecord;
+                if (mixedDataRecord.Records.Count == 1) continue;
                 if (mixedDataRecord.GetStringValue(0) == MoveAction)
                 {
                     var multipleRecords = mixedDataRecord.GetMultipleRecords(1);
