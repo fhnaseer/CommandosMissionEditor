@@ -10,6 +10,7 @@
         public const string Speed = ".VEL";
         public const string MovementType = ".MODO";
         public const string EnemyActionType = ".TIPO";
+        public const string Time = ".TIEMPO";
 
         public const string World = ".MUNDO";
 

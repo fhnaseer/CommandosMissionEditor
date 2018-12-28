@@ -62,6 +62,10 @@ namespace Commandos.IO.Serializers.Helpers
 
         private static string GetArea(MultipleRecords multipleRecords) => multipleRecords.GetStringValue(StringConstants.Area);
 
+        internal static string GetAngle(MultipleRecords multipleRecords) => multipleRecords.GetStringValue(StringConstants.Angle);
+
+        internal static string GetTime(MultipleRecords multipleRecords) => multipleRecords.GetStringValue(StringConstants.Time);
+
         public static string GetSpeed(MultipleRecords multipleRecords) => multipleRecords.GetStringValue(StringConstants.Speed);
 
         public static string GetMovementType(MultipleRecords multipleRecords) => multipleRecords.GetStringValue(StringConstants.MovementType);
@@ -85,6 +89,8 @@ namespace Commandos.IO.Serializers.Helpers
         public static string GetActionTypeRecordString(string actionType) => $"{StringConstants.EnemyActionType} {actionType}";
 
         internal static object GetAngleRecordString(string angle) => $"{StringConstants.Angle} {angle}";
+
+        internal static object GetTimeRecordString(string time) => $"{StringConstants.Time} {time}";
 
         internal static object GetTokenRecordString(string tokenId) => $"{StringConstants.TokenId} {tokenId}";
     }

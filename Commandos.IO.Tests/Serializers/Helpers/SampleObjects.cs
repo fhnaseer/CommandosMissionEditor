@@ -32,7 +32,11 @@ namespace Commandos.IO.Tests.Serializers.Helpers
 
         public static string MoveActionString = $"IR_A_PUNTO [ .MODO ANDANDO {IPositionString} ]";
 
-        public static string ActionsString = $".ESCALAS ( ( {MoveActionString} ) )";
+        public static string RotateActionString = $"ENCARARSE [ .ANGULO 90 ]";
+
+        public static string PauseActionString = $"ESPERAR [ .TIEMPO 300 ]";
+
+        public static string ActionsString = $".ESCALAS ( ( {MoveActionString} ) ( {RotateActionString} ) ( {PauseActionString} ) )";
 
         public static string RouteString = $"[ .NOMBRE DEFAULT .VEL 1.5 .TIPO STOPPED {ActionsString} ]";
 
@@ -97,6 +101,16 @@ namespace Commandos.IO.Tests.Serializers.Helpers
             MovementType = "ANDANDO"
         };
 
+        public static RotateAction RotateAction => new RotateAction
+        {
+            Angle = "90"
+        };
+
+        public static PauseAction PauseAction => new PauseAction
+        {
+            Time = "300"
+        };
+
         public static EnemyRoute EnemyRoute
         {
             get
@@ -108,6 +122,8 @@ namespace Commandos.IO.Tests.Serializers.Helpers
                     ActionRepeatType = "STOPPED"
                 };
                 route.Actions.Add(MoveAction);
+                route.Actions.Add(RotateAction);
+                route.Actions.Add(PauseAction);
                 return route;
             }
         }

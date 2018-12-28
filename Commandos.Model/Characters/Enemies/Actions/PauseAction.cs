@@ -2,11 +2,13 @@
 
 namespace Commandos.Model.Characters.Enemies.Actions
 {
-    public class EnemyAction
+    public class PauseAction : EnemyAction
     {
-        public virtual string ActionName { get; }
+        public override string ActionName => "Pause";
 
-        public override string ToString() => ActionName;
+        public string Time { get; set; }
+
+        public override string ToString() => $"{ActionName} {Time}";
 
         #region Methods for Equality checks.
         // http://msdn.microsoft.com/en-us/library/dd183755.aspx
@@ -23,17 +25,17 @@ namespace Commandos.Model.Characters.Enemies.Actions
         [ExcludeFromCodeCoverage]
         public override bool Equals(object obj)
         {
-            return Equals(obj as EnemyAction);
+            return Equals(obj as PauseAction);
         }
 
         /// <summary>
-        /// Determines whether the specified EnemyAction is equal to the current EnemyAction.
+        /// Determines whether the specified PauseAction is equal to the current PauseAction.
         /// </summary>
-        /// <param name="other">The EnemyAction to compare with the current EnemyAction.</param>
-        /// <returns>true if the specified EnemyAction is equal to the current EnemyAction;
+        /// <param name="other">The PauseAction to compare with the current PauseAction.</param>
+        /// <returns>true if the specified PauseAction is equal to the current PauseAction;
         /// otherwise, false.</returns>
         [ExcludeFromCodeCoverage]
-        internal bool Equals(EnemyAction other)
+        internal bool Equals(PauseAction other)
         {
             // If parameter is null, return false.
             if (other is null)
@@ -43,7 +45,7 @@ namespace Commandos.Model.Characters.Enemies.Actions
             if (ReferenceEquals(this, other))
                 return true;
 
-            return ToString() == other.ToString();
+            return Time == other.Time;
         }
 
         /// <summary>
@@ -59,14 +61,14 @@ namespace Commandos.Model.Characters.Enemies.Actions
         }
 
         /// <summary>
-        /// Overrides equal operator for EnemyAction.
+        /// Overrides equal operator for PauseAction.
         /// </summary>
-        /// <param name="left">Left EnemyAction.</param>
-        /// <param name="right">Right EnemyAction</param>
-        /// <returns>true if the left EnemyAction is equal to the right EnemyAction;
+        /// <param name="left">Left PauseAction.</param>
+        /// <param name="right">Right PauseAction</param>
+        /// <returns>true if the left PauseAction is equal to the right PauseAction;
         /// otherwise, false. </returns>
         [ExcludeFromCodeCoverage]
-        public static bool operator ==(EnemyAction left, EnemyAction right)
+        public static bool operator ==(PauseAction left, PauseAction right)
         {
             // Check for null on left side.
             if (left is null)
@@ -85,14 +87,14 @@ namespace Commandos.Model.Characters.Enemies.Actions
         }
 
         /// <summary>
-        /// Overrides not equal operator for EnemyAction.
+        /// Overrides not equal operator for PauseAction.
         /// </summary>
-        /// <param name="left">Left EnemyAction.</param>
-        /// <param name="right">Right EnemyAction</param>
-        /// <returns>true if the left EnemyAction is not equal to the right EnemyAction;
+        /// <param name="left">Left PauseAction.</param>
+        /// <param name="right">Right PauseAction</param>
+        /// <returns>true if the left PauseAction is not equal to the right PauseAction;
         /// otherwise, false. </returns>
         [ExcludeFromCodeCoverage]
-        public static bool operator !=(EnemyAction left, EnemyAction right)
+        public static bool operator !=(PauseAction left, PauseAction right)
         {
             return !(left == right);
         }

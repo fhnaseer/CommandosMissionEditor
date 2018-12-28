@@ -60,6 +60,7 @@
     <Compile Include="Entities\MultipleRecords.cs" />
     <Compile Include="Entities\SingleDataRecord.cs" />
     <Compile Include="Serializers\Files\RecordWriter.cs" />
+    <Compile Include="Serializers\Helpers\EnemyActionHelper.cs" />
     <Compile Include="Serializers\Helpers\EnemyRouteHelper.cs" />
     <Compile Include="Serializers\Helpers\SerializerHelper.cs" />
     <Compile Include="Serializers\Helpers\TokenParser.cs" />
