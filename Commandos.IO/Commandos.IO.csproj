@@ -60,6 +60,7 @@
     <Compile Include="Entities\MultipleRecords.cs" />
     <Compile Include="Entities\SingleDataRecord.cs" />
     <Compile Include="Serializers\Files\RecordWriter.cs" />
+    <Compile Include="Serializers\Helpers\EnemyRouteHelper.cs" />
     <Compile Include="Serializers\Helpers\SerializerHelper.cs" />
     <Compile Include="Serializers\Helpers\TokenParser.cs" />
     <Compile Include="GlobalSuppressions.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Serializers\Map\CameraSerializer.cs" />
     <Compile Include="Serializers\Map\PatrolsSerializer.cs" />
     <Compile Include="Serializers\Map\RecordSerializerBase.cs" />
+    <Compile Include="Serializers\Map\SoldiersSerializer.cs" />
     <Compile Include="Serializers\Map\WorldSerializer.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,15 +1,10 @@
-﻿using System.Collections.ObjectModel;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using Commandos.Model.Characters.Enemies.Actions;
-using Commandos.Model.Common;
+﻿using System.Diagnostics.CodeAnalysis;
+using Commandos.Model.Characters;
 
 namespace Commandos.Model.Map
 {
-    public class EnemyPatrol : MissionObject
+    public class EnemyPatrol : EnemyCharacter
     {
-        public string Angle { get; set; }
-
         public string ColumnsCount { get; set; }
 
         public string RowsCount { get; set; }
@@ -17,13 +12,6 @@ namespace Commandos.Model.Map
         public string SoldiersFileName { get; set; }
 
         public string LeaderFileName { get; set; }
-
-        private ObservableCollection<EnemyRoute> _routes;
-        public ObservableCollection<EnemyRoute> Routes => _routes ?? (_routes = new ObservableCollection<EnemyRoute>());
-
-        public string DefaultRoute { get; set; }
-
-        public string EventRoute { get; set; }
 
         public override string ToString() => TokenId;
 
@@ -62,9 +50,8 @@ namespace Commandos.Model.Map
             if (ReferenceEquals(this, other))
                 return true;
 
-            return (Angle == other.Angle && ColumnsCount == other.ColumnsCount && RowsCount == other.RowsCount &&
-                SoldiersFileName == other.SoldiersFileName && LeaderFileName == other.LeaderFileName &&
-                Routes.Count == other.Routes.Count && Routes.SequenceEqual(other.Routes));
+            return base.Equals(other) && ColumnsCount == other.ColumnsCount && RowsCount == other.RowsCount &&
+                SoldiersFileName == other.SoldiersFileName && LeaderFileName == other.LeaderFileName;
         }
 
         /// <summary>

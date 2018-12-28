@@ -61,10 +61,17 @@
     <Compile Include="Serializers\Helpers\TokenParserTest.cs" />
     <Compile Include="Serializers\Map\MusicSerializerTest.cs" />
     <Compile Include="Serializers\Map\PatrolSerializerTest.cs" />
+    <Compile Include="Serializers\Map\SoldierSerializerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="TestFiles\5G1A.MIS">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\Compare1.mis">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\Compare2.mis">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="TestFiles\InvalidSpaces.mis">

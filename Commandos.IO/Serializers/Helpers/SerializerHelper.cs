@@ -1,6 +1,8 @@
 ﻿using Commandos.IO.Entities;
 using Commandos.IO.Helpers;
 using Commandos.IO.Serializers.Map;
+using Commandos.Model.Characters;
+using Commandos.Model.Characters.Enemies;
 using Commandos.Model.Common;
 
 namespace Commandos.IO.Serializers.Helpers
@@ -29,6 +31,16 @@ namespace Commandos.IO.Serializers.Helpers
 
         private PatrolsSerializer _patrolsSerializer;
         public PatrolsSerializer PatrolsSerializer => _patrolsSerializer ?? (_patrolsSerializer = new PatrolsSerializer());
+
+        public static void PopulateCharacter(Character character, MultipleRecords multipleRecords)
+        {
+            if (character is Soldier)
+                PopulateIPosition(character, multipleRecords.GetMultipleRecord(StringConstants.CharacterPosition));
+            else
+                PopulateIPosition(character, multipleRecords);
+            character.TokenId = multipleRecords.GetStringValue(StringConstants.TokenId);
+            character.Angle = multipleRecords.GetStringValue(StringConstants.Angle);
+        }
 
         public static void PopulateIPosition(IPosition target, MultipleRecords multipleRecords)
         {

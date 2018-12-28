@@ -1,14 +1,18 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using Commandos.Model.Characters.Enemies.Actions;
 
-namespace Commandos.Model.Common
+namespace Commandos.Model.Characters
 {
-    public abstract class MissionObject : IPosition
+    public class EnemyCharacter : Character
     {
-        public string TokenId { get; set; }
+        private ObservableCollection<EnemyRoute> _routes;
+        public ObservableCollection<EnemyRoute> Routes => _routes ?? (_routes = new ObservableCollection<EnemyRoute>());
 
-        public Position Position { get; set; }
+        public string DefaultRoute { get; set; }
 
-        public string Area { get; set; }
+        public string EventRoute { get; set; }
 
         #region Methods for Equality checks.
         // http://msdn.microsoft.com/en-us/library/dd183755.aspx
@@ -25,17 +29,17 @@ namespace Commandos.Model.Common
         [ExcludeFromCodeCoverage]
         public override bool Equals(object obj)
         {
-            return Equals(obj as MissionObject);
+            return Equals(obj as EnemyCharacter);
         }
 
         /// <summary>
-        /// Determines whether the specified MissionObject is equal to the current MissionObject.
+        /// Determines whether the specified EnemyCharacter is equal to the current EnemyCharacter.
         /// </summary>
-        /// <param name="other">The MissionObject to compare with the current MissionObject.</param>
-        /// <returns>true if the specified MissionObject is equal to the current MissionObject;
+        /// <param name="other">The EnemyCharacter to compare with the current EnemyCharacter.</param>
+        /// <returns>true if the specified EnemyCharacter is equal to the current EnemyCharacter;
         /// otherwise, false.</returns>
         [ExcludeFromCodeCoverage]
-        internal bool Equals(MissionObject other)
+        internal bool Equals(EnemyCharacter other)
         {
             // If parameter is null, return false.
             if (other is null)
@@ -45,7 +49,7 @@ namespace Commandos.Model.Common
             if (ReferenceEquals(this, other))
                 return true;
 
-            return TokenId == other.TokenId && Position == other.Position && Area == other.Area;
+            return base.Equals(other) && Routes.Count == other.Routes.Count && Routes.SequenceEqual(other.Routes);
         }
 
         /// <summary>
@@ -61,14 +65,14 @@ namespace Commandos.Model.Common
         }
 
         /// <summary>
-        /// Overrides equal operator for MissionObject.
+        /// Overrides equal operator for EnemyCharacter.
         /// </summary>
-        /// <param name="left">Left MissionObject.</param>
-        /// <param name="right">Right MissionObject</param>
-        /// <returns>true if the left MissionObject is equal to the right MissionObject;
+        /// <param name="left">Left EnemyCharacter.</param>
+        /// <param name="right">Right EnemyCharacter</param>
+        /// <returns>true if the left EnemyCharacter is equal to the right EnemyCharacter;
         /// otherwise, false. </returns>
         [ExcludeFromCodeCoverage]
-        public static bool operator ==(MissionObject left, MissionObject right)
+        public static bool operator ==(EnemyCharacter left, EnemyCharacter right)
         {
             // Check for null on left side.
             if (left is null)
@@ -87,14 +91,14 @@ namespace Commandos.Model.Common
         }
 
         /// <summary>
-        /// Overrides not equal operator for MissionObject.
+        /// Overrides not equal operator for EnemyCharacter.
         /// </summary>
-        /// <param name="left">Left MissionObject.</param>
-        /// <param name="right">Right MissionObject</param>
-        /// <returns>true if the left MissionObject is not equal to the right MissionObject;
+        /// <param name="left">Left EnemyCharacter.</param>
+        /// <param name="right">Right EnemyCharacter</param>
+        /// <returns>true if the left EnemyCharacter is not equal to the right EnemyCharacter;
         /// otherwise, false. </returns>
         [ExcludeFromCodeCoverage]
-        public static bool operator !=(MissionObject left, MissionObject right)
+        public static bool operator !=(EnemyCharacter left, EnemyCharacter right)
         {
             return !(left == right);
         }

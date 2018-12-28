@@ -1,0 +1,130 @@
+﻿          [
+                .POS 
+                [
+                    .XYZ 
+                    (
+                        0.0 0.0 0 
+                    )
+                    .ESC EXTERIOR 
+                ]
+                .ANGULO 0.0 
+                .TOKEN ALEPISTGORDO1 
+                .BANDO ALEMAN 
+                .HTIP SOLD 
+                .COMPORTAMIENTO 
+                (
+                    ComporAlemanScript 
+                    [
+                        .VIGILADOR
+                        [
+                            .LONG_NORMAL 625.0   
+                        ] 
+                        .EVENTOS_RUTA 
+                        (
+                            
+                        )
+                        .DISPARADOR 
+                        [
+                            .ARMA ALEMAN_pistola
+                        ]
+                        .NUM_GRANADAS 0 
+                        .ANIMACION ALEPISTGORDO1.ANI
+                        .GESTOR_MOVIMIENTO 
+                        [
+                        ]
+                    ]
+                )
+                .VISTA 
+                (
+                    VistaTriangular 
+                    [
+                    ]
+                )
+                .OIDO 
+                (
+                    Oido 
+                    [
+                    ]
+                )
+                .MOTOR 
+                (
+                    MotorPeaton 
+                    [
+                    ]
+                )
+                .ANIMADOR 
+                (
+                    AnimadorHumano 
+                    [
+                        .VOL 
+                        (
+                            Cilindro 
+                            [
+                                .RADIO 20.0 
+                                .ALTURA 50.0 
+                            ]
+                        )
+                        .ANIM ALEPISTGORDO1.ANI
+                    ]
+                )
+                .VOLCOLISION 
+                (
+                    Cilindro 
+                    [
+                        .RADIO 12.0 
+                        .ALTURA 50.0 
+                    ]
+                )
+                .TIPOCOLISION PEATON 
+                .ZONASELECCION 
+                (
+                    Cilindro 
+                    [
+                        .RADIO 10.0 
+                        .ALTURA 50.0 
+                    ]
+                )
+                .LISTAS 
+                (
+                    CHOC SELE VISI EJEC FLAE 
+                )
+                .COLORPUNTOLIBRETA ALEMAN 
+                .USAHAB 
+                [
+                ]
+                .PUEDE_CONDUCIR 
+                (
+                    WILLIS ZODIAK CAMION CANON LANCHA_MOTORA NIDO_AMETRALLADORAS ASCENSOR MONTA_ALEMAN SILLA CAMA 
+                )
+                .MICUADRICULA 
+                [
+                    .DIMCUADX  4.0 
+                    .DIMCUADY  6.0 
+                    .GFXCUAD CUADRIC 
+                ]
+                .GEL 
+                [
+                ]
+                .DUMMY 
+                [
+                    .ANIMADOR 
+                    (
+                        AnimadorHumano 
+                        [
+                            .VOL 
+                            (
+                                Cilindro 
+                                [
+                                    .RADIO 10.0 
+                                    .ALTURA 50.0 
+                                ]
+                            )
+                            .ANIM ALEPISTGORDO1.ANI
+                        ]
+                    )
+                ]
+                .BICHOS 
+                (
+
+                )
+            ]

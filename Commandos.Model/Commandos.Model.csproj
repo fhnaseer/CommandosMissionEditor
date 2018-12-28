@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Characters\Backpack.cs" />
+    <Compile Include="Characters\Character.cs" />
     <Compile Include="Characters\Commandos\Commando.cs" />
     <Compile Include="Characters\Commandos\CommandoAbilities.cs" />
     <Compile Include="Characters\Commandos\Driver.cs" />
@@ -68,6 +69,8 @@
     <Compile Include="Characters\Enemies\Actions\EnemyRoute.cs" />
     <Compile Include="Characters\Enemies\Actions\BodyActions.cs" />
     <Compile Include="Characters\Enemies\Actions\MovementActions.cs" />
+    <Compile Include="Characters\Enemies\Soldier.cs" />
+    <Compile Include="Characters\EnemyCharacter.cs" />
     <Compile Include="Common\Ability.cs" />
     <Compile Include="Common\BackgroundMusic.cs" />
     <Compile Include="Common\Enums.cs" />

@@ -1,14 +1,12 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using Commandos.Model.Common;
 
-namespace Commandos.Model.Common
+namespace Commandos.Model.Characters
 {
-    public abstract class MissionObject : IPosition
+    public abstract class Character : MissionObject
     {
-        public string TokenId { get; set; }
+        public string Angle { get; set; }
 
-        public Position Position { get; set; }
-
-        public string Area { get; set; }
 
         #region Methods for Equality checks.
         // http://msdn.microsoft.com/en-us/library/dd183755.aspx
@@ -25,17 +23,17 @@ namespace Commandos.Model.Common
         [ExcludeFromCodeCoverage]
         public override bool Equals(object obj)
         {
-            return Equals(obj as MissionObject);
+            return Equals(obj as Character);
         }
 
         /// <summary>
-        /// Determines whether the specified MissionObject is equal to the current MissionObject.
+        /// Determines whether the specified Character is equal to the current Character.
         /// </summary>
-        /// <param name="other">The MissionObject to compare with the current MissionObject.</param>
-        /// <returns>true if the specified MissionObject is equal to the current MissionObject;
+        /// <param name="other">The Character to compare with the current Character.</param>
+        /// <returns>true if the specified Character is equal to the current Character;
         /// otherwise, false.</returns>
         [ExcludeFromCodeCoverage]
-        internal bool Equals(MissionObject other)
+        internal bool Equals(Character other)
         {
             // If parameter is null, return false.
             if (other is null)
@@ -45,7 +43,7 @@ namespace Commandos.Model.Common
             if (ReferenceEquals(this, other))
                 return true;
 
-            return TokenId == other.TokenId && Position == other.Position && Area == other.Area;
+            return base.Equals(other) && Angle == other.Angle;
         }
 
         /// <summary>
@@ -61,14 +59,14 @@ namespace Commandos.Model.Common
         }
 
         /// <summary>
-        /// Overrides equal operator for MissionObject.
+        /// Overrides equal operator for Character.
         /// </summary>
-        /// <param name="left">Left MissionObject.</param>
-        /// <param name="right">Right MissionObject</param>
-        /// <returns>true if the left MissionObject is equal to the right MissionObject;
+        /// <param name="left">Left Character.</param>
+        /// <param name="right">Right Character</param>
+        /// <returns>true if the left Character is equal to the right Character;
         /// otherwise, false. </returns>
         [ExcludeFromCodeCoverage]
-        public static bool operator ==(MissionObject left, MissionObject right)
+        public static bool operator ==(Character left, Character right)
         {
             // Check for null on left side.
             if (left is null)
@@ -87,14 +85,14 @@ namespace Commandos.Model.Common
         }
 
         /// <summary>
-        /// Overrides not equal operator for MissionObject.
+        /// Overrides not equal operator for Character.
         /// </summary>
-        /// <param name="left">Left MissionObject.</param>
-        /// <param name="right">Right MissionObject</param>
-        /// <returns>true if the left MissionObject is not equal to the right MissionObject;
+        /// <param name="left">Left Character.</param>
+        /// <param name="right">Right Character</param>
+        /// <returns>true if the left Character is not equal to the right Character;
         /// otherwise, false. </returns>
         [ExcludeFromCodeCoverage]
-        public static bool operator !=(MissionObject left, MissionObject right)
+        public static bool operator !=(Character left, Character right)
         {
             return !(left == right);
         }
