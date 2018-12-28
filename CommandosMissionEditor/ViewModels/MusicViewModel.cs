@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.Windows.Input;
 using Commandos.Model.Common;
 using Commandos.Model.Map;
 
@@ -20,15 +19,22 @@ namespace CommandosMissionEditor.ViewModels
 
         public override ObservableCollection<BackgroundMusic> ItemCollection => Mission.Music.BackgroundMusics;
 
-        private string _startingMusicEnvironment;
-        public string StartingMusicEnvironment
+        public override void LoadDefaultItem()
         {
-            get => _startingMusicEnvironment;
-            set
-            {
-                _startingMusicEnvironment = value;
-                OnPropertyChanged(nameof(StartingMusicEnvironment));
-            }
+            foreach (var item in ItemCollection)
+                if (item.Environment == Mission.Music.StartingMusicEnvironment)
+                    DefaultItem = item;
+        }
+
+        public override void UpdateDefaultItem()
+        {
+            Mission.Music.StartingMusicEnvironment = DefaultItem.Environment;
+        }
+
+        public override void ClearItem()
+        {
+            SelectedItem.MusicFileName = string.Empty;
+            SelectedItem.Environment = string.Empty;
         }
     }
 }

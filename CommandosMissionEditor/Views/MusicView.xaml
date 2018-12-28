@@ -28,18 +28,16 @@
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Background Musics" />
         <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding ItemCollection}" SelectedItem="{Binding SelectedItem}" />
         <UniformGrid Grid.Row="1" Grid.Column="1" Rows="1">
-            <Button Content="Edit Selected" Command="{Binding EditSelectedItemCommand}" />
             <Button Content="Remove Selected" Command="{Binding RemoveSelectedItemCommand}" />
         </UniformGrid>
         <TextBlock Grid.Row="2" Grid.Column="0" Text="Music File Name (.wav)" />
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding CurrentItem.MusicFileName, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedItem.MusicFileName, UpdateSourceTrigger=PropertyChanged}" />
         <TextBlock Grid.Row="3" Grid.Column="0" Text="Mission Environment" />
-        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding CurrentItem.Environment, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SelectedItem.Environment, UpdateSourceTrigger=PropertyChanged}" />
         <UniformGrid Grid.Row="4" Grid.Column="1" Rows="1">
-            <Button Content="Add Music" Command="{Binding AddItemCommand}" />
             <Button Content="Clear Information" Command="{Binding ClearItemCommand}" />
         </UniformGrid>
         <TextBlock Grid.Row="5" Grid.Column="0" Text="Default Music" />
-        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Mission.Music.StartingMusicEnvironment}" />
+        <ComboBox Grid.Row="5" Grid.Column="1" ItemsSource="{Binding ItemCollection}" SelectedItem="{Binding DefaultItem}" />
     </Grid>  
 </UserControl>

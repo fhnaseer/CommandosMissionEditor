@@ -33,34 +33,33 @@
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Patrols" />
         <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding ItemCollection}" SelectedItem="{Binding SelectedItem}" />
         <UniformGrid Grid.Row="1" Grid.Column="1" Rows="1">
-            <Button Content="Edit Selected" Command="{Binding EditSelectedItemCommand}" />
+            <Button Content="Add New" Command="{Binding AddItemCommand}" />
             <Button Content="Remove Selected" Command="{Binding RemoveSelectedItemCommand}" />
         </UniformGrid>
         <TextBlock Grid.Row="2" Grid.Column="0" Text="Token Id" />
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding CurrentItem.TokenId}" />
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedItem.TokenId}" />
         <TextBlock Grid.Row="3" Grid.Column="0" Text="Starting Position" />
         <UniformGrid Grid.Row="3" Grid.Column="1" Rows="1">
             <TextBlock Text="X" />
-            <TextBox Text="{Binding CurrentItem.Position.X}" />
+            <TextBox Text="{Binding SelectedItem.Position.X}" />
             <TextBlock Text="Y" />
-            <TextBox Text="{Binding CurrentItem.Position.Y}" />
+            <TextBox Text="{Binding SelectedItem.Position.Y}" />
             <TextBlock Text="Z" />
-            <TextBox Text="{Binding CurrentItem.Position.Z}" />
+            <TextBox Text="{Binding SelectedItem.Position.Z}" />
         </UniformGrid>
         <TextBlock Grid.Row="4" Grid.Column="0" Text="Area" />
-        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding CurrentItem.Area}" />
+        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding SelectedItem.Area}" />
         <TextBlock Grid.Row="5" Grid.Column="0" Text="Angle" />
-        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding CurrentItem.Angle}" />
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding SelectedItem.Angle}" />
         <TextBlock Grid.Row="6" Grid.Column="0" Text="Columns Count" />
-        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding CurrentItem.ColumnsCount}" />
+        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding SelectedItem.ColumnsCount}" />
         <TextBlock Grid.Row="7" Grid.Column="0" Text="Rows Count" />
-        <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding CurrentItem.RowsCount}" />
+        <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding SelectedItem.RowsCount}" />
         <TextBlock Grid.Row="8" Grid.Column="0" Text="Soldiers File Name" />
-        <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding CurrentItem.SoldiersFileName}" />
+        <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding SelectedItem.SoldiersFileName}" />
         <TextBlock Grid.Row="9" Grid.Column="0" Text="Leader File Name" />
-        <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding CurrentItem.LeaderFileName}" />
+        <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding SelectedItem.LeaderFileName}" />
         <UniformGrid Grid.Row="10" Grid.Column="1" Rows="1">
-            <Button Content="Add" Command="{Binding AddItemCommand}" />
             <Button Content="Clear Information" Command="{Binding ClearItemCommand}" />
         </UniformGrid>
     </Grid>

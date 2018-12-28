@@ -39,5 +39,10 @@ namespace CommandosMissionEditor.ViewModels
                 OnPropertyChanged(nameof(ItemCollection));
             }
         }
+
+        public override void ClearItem()
+        {
+
+        }
     }
 }

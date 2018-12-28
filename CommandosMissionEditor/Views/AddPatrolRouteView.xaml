@@ -36,17 +36,16 @@
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Routes" />
         <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding ItemCollection}" SelectedItem="{Binding SelectedItem}" />
         <UniformGrid Grid.Row="2" Grid.Column="1" Rows="1">
-            <Button Content="Edit Selected" Command="{Binding EditSelectedItemCommand}" />
+            <Button Content="Add" Command="{Binding AddItemCommand}" />
             <Button Content="Remove Selected" Command="{Binding RemoveSelectedItemCommand}" />
         </UniformGrid>
         <TextBlock Grid.Row="3" Grid.Column="0" Text="Name" />
-        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding CurrentItem.RouteName}" />
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SelectedItem.RouteName}" />
         <TextBlock Grid.Row="4" Grid.Column="0" Text="Speed" />
-        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding CurrentItem.Speed}" />
+        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding SelectedItem.Speed}" />
         <TextBlock Grid.Row="5" Grid.Column="0" Text="Repeat Type" />
-        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding CurrentItem.ActionRepeatType}" />
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding SelectedItem.ActionRepeatType}" />
         <UniformGrid Grid.Row="6" Grid.Column="1" Rows="1">
-            <Button Content="Add" Command="{Binding AddItemCommand}" />
             <Button Content="Clear Information" Command="{Binding ClearItemCommand}" />
         </UniformGrid>
     </Grid>

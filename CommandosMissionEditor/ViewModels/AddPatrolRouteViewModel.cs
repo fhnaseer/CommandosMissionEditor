@@ -27,5 +27,12 @@ namespace CommandosMissionEditor.ViewModels
                 OnPropertyChanged(nameof(ItemCollection));
             }
         }
+
+        public override void ClearItem()
+        {
+            SelectedItem.RouteName = string.Empty;
+            SelectedItem.Speed = string.Empty;
+            SelectedItem.ActionRepeatType = string.Empty;
+        }
     }
 }

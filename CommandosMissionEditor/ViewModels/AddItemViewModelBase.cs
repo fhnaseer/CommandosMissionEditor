@@ -23,16 +23,25 @@ namespace CommandosMissionEditor.ViewModels
             }
         }
 
-        private T _currentItem;
-        public T CurrentItem
+        private T _defaultItem;
+        public T DefaultItem
         {
-            get => _currentItem;
+            get
+            {
+                if (_defaultItem == null)
+                    LoadDefaultItem();
+                return _defaultItem;
+            }
             set
             {
-                _currentItem = value;
-                OnPropertyChanged(nameof(CurrentItem));
+                _defaultItem = value;
+                UpdateDefaultItem();
+                OnPropertyChanged(nameof(DefaultItem));
             }
         }
+
+        public virtual void LoadDefaultItem() { }
+        public virtual void UpdateDefaultItem() { }
 
         private ICommand _removeSelectedItemCommand;
         public ICommand RemoveSelectedItemCommand => _removeSelectedItemCommand ?? (_removeSelectedItemCommand = new RelayCommand(RemoveSelectedItem, CanRemoveSelectedItem));
@@ -45,29 +54,19 @@ namespace CommandosMissionEditor.ViewModels
             SelectedItem = default(T);
         }
 
-        private ICommand _editSelectedItemCommand;
-        public ICommand EditSelectedItemCommand => _editSelectedItemCommand ?? (_editSelectedItemCommand = new RelayCommand(EditSelectedItem, CanRemoveSelectedItem));
-
-        internal void EditSelectedItem()
-        {
-            CurrentItem = SelectedItem;
-        }
-
         private ICommand _addItemCommand;
-        public ICommand AddItemCommand => _addItemCommand ?? (_addItemCommand = new RelayCommand(AddItem, () => !ReferenceEquals(SelectedItem, CurrentItem)));
+        public ICommand AddItemCommand => _addItemCommand ?? (_addItemCommand = new RelayCommand(AddItem));
 
-        internal void AddItem()
+        internal virtual void AddItem()
         {
-            ItemCollection.Add(CurrentItem);
-            CurrentItem = new T();
+            var item = new T();
+            ItemCollection.Add(item);
+            SelectedItem = item;
         }
 
         private ICommand _clearItemCommand;
         public ICommand ClearItemCommand => _clearItemCommand ?? (_clearItemCommand = new RelayCommand(ClearItem));
 
-        internal void ClearItem()
-        {
-            CurrentItem = new T();
-        }
+        public virtual void ClearItem() { }
     }
 }
