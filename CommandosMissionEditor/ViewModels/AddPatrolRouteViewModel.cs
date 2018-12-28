@@ -16,6 +16,34 @@ namespace CommandosMissionEditor.ViewModels
 
         public override ObservableCollection<EnemyRoute> ItemCollection => SelectedEnemyPatrol.Routes;
 
+        public override void LoadDefaultItem()
+        {
+            foreach (var item in ItemCollection)
+            {
+                if (item.RouteName == SelectedEnemyPatrol.DefaultRoute)
+                    DefaultItem = item;
+                if (item.RouteName == SelectedEnemyPatrol.EventRoute)
+                    EventRoute = item;
+            }
+        }
+
+        public override void UpdateDefaultItem()
+        {
+            SelectedEnemyPatrol.DefaultRoute = DefaultItem.RouteName;
+        }
+
+        private EnemyRoute _eventRoute;
+        public EnemyRoute EventRoute
+        {
+            get => _eventRoute;
+            set
+            {
+                _eventRoute = value;
+                SelectedEnemyPatrol.EventRoute = _eventRoute.RouteName;
+                OnPropertyChanged(nameof(EventRoute));
+            }
+        }
+
         private EnemyPatrol _selectedEnemyPatrol;
         public EnemyPatrol SelectedEnemyPatrol
         {
@@ -25,6 +53,7 @@ namespace CommandosMissionEditor.ViewModels
                 _selectedEnemyPatrol = value;
                 OnPropertyChanged(nameof(SelectedEnemyPatrol));
                 OnPropertyChanged(nameof(ItemCollection));
+                OnPropertyChanged(nameof(DefaultItem));
             }
         }
 
