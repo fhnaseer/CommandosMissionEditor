@@ -63,6 +63,12 @@ namespace Commandos.IO.Serializers.Helpers
 
         public static string GetMovementType(MultipleRecords multipleRecords) => multipleRecords.GetStringValue(StringConstants.MovementType);
 
+        public static string GetCharacterRecordString(Character character)
+        {
+            var iPositionString = character is Soldier ? $"{StringConstants.CharacterPosition} [ {GetIPositionRecordString(character)} ]" : GetIPositionRecordString(character);
+            return $"{iPositionString} {GetAngleRecordString(character.Angle)} {GetTokenRecordString(character.TokenId)}";
+        }
+
         public static string GetIPositionRecordString(IPosition target) => $"{StringConstants.Position} ( {target.Position.X} {target.Position.Y} {target.Position.Z} ) {StringConstants.Area} {target.Area}";
 
         private static string GetPositionRecordString(Position position) => $"{StringConstants.Position} ( {position.X} {position.Y} {position.Z} )";
@@ -76,5 +82,7 @@ namespace Commandos.IO.Serializers.Helpers
         public static string GetActionTypeRecordString(string actionType) => $"{StringConstants.EnemyActionType} {actionType}";
 
         internal static object GetAngleRecordString(string angle) => $"{StringConstants.Angle} {angle}";
+
+        internal static object GetTokenRecordString(string tokenId) => $"{StringConstants.TokenId} {tokenId}";
     }
 }

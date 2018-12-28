@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 using Commandos.IO.Entities;
 using Commandos.IO.Helpers;
 using Commandos.Model.Characters;
@@ -8,6 +9,8 @@ namespace Commandos.IO.Serializers.Helpers
 {
     public static class EnemyRouteHelper
     {
+        private const string EventsRoute = ".EVENTOSRUTA";
+
         private const string Patrol = ".PATRULLAJE";
         private const string EnemyAction = ".RECPATRULLA";
         private const string Routes = ".RUTAS";
@@ -52,6 +55,38 @@ namespace Commandos.IO.Serializers.Helpers
                     enemyActions.Actions.Add(action);
                 }
             }
+        }
+
+        public static string GetEventsRouteRecordString(EnemyCharacter patrol)
+        {
+            if (patrol.EventRoute == null)
+                return string.Empty;
+            return $"{EventsRoute} ( {patrol.EventRoute} )";
+        }
+
+        public static string GetEnemyRoutesRecordString(EnemyCharacter patrol)
+        {
+            var stringBuilder = new StringBuilder();
+            stringBuilder.Append($"{Patrol} [ {EnemyAction} [ {Routes} ( ");
+            foreach (var route in patrol.Routes)
+                stringBuilder.Append($"[ {RouteName} {route.RouteName} " +
+                    $"{Helpers.SerializerHelper.GetSpeedRecordString(route.Speed)} {Helpers.SerializerHelper.GetActionTypeRecordString(route.ActionRepeatType)}" +
+                    $" {GetEnemyActionsRecordString(route.Actions)} ] ");
+            stringBuilder.Append($") {DefaultRoute} {patrol.DefaultRoute} ] ]");
+            return stringBuilder.ToString();
+        }
+
+        public static string GetEnemyActionsRecordString(ICollection<EnemyAction> actions)
+        {
+            var stringBuilder = new StringBuilder();
+            stringBuilder.Append($"{ActionStep} ( ");
+            foreach (var action in actions)
+            {
+                if (action is MoveAction moveAction)
+                    stringBuilder.Append($"( {MoveAction} [ {Helpers.SerializerHelper.GetMovementTypeRecordString(moveAction.MovementType)} {Helpers.SerializerHelper.GetIPositionRecordString(moveAction)} ] ) ");
+            }
+            stringBuilder.Append(")");
+            return stringBuilder.ToString();
         }
     }
 }

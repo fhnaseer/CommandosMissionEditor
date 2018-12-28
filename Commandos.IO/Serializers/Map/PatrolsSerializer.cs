@@ -5,7 +5,6 @@ using System.Text;
 using Commandos.IO.Entities;
 using Commandos.IO.Helpers;
 using Commandos.IO.Serializers.Helpers;
-using Commandos.Model.Characters.Enemies.Actions;
 using Commandos.Model.Map;
 
 namespace Commandos.IO.Serializers.Map
@@ -19,15 +18,6 @@ namespace Commandos.IO.Serializers.Map
         private const string SoldierFileName = ".ANIMSOLDADO";
         private const string LeaderFileName = ".ANIMSARGENTO";
         private const string EventsRoute = ".EVENTOSRUTA";
-
-        private const string Patrol = ".PATRULLAJE";
-        private const string EnemyAction = ".RECPATRULLA";
-        private const string Routes = ".RUTAS";
-        private const string DefaultRoute = ".RUTA_POR_DEFECTO";
-        private const string RouteName = ".NOMBRE";
-        private const string ActionStep = ".ESCALAS";
-
-        private const string MoveAction = "IR_A_PUNTO";
 
         public override string RecordName => Patrols;
 
@@ -77,43 +67,11 @@ namespace Commandos.IO.Serializers.Map
             var stringBuilder = new StringBuilder();
             stringBuilder.Append($"[ {Patrols} ( ");
             foreach (var patrol in patrols)
-                stringBuilder.Append($"( {OnePatrol} [ {GetEnemyRoutesRecordString(patrol)} {StringConstants.TokenId} {patrol.TokenId} {GetEventsRouteRecordString(patrol)} " +
-                    $"{Helpers.SerializerHelper.GetIPositionRecordString(patrol)} {Helpers.SerializerHelper.GetAngleRecordString(patrol.Angle)} .EMPIEZA PATRULLANDO " +
+                stringBuilder.Append($"( {OnePatrol} [ {EnemyRouteHelper.GetEnemyRoutesRecordString(patrol)} {StringConstants.TokenId} {patrol.TokenId} {EnemyRouteHelper.GetEventsRouteRecordString(patrol)} " +
+                    $"{SerializerHelper.GetIPositionRecordString(patrol)} {SerializerHelper.GetAngleRecordString(patrol.Angle)} .EMPIEZA PATRULLANDO " +
                     $"{ColumnsCount} {patrol.ColumnsCount} {RowsCount} {patrol.RowsCount} {SoldierFileName} {patrol.SoldiersFileName} {LeaderFileName} {patrol.LeaderFileName} " +
                     $".DETIENE 0 ] ) ");
             stringBuilder.Append($") ]");
-            return stringBuilder.ToString();
-        }
-
-        private static string GetEventsRouteRecordString(EnemyPatrol patrol)
-        {
-            if (patrol.EventRoute == null)
-                return string.Empty;
-            return $"{EventsRoute} ( {patrol.EventRoute} )";
-        }
-
-        private static string GetEnemyRoutesRecordString(EnemyPatrol patrol)
-        {
-            var stringBuilder = new StringBuilder();
-            stringBuilder.Append($"{Patrol} [ {EnemyAction} [ {Routes} ( ");
-            foreach (var route in patrol.Routes)
-                stringBuilder.Append($"[ {RouteName} {route.RouteName} " +
-                    $"{Helpers.SerializerHelper.GetSpeedRecordString(route.Speed)} {Helpers.SerializerHelper.GetActionTypeRecordString(route.ActionRepeatType)}" +
-                    $" {GetEnemyActionsRecordString(route.Actions)} ] ");
-            stringBuilder.Append($") {DefaultRoute} {patrol.DefaultRoute} ] ]");
-            return stringBuilder.ToString();
-        }
-
-        private static string GetEnemyActionsRecordString(ICollection<EnemyAction> actions)
-        {
-            var stringBuilder = new StringBuilder();
-            stringBuilder.Append($"{ActionStep} ( ");
-            foreach (var action in actions)
-            {
-                if (action is MoveAction moveAction)
-                    stringBuilder.Append($"( {MoveAction} [ {Helpers.SerializerHelper.GetMovementTypeRecordString(moveAction.MovementType)} {Helpers.SerializerHelper.GetIPositionRecordString(moveAction)} ] ) ");
-            }
-            stringBuilder.Append(")");
             return stringBuilder.ToString();
         }
     }
