@@ -5,9 +5,6 @@ namespace Commandos.Model.Characters
 {
     public abstract class Character : MissionObject
     {
-        public string Angle { get; set; }
-
-
         #region Methods for Equality checks.
         // http://msdn.microsoft.com/en-us/library/dd183755.aspx
         // Why ExcludeFromCodeCoverage? This code is used in multiple places and is heavily unit-tested.
@@ -43,7 +40,7 @@ namespace Commandos.Model.Characters
             if (ReferenceEquals(this, other))
                 return true;
 
-            return base.Equals(other) && Angle == other.Angle;
+            return base.Equals(other);
         }
 
         /// <summary>
