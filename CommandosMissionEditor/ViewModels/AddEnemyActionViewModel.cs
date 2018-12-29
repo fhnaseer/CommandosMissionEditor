@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Windows;
 using Commandos.Model.Characters;
 using Commandos.Model.Characters.Enemies.Actions;
 using Commandos.Model.Common;
@@ -27,9 +26,9 @@ namespace CommandosMissionEditor.ViewModels
             OnPropertyChanged(nameof(IsPauseAction));
         }
 
-        public Visibility IsMoveAction => SelectedItem is MoveAction ? Visibility.Visible : Visibility.Collapsed;
-        public Visibility IsRotateAction => SelectedItem is RotateAction ? Visibility.Visible : Visibility.Collapsed;
-        public Visibility IsPauseAction => SelectedItem is PauseAction ? Visibility.Visible : Visibility.Collapsed;
+        public bool IsMoveAction => SelectedItem is MoveAction;
+        public bool IsRotateAction => SelectedItem is RotateAction;
+        public bool IsPauseAction => SelectedItem is PauseAction;
 
         private EnemyCharacter _selectedEnemy;
         public EnemyCharacter SelectedEnemy

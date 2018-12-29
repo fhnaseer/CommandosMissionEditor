@@ -3,12 +3,12 @@
                 [
                     .XYZ 
                     (
-                        0.0 0.0 0 
+                        0.0 0.0 0.0
                     )
                     .ESC EXTERIOR 
                 ]
                 .ANGULO 0.0 
-                .TOKEN ALEPISTGORDO1 
+                .TOKEN ALEMECANICO 
                 .BANDO ALEMAN 
                 .HTIP SOLD 
                 .COMPORTAMIENTO 
@@ -17,7 +17,7 @@
                     [
                         .VIGILADOR
                         [
-                            .LONG_NORMAL 625.0   
+                            .LONG_NORMAL 500.0   
                         ] 
                         .EVENTOS_RUTA 
                         (
@@ -28,7 +28,7 @@
                             .ARMA ALEMAN_pistola
                         ]
                         .NUM_GRANADAS 0 
-                        .ANIMACION ALEPISTGORDO1.ANI
+                        .ANIMACION ALEMECANICO.ANI
                         .GESTOR_MOVIMIENTO 
                         [
                         ]
@@ -64,7 +64,7 @@
                                 .ALTURA 50.0 
                             ]
                         )
-                        .ANIM ALEPISTGORDO1.ANI
+                        .ANIM ALEMECANICO.ANI
                     ]
                 )
                 .VOLCOLISION 
@@ -119,7 +119,7 @@
                                     .ALTURA 50.0 
                                 ]
                             )
-                            .ANIM ALEPISTGORDO1.ANI
+                            .ANIM ALEMECANICO.ANI
                         ]
                     )
                 ]

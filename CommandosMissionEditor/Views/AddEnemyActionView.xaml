@@ -41,7 +41,7 @@
             <ComboBox ItemsSource="{Binding ActionTypes}" DisplayMemberPath="ActionName" SelectedItem="{Binding SelectedActionType}" />
             <Button Content="Add" Command="{Binding AddItemCommand}" />
         </UniformGrid>
-        <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Visibility="{Binding IsMoveAction}">
+        <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Visibility="{Binding IsMoveAction, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="3*" />
@@ -65,7 +65,7 @@
                 <TextBox Text="{Binding SelectedItem.Position.Z}" />
             </UniformGrid>
         </Grid>
-        <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Visibility="{Binding IsRotateAction}">
+        <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Visibility="{Binding IsRotateAction, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="3*" />
@@ -76,7 +76,7 @@
             <TextBlock Grid.Row="0" Grid.Column="0" Text="Angle" />
             <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding SelectedItem.Angle}" />
         </Grid>
-        <Grid Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Visibility="{Binding IsPauseAction}">
+        <Grid Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Visibility="{Binding IsPauseAction, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="3*" />

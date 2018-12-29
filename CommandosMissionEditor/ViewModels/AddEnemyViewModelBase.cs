@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.Windows;
 using Commandos.Model.Characters;
 using Commandos.Model.Common;
 using Commandos.Model.Map;
@@ -22,9 +21,9 @@ namespace CommandosMissionEditor.ViewModels
 
         public string CollectionName => _characterType == CharacterType.Soldier ? "Soldiers" : "Patrols";
 
-        public Visibility IsPatrolMode => _characterType == CharacterType.EnemyPatrol ? Visibility.Visible : Visibility.Collapsed;
+        public bool IsPatrolMode => _characterType == CharacterType.EnemyPatrol;
 
-        public Visibility IsSolderMode => _characterType == CharacterType.Soldier ? Visibility.Visible : Visibility.Collapsed;
+        public bool IsSolderMode => _characterType == CharacterType.Soldier;
 
         public ObservableCollection<EnemyCharacter> Enemies { get; }
     }
