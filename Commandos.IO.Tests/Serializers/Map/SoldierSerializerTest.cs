@@ -37,7 +37,7 @@ namespace Commandos.IO.Tests.Serializers.Map
             var target = new SoldiersSerializer();
 
             // Act,
-            var record = target.Deserialize(new ObservableCollection<Soldier> { expected });
+            var record = target.Deserialize(new ObservableCollection<EnemySoldier> { expected });
             var actual = target.Serialize(record);
 
             // Assert,

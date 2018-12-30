@@ -37,7 +37,7 @@ namespace Commandos.IO.Serializers.Helpers
 
         public static void PopulateCharacter(Character character, MultipleRecords multipleRecords)
         {
-            if (character is Soldier)
+            if (character is EnemySoldier)
                 PopulateIPosition(character, multipleRecords.GetMultipleRecord(StringConstants.CharacterPosition));
             else
                 PopulateIPosition(character, multipleRecords);
@@ -72,7 +72,7 @@ namespace Commandos.IO.Serializers.Helpers
 
         public static string GetCharacterRecordString(Character character)
         {
-            var iPositionString = character is Soldier ? $"{StringConstants.CharacterPosition} [ {GetIPositionRecordString(character)} ]" : GetIPositionRecordString(character);
+            var iPositionString = character is EnemySoldier ? $"{StringConstants.CharacterPosition} [ {GetIPositionRecordString(character)} ]" : GetIPositionRecordString(character);
             return $"{iPositionString} {GetAngleRecordString(character.Angle)} {GetTokenRecordString(character.TokenId)}";
         }
 

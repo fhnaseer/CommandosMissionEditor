@@ -192,11 +192,11 @@ namespace Commandos.IO.Tests.Serializers.Helpers
             }
         }
 
-        public static Soldier Soldier
+        public static EnemySoldier Soldier
         {
             get
             {
-                var soldier = new Soldier
+                var soldier = new MechanicGerman
                 {
                     TokenId = "ALEPISTDELGADO",
                     Angle = "0",

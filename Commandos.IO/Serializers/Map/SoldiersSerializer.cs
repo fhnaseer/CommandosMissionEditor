@@ -9,7 +9,7 @@ using Commandos.Model.Characters.Enemies;
 
 namespace Commandos.IO.Serializers.Map
 {
-    public class SoldiersSerializer : RecordSerializerBase<ObservableCollection<Soldier>>
+    public class SoldiersSerializer : RecordSerializerBase<ObservableCollection<EnemySoldier>>
     {
         public const string Bichos = ".BICHOS";
         private const string CompartmentInfo = ".COMPORTAMIENTO";
@@ -18,9 +18,9 @@ namespace Commandos.IO.Serializers.Map
 
         public override string RecordName => Bichos;
 
-        public override ObservableCollection<Soldier> Serialize(Record record)
+        public override ObservableCollection<EnemySoldier> Serialize(Record record)
         {
-            var soldiers = new ObservableCollection<Soldier>();
+            var soldiers = new ObservableCollection<EnemySoldier>();
             if (record == null)
                 return soldiers;
 
@@ -29,7 +29,7 @@ namespace Commandos.IO.Serializers.Map
             {
                 if (!IsSolder(soldierRecord))
                     continue;
-                var soldier = new Soldier();
+                var soldier = new WorkerGerman();
                 SerializerHelper.PopulateCharacter(soldier, soldierRecord);
                 var movementRecord = GetMovementInfoRecord(soldierRecord);
                 if (movementRecord == null || movementRecord.Records.Count == 0)
@@ -75,19 +75,19 @@ namespace Commandos.IO.Serializers.Map
             }
         }
 
-        public override Record Deserialize(ObservableCollection<Soldier> input)
+        public override Record Deserialize(ObservableCollection<EnemySoldier> input)
         {
             var recordString = GetMultipleRecordString(input);
             var tokens = recordString.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
             return TokenParser.ParseTokens(tokens, 0);
         }
 
-        public override string GetMultipleRecordString(ObservableCollection<Soldier> input)
+        public override string GetMultipleRecordString(ObservableCollection<EnemySoldier> input)
         {
             return $"{GetPatrolListRecordString(input)}";
         }
 
-        private static string GetPatrolListRecordString(ICollection<Soldier> soldiers)
+        private static string GetPatrolListRecordString(ICollection<EnemySoldier> soldiers)
         {
             var stringBuilder = new StringBuilder();
             stringBuilder.Append($"[ {Bichos} ( ");

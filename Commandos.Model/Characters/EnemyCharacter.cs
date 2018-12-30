@@ -7,6 +7,8 @@ namespace Commandos.Model.Characters
 {
     public class EnemyCharacter : Character
     {
+
+
         private ObservableCollection<EnemyRoute> _routes;
         public ObservableCollection<EnemyRoute> Routes => _routes ?? (_routes = new ObservableCollection<EnemyRoute>());
 
