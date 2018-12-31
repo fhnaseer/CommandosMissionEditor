@@ -8,7 +8,7 @@ namespace CommandosMissionEditor.ViewModels
 {
     public class AddSoldierViewModel : AddEnemyViewModelBase<EnemyCharacter>
     {
-        public AddSoldierViewModel(Mission mission, CharacterType characterType, ObservableCollection<EnemyCharacter> enemyCharacters) : base(mission, characterType, enemyCharacters)
+        public AddSoldierViewModel(Mission mission, ObservableCollection<EnemyCharacter> enemyCharacters) : base(mission, CharacterType.Soldier, enemyCharacters)
         {
             PopulateSoldierTypes();
         }

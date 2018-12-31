@@ -27,8 +27,8 @@
         <views:PatrolsView />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type viewModels:AddEnemyItemViewModel}">
-        <views:AddEnemyItemView />
+    <DataTemplate DataType="{x:Type viewModels:AddEnemyPatrolViewModel}">
+        <views:AddEnemyPatrolView />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type viewModels:AddSoldierViewModel}">

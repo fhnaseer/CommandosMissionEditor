@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Commandos.Model.Common;
 using Commandos.Model.Map;
 
 namespace CommandosMissionEditor.ViewModels
@@ -16,9 +17,9 @@ namespace CommandosMissionEditor.ViewModels
         public override IList<MissionViewModelBase> GetViewModelCollection()
         {
             return new List<MissionViewModelBase>{
-                new AddEnemyItemViewModel(Mission, Commandos.Model.Common.CharacterType.EnemyPatrol, Mission.World.Patrols),
-                new AddEnemyRouteViewModel(Mission, Commandos.Model.Common.CharacterType.EnemyPatrol, Mission.World.Patrols),
-                new AddEnemyActionViewModel(Mission, Commandos.Model.Common.CharacterType.EnemyPatrol, Mission.World.Patrols)
+                new AddEnemyPatrolViewModel(Mission, Mission.World.Patrols),
+                new AddEnemyRouteViewModel(Mission, CharacterType.EnemyPatrol, Mission.World.Patrols),
+                new AddEnemyActionViewModel(Mission, CharacterType.EnemyPatrol, Mission.World.Patrols)
             };
         }
     }
