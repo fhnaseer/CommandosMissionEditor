@@ -8,7 +8,7 @@
 
         public override string Trigger => "ALEMAN_fusil";
 
-        public override string AnimationFileName => "MECANICOAZUL.ANI";
+        public override string AnimationFileName => "MECANICOAZUL";
     }
 
     public class BlueSoldierGerman : EnemySoldier
@@ -19,7 +19,7 @@
 
         public override string Trigger => "ALEMAN_pistola";
 
-        public override string AnimationFileName => "ALEJAIMITO.ANI";
+        public override string AnimationFileName => "ALEJAIMITO";
     }
 
     public class MechanicGerman : EnemySoldier
@@ -30,7 +30,7 @@
 
         public override string Trigger => "ALEMAN_pistola";
 
-        public override string AnimationFileName => "ALEMECANICO.ANI";
+        public override string AnimationFileName => "ALEMECANICO";
     }
 
     public class UnderwearSoldierGerman : EnemySoldier
@@ -41,7 +41,7 @@
 
         public override string Trigger => "ALEMAN_fusil";
 
-        public override string AnimationFileName => "DESNUDO.ANI";
+        public override string AnimationFileName => "DESNUDO";
     }
 
     public class TowelSoldierGerman : EnemySoldier
@@ -52,7 +52,7 @@
 
         public override string Trigger => "ALEMAN_fusil";
 
-        public override string AnimationFileName => "ENBOLAS.ANI";
+        public override string AnimationFileName => "ENBOLAS";
     }
 
     public class WorkerGerman : EnemySoldier
@@ -63,7 +63,7 @@
 
         public override string Trigger => "ALEMAN_pistola";
 
-        public override string AnimationFileName => "ALEMARINERO.ANI";
+        public override string AnimationFileName => "ALEMARINERO";
     }
 
     public class AtomicWorkerJapanese : EnemySoldier
@@ -74,7 +74,7 @@
 
         public override string Trigger => "ALEMAN_fusil";
 
-        public override string AnimationFileName => "JAPOIGNIFUGO.ANI";
+        public override string AnimationFileName => "JAPOIGNIFUGO";
     }
 
     public class JailerJapanese : EnemySoldier
@@ -85,7 +85,7 @@
 
         public override string Trigger => "ALEMAN_pistola";
 
-        public override string AnimationFileName => "CARCELEROJAPO.ANI";
+        public override string AnimationFileName => "CARCELEROJAPO";
     }
 
     public class MechanicJapanese : EnemySoldier
@@ -96,7 +96,7 @@
 
         public override string Trigger => "ALEMAN_fusil";
 
-        public override string AnimationFileName => "MECANICOJAPO.ANI";
+        public override string AnimationFileName => "MECANICOJAPO";
     }
 
     public class UnderwearSoldierJapanese : EnemySoldier
@@ -107,7 +107,7 @@
 
         public override string Trigger => "ALEMAN_fusil";
 
-        public override string AnimationFileName => "DESNUDOJAPO.ANI";
+        public override string AnimationFileName => "DESNUDOJAPO";
     }
 
     public class TowelSoldierJapanese : EnemySoldier
@@ -118,7 +118,7 @@
 
         public override string Trigger => "ALEMAN_fusil";
 
-        public override string AnimationFileName => "ENBOLASJAPO.ANI";
+        public override string AnimationFileName => "ENBOLASJAPO";
     }
 
     public class WorkerJapanese : EnemySoldier
@@ -129,7 +129,7 @@
 
         public override string Trigger => "ALEMAN_fusil";
 
-        public override string AnimationFileName => "CURRITOJAPO.ANI";
+        public override string AnimationFileName => "CURRITOJAPO";
     }
 
     public class BigHatWorkerBlackJapanese : EnemySoldier
@@ -140,7 +140,7 @@
 
         public override string Trigger => "ALEMAN_fusil";
 
-        public override string AnimationFileName => "JAPOGORRONEGRO.ANI";
+        public override string AnimationFileName => "JAPOGORRONEGRO";
     }
 
     public class BigHatWorkerGreenJapanese : EnemySoldier
@@ -151,7 +151,7 @@
 
         public override string Trigger => "ALEMAN_fusil";
 
-        public override string AnimationFileName => "JAPOGORROVERDE.ANI";
+        public override string AnimationFileName => "JAPOGORROVERDE";
     }
 
     public class BigHatWorkerWhiteJapanese : EnemySoldier
@@ -162,6 +162,6 @@
 
         public override string Trigger => "ALEMAN_fusil";
 
-        public override string AnimationFileName => "JAPOGORRO.ANI";
+        public override string AnimationFileName => "JAPOGORRO";
     }
 }

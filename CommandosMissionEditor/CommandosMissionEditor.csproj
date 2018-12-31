@@ -68,10 +68,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="RelayCommand.cs" />
-    <Compile Include="ViewModels\AddEnemyViewModelBase.cs" />
+    <Compile Include="ViewModels\AddEnemyItemViewModelBase.cs" />
     <Compile Include="ViewModels\AddItemViewModelBase.cs" />
     <Compile Include="ViewModels\AddEnemyPatrolViewModel.cs" />
-    <Compile Include="ViewModels\AddSoldierViewModel.cs" />
+    <Compile Include="ViewModels\AddEnemySoldierViewModel.cs" />
     <Compile Include="ViewModels\CameraViewModel.cs" />
     <Compile Include="ViewModels\FilesViewModel.cs" />
     <Compile Include="ViewModels\EditMissionViewModel.cs" />
@@ -105,8 +105,8 @@
     <Compile Include="Views\AddEnemyActionView.xaml.cs">
       <DependentUpon>AddEnemyActionView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddEnemyRouteView.xaml.cs">
-      <DependentUpon>AddEnemyRouteView.xaml</DependentUpon>
+    <Compile Include="Views\AddEnemySoldierRouteView.xaml.cs">
+      <DependentUpon>AddEnemySoldierRouteView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PatrolsView.xaml.cs">
       <DependentUpon>PatrolsView.xaml</DependentUpon>
@@ -162,7 +162,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddEnemyRouteView.xaml">
+    <Page Include="Views\AddEnemySoldierRouteView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

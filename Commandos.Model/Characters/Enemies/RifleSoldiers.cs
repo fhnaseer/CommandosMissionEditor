@@ -8,7 +8,7 @@
 
         public override string Trigger => "ALEMAN_fusil";
 
-        public override string AnimationFileName => "ALEFUS.ANI";
+        public override string AnimationFileName => "ALEFUS";
     }
 
     public class Rifleman2German : EnemySoldier
@@ -19,7 +19,7 @@
 
         public override string Trigger => "ALEMAN_fusil";
 
-        public override string AnimationFileName => "ALEFUSDELGADO.ANI";
+        public override string AnimationFileName => "ALEFUSDELGADO";
     }
 
     public class Rifleman3German : EnemySoldier
@@ -30,7 +30,7 @@
 
         public override string Trigger => "ALEMAN_fusil";
 
-        public override string AnimationFileName => "ALEFUSGORDO1.ANI";
+        public override string AnimationFileName => "ALEFUSGORDO1";
     }
 
     public class Rifleman4German : EnemySoldier
@@ -41,7 +41,7 @@
 
         public override string Trigger => "ALEMAN_fusil";
 
-        public override string AnimationFileName => "ALEFUSGORDO2.ANI";
+        public override string AnimationFileName => "ALEFUSGORDO2";
     }
 
     public class RiflemanArcticGerman : EnemySoldier
@@ -52,7 +52,7 @@
 
         public override string Trigger => "ALEMAN_fusil";
 
-        public override string AnimationFileName => "ALEICEF.ANI";
+        public override string AnimationFileName => "ALEICEF";
     }
 
     public class RiflemanJapanese : EnemySoldier
@@ -63,7 +63,7 @@
 
         public override string Trigger => "ALEMAN_fusil";
 
-        public override string AnimationFileName => "JAPOFUS.ANI";
+        public override string AnimationFileName => "JAPOFUS";
     }
 
     public class RiflemanBackpackJapanese : EnemySoldier
@@ -74,6 +74,6 @@
 
         public override string Trigger => "ALEMAN_fusil";
 
-        public override string AnimationFileName => "JAPOMOCHFUS.ANI";
+        public override string AnimationFileName => "JAPOMOCHFUS";
     }
 }

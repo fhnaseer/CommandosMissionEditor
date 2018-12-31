@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using Commandos.Model.Characters;
 using Commandos.Model.Characters.Enemies;
 using Commandos.Model.Common;
@@ -6,14 +7,14 @@ using Commandos.Model.Map;
 
 namespace CommandosMissionEditor.ViewModels
 {
-    public class AddSoldierViewModel : AddEnemyViewModelBase<EnemyCharacter>
+    public class AddEnemySoldierViewModel : AddEnemyViewModelBase<EnemyCharacter>
     {
-        public AddSoldierViewModel(Mission mission, ObservableCollection<EnemyCharacter> enemyCharacters) : base(mission, CharacterType.Soldier, enemyCharacters)
+        public AddEnemySoldierViewModel(Mission mission, ObservableCollection<EnemyCharacter> enemyCharacters) : base(mission, CharacterType.Soldier, enemyCharacters)
         {
             PopulateSoldierTypes();
         }
 
-        internal AddSoldierViewModel() : base(null, CharacterType.Soldier, null) { }
+        internal AddEnemySoldierViewModel() : base(null, CharacterType.Soldier, null) { }
 
         public override ObservableCollection<EnemyCharacter> ItemCollection => Enemies;
 
@@ -108,6 +109,13 @@ namespace CommandosMissionEditor.ViewModels
                 _selectedSoldierType = value;
                 OnPropertyChanged(nameof(SelectedSoldierType));
             }
+        }
+
+        internal override void AddItem()
+        {
+            var enemy = Activator.CreateInstance(SelectedSoldierType.GetType()) as EnemySoldier;
+            ItemCollection.Add(enemy);
+            SelectedItem = enemy;
         }
     }
 }

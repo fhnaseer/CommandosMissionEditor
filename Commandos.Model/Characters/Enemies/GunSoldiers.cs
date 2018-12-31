@@ -8,7 +8,7 @@
 
         public override string Trigger => "ALEMAN_fusil";
 
-        public override string AnimationFileName => "OFICINISTA.ANI";
+        public override string AnimationFileName => "OFICINISTA";
     }
 
     public class GunSoldier1German : EnemySoldier
@@ -19,7 +19,7 @@
 
         public override string Trigger => "ALEMAN_pistola";
 
-        public override string AnimationFileName => "ALEPISTDELGADO.ANI";
+        public override string AnimationFileName => "ALEPISTDELGADO";
     }
 
     public class GunSoldier2German : EnemySoldier
@@ -30,7 +30,7 @@
 
         public override string Trigger => "ALEMAN_pistola";
 
-        public override string AnimationFileName => "ALEPISTGORDO1.ANI";
+        public override string AnimationFileName => "ALEPISTGORDO1";
     }
 
     public class GunSoldier3German : EnemySoldier
@@ -41,7 +41,7 @@
 
         public override string Trigger => "ALEMAN_pistola";
 
-        public override string AnimationFileName => "ALEPISTGORDO2.ANI";
+        public override string AnimationFileName => "ALEPISTGORDO2";
     }
 
     public class GunSoldier4German : EnemySoldier
@@ -52,7 +52,7 @@
 
         public override string Trigger => "ALEMAN_pistola";
 
-        public override string AnimationFileName => "ALEPISTGORDO3.ANI";
+        public override string AnimationFileName => "ALEPISTGORDO3";
     }
 
     public class GunSoldierTorchGerman : EnemySoldier
@@ -63,7 +63,7 @@
 
         public override string Trigger => "ALEMAN_pistola";
 
-        public override string AnimationFileName => "ALEPISTLINTERNERO.ANI";
+        public override string AnimationFileName => "ALEPISTLINTERNERO";
     }
 
     public class JailerGerman : EnemySoldier
@@ -74,7 +74,7 @@
 
         public override string Trigger => "ALEMAN_pistola";
 
-        public override string AnimationFileName => "CARCELEROALE.ANI";
+        public override string AnimationFileName => "CARCELEROALE";
     }
 
     public class SniperGunGerman : EnemySoldier
@@ -85,7 +85,7 @@
 
         public override string Trigger => "ALEMAN_pistola";
 
-        public override string AnimationFileName => "ALEPISTFRANCO.ANI";
+        public override string AnimationFileName => "ALEPISTFRANCO";
     }
 
     public class CannonierJapanese : EnemySoldier
@@ -96,7 +96,7 @@
 
         public override string Trigger => "ALEMAN_pistola";
 
-        public override string AnimationFileName => "JAPOCANONIERO.ANI";
+        public override string AnimationFileName => "JAPOCANONIERO";
     }
 
     public class GunSoldierJapanese : EnemySoldier
@@ -107,7 +107,7 @@
 
         public override string Trigger => "ALEMAN_fusil";
 
-        public override string AnimationFileName => "JAPO.ANI";
+        public override string AnimationFileName => "JAPO";
     }
 
     public class GunSoldierBackpackJapanese : EnemySoldier
@@ -118,7 +118,7 @@
 
         public override string Trigger => "ALEMAN_pistola";
 
-        public override string AnimationFileName => "JAPOMOCH.ANI";
+        public override string AnimationFileName => "JAPOMOCH";
     }
 
     public class JailerGunJapanese : EnemySoldier
@@ -129,7 +129,7 @@
 
         public override string Trigger => "ALEMAN_pistola";
 
-        public override string AnimationFileName => "CARCELEROKWAI.ANI";
+        public override string AnimationFileName => "CARCELEROKWAI";
     }
 
     public class PilotJapanese : EnemySoldier
@@ -140,7 +140,7 @@
 
         public override string Trigger => "ALEMAN_pistola";
 
-        public override string AnimationFileName => "JAPOPILOTO.ANI";
+        public override string AnimationFileName => "JAPOPILOTO";
     }
 
     public class SailorBlueJapanese : EnemySoldier
@@ -151,7 +151,7 @@
 
         public override string Trigger => "ALEMAN_pistola";
 
-        public override string AnimationFileName => "JAPOINFMAR.ANI";
+        public override string AnimationFileName => "JAPOINFMAR";
     }
 
     public class SailorWhiteJapanese : EnemySoldier
@@ -162,7 +162,7 @@
 
         public override string Trigger => "ALEMAN_pistola";
 
-        public override string AnimationFileName => "JAPOMARINERO.ANI";
+        public override string AnimationFileName => "JAPOMARINERO";
     }
 
     // TODO:,
@@ -174,7 +174,7 @@
 
         public override string Trigger => "ALEMAN_pistola";
 
-        public override string AnimationFileName => "JAPOVIGIA.ANI";
+        public override string AnimationFileName => "JAPOVIGIA";
     }
 
     public class TorturerJapanese : EnemySoldier
@@ -185,6 +185,6 @@
 
         public override string Trigger => "ALEMAN_pistola";
 
-        public override string AnimationFileName => "JAPOTORTURADOR.ANI";
+        public override string AnimationFileName => "JAPOTORTURADOR";
     }
 }

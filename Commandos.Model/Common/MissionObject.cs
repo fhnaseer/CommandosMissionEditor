@@ -4,7 +4,7 @@ namespace Commandos.Model.Common
 {
     public abstract class MissionObject : IPosition
     {
-        public string TokenId { get; set; }
+        public virtual string TokenId { get; set; }
 
         public Position Position { get; set; }
 

@@ -8,7 +8,7 @@
 
         public override string Trigger => "ALEMAN_Z";
 
-        public override string AnimationFileName => "ALEMET.ANI";
+        public override string AnimationFileName => "ALEMET";
     }
 
     public class SubmachineGunnerArcticGerman : EnemySoldier
@@ -19,6 +19,6 @@
 
         public override string Trigger => "ALEMAN_Z";
 
-        public override string AnimationFileName => "ALEICEZ.ANI";
+        public override string AnimationFileName => "ALEICEZ";
     }
 }

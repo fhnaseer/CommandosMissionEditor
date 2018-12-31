@@ -159,11 +159,11 @@ namespace Commandos.IO.Serializers.Map
             stringBuilder.Append($"[ {Bichos} ( ");
             foreach (var soldier in soldiers)
                 stringBuilder.Append($"[ {SerializerHelper.GetCharacterRecordString(soldier)} .BANDO ALEMAN .HTIP SOLD .COMPORTAMIENTO ( ComporAlemanScript [ .VIGILADOR [ .LONG_NORMAL {soldier.Range} ] .EVENTOS_RUTA ( ) .DISPARADOR [ .ARMA {soldier.Trigger} ALEMAN_pistola ] " +
-                    $".NUM_GRANADAS 0 .ANIMACION {soldier.AnimationFileName} .GESTOR_MOVIMIENTO [ {EnemyRouteHelper.GetEnemyRoutesRecordString(soldier)} ] ] ) " +
-                    $".VISTA ( VistaTriangular [ ] ) .OIDO ( Oido [ ] ) .MOTOR ( MotorPeaton [ ] ) .ANIMADOR ( AnimadorHumano [ .VOL ( Cilindro [ .RADIO 20.0 .ALTURA 50.0 ] ) .ANIM {soldier.AnimationFileName} ] ) .VOLCOLISION ( Cilindro [ .RADIO 12.0 .ALTURA 50.0 ] ) " +
+                    $".NUM_GRANADAS 0 .ANIMACION {soldier.AnimationFileNameComplete} .GESTOR_MOVIMIENTO [ {EnemyRouteHelper.GetEnemyRoutesRecordString(soldier)} ] ] ) " +
+                    $".VISTA ( VistaTriangular [ ] ) .OIDO ( Oido [ ] ) .MOTOR ( MotorPeaton [ ] ) .ANIMADOR ( AnimadorHumano [ .VOL ( Cilindro [ .RADIO 20.0 .ALTURA 50.0 ] ) .ANIM {soldier.AnimationFileNameComplete} ] ) .VOLCOLISION ( Cilindro [ .RADIO 12.0 .ALTURA 50.0 ] ) " +
                     ".TIPOCOLISION PEATON .ZONASELECCION ( Cilindro [ .RADIO 10.0 .ALTURA 50.0 ] ) .LISTAS ( CHOC SELE VISI EJEC FLAE ) .COLORPUNTOLIBRETA ALEMAN .USAHAB [ ] " +
                     ".PUEDE_CONDUCIR ( WILLIS ZODIAK CAMION CANON LANCHA_MOTORA NIDO_AMETRALLADORAS ASCENSOR MONTA_ALEMAN SILLA CAMA ) " +
-                    $".MICUADRICULA [ .DIMCUADX  4.0 .DIMCUADY  6.0 .GFXCUAD CUADRIC ] .GEL [ ] .DUMMY [ .ANIMADOR ( AnimadorHumano [ .VOL ( Cilindro [ .RADIO 10.0 .ALTURA 50.0 ] ) .ANIM {soldier.AnimationFileName} ] ) ]" +
+                    $".MICUADRICULA [ .DIMCUADX  4.0 .DIMCUADY  6.0 .GFXCUAD CUADRIC ] .GEL [ ] .DUMMY [ .ANIMADOR ( AnimadorHumano [ .VOL ( Cilindro [ .RADIO 10.0 .ALTURA 50.0 ] ) .ANIM {soldier.AnimationFileNameComplete} ] ) ]" +
                     " ] ");
             stringBuilder.Append($") ]");
             return stringBuilder.ToString();

@@ -31,7 +31,7 @@
         <views:AddEnemyPatrolView />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type viewModels:AddSoldierViewModel}">
+    <DataTemplate DataType="{x:Type viewModels:AddEnemySoldierViewModel}">
         <views:AddSoldierView />
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:AddEnemyActionViewModel}">
@@ -39,7 +39,7 @@
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type viewModels:AddEnemyRouteViewModel}">
-        <views:AddEnemyRouteView />
+        <views:AddEnemySoldierRouteView />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type viewModels:SoldiersViewModel}">
