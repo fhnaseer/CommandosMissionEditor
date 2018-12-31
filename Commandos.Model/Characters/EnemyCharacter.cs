@@ -1,14 +1,12 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Commandos.Model.Characters.Enemies.Actions;
+using Commandos.Model.EnemyActions;
 
 namespace Commandos.Model.Characters
 {
     public class EnemyCharacter : Character
     {
-
-
         private ObservableCollection<EnemyRoute> _routes;
         public ObservableCollection<EnemyRoute> Routes => _routes ?? (_routes = new ObservableCollection<EnemyRoute>());
 

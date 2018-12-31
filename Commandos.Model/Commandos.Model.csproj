@@ -64,11 +64,12 @@
     <Compile Include="Characters\Commandos\Thief.cs" />
     <Compile Include="Characters\Commandos\Whisky.cs" />
     <Compile Include="Characters\Commandos\Wilson.cs" />
-    <Compile Include="Characters\Enemies\Actions\CustomAction.cs" />
-    <Compile Include="Characters\Enemies\Actions\EnemyAction.cs" />
-    <Compile Include="Characters\Enemies\Actions\EnemyRoute.cs" />
-    <Compile Include="Characters\Enemies\Actions\BodyActions.cs" />
-    <Compile Include="Characters\Enemies\Actions\MovementActions.cs" />
+    <Compile Include="Characters\Enemies\SubmachineGunSoldiers.cs" />
+    <Compile Include="EnemyActions\CustomAction.cs" />
+    <Compile Include="EnemyActions\EnemyAction.cs" />
+    <Compile Include="EnemyActions\EnemyRoute.cs" />
+    <Compile Include="EnemyActions\BodyActions.cs" />
+    <Compile Include="EnemyActions\MovementActions.cs" />
     <Compile Include="Characters\Enemies\RifleSoldiers.cs" />
     <Compile Include="Characters\Enemies\GunSoldiers.cs" />
     <Compile Include="Characters\Enemies\EnemySoldier.cs" />

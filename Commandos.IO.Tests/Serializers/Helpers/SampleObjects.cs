@@ -1,6 +1,6 @@
 ﻿using Commandos.Model.Characters.Enemies;
-using Commandos.Model.Characters.Enemies.Actions;
 using Commandos.Model.Common;
+using Commandos.Model.EnemyActions;
 using Commandos.Model.Map;
 
 namespace Commandos.IO.Tests.Serializers.Helpers

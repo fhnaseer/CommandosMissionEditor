@@ -1,4 +1,4 @@
-﻿namespace Commandos.Model.Characters.Enemies.Actions
+﻿namespace Commandos.Model.EnemyActions
 {
     public class LieDownAction : EnemyAction
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using Commandos.Model.Characters;
-using Commandos.Model.Characters.Enemies.Actions;
 using Commandos.Model.Common;
+using Commandos.Model.EnemyActions;
 using Commandos.Model.Map;
 
 namespace CommandosMissionEditor.ViewModels

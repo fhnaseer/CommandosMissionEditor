@@ -2,7 +2,7 @@
 using Commandos.IO.Entities;
 using Commandos.IO.Helpers;
 using Commandos.Model.Characters;
-using Commandos.Model.Characters.Enemies.Actions;
+using Commandos.Model.EnemyActions;
 
 namespace Commandos.IO.Serializers.Helpers
 {

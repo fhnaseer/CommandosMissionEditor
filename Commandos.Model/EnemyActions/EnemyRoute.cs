@@ -2,7 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
-namespace Commandos.Model.Characters.Enemies.Actions
+namespace Commandos.Model.EnemyActions
 {
     public class EnemyRoute
     {

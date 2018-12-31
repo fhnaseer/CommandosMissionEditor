@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using Commandos.IO.Entities;
-using Commandos.Model.Characters.Enemies.Actions;
+using Commandos.Model.EnemyActions;
 
 namespace Commandos.IO.Serializers.Helpers
 {
