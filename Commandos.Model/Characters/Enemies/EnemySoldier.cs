@@ -10,6 +10,6 @@
 
         public abstract string AnimationFileName { get; }
 
-        public override string ToString() => $"{Name} {TokenId} {Position.ToString()}";
+        public override string ToString() => $"{Name} {TokenId} {Position?.ToString()}";
     }
 }

@@ -65,6 +65,7 @@
     <Compile Include="Characters\Commandos\Whisky.cs" />
     <Compile Include="Characters\Commandos\Wilson.cs" />
     <Compile Include="Characters\Enemies\SubmachineGunSoldiers.cs" />
+    <Compile Include="Characters\EnemyCategory.cs" />
     <Compile Include="EnemyActions\CustomAction.cs" />
     <Compile Include="EnemyActions\EnemyAction.cs" />
     <Compile Include="EnemyActions\EnemyRoute.cs" />

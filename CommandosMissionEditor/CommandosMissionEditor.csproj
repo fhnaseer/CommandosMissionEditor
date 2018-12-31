@@ -71,6 +71,7 @@
     <Compile Include="ViewModels\AddEnemyViewModelBase.cs" />
     <Compile Include="ViewModels\AddItemViewModelBase.cs" />
     <Compile Include="ViewModels\AddEnemyItemViewModel.cs" />
+    <Compile Include="ViewModels\AddSoldierViewModel.cs" />
     <Compile Include="ViewModels\CameraViewModel.cs" />
     <Compile Include="ViewModels\FilesViewModel.cs" />
     <Compile Include="ViewModels\EditMissionViewModel.cs" />
@@ -85,6 +86,9 @@
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\AddEnemyItemView.xaml.cs">
       <DependentUpon>AddEnemyItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddSoldierView.xaml.cs">
+      <DependentUpon>AddSoldierView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CameraView.xaml.cs">
       <DependentUpon>CameraView.xaml</DependentUpon>
@@ -131,6 +135,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AddEnemyItemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddSoldierView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

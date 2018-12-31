@@ -31,6 +31,9 @@
         <views:AddEnemyItemView />
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type viewModels:AddSoldierViewModel}">
+        <views:AddSoldierView />
+    </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:AddEnemyActionViewModel}">
         <views:AddEnemyActionView />
     </DataTemplate>
