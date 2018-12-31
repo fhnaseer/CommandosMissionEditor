@@ -125,7 +125,7 @@
     {
         public override string Name => "Worker (Japanese)";
 
-        public override string Range => "55";
+        public override string Range => "525";
 
         public override string Trigger => "ALEMAN_fusil";
 

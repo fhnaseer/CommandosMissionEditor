@@ -16,6 +16,9 @@
 
         public const string Abilities = ".INTERFAZ";
 
+        public const string PrimaryObjectType = ".BANDO";
+        public const string SecondaryObjectType = ".HTIP";
+
         public const string GreenBeretToken = "COMANDO";
         public const string SniperToken = "FRANCOTIRADOR";
         public const string MarineToken = "LANCHERO";

@@ -2,7 +2,7 @@
 {
     public class SubmachineGunnerGerman : EnemySoldier
     {
-        public override string Name => "SubmachineGunner (German)";
+        public override string Name => "Submachine Gunner (German)";
 
         public override string Range => "625";
 
@@ -13,7 +13,7 @@
 
     public class SubmachineGunnerArcticGerman : EnemySoldier
     {
-        public override string Name => "Arctic SubmachineGunner (German)";
+        public override string Name => "Arctic Submachine Gunner (German)";
 
         public override string Range => "625";
 

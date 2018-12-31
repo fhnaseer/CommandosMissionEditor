@@ -5,7 +5,7 @@ namespace CommandosMissionEditor.ViewModels
 {
     public class UploadMissionViewModel : ViewModelBase
     {
-        private string _missionFilePath = @"D:\Code\TestFiles\5G1A.MIS";
+        private string _missionFilePath = @"D:\Code\TestFiles\TU01A.MIS";
         public string MissionFilePath
         {
             get => _missionFilePath;

@@ -1,4 +1,4 @@
-﻿namespace Commandos.Model.Characters.Enemies.Actions
+﻿namespace Commandos.Model.Characters.Enemies
 {
     public class Rifleman1German : EnemySoldier
     {
