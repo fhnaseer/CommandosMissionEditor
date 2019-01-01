@@ -87,7 +87,7 @@ namespace Commandos.IO.Serializers.Map
                   $".ACCIONES ( ( Ac_DejarPisadasGraficas [ ] ) ( Ac_DejarPisadasLogicas [ ] ) ) {GetBehaviorString(commando)} " +
                   $".USAHAB [ ] .VOLCOLISION ( Cilindro [ .RADIO 12.0 .ALTURA 50.0 ] ) .TIPOCOLISION PEATON .ZONASELECCION ( Cilindro [ .RADIO 10.0 .ALTURA 50.0 ] ) {GetMotorString(commando)} " +
                   $".COLORPUNTOLIBRETA ALIADO .ANIMADOR ( AnimadorHumano [ .VOL ( Cilindro [ .RADIO 20.0 .ALTURA 50.0 ] ) {GetAnimationString(commando)} ] ) .CONTENEDOR 1.0 .LISTAS ( CHOC VISI SELE EJEC ) .GEL [ ] " +
-                  $".DUMMY [ .ANIMADOR ( AnimadorHumano [ .VOL ( Cilindro [ .RADIO 10.0 .ALTURA 50.0 ] ) .ANIM {commando.AnimationFileNameComplete} ] ) ] .PUEDE_CONDUCIR ( GLOBO WILLIS CAMION LANCHA_MOTORA ASCENSOR MONTA SILLA_ALIADA ) " +
+                  $".DUMMY [ .ANIMADOR ( AnimadorHumano [ .VOL ( Cilindro [ .RADIO 10.0 .ALTURA 50.0 ] ) .ANIM {commando.AnimationFileNameComplete} ] ) ] {GetDriveString(commando)} " +
                   $".VISTA ( VistaTriangular [ ] ) .BICHOS ( ) .VELOCIDADES_PREFIJADAS 1.0 .REMOLQUE 1.0 ] ");
             return stringBuilder.ToString().Trim();
         }
@@ -125,6 +125,27 @@ namespace Commandos.IO.Serializers.Map
             if (commando is Thief)
                 return ".MOTOR ( MotorPeaton [ .ATRAVIESAALAMBRADAS 1.0 ] )";
             return ".MOTOR ( MotorPeaton [ .ATRAVIESAALAMBRADAS 0 ] )";
+        }
+
+        private static string GetDriveString(Commando commando)
+        {
+            if (commando is GreenBeret)
+                return ".PUEDE_CONDUCIR ( GLOBO WILLIS CAMION LANCHA_MOTORA ASCENSOR MONTA SILLA_ALIADA )";
+            if (commando is Sniper)
+                return ".PUEDE_CONDUCIR ( GLOBO WILLIS CAMION LANCHA_MOTORA ASCENSOR MONTA SILLA_ALIADA )";
+            if (commando is Marine)
+                return ".PUEDE_CONDUCIR ( GLOBO WILLIS ZODIAK CAMION LANCHA_MOTORA ASCENSOR MONTA SILLA_ALIADA )";
+            if (commando is Sapper)
+                return ".PUEDE_CONDUCIR ( GLOBO WILLIS CAMION CANON LANCHA_MOTORA NIDO_AMETRALLADORAS ASCENSOR MONTA SILLA_ALIADA )";
+            if (commando is Driver)
+                return ".PUEDE_CONDUCIR ( GLOBO TANQUE WILLIS CAMION LANCHA_MOTORA ASCENSOR MONTA SILLA_ALIADA )";
+            if (commando is Spy)
+                return ".PUEDE_CONDUCIR ( GLOBO WILLIS CAMION LANCHA_MOTORA ASCENSOR MONTA SILLA_ALIADA )";
+            if (commando is Natasha)
+                return ".PUEDE_CONDUCIR ( GLOBO WILLIS CAMION LANCHA_MOTORA ASCENSOR MONTA SILLA_ALIADA )";
+            if (commando is Thief)
+                return ".PUEDE_CONDUCIR ( GLOBO WILLIS CAMION LANCHA_MOTORA ASCENSOR MONTA ELEFANTE SILLA_ALIADA )";
+            return null;
         }
     }
 }
