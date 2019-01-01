@@ -11,7 +11,7 @@ namespace Commandos.IO.Serializers.Map
     public static class SoldiersSerializer
     {
         public const string Bichos = ".BICHOS";
-        private const string CompartmentInfo = ".COMPORTAMIENTO";
+        private const string Behavior = ".COMPORTAMIENTO";
         private const string ComporAlemanScript = "ComporAlemanScript";
         private const string MovementInfo = ".GESTOR_MOVIMIENTO";
 
@@ -42,34 +42,9 @@ namespace Commandos.IO.Serializers.Map
             return soldier;
         }
 
-        public static string GetSoldiersRecordString(ObservableCollection<EnemyCharacter> soldiers)
-        {
-            var stringBuilder = new StringBuilder();
-            foreach (EnemySoldier soldier in soldiers)
-                stringBuilder.Append($"[ {SerializerHelper.GetCharacterRecordString(soldier)} .BANDO ALEMAN .HTIP SOLD .COMPORTAMIENTO ( ComporAlemanScript [ .VIGILADOR [ .LONG_NORMAL {soldier.Range} ] .EVENTOS_RUTA ( ) .DISPARADOR [ .ARMA {soldier.Trigger} ALEMAN_pistola ] " +
-                    $".NUM_GRANADAS 0 .ANIMACION {soldier.AnimationFileNameComplete} .GESTOR_MOVIMIENTO [ {EnemyRouteHelper.GetEnemyRoutesRecordString(soldier)} ] ] ) " +
-                    $".VISTA ( VistaTriangular [ ] ) .OIDO ( Oido [ ] ) .MOTOR ( MotorPeaton [ ] ) .ANIMADOR ( AnimadorHumano [ .VOL ( Cilindro [ .RADIO 20.0 .ALTURA 50.0 ] ) .ANIM {soldier.AnimationFileNameComplete} ] ) .VOLCOLISION ( Cilindro [ .RADIO 12.0 .ALTURA 50.0 ] ) " +
-                    ".TIPOCOLISION PEATON .ZONASELECCION ( Cilindro [ .RADIO 10.0 .ALTURA 50.0 ] ) .LISTAS ( CHOC SELE VISI EJEC FLAE ) .COLORPUNTOLIBRETA ALEMAN .USAHAB [ ] " +
-                    ".PUEDE_CONDUCIR ( WILLIS ZODIAK CAMION CANON LANCHA_MOTORA NIDO_AMETRALLADORAS ASCENSOR MONTA_ALEMAN SILLA CAMA ) " +
-                    $".MICUADRICULA [ .DIMCUADX  4.0 .DIMCUADY  6.0 .GFXCUAD CUADRIC ] .GEL [ ] .DUMMY [ .ANIMADOR ( AnimadorHumano [ .VOL ( Cilindro [ .RADIO 10.0 .ALTURA 50.0 ] ) .ANIM {soldier.AnimationFileNameComplete} ] ) ] " +
-                    ".BICHOS ( ) ] ");
-            return stringBuilder.ToString().Trim();
-        }
-
-        private static MultipleRecords GetMovementInfoRecord(MultipleRecords multipleRecords)
-        {
-            var mixedDataRecord = multipleRecords.GetMixedDataRecordTemp(CompartmentInfo);
-            if (mixedDataRecord.GetStringValue(0) == ComporAlemanScript)
-            {
-                var movementRecords = mixedDataRecord.GetMultipleRecords(1);
-                return movementRecords.GetMultipleRecord(MovementInfo);
-            }
-            return null;
-        }
-
         private static EnemySoldier GetEnemySoldier(MultipleRecords multipleRecords)
         {
-            var mixedDataRecord = multipleRecords.GetMixedDataRecordTemp(CompartmentInfo);
+            var mixedDataRecord = multipleRecords.GetMixedDataRecordTemp(Behavior);
             if (mixedDataRecord.GetStringValue(0) == ComporAlemanScript)
             {
                 var movementRecords = mixedDataRecord.GetMultipleRecords(1);
@@ -122,6 +97,31 @@ namespace Commandos.IO.Serializers.Map
                 }
             }
             return null;
+        }
+
+        private static MultipleRecords GetMovementInfoRecord(MultipleRecords multipleRecords)
+        {
+            var mixedDataRecord = multipleRecords.GetMixedDataRecordTemp(Behavior);
+            if (mixedDataRecord.GetStringValue(0) == ComporAlemanScript)
+            {
+                var movementRecords = mixedDataRecord.GetMultipleRecords(1);
+                return movementRecords.GetMultipleRecord(MovementInfo);
+            }
+            return null;
+        }
+
+        public static string GetSoldiersRecordString(ObservableCollection<EnemyCharacter> soldiers)
+        {
+            var stringBuilder = new StringBuilder();
+            foreach (EnemySoldier soldier in soldiers)
+                stringBuilder.Append($"[ {SerializerHelper.GetCharacterRecordString(soldier)} .BANDO ALEMAN .HTIP SOLD .COMPORTAMIENTO ( ComporAlemanScript [ .VIGILADOR [ .LONG_NORMAL {soldier.Range} ] .EVENTOS_RUTA ( ) .DISPARADOR [ .ARMA {soldier.Trigger} ALEMAN_pistola ] " +
+                    $".NUM_GRANADAS 0 .ANIMACION {soldier.AnimationFileNameComplete} .GESTOR_MOVIMIENTO [ {EnemyRouteHelper.GetEnemyRoutesRecordString(soldier)} ] ] ) " +
+                    $".VISTA ( VistaTriangular [ ] ) .OIDO ( Oido [ ] ) .MOTOR ( MotorPeaton [ ] ) .ANIMADOR ( AnimadorHumano [ .VOL ( Cilindro [ .RADIO 20.0 .ALTURA 50.0 ] ) .ANIM {soldier.AnimationFileNameComplete} ] ) .VOLCOLISION ( Cilindro [ .RADIO 12.0 .ALTURA 50.0 ] ) " +
+                    ".TIPOCOLISION PEATON .ZONASELECCION ( Cilindro [ .RADIO 10.0 .ALTURA 50.0 ] ) .LISTAS ( CHOC SELE VISI EJEC FLAE ) .COLORPUNTOLIBRETA ALEMAN .USAHAB [ ] " +
+                    ".PUEDE_CONDUCIR ( WILLIS ZODIAK CAMION CANON LANCHA_MOTORA NIDO_AMETRALLADORAS ASCENSOR MONTA_ALEMAN SILLA CAMA ) " +
+                    $".MICUADRICULA [ .DIMCUADX  4.0 .DIMCUADY  6.0 .GFXCUAD CUADRIC ] .GEL [ ] .DUMMY [ .ANIMADOR ( AnimadorHumano [ .VOL ( Cilindro [ .RADIO 10.0 .ALTURA 50.0 ] ) .ANIM {soldier.AnimationFileNameComplete} ] ) ] " +
+                    ".BICHOS ( ) ] ");
+            return stringBuilder.ToString().Trim();
         }
     }
 }

@@ -90,7 +90,8 @@ namespace Commandos.Model.Map
                 Camera == other.Camera &&
                 Briefing == other.Briefing &&
                 Music == other.Music &&
-                Ficheros == other.Ficheros;
+                Ficheros == other.Ficheros &&
+                World == other.World;
         }
 
         /// <summary>

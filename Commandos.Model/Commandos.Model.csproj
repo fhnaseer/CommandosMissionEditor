@@ -54,16 +54,7 @@
     <Compile Include="Characters\Character.cs" />
     <Compile Include="Characters\Commandos\Commando.cs" />
     <Compile Include="Characters\Commandos\CommandoAbilities.cs" />
-    <Compile Include="Characters\Commandos\Driver.cs" />
-    <Compile Include="Characters\Commandos\GreenBeret.cs" />
-    <Compile Include="Characters\Commandos\Marine.cs" />
-    <Compile Include="Characters\Commandos\Natasha.cs" />
-    <Compile Include="Characters\Commandos\Sapper.cs" />
-    <Compile Include="Characters\Commandos\Sniper.cs" />
-    <Compile Include="Characters\Commandos\Spy.cs" />
-    <Compile Include="Characters\Commandos\Thief.cs" />
-    <Compile Include="Characters\Commandos\Whisky.cs" />
-    <Compile Include="Characters\Commandos\Wilson.cs" />
+    <Compile Include="Characters\Commandos\Commandos.cs" />
     <Compile Include="Characters\Enemies\SubmachineGunSoldiers.cs" />
     <Compile Include="Characters\EnemyCategory.cs" />
     <Compile Include="EnemyActions\CustomAction.cs" />

@@ -24,12 +24,12 @@ namespace Commandos.IO.Serializers.Map
                     if (enemySoldier != null)
                         missionObjects.Soldiers.Add(enemySoldier);
                 }
-                //if (CommandosSerializer.IsCommado(multipleRecords))
-                //{
-                //    var commando = CommandosSerializer.Serialize(multipleRecords);
-                //    if (commando != null)
-                //        missionObjects.Commandos.Add(commando);
-                //}
+                if (CommandosSerializer.IsCommado(multipleRecords))
+                {
+                    var commando = CommandosSerializer.Serialize(multipleRecords);
+                    if (commando != null)
+                        missionObjects.Commandos.Add(commando);
+                }
             }
             return missionObjects;
         }
@@ -46,7 +46,7 @@ namespace Commandos.IO.Serializers.Map
             var stringBuilder = new StringBuilder();
             stringBuilder.Append($"[ {MissionObjects} (");
             stringBuilder.Append($" {SoldiersSerializer.GetSoldiersRecordString(input.Soldiers)} ");
-            //stringBuilder.Append($" {CommandosSerializer.GetCommandosRecordString(input.Commandos)} ");
+            stringBuilder.Append($" {CommandosSerializer.GetCommandosRecordString(input.Commandos)} ");
             stringBuilder.Append($") ]");
             return stringBuilder.ToString();
         }

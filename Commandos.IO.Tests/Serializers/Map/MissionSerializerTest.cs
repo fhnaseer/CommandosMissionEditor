@@ -1,37 +1,32 @@
-﻿using System;
-using Commandos.IO.Helpers;
-using Commandos.IO.Serializers.Map;
-using Commandos.IO.Tests.Serializers.Helpers;
-using Commandos.Model.Map;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Commandos.IO.Tests.Serializers.Map
 {
     [TestClass]
     public class MissionSerializerTest
     {
-        [TestMethod]
-        public void GetMission_Works()
-        {
-            // Arrange,
-            var text = $"[ {SampleStrings.MsbFileString} {SampleStrings.CameraString} {SampleStrings.CameraString} {SampleStrings.FicherosString} {SampleStrings.MusicString} ]";
-            var tokens = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            var expected = new Mission
-            {
-                MsbFileName = SampleObjects.MsbFileName,
-                BasFileName = SampleObjects.BasFileName,
-                Camera = SampleObjects.Camera,
-                Briefing = SampleObjects.Briefing,
-                Ficheros = SampleObjects.Ficheros,
-                Music = SampleObjects.Music
-            };
-            var record = TokenParser.ParseTokens(tokens);
+        //[TestMethod]
+        //public void GetMission_Works()
+        //{
+        //    // Arrange,
+        //    var text = $"[ {SampleStrings.MsbFileString} {SampleStrings.CameraString} {SampleStrings.CameraString} {SampleStrings.FicherosString} {SampleStrings.MusicString} ]";
+        //    var tokens = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        //    var expected = new Mission
+        //    {
+        //        MsbFileName = SampleObjects.MsbFileName,
+        //        BasFileName = SampleObjects.BasFileName,
+        //        Camera = SampleObjects.Camera,
+        //        Briefing = SampleObjects.Briefing,
+        //        Ficheros = SampleObjects.Ficheros,
+        //        Music = SampleObjects.Music
+        //    };
+        //    var record = TokenParser.ParseTokens(tokens);
 
-            // Act,
-            var actual = MissionSerializer.GetMission(record);
+        //    // Act,
+        //    var actual = MissionSerializer.GetMission(record);
 
-            // Assert,
-            Assert.AreEqual(expected, actual);
-        }
+        //    // Assert,
+        //    Assert.AreEqual(expected, actual);
+        //}
     }
 }
