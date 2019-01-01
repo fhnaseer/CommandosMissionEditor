@@ -34,8 +34,7 @@
         </UniformGrid>
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Add" />
         <UniformGrid Grid.Row="1" Grid.Column="1" Rows="1">
-            <ComboBox ItemsSource="{Binding SoldierCategories}" SelectedItem="{Binding SelectedSoldierCategory}" />
-            <ComboBox ItemsSource="{Binding SoldierTypes}" SelectedItem="{Binding SelectedSoldierType}" />
+            <ComboBox ItemsSource="{Binding Commandos}" SelectedItem="{Binding SelectedCommando}" />
             <Button Content="Add New" Command="{Binding AddItemCommand}" />
         </UniformGrid>
         <TextBlock Grid.Row="3" Grid.Column="0" Text="Starting Position" />
