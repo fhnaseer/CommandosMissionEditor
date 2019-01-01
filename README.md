@@ -24,6 +24,7 @@ File Reading Status,
 3. None -> We just read it and write it bacak when saving the file,
 
 Here you can find what we can update in file and what we dont,
+```
 [
     .MANUAL_LIBRETA // Full,
     .VISORES // Full,
@@ -102,3 +103,4 @@ Here you can find what we can update in file and what we dont,
     ]
     .BAS // Full,
 ]
+```
