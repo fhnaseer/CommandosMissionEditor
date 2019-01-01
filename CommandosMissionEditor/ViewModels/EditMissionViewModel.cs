@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
+using Commandos.IO.Files;
 using Commandos.Model.Map;
 
 namespace CommandosMissionEditor.ViewModels
@@ -24,12 +25,23 @@ namespace CommandosMissionEditor.ViewModels
             };
         }
 
+        private string _saveFilePath = "D:/Test.mis";
+        public string SaveFilePath
+        {
+            get => _saveFilePath;
+            set
+            {
+                _saveFilePath = value;
+                OnPropertyChanged(nameof(SaveFilePath));
+            }
+        }
+
         private ICommand _saveMissionCommand;
         public ICommand SaveMissionCommand => _saveMissionCommand ?? (_saveMissionCommand = new RelayCommand(SaveMission));
 
         internal void SaveMission()
         {
-
+            MisFileSerializer.WriteMisFile(SaveFilePath, Mission);
         }
     }
 }

@@ -6,7 +6,12 @@ namespace Commandos.Model.Common
     {
         public virtual string TokenId { get; set; }
 
-        public Position Position { get; set; }
+        private Position _position;
+        public Position Position
+        {
+            get => _position ?? (_position = new Position("0", "0", "0"));
+            set => _position = value;
+        }
 
         public string Area { get; set; }
 
