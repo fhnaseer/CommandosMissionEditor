@@ -23,6 +23,14 @@
         <views:CameraView />
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type viewModels:CommandosViewModel}">
+        <views:CommandosView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewModels:AddCommandoViewModel}">
+        <views:AddCommandoView/>
+    </DataTemplate>
+
     <DataTemplate DataType="{x:Type viewModels:PatrolsViewModel}">
         <views:PatrolsView />
     </DataTemplate>
@@ -39,7 +47,7 @@
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type viewModels:AddEnemyRouteViewModel}">
-        <views:AddEnemySoldierRouteView />
+        <views:AddEnemyRouteView />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type viewModels:SoldiersViewModel}">

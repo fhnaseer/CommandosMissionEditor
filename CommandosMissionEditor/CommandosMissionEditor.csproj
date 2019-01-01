@@ -68,11 +68,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="RelayCommand.cs" />
+    <Compile Include="ViewModels\AddCommandoViewModel.cs" />
     <Compile Include="ViewModels\AddEnemyItemViewModelBase.cs" />
     <Compile Include="ViewModels\AddItemViewModelBase.cs" />
     <Compile Include="ViewModels\AddEnemyPatrolViewModel.cs" />
     <Compile Include="ViewModels\AddEnemySoldierViewModel.cs" />
     <Compile Include="ViewModels\CameraViewModel.cs" />
+    <Compile Include="ViewModels\CommandosViewModel.cs" />
     <Compile Include="ViewModels\FilesViewModel.cs" />
     <Compile Include="ViewModels\EditMissionViewModel.cs" />
     <Compile Include="ViewModels\MissionCollectionViewModelBase.cs" />
@@ -84,6 +86,9 @@
     <Compile Include="ViewModels\SoldiersViewModel.cs" />
     <Compile Include="ViewModels\UploadMissionViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\AddCommandoView.xaml.cs">
+      <DependentUpon>AddCommandoView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddEnemyPatrolView.xaml.cs">
       <DependentUpon>AddEnemyPatrolView.xaml</DependentUpon>
     </Compile>
@@ -92,6 +97,9 @@
     </Compile>
     <Compile Include="Views\CameraView.xaml.cs">
       <DependentUpon>CameraView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CommandosView.xaml.cs">
+      <DependentUpon>CommandosView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FilesView.xaml.cs">
       <DependentUpon>FilesView.xaml</DependentUpon>
@@ -105,8 +113,8 @@
     <Compile Include="Views\AddEnemyActionView.xaml.cs">
       <DependentUpon>AddEnemyActionView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddEnemySoldierRouteView.xaml.cs">
-      <DependentUpon>AddEnemySoldierRouteView.xaml</DependentUpon>
+    <Compile Include="Views\AddEnemyRouteView.xaml.cs">
+      <DependentUpon>AddEnemyRouteView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PatrolsView.xaml.cs">
       <DependentUpon>PatrolsView.xaml</DependentUpon>
@@ -134,6 +142,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\AddCommandoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AddEnemyPatrolView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -143,6 +155,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CameraView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CommandosView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -162,7 +178,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddEnemySoldierRouteView.xaml">
+    <Page Include="Views\AddEnemyRouteView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

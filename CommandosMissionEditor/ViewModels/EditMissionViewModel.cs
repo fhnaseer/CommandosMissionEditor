@@ -18,6 +18,7 @@ namespace CommandosMissionEditor.ViewModels
                 new FilesViewModel(Mission),
                 new MusicViewModel(Mission),
                 new CameraViewModel(Mission),
+                new CommandosViewModel(Mission),
                 new PatrolsViewModel(Mission),
                 new SoldiersViewModel(Mission)
             };
