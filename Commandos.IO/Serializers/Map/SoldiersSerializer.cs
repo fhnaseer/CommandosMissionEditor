@@ -3,6 +3,7 @@ using System.Text;
 using Commandos.IO.Entities;
 using Commandos.IO.Helpers;
 using Commandos.IO.Serializers.Helpers;
+using Commandos.Model.Characters;
 using Commandos.Model.Characters.Enemies;
 
 namespace Commandos.IO.Serializers.Map
@@ -42,10 +43,10 @@ namespace Commandos.IO.Serializers.Map
             return soldier;
         }
 
-        public static string GetSoldiersRecordString(ObservableCollection<EnemySoldier> soldiers)
+        public static string GetSoldiersRecordString(ObservableCollection<EnemyCharacter> soldiers)
         {
             var stringBuilder = new StringBuilder();
-            foreach (var soldier in soldiers)
+            foreach (EnemySoldier soldier in soldiers)
                 stringBuilder.Append($"[ {SerializerHelper.GetCharacterRecordString(soldier)} .BANDO ALEMAN .HTIP SOLD .COMPORTAMIENTO ( ComporAlemanScript [ .VIGILADOR [ .LONG_NORMAL {soldier.Range} ] .EVENTOS_RUTA ( ) .DISPARADOR [ .ARMA {soldier.Trigger} ALEMAN_pistola ] " +
                     $".NUM_GRANADAS 0 .ANIMACION {soldier.AnimationFileNameComplete} .GESTOR_MOVIMIENTO [ {EnemyRouteHelper.GetEnemyRoutesRecordString(soldier)} ] ] ) " +
                     $".VISTA ( VistaTriangular [ ] ) .OIDO ( Oido [ ] ) .MOTOR ( MotorPeaton [ ] ) .ANIMADOR ( AnimadorHumano [ .VOL ( Cilindro [ .RADIO 20.0 .ALTURA 50.0 ] ) .ANIM {soldier.AnimationFileNameComplete} ] ) .VOLCOLISION ( Cilindro [ .RADIO 12.0 .ALTURA 50.0 ] ) " +
@@ -53,7 +54,7 @@ namespace Commandos.IO.Serializers.Map
                     ".PUEDE_CONDUCIR ( WILLIS ZODIAK CAMION CANON LANCHA_MOTORA NIDO_AMETRALLADORAS ASCENSOR MONTA_ALEMAN SILLA CAMA ) " +
                     $".MICUADRICULA [ .DIMCUADX  4.0 .DIMCUADY  6.0 .GFXCUAD CUADRIC ] .GEL [ ] .DUMMY [ .ANIMADOR ( AnimadorHumano [ .VOL ( Cilindro [ .RADIO 10.0 .ALTURA 50.0 ] ) .ANIM {soldier.AnimationFileNameComplete} ] ) ]" +
                     " ] ");
-            return stringBuilder.ToString();
+            return stringBuilder.ToString().Trim();
         }
 
         //public override ObservableCollection<EnemySoldier> Serialize(Record record)

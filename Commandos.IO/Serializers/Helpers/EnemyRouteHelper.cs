@@ -39,22 +39,29 @@ namespace Commandos.IO.Serializers.Helpers
             }
         }
 
-        public static string GetEventsRouteRecordString(EnemyCharacter patrol)
+        public static string GetEventsRouteRecordString(EnemyCharacter enemy)
         {
-            if (patrol.EventRoute == null)
+            if (enemy.EventRoute == null)
                 return string.Empty;
-            return $"{EventsRoute} ( {patrol.EventRoute} )";
+            return $"{EventsRoute} ( {enemy.EventRoute} )";
         }
 
-        public static string GetEnemyRoutesRecordString(EnemyCharacter patrol)
+        public static string GetEnemyRoutesRecordString(EnemyCharacter enemy)
         {
             var stringBuilder = new StringBuilder();
-            stringBuilder.Append($"{Patrol} [ {EnemyAction} [ {Routes} ( ");
-            foreach (var route in patrol.Routes)
-                stringBuilder.Append($"[ {RouteName} {route.RouteName} " +
-                    $"{SerializerHelper.GetSpeedRecordString(route.Speed)} {SerializerHelper.GetActionTypeRecordString(route.ActionRepeatType)}" +
-                    $" {EnemyActionHelper.GetEnemyActionsRecordString(route.Actions)} ] ");
-            stringBuilder.Append($") {DefaultRoute} {patrol.DefaultRoute} ] ]");
+            stringBuilder.Append($"{Patrol} [ ");
+            if (enemy.Routes.Count == 0)
+                stringBuilder.Append($".NO_EXISTE 1.0  ]");
+            else
+            {
+                stringBuilder.Append($"{EnemyAction} [ {Routes} ( ");
+                foreach (var route in enemy.Routes)
+                    stringBuilder.Append($"[ {RouteName} {route.RouteName} " +
+                        $"{SerializerHelper.GetSpeedRecordString(route.Speed)} {SerializerHelper.GetActionTypeRecordString(route.ActionRepeatType)}" +
+                        $" {EnemyActionHelper.GetEnemyActionsRecordString(route.Actions)} ] ");
+                stringBuilder.Append($")");
+                stringBuilder.Append($" {DefaultRoute} {enemy.DefaultRoute} ] ]");
+            }
             return stringBuilder.ToString();
         }
     }

@@ -1,4 +1,6 @@
-﻿using Commandos.IO.Entities;
+﻿using System;
+using System.Collections.ObjectModel;
+using Commandos.IO.Entities;
 using Commandos.IO.Helpers;
 using Commandos.Model.Characters.Commandos;
 
@@ -46,6 +48,11 @@ namespace Commandos.IO.Serializers.Map
                 default:
                     return false;
             }
+        }
+
+        internal static object GetCommandosRecordString(ObservableCollection<Commando> soldiers)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿using Commandos.IO.Entities;
+﻿using System;
+using System.Text;
+using Commandos.IO.Entities;
+using Commandos.IO.Helpers;
 using Commandos.Model.Map;
 
 namespace Commandos.IO.Serializers.Map
@@ -21,19 +24,31 @@ namespace Commandos.IO.Serializers.Map
                     if (enemySoldier != null)
                         missionObjects.Soldiers.Add(enemySoldier);
                 }
-                if (CommandosSerializer.IsCommado(multipleRecords))
-                {
-                    var commando = CommandosSerializer.Serialize(multipleRecords);
-                    if (commando != null)
-                        missionObjects.Commandos.Add(commando);
-                }
+                //if (CommandosSerializer.IsCommado(multipleRecords))
+                //{
+                //    var commando = CommandosSerializer.Serialize(multipleRecords);
+                //    if (commando != null)
+                //        missionObjects.Commandos.Add(commando);
+                //}
             }
             return missionObjects;
         }
 
+        public override Record Deserialize(MissionObjects input)
+        {
+            var recordString = GetMultipleRecordString(input);
+            var tokens = recordString.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+            return TokenParser.ParseTokens(tokens, 0);
+        }
+
         public override string GetMultipleRecordString(MissionObjects input)
         {
-            throw new System.NotImplementedException();
+            var stringBuilder = new StringBuilder();
+            stringBuilder.Append($"[ {MissionObjects} (");
+            stringBuilder.Append($" {SoldiersSerializer.GetSoldiersRecordString(input.Soldiers)} ");
+            //stringBuilder.Append($" {CommandosSerializer.GetCommandosRecordString(input.Commandos)} ");
+            stringBuilder.Append($") ]");
+            return stringBuilder.ToString();
         }
     }
 }

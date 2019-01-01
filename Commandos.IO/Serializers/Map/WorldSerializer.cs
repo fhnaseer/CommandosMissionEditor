@@ -29,9 +29,6 @@ namespace Commandos.IO.Serializers.Map
             var patrols = PatrolsSerializer.Serialize(multipleRecords.GetRecord(Patrols));
             foreach (var patrol in patrols)
                 world.Patrols.Add(patrol);
-            //var soldiers = SoldiersSerializer.Serialize(multipleRecords.GetRecord(MissionObjects));
-            //foreach (var soldier in soldiers)
-            //    world.MissionObjects.Soldiers.Add(soldier);
 
             return world;
         }
@@ -48,8 +45,7 @@ namespace Commandos.IO.Serializers.Map
             if (input.GscFileName != null)
                 records.Records.Add(GscFile, RecordExtensions.GetSingleDataRecord(GscFile, input.GscFileName));
             records.AddMultipleRecords(Administration, input.Administration.MultipleRecords);
-
-
+            records.AddMixedDataRecord(MissionObjects, MissionObjectsSerializer.Deserialize(input.MissionObjects));
             records.AddMixedDataRecord(Patrols, PatrolsSerializer.Deserialize(input.Patrols));
             records.AddMixedDataRecord(SpecialAreas, input.SpecialAreas.MultipleRecords);
             records.AddMixedDataRecord(SoundAreas, input.SoundAreas.MultipleRecords);
