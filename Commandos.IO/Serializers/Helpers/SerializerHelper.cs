@@ -32,8 +32,11 @@ namespace Commandos.IO.Serializers.Helpers
         private PatrolsSerializer _patrolsSerializer;
         public PatrolsSerializer PatrolsSerializer => _patrolsSerializer ?? (_patrolsSerializer = new PatrolsSerializer());
 
-        private SoldiersSerializer _soldiersSerializer;
-        public SoldiersSerializer SoldiersSerializer => _soldiersSerializer ?? (_soldiersSerializer = new SoldiersSerializer());
+        private MissionObjectsSerializer _missionObjectsSerializer;
+        public MissionObjectsSerializer MissionObjectsSerializer => _missionObjectsSerializer ?? (_missionObjectsSerializer = new MissionObjectsSerializer());
+
+        //private SoldiersSerializer _soldiersSerializer;
+        //public SoldiersSerializer SoldiersSerializer => _soldiersSerializer ?? (_soldiersSerializer = new SoldiersSerializer());
 
         public static void PopulateCharacter(Character character, MultipleRecords multipleRecords)
         {

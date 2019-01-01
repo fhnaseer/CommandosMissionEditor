@@ -33,6 +33,8 @@ namespace Commandos.IO.Serializers.Map
 
         public PatrolsSerializer PatrolsSerializer => SerializerHelper.PatrolsSerializer;
 
-        public SoldiersSerializer SoldiersSerializer => SerializerHelper.SoldiersSerializer;
+        public MissionObjectsSerializer MissionObjectsSerializer => SerializerHelper.MissionObjectsSerializer;
+
+        //public SoldiersSerializer SoldiersSerializer => SerializerHelper.SoldiersSerializer;
     }
 }

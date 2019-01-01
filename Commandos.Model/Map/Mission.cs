@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using Commandos.Model.Characters.Commandos;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace Commandos.Model.Map
 {
@@ -51,9 +49,6 @@ namespace Commandos.Model.Map
             get => _world ?? (_world = new World());
             set => _world = value;
         }
-
-        private List<Commando> _commandos;
-        public IList<Commando> Commandos => _commandos ?? (_commandos = new List<Commando>());
 
         #region Methods for Equality checks.
         // http://msdn.microsoft.com/en-us/library/dd183755.aspx

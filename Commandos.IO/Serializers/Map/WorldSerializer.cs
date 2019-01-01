@@ -22,16 +22,16 @@ namespace Commandos.IO.Serializers.Map
             {
                 GscFileName = multipleRecords.GetStringValue(GscFile),
                 Administration = new Administration(multipleRecords.GetMultipleRecord(Administration)),
-                MissionObjects = new MissionObjects(multipleRecords.GetMixedDataRecordTemp(MissionObjects)),
+                MissionObjects = MissionObjectsSerializer.Serialize(multipleRecords.GetRecord(MissionObjects)),
                 SpecialAreas = new SpecialAreas(multipleRecords.GetMixedDataRecordTemp(SpecialAreas)),
                 SoundAreas = new SoundAreas(multipleRecords.GetMixedDataRecordTemp(SoundAreas)),
             };
             var patrols = PatrolsSerializer.Serialize(multipleRecords.GetRecord(Patrols));
             foreach (var patrol in patrols)
                 world.Patrols.Add(patrol);
-            var soldiers = SoldiersSerializer.Serialize(multipleRecords.GetRecord(MissionObjects));
-            foreach (var soldier in soldiers)
-                world.Soldiers.Add(soldier);
+            //var soldiers = SoldiersSerializer.Serialize(multipleRecords.GetRecord(MissionObjects));
+            //foreach (var soldier in soldiers)
+            //    world.MissionObjects.Soldiers.Add(soldier);
 
             return world;
         }
@@ -48,7 +48,8 @@ namespace Commandos.IO.Serializers.Map
             if (input.GscFileName != null)
                 records.Records.Add(GscFile, RecordExtensions.GetSingleDataRecord(GscFile, input.GscFileName));
             records.AddMultipleRecords(Administration, input.Administration.MultipleRecords);
-            records.AddMixedDataRecord(MissionObjects, input.MissionObjects.MultipleRecords);
+
+
             records.AddMixedDataRecord(Patrols, PatrolsSerializer.Deserialize(input.Patrols));
             records.AddMixedDataRecord(SpecialAreas, input.SpecialAreas.MultipleRecords);
             records.AddMixedDataRecord(SoundAreas, input.SoundAreas.MultipleRecords);

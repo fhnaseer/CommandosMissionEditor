@@ -12,22 +12,10 @@
         public const string EnemyActionType = ".TIPO";
         public const string Time = ".TIEMPO";
 
-        public const string World = ".MUNDO";
 
         public const string Abilities = ".INTERFAZ";
 
         public const string PrimaryObjectType = ".BANDO";
         public const string SecondaryObjectType = ".HTIP";
-
-        public const string GreenBeretToken = "COMANDO";
-        public const string SniperToken = "FRANCOTIRADOR";
-        public const string MarineToken = "LANCHERO";
-        public const string SapperToken = "ARTIFICIERO";
-        public const string DriverToken = "CONDUCTOR";
-        public const string SpyToken = "ESPIA";
-        public const string NatashaToken = "NATACHA";
-        public const string ThiefToken = "RATERO";
-        public const string WilsonToken = "WILSON";
-        public const string WhiskyToken = "WHISKY";
     }
 }

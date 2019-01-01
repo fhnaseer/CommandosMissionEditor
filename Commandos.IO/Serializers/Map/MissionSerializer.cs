@@ -21,7 +21,7 @@ namespace Commandos.IO.Serializers.Map
                 Music = SerializerHelper.Instance.MusicSerializer.Serialize(multipleRecords.GetRecord(MusicSerializer.Music)),
                 Ficheros = SerializerHelper.Instance.FicherosSerializer.Serialize(multipleRecords.GetRecord(FicherosSerializer.Ficheros)),
                 Abilities = new Abilities(multipleRecords.GetMultipleRecord(StringConstants.Abilities)),
-                World = SerializerHelper.Instance.WorldSerializer.Serialize(multipleRecords.GetRecord(StringConstants.World))
+                World = SerializerHelper.Instance.WorldSerializer.Serialize(multipleRecords.GetRecord(WorldSerializer.World))
             };
         }
 
