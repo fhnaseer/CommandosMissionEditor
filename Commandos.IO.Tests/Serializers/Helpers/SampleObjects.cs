@@ -1,4 +1,5 @@
-﻿using Commandos.Model.Characters.Enemies;
+﻿using Commandos.Model.Characters.Commandos;
+using Commandos.Model.Characters.Enemies;
 using Commandos.Model.Common;
 using Commandos.Model.EnemyActions;
 using Commandos.Model.Map;
@@ -69,6 +70,14 @@ namespace Commandos.IO.Tests.Serializers.Helpers
             $".VOLCOLISION ( Cilindro [ .RADIO 12.0 .ALTURA 50.0 ] ) .TIPOCOLISION PEATON .ZONASELECCION ( Cilindro [ .RADIO 10.0 .ALTURA 50.0 ] ) " +
             $".LISTAS ( CHOC SELE VISI EJEC FLAE ) .COLORPUNTOLIBRETA ALEMAN .USAHAB [ ] .PUEDE_CONDUCIR ( WILLIS ZODIAK CAMION CANON LANCHA_MOTORA NIDO_AMETRALLADORAS ASCENSOR MONTA_ALEMAN SILLA CAMA ) " +
             $".MICUADRICULA [ .DIMCUADX  4.0 .DIMCUADY  6.0 .GFXCUAD CUADRIC ] .GEL [ ] .DUMMY [ .ANIMADOR ( AnimadorHumano [ .VOL ( Cilindro [ .RADIO 10.0 .ALTURA 50.0 ] ) .ANIM ALEPISTDELGADO.ANI ] ) ] .BICHOS ( ) ]";
+
+        public static string GreenBeretString = $"[ .TOKEN COMANDO .POS [ {IPositionString} ] .ANGULO 0 .BANDO ALIADO .HTIP ACOM " +
+            ".ACCIONES ( ( Ac_DejarPisadasGraficas [ ] ) ( Ac_DejarPisadasLogicas [ ] ) ) " +
+            ".COMPORTAMIENTO ( ComporUsuario [ .ACCIONES ( ( AUPonerCepo [ ] ) ( AULanzarGranada [ .TIPO_GRANADA GAS ] ) ( AUNarcotizar [ ] ) ( AUInteractuar [ ] ) ( AUGoTo [ ] ) ( AUCambiarPostura [ ] ) ( AUUsarTransfer [ ] ) ( AUBucear [ ] ) ( AUSaltarValla [ ] ) ( AUNadar [ ] ) ( AUUsarVehiculo [ ] ) ( AUMirarPorTransfer [ .CABLE  1.0 .CANALON  1.0 .CALLE  1.0 .FACHADA 0 .ESCALA  1.0 .IMPULSO  1.0 .GANCHO  1.0 ] ) ( AUUsarBotiquin [ ] ) ( AUSoltarBicho [ ] ) ( AUCoger [ ] ) ( AULlevarMuerto [ ] ) ( AUManejarSenuelo [ ] ) ( AUSilbato [ ] ) ( AUAcuchillar [ ] ) ( AUDispararArma [ ] ) ( AUDispararMetralleta [ ] ) ( AUDispararRifleCorto [ ] ) ( AUSaltarPorTransfer [ .CABLE  1.0 .CANALON  1.0 .CALLE  1.0 .FACHADA 0 .ESCALA  1.0 .IMPULSO  1.0 .GANCHO  1.0 ] ) ( AUExaminar [ ] ) ( AUUsarEscala [ ] ) ( AUUsarAscensor [ ] ) ( AUDetenido [ ] ) ( AUEsconderse [ ] ) ( AUEnterrarse [ ] ) ( AUAtontar [ ] ) ( AUGolpearPared [ ] ) ( AUAbrirPuertaInterior [ ] ) ( AUUsarRadio [ ] ) ( AUTreparCable [ ] ) ( AUComidaPerro [ ] ) ( AUUsarComidaPeces [ ] ) ( AULanzarTabaco [ ] ) ( AUPrismaticos [ ] ) ( AUIrPegaoAPared [ ] ) ( AUTransportaObjeto [ ] ) ( AUUsarInterruptor [ .INTERRUPTORES ( RUEDA PALANCA ) ] ) ( AUSoltarEscalaEnrollable [ ] ) ( AUAmordazar [ ] ) ( AUPonerseTraje [ ] ) ( AULiberarChusma [ ] ) ( AUPonerSenuelo [ ] ) ( AUUsarTenazas [ ] ) ( AUApostarse [ .VIGILADOR [ .LONG_NORMAL 600.0 .AMPL_NORMAL 120 ] ] ) ( AUDerribarPuerta [ ] ) ( AUUsarBotella [ ] ) ( AUSaltarParacaidas [ .EVENTO_LANZA_PARACAIDAS_LLEGADA_SUELO PLAS ] ) ( AUDeslumbrar [ ] ) ( AUUsarGarfio [ ] ) ( AULlevarWhisky [ ] ) ( AUAbrirPuertaConLlave [ ] ) ( AUActuarSobre [ .TOKENSACTUASOBRE ( ) ] ) ) .GESTOR_MOVIMIENTO [ .PATRULLAJE [ ] ] .EMPIEZA_TORTURADO 0 .SALTA_VALLAS  1.0 .SALTA_ACANTILADOS  1.0 .EVENTO_LANZA_PARACAIDAS_LLEGADA_SUELO PLAS ] ) " +
+            ".USAHAB [ ] .VOLCOLISION ( Cilindro [ .RADIO 12.0 .ALTURA 50.0 ] ) .TIPOCOLISION PEATON .ZONASELECCION ( Cilindro [ .RADIO 10.0 .ALTURA 50.0 ] ) .MOTOR ( MotorPeaton [ .ATRAVIESAALAMBRADAS 0 ] ) " +
+            ".COLORPUNTOLIBRETA ALIADO .ANIMADOR ( AnimadorHumano [ .VOL ( Cilindro [ .RADIO 20.0 .ALTURA 50.0 ] ) .ANIM COMANDO.ANI .MOTIONBLUR_CORRIENDO  1.0 ] ) .CONTENEDOR  1.0 .LISTAS ( CHOC VISI SELE EJEC ) .GEL [ ] " +
+            ".DUMMY [ .ANIMADOR ( AnimadorHumano [ .VOL ( Cilindro [ .RADIO 10.0 .ALTURA 50.0 ] ) .ANIM COMANDO.ANI ] ) ] .PUEDE_CONDUCIR ( GLOBO WILLIS CAMION LANCHA_MOTORA ASCENSOR MONTA SILLA_ALIADA ) " +
+            ".VISTA ( VistaTriangular [ ] ) .BICHOS ( ) .VELOCIDADES_PREFIJADAS  1.0 .REMOLQUE  1.0 ]";
 
         public static string SoldiersString = $".BICHOS ( {SoldierString} )";
     }
@@ -210,6 +219,21 @@ namespace Commandos.IO.Tests.Serializers.Helpers
                 };
                 soldier.Routes.Add(MovementEnemyRoute);
                 soldier.Routes.Add(BodyEnemyRoute);
+                return soldier;
+            }
+        }
+
+        public static GreenBeret GreenBeret
+        {
+            get
+            {
+                var soldier = new GreenBeret
+                {
+                    TokenId = "COMANDO",
+                    Angle = "0",
+                    Position = Position,
+                    Area = Area
+                };
                 return soldier;
             }
         }

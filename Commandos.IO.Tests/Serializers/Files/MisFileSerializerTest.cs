@@ -14,6 +14,7 @@ namespace Commandos.IO.Tests.Files
         public void MisFile_Read_Write_Works()
         {
             // Arrange,
+            //var path = @"D:\Code\CommandosMissionEditor\TestResults\Deploy_fhnas 2019-01-01 16_49_28\Out\firstOutput.mis";
             var inputPath = Path.Combine(TestContext.DeploymentDirectory, "5G1A.mis");
             var outputPath = Path.Combine(TestContext.DeploymentDirectory, "directOutput.mis");
             var expected = MisFileSerializer.ReadMisFile(inputPath);

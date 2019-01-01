@@ -1,6 +1,6 @@
 ﻿namespace Commandos.Model.Characters.Commandos
 {
-    public abstract class Commando
+    public abstract class Commando : Character
     {
         private CommandoAbilities _abilities;
         public CommandoAbilities Abilities

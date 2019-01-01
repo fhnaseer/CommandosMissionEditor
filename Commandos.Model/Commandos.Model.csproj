@@ -55,7 +55,7 @@
     <Compile Include="Characters\Commandos\Commando.cs" />
     <Compile Include="Characters\Commandos\CommandoAbilities.cs" />
     <Compile Include="Characters\Commandos\Driver.cs" />
-    <Compile Include="Characters\Commandos\GreenBerret.cs" />
+    <Compile Include="Characters\Commandos\GreenBeret.cs" />
     <Compile Include="Characters\Commandos\Marine.cs" />
     <Compile Include="Characters\Commandos\Natasha.cs" />
     <Compile Include="Characters\Commandos\Sapper.cs" />

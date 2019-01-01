@@ -2,8 +2,8 @@
 using Commandos.IO.Helpers;
 using Commandos.IO.Serializers.Map;
 using Commandos.Model.Characters;
-using Commandos.Model.Characters.Enemies;
 using Commandos.Model.Common;
+using Commandos.Model.Map;
 
 namespace Commandos.IO.Serializers.Helpers
 {
@@ -40,10 +40,10 @@ namespace Commandos.IO.Serializers.Helpers
 
         public static void PopulateCharacter(Character character, MultipleRecords multipleRecords)
         {
-            if (character is EnemySoldier)
-                PopulateIPosition(character, multipleRecords.GetMultipleRecord(StringConstants.CharacterPosition));
-            else
+            if (character is EnemyPatrol)
                 PopulateIPosition(character, multipleRecords);
+            else
+                PopulateIPosition(character, multipleRecords.GetMultipleRecord(StringConstants.CharacterPosition));
             character.TokenId = multipleRecords.GetStringValue(StringConstants.TokenId);
             character.Angle = multipleRecords.GetStringValue(StringConstants.Angle);
         }
@@ -75,7 +75,7 @@ namespace Commandos.IO.Serializers.Helpers
 
         public static string GetCharacterRecordString(Character character)
         {
-            var iPositionString = character is EnemySoldier ? $"{StringConstants.CharacterPosition} [ {GetIPositionRecordString(character)} ]" : GetIPositionRecordString(character);
+            var iPositionString = character is EnemyPatrol ? GetIPositionRecordString(character) : $"{StringConstants.CharacterPosition} [ {GetIPositionRecordString(character)} ]";
             return $"{iPositionString} {GetAngleRecordString(character.Angle)} {GetTokenRecordString(character.TokenId)}";
         }
 

@@ -1,6 +1,6 @@
 ﻿namespace Commandos.Model.Characters.Commandos
 {
-    public class GreenBerret : Commando
+    public class GreenBeret : Commando
     {
     }
 }

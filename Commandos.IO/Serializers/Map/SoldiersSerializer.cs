@@ -8,7 +8,7 @@ using Commandos.Model.Characters.Enemies;
 
 namespace Commandos.IO.Serializers.Map
 {
-    public static class SoldiersSerializer //: RecordSerializerBase<ObservableCollection<EnemySoldier>>
+    public static class SoldiersSerializer
     {
         public const string Bichos = ".BICHOS";
         private const string CompartmentInfo = ".COMPORTAMIENTO";
@@ -19,7 +19,6 @@ namespace Commandos.IO.Serializers.Map
         private const string SecondarySoldierType = "SOLD";
         private const string AnimationFile = ".ANIMACION";
 
-        //public override string RecordName => Bichos;
         public static bool IsSolder(MultipleRecords multipleRecords)
         {
             var primaryType = multipleRecords.GetStringValue(StringConstants.PrimaryObjectType);
