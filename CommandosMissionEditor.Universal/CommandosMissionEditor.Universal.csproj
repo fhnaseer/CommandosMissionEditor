@@ -7,8 +7,8 @@
     <ProjectGuid>{188B7E42-56CA-4CB7-BBC8-E80ACBF33860}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CommandosMissionEditor.Universal</RootNamespace>
-    <AssemblyName>CommandosMissionEditor.Universal</AssemblyName>
+    <RootNamespace>CommandosMissionEditor</RootNamespace>
+    <AssemblyName>CommandosMissionEditor</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17763.0</TargetPlatformVersion>
@@ -123,6 +123,11 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelayCommand.cs" />
+    <Compile Include="ViewModels\UploadMissionViewModel.cs" />
+    <Compile Include="Views\UploadMissionView.xaml.cs">
+      <DependentUpon>UploadMissionView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -149,11 +154,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="ResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UploadMissionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.2</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Commandos.IO\Commandos.IO.csproj">
+      <Project>{40fefae9-37a3-4992-8d18-c587575e5841}</Project>
+      <Name>Commandos.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Commandos.Model\Commandos.Model.csproj">
+      <Project>{5f696efe-a149-455e-afcf-156174b5a6a1}</Project>
+      <Name>Commandos.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

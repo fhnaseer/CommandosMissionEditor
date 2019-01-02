@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using Commandos.IO.Entities;
 using Commandos.IO.Helpers;
 using Commandos.IO.Serializers.Files;
 using Commandos.IO.Serializers.Map;
 using Commandos.Model.Map;
+[assembly: InternalsVisibleTo("Commandos.IO.Tests")]
 
 namespace Commandos.IO.Files
 {

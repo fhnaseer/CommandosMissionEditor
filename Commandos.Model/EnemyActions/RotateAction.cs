@@ -1,4 +1,6 @@
-﻿namespace Commandos.Model.Characters.Enemies.Actions
+﻿using Commandos.Model.EnemyActions;
+
+namespace Commandos.Model.Characters.Enemies.Actions
 {
     public class RotateAction : EnemyAction
     {

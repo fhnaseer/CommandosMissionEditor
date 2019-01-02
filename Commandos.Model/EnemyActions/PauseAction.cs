@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using Commandos.Model.EnemyActions;
 
 namespace Commandos.Model.Characters.Enemies.Actions
 {

@@ -5,10 +5,14 @@
     xmlns:local="using:CommandosMissionEditor.Universal"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="using:CommandosMissionEditor.ViewModels"
+    xmlns:views="using:CommandosMissionEditor.Views"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Page.Resources>
+        <ResourceDictionary Source="ResourceDictionary.xaml" />
+    </Page.Resources>
     <Grid>
-
+        <ContentControl Content="{Binding}" />
     </Grid>
 </Page>

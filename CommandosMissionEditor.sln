@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.28407.52
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandosMissionEditor", "CommandosMissionEditor\CommandosMissionEditor.csproj", "{8E43050C-3918-474C-A347-914A43E6F99E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commandos.Model", "Commandos.Model\Commandos.Model.csproj", "{5F696EFE-A149-455E-AFCF-156174B5A6A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commandos.Model", "Commandos.Model\Commandos.Model.csproj", "{5F696EFE-A149-455E-AFCF-156174B5A6A1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commandos.IO", "Commandos.IO\Commandos.IO.csproj", "{40FEFAE9-37A3-4992-8D18-C587575E5841}"
 EndProject
@@ -108,6 +108,8 @@ Global
 		{6B6D97E4-EC43-4BB3-8EF7-4421F967722E}.Release|x86.ActiveCfg = Release|Any CPU
 		{6B6D97E4-EC43-4BB3-8EF7-4421F967722E}.Release|x86.Build.0 = Release|Any CPU
 		{188B7E42-56CA-4CB7-BBC8-E80ACBF33860}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{188B7E42-56CA-4CB7-BBC8-E80ACBF33860}.Debug|Any CPU.Build.0 = Debug|x86
+		{188B7E42-56CA-4CB7-BBC8-E80ACBF33860}.Debug|Any CPU.Deploy.0 = Debug|x86
 		{188B7E42-56CA-4CB7-BBC8-E80ACBF33860}.Debug|ARM.ActiveCfg = Debug|ARM
 		{188B7E42-56CA-4CB7-BBC8-E80ACBF33860}.Debug|ARM.Build.0 = Debug|ARM
 		{188B7E42-56CA-4CB7-BBC8-E80ACBF33860}.Debug|ARM.Deploy.0 = Debug|ARM

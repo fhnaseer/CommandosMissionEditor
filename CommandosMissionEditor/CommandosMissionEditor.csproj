@@ -239,11 +239,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Commandos.IO\Commandos.IO.csproj">
-      <Project>{40FEFAE9-37A3-4992-8D18-C587575E5841}</Project>
+      <Project>{40fefae9-37a3-4992-8d18-c587575e5841}</Project>
       <Name>Commandos.IO</Name>
     </ProjectReference>
     <ProjectReference Include="..\Commandos.Model\Commandos.Model.csproj">
-      <Project>{5F696EFE-A149-455E-AFCF-156174B5A6A1}</Project>
+      <Project>{5f696efe-a149-455e-afcf-156174b5a6a1}</Project>
       <Name>Commandos.Model</Name>
     </ProjectReference>
   </ItemGroup>
