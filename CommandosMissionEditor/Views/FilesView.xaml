@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="CommandosMissionEditor.Views.FilesView"
+﻿<Page x:Class="CommandosMissionEditor.Views.FilesView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,12 +6,12 @@
              xmlns:viewModels="clr-namespace:CommandosMissionEditor.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <d:UserControl.DataContext>
+    <d:Page.DataContext>
         <viewModels:FilesViewModel />
-    </d:UserControl.DataContext>
-    <UserControl.Resources>
+    </d:Page.DataContext>
+    <Page.Resources>
         <ResourceDictionary Source="../ResourceDictionary.xaml" />
-    </UserControl.Resources>
+    </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
@@ -32,4 +32,4 @@
         <TextBlock Grid.Row="3" Grid.Column="0" Text="Bas File Name (.bas)" />
         <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Mission.BasFileName}" />
     </Grid>
-</UserControl>
+</Page>
