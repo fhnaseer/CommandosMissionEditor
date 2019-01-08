@@ -36,7 +36,7 @@ namespace CommandosMissionEditor.Universal.ViewModels
             }
             set
             {
-                Set(ref _selectedItem, value);
+                Set(ref _defaultItem, value);
                 OnDefaultItemChanged();
             }
         }

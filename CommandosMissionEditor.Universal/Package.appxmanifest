@@ -5,15 +5,14 @@
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
   xmlns:genTemplate="http://schemas.microsoft.com/appx/developer/windowsTemplateStudio"
-  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
-  IgnorableNamespaces="uap mp rescap genTemplate">
+  IgnorableNamespaces="uap mp genTemplate">
 
   <Identity
-    Name="FFEAAB54-9B18-44D1-A518-028C70673649"
+    Name="EFDDAC7F-D238-4548-96B3-DCDDC5BB4E66"
     Publisher="CN=fhnas"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="FFEAAB54-9B18-44D1-A518-028C70673649" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="EFDDAC7F-D238-4548-96B3-DCDDC5BB4E66" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>CommandosMissionEditor.Universal</DisplayName>

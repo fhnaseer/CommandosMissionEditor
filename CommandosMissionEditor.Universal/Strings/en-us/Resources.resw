@@ -181,12 +181,4 @@
     <value>SaveMission</value>
     <comment>Navigation view item name for SaveMission</comment>
   </data>
-  <data name="ExceptionSettingsStorageExtensionsFileNameIsNullOrEmpty" xml:space="preserve">
-    <value>File name is null or empty. Specify a valid file name</value>
-    <comment>File name is null or empty to save file in settings storage extensions</comment>
-  </data>
-  <data name="ExceptionViewLifeTimeControlViewDisposal" xml:space="preserve">
-    <value>This view is being disposed.</value>
-    <comment>View disposed</comment>
-  </data>
 </root>
