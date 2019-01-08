@@ -8,11 +8,12 @@
     mc:Ignorable="d">
     <Grid
         x:Name="ContentArea"
-        Margin="{StaticResource MediumLeftRightMargin}">
-        <Grid
-            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-            <!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
-                Place your content here.-->
-        </Grid>
+        Margin="{StaticResource MediumLeftRightMargin}"
+        Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+        <StackPanel >
+            <TextBlock Text="File Path (.mis)" />
+            <TextBox Text="{x:Bind ViewModel.MissionFilePath, Mode=TwoWay}" />
+            <Button Content="Load Mission" Command="{x:Bind ViewModel.LoadMissionCommand}" />
+        </StackPanel>
     </Grid>
 </Page>
