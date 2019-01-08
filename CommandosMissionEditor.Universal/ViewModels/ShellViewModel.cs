@@ -15,7 +15,7 @@ using WinUI = Microsoft.UI.Xaml.Controls;
 
 namespace CommandosMissionEditor.Universal.ViewModels
 {
-    public class ShellViewModel : Observable
+    public class ShellViewModel : ViewModelBase
     {
         private readonly KeyboardAccelerator _altLeftKeyboardAccelerator = BuildKeyboardAccelerator(VirtualKey.Left, VirtualKeyModifiers.Menu);
         private readonly KeyboardAccelerator _backKeyboardAccelerator = BuildKeyboardAccelerator(VirtualKey.GoBack);

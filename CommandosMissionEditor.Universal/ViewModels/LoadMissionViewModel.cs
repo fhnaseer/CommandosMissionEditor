@@ -6,7 +6,7 @@ using Windows.Storage.Pickers;
 
 namespace CommandosMissionEditor.Universal.ViewModels
 {
-    public class LoadMissionViewModel : Observable
+    public class LoadMissionViewModel : ViewModelBase
     {
         public LoadMissionViewModel()
         {

@@ -4,7 +4,7 @@ using CommandosMissionEditor.Universal.Helpers;
 
 namespace CommandosMissionEditor.Universal.ViewModels
 {
-    public class SaveMissionViewModel : Observable
+    public class SaveMissionViewModel : ViewModelBase
     {
         public SaveMissionViewModel()
         {
