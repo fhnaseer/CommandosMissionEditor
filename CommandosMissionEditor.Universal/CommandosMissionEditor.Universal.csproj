@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{8FFE1078-1688-46CA-8F09-EA358F2E6D93}</ProjectGuid>
+    <ProjectGuid>{6243375F-1F05-4B08-973C-77ABA2B325E2}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CommandosMissionEditor.Universal</RootNamespace>
@@ -99,6 +99,9 @@
       <Version>2.0.0</Version>
     </PackageReference>
     <!-- Nuget package references -->
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>11.0.2</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
       <Version>2.0.181018003</Version>
     </PackageReference>
@@ -110,12 +113,17 @@
     <Compile Include="Activation\ActivationHandler.cs" />
     <Compile Include="Behaviors\NavigationViewHeaderBehavior.cs" />
     <Compile Include="Behaviors\NavigationViewHeaderMode.cs" />
+    <Compile Include="Helpers\Json.cs" />
     <Compile Include="Helpers\NavHelper.cs" />
     <Compile Include="Helpers\Observable.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
+    <Compile Include="Helpers\SettingsStorageExtensions.cs" />
     <Compile Include="Services\ActivationService.cs" />
     <Compile Include="Activation\DefaultLaunchActivationHandler.cs" />
     <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="Services\ThemeSelectorService.cs" />
+    <Compile Include="Services\ViewLifetimeControl.cs" />
+    <Compile Include="Services\WindowManagerService.cs" />
     <Compile Include="ViewModels\CameraViewModel.cs" />
     <Compile Include="ViewModels\CommandosViewModel.cs" />
     <Compile Include="ViewModels\EnemiesViewModel.cs" />
@@ -123,6 +131,7 @@
     <Compile Include="ViewModels\LoadMissionViewModel.cs" />
     <Compile Include="ViewModels\MusicViewModel.cs" />
     <Compile Include="ViewModels\PatrolsViewModel.cs" />
+    <Compile Include="ViewModels\SaveMissionViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\CameraPage.xaml.cs">
       <DependentUpon>CameraPage.xaml</DependentUpon>
@@ -144,6 +153,9 @@
     </Compile>
     <Compile Include="Views\PatrolsPage.xaml.cs">
       <DependentUpon>PatrolsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SaveMissionPage.xaml.cs">
+      <DependentUpon>SaveMissionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShellPage.xaml.cs">
       <DependentUpon>ShellPage.xaml</DependentUpon>
@@ -201,6 +213,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\PatrolsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SaveMissionPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

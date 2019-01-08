@@ -8,11 +8,11 @@
   IgnorableNamespaces="uap mp genTemplate">
 
   <Identity
-    Name="0FB46441-DCAB-4C8D-81E2-270441619F57"
+    Name="FFEAAB54-9B18-44D1-A518-028C70673649"
     Publisher="CN=fhnas"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="0FB46441-DCAB-4C8D-81E2-270441619F57" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="FFEAAB54-9B18-44D1-A518-028C70673649" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>CommandosMissionEditor.Universal</DisplayName>
