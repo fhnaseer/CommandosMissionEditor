@@ -29,6 +29,7 @@
         <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding ItemCollection}" SelectedItem="{Binding SelectedItem}" />
         <UniformGrid Grid.Row="1" Grid.Column="1" Rows="1">
             <Button Content="Remove Selected" Command="{Binding RemoveSelectedItemCommand}" />
+            <Button Content="Add New" Command="{Binding AddItemCommand}" />
         </UniformGrid>
         <TextBlock Grid.Row="2" Grid.Column="0" Text="Music File Name (.wav)" />
         <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedItem.MusicFileName, UpdateSourceTrigger=PropertyChanged}" />
