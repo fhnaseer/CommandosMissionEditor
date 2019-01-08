@@ -12,7 +12,7 @@
         Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
         <StackPanel >
             <TextBlock Text="File Path (.mis)" />
-            <TextBox Text="{x:Bind ViewModel.MissionFilePath, Mode=TwoWay}" />
+            <TextBox Text="{x:Bind ViewModel.MissionFilePath, Mode=TwoWay}" IsReadOnly="True" />
             <Button Content="Load Mission" Command="{x:Bind ViewModel.LoadMissionCommand}" />
         </StackPanel>
     </Grid>

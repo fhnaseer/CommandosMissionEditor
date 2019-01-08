@@ -17,7 +17,14 @@ namespace Commandos.IO.Files
     {
         public static Mission ReadMisFile(string path)
         {
-            return MissionSerializer.GetMission(GetMultipleRecords(path));
+            var tokens = GetTokens(path);
+            return MissionSerializer.GetMission(TokenParser.ParseTokens(tokens));
+        }
+
+        public static Mission ReadMisFile(IList<string> lines)
+        {
+            var tokens = GetTokens(lines);
+            return MissionSerializer.GetMission(TokenParser.ParseTokens(tokens));
         }
 
         internal static MultipleRecords GetMultipleRecords(string path)
@@ -29,6 +36,11 @@ namespace Commandos.IO.Files
         internal static string[] GetTokens(string path)
         {
             var lines = File.ReadAllLines(path).ToList();
+            return GetTokens(lines);
+        }
+
+        private static string[] GetTokens(IList<string> lines)
+        {
             lines = GetCleanedLines(lines);
             var fullText = string.Join(" ", lines);
             fullText = fullText.Replace("[", " [ ");
@@ -42,7 +54,7 @@ namespace Commandos.IO.Files
             return fullText.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
         }
 
-        private static List<string> GetCleanedLines(List<string> lines)
+        private static List<string> GetCleanedLines(IList<string> lines)
         {
             var cleanedLines = new List<string>();
             foreach (var line in lines)

@@ -11,8 +11,24 @@
         Margin="{StaticResource MediumLeftRightMargin}">
         <Grid
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-            <!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
-                Place your content here.-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Msb File Name (.msb)" />
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{x:Bind ViewModel.Mission.MsbFileName}" />
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Briefing File Name (.bri)" />
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{x:Bind ViewModel.Mission.Briefing.FileName}" />
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Ficheros File Name (.str)" />
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{x:Bind ViewModel.Mission.Ficheros.FileName}" />
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Bas File Name (.bas)" />
+            <TextBox Grid.Row="3" Grid.Column="1" Text="{x:Bind ViewModel.Mission.BasFileName}" />
         </Grid>
     </Grid>
 </Page>

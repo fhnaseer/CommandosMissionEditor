@@ -235,12 +235,19 @@
     <Compile Include="Helpers\Singleton.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Commandos.IO\Commandos.IO.csproj">
+      <Project>{40fefae9-37a3-4992-8d18-c587575e5841}</Project>
+      <Name>Commandos.IO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Commandos.Model\Commandos.Model.csproj">
       <Project>{5F696EFE-A149-455E-AFCF-156174B5A6A1}</Project>
       <Name>Commandos.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <CodeAnalysisDictionary Include="..\CodeAnalysisDictionary.xml">
+      <Link>CodeAnalysisDictionary.xml</Link>
+    </CodeAnalysisDictionary>
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

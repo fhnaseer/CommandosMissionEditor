@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
+using Commandos.IO.Files;
 using CommandosMissionEditor.Universal.Helpers;
 using Windows.Storage;
 using Windows.Storage.Pickers;
@@ -12,7 +13,7 @@ namespace CommandosMissionEditor.Universal.ViewModels
         {
         }
 
-        private string _missionFilePath = @"D:\Code\TestFiles\TU01A.MIS";
+        private string _missionFilePath;
         public string MissionFilePath
         {
             get => _missionFilePath;
@@ -31,7 +32,9 @@ namespace CommandosMissionEditor.Universal.ViewModels
             };
             openPicker.FileTypeFilter.Add(".mis");
             StorageFile file = await openPicker.PickSingleFileAsync();
-            var text = await FileIO.ReadTextAsync(file);
+            MissionFilePath = file.Path;
+            var lines = await FileIO.ReadLinesAsync(file);
+            Mission = MisFileSerializer.ReadMisFile(lines);
         }
     }
 }

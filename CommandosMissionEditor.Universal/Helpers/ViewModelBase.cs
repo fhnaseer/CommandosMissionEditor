@@ -19,7 +19,7 @@ namespace CommandosMissionEditor.Universal.Helpers
 
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-        private Mission _mission;
+        private static Mission _mission;
         public Mission Mission
         {
             get => _mission;
