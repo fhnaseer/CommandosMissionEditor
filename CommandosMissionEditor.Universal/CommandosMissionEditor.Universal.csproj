@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{8B87FD4B-8D3E-47E2-8E4D-F9C2A9088AB0}</ProjectGuid>
+    <ProjectGuid>{8FFE1078-1688-46CA-8F09-EA358F2E6D93}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CommandosMissionEditor.Universal</RootNamespace>
@@ -99,9 +99,6 @@
       <Version>2.0.0</Version>
     </PackageReference>
     <!-- Nuget package references -->
-    <PackageReference Include="Newtonsoft.Json">
-      <Version>11.0.2</Version>
-    </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
       <Version>2.0.181018003</Version>
     </PackageReference>
@@ -113,25 +110,40 @@
     <Compile Include="Activation\ActivationHandler.cs" />
     <Compile Include="Behaviors\NavigationViewHeaderBehavior.cs" />
     <Compile Include="Behaviors\NavigationViewHeaderMode.cs" />
-    <Compile Include="Helpers\Json.cs" />
     <Compile Include="Helpers\NavHelper.cs" />
     <Compile Include="Helpers\Observable.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
-    <Compile Include="Helpers\SettingsStorageExtensions.cs" />
     <Compile Include="Services\ActivationService.cs" />
     <Compile Include="Activation\DefaultLaunchActivationHandler.cs" />
     <Compile Include="Services\NavigationService.cs" />
-    <Compile Include="Services\ThemeSelectorService.cs" />
-    <Compile Include="Services\ViewLifetimeControl.cs" />
-    <Compile Include="Services\WindowManagerService.cs" />
     <Compile Include="ViewModels\CameraViewModel.cs" />
-    <Compile Include="ViewModels\OpenMissionViewModel.cs" />
+    <Compile Include="ViewModels\CommandosViewModel.cs" />
+    <Compile Include="ViewModels\EnemiesViewModel.cs" />
+    <Compile Include="ViewModels\FilesViewModel.cs" />
+    <Compile Include="ViewModels\LoadMissionViewModel.cs" />
+    <Compile Include="ViewModels\MusicViewModel.cs" />
+    <Compile Include="ViewModels\PatrolsViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\CameraPage.xaml.cs">
       <DependentUpon>CameraPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\OpenMissionPage.xaml.cs">
-      <DependentUpon>OpenMissionPage.xaml</DependentUpon>
+    <Compile Include="Views\CommandosPage.xaml.cs">
+      <DependentUpon>CommandosPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EnemiesPage.xaml.cs">
+      <DependentUpon>EnemiesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FilesPage.xaml.cs">
+      <DependentUpon>FilesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoadMissionPage.xaml.cs">
+      <DependentUpon>LoadMissionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MusicPage.xaml.cs">
+      <DependentUpon>MusicPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PatrolsPage.xaml.cs">
+      <DependentUpon>PatrolsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShellPage.xaml.cs">
       <DependentUpon>ShellPage.xaml</DependentUpon>
@@ -168,7 +180,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\OpenMissionPage.xaml">
+    <Page Include="Views\CommandosPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EnemiesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\FilesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LoadMissionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MusicPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PatrolsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -186,7 +218,9 @@
     <Compile Include="Helpers\ResourceExtensions.cs" />
     <Compile Include="Helpers\Singleton.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />

@@ -39,7 +39,7 @@ namespace CommandosMissionEditor.Universal
 
         private ActivationService CreateActivationService()
         {
-            return new ActivationService(this, typeof(Views.OpenMissionPage), new Lazy<UIElement>(CreateShell));
+            return new ActivationService(this, typeof(Views.LoadMissionPage), new Lazy<UIElement>(CreateShell));
         }
 
         private UIElement CreateShell()

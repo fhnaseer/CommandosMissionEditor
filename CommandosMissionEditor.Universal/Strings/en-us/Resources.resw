@@ -125,24 +125,56 @@
     <value>CommandosMissionEditor.Universal</value>
     <comment>Application description</comment>
   </data>
-  <data name="Shell_Main.Content" xml:space="preserve">
-    <value>Main</value>
-    <comment>Navigation view item name for Main</comment>
+  <data name="Shell_LoadMission.Content" xml:space="preserve">
+    <value>LoadMission</value>
+    <comment>Navigation view item name for LoadMission</comment>
   </data>
-  <data name="Shell_OpenMission.Content" xml:space="preserve">
-    <value>Open Mission</value>
-    <comment>Navigation view item name for OpenMission</comment>
+  <data name="Shell_Files.Content" xml:space="preserve">
+    <value>Files</value>
+    <comment>Navigation view item name for Files</comment>
+  </data>
+  <data name="Shell_Music.Content" xml:space="preserve">
+    <value>Music</value>
+    <comment>Navigation view item name for Music</comment>
   </data>
   <data name="Shell_Camera.Content" xml:space="preserve">
     <value>Camera</value>
     <comment>Navigation view item name for Camera</comment>
   </data>
-  <data name="ExceptionSettingsStorageExtensionsFileNameIsNullOrEmpty" xml:space="preserve">
-    <value>File name is null or empty. Specify a valid file name</value>
-    <comment>File name is null or empty to save file in settings storage extensions</comment>
+  <data name="Commandos_PivotItem1.Header" xml:space="preserve">  
+    <value>Item 1</value>
+    <comment>First Pivot item title for Commandos</comment>
   </data>
-  <data name="ExceptionViewLifeTimeControlViewDisposal" xml:space="preserve">
-    <value>This view is being disposed.</value>
-    <comment>View disposed</comment>
+  <data name="Commandos_PivotItem2.Header" xml:space="preserve">
+    <value>Item 2</value>
+    <comment>Second Pivot item title for Commandos</comment>
+  </data>
+  <data name="Shell_Commandos.Content" xml:space="preserve">
+    <value>Commandos</value>
+    <comment>Navigation view item name for Commandos</comment>
+  </data>
+  <data name="Enemies_PivotItem1.Header" xml:space="preserve">  
+    <value>Item 1</value>
+    <comment>First Pivot item title for Enemies</comment>
+  </data>
+  <data name="Enemies_PivotItem2.Header" xml:space="preserve">
+    <value>Item 2</value>
+    <comment>Second Pivot item title for Enemies</comment>
+  </data>
+  <data name="Shell_Enemies.Content" xml:space="preserve">
+    <value>Enemies</value>
+    <comment>Navigation view item name for Enemies</comment>
+  </data>
+  <data name="Patrols_PivotItem1.Header" xml:space="preserve">  
+    <value>Item 1</value>
+    <comment>First Pivot item title for Patrols</comment>
+  </data>
+  <data name="Patrols_PivotItem2.Header" xml:space="preserve">
+    <value>Item 2</value>
+    <comment>Second Pivot item title for Patrols</comment>
+  </data>
+  <data name="Shell_Patrols.Content" xml:space="preserve">
+    <value>Patrols</value>
+    <comment>Navigation view item name for Patrols</comment>
   </data>
 </root>

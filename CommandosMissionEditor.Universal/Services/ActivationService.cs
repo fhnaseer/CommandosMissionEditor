@@ -67,13 +67,12 @@ namespace CommandosMissionEditor.Universal.Services
 
         private async Task InitializeAsync()
         {
-            WindowManagerService.Current.Initialize();
-            await ThemeSelectorService.InitializeAsync();
+            await Task.CompletedTask;
         }
 
         private async Task StartupAsync()
         {
-            await ThemeSelectorService.SetRequestedThemeAsync();
+            await Task.CompletedTask;
         }
 
         private IEnumerable<ActivationHandler> GetActivationHandlers()

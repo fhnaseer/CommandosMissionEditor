@@ -6,11 +6,11 @@ using Windows.UI.Xaml.Controls;
 
 namespace CommandosMissionEditor.Universal.Views
 {
-    public sealed partial class OpenMissionPage : Page
+    public sealed partial class MusicPage : Page
     {
-        public OpenMissionViewModel ViewModel { get; } = new OpenMissionViewModel();
+        public MusicViewModel ViewModel { get; } = new MusicViewModel();
 
-        public OpenMissionPage()
+        public MusicPage()
         {
             InitializeComponent();
         }
