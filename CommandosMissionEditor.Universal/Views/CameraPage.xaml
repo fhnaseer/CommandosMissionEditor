@@ -11,8 +11,37 @@
         Margin="{StaticResource MediumLeftRightMargin}">
         <Grid
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-            <!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
-                Place your content here.-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Starting Position" />
+            <Grid Grid.Row="0" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="X" />
+                    <TextBox Grid.Row="0" Grid.Column="1" Text="{x:Bind ViewModel.Mission.Camera.Position.X}" />
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="Y" />
+                <TextBox Grid.Row="0" Grid.Column="3" Text="{x:Bind ViewModel.Mission.Camera.Position.Y}" />
+                    <TextBlock Grid.Row="0" Grid.Column="4" Text="Z" />
+                <TextBox Grid.Row="0" Grid.Column="5" Text="{x:Bind ViewModel.Mission.Camera.Position.Z}" />
+            </Grid>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Starting Area" />
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{x:Bind ViewModel.Mission.Camera.Area}" />
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Camera Direction" />
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{x:Bind ViewModel.Mission.Camera.CameraDirection}" />
         </Grid>
     </Grid>
 </Page>
