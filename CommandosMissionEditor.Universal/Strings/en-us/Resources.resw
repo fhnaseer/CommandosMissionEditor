@@ -126,7 +126,7 @@
     <comment>Application description</comment>
   </data>
   <data name="Shell_LoadMission.Content" xml:space="preserve">
-    <value>LoadMission</value>
+    <value>Load Mission</value>
     <comment>Navigation view item name for LoadMission</comment>
   </data>
   <data name="Shell_Files.Content" xml:space="preserve">
@@ -141,44 +141,40 @@
     <value>Music</value>
     <comment>Navigation view item name for Music</comment>
   </data>
-  <data name="Commandos_PivotItem1.Header" xml:space="preserve">  
-    <value>Item 1</value>
-    <comment>First Pivot item title for Commandos</comment>
-  </data>
-  <data name="Commandos_PivotItem2.Header" xml:space="preserve">
-    <value>Item 2</value>
-    <comment>Second Pivot item title for Commandos</comment>
-  </data>
   <data name="Shell_Commandos.Content" xml:space="preserve">
     <value>Commandos</value>
     <comment>Navigation view item name for Commandos</comment>
   </data>
-  <data name="Enemies_PivotItem1.Header" xml:space="preserve">  
-    <value>Item 1</value>
-    <comment>First Pivot item title for Enemies</comment>
-  </data>
-  <data name="Enemies_PivotItem2.Header" xml:space="preserve">
-    <value>Item 2</value>
-    <comment>Second Pivot item title for Enemies</comment>
-  </data>
   <data name="Shell_Enemies.Content" xml:space="preserve">
     <value>Enemies</value>
     <comment>Navigation view item name for Enemies</comment>
-  </data>
-  <data name="Patrols_PivotItem1.Header" xml:space="preserve">  
-    <value>Item 1</value>
-    <comment>First Pivot item title for Patrols</comment>
-  </data>
-  <data name="Patrols_PivotItem2.Header" xml:space="preserve">
-    <value>Item 2</value>
-    <comment>Second Pivot item title for Patrols</comment>
   </data>
   <data name="Shell_Patrols.Content" xml:space="preserve">
     <value>Patrols</value>
     <comment>Navigation view item name for Patrols</comment>
   </data>
   <data name="Shell_SaveMission.Content" xml:space="preserve">
-    <value>SaveMission</value>
+    <value>Save Mission</value>
     <comment>Navigation view item name for SaveMission</comment>
+  </data>
+  <data name="Shell_AddCommando.Content" xml:space="preserve">
+    <value>Add Commando</value>
+    <comment>Navigation view item name for AddCommando</comment>
+  </data>
+  <data name="Shell_AddEnemy.Content" xml:space="preserve">
+    <value>Add Enemy</value>
+    <comment>Navigation view item name for AddEnemy</comment>
+  </data>
+  <data name="Shell_AddPatrol.Content" xml:space="preserve">
+    <value>Add Patrol</value>
+    <comment>Navigation view item name for AddPatrol</comment>
+  </data>
+  <data name="Shell_AddRoute.Content" xml:space="preserve">
+    <value>Add Route</value>
+    <comment>Navigation view item name for AddRoute</comment>
+  </data>
+  <data name="Shell_AddAction.Content" xml:space="preserve">
+    <value>Add Action</value>
+    <comment>Navigation view item name for AddAction</comment>
   </data>
 </root>

@@ -41,6 +41,9 @@
             <winui:NavigationViewItem x:Uid="Shell_Enemies" Icon="Document" helpers:NavHelper.NavigateTo="views:EnemiesPage" />
             <winui:NavigationViewItem x:Uid="Shell_Patrols" Icon="Document" helpers:NavHelper.NavigateTo="views:PatrolsPage" />
             <winui:NavigationViewItem x:Uid="Shell_SaveMission" Icon="Document" helpers:NavHelper.NavigateTo="views:SaveMissionPage" />
+            <winui:NavigationViewItem x:Uid="Shell_AddPatrol" Icon="Document" helpers:NavHelper.NavigateTo="views:AddPatrolPage" />
+            <winui:NavigationViewItem x:Uid="Shell_AddRoute" Icon="Document" helpers:NavHelper.NavigateTo="views:AddRoutePage" />
+            <winui:NavigationViewItem x:Uid="Shell_AddAction" Icon="Document" helpers:NavHelper.NavigateTo="views:AddActionPage" />
         </winui:NavigationView.MenuItems>
         <i:Interaction.Behaviors>
             <behaviors:NavigationViewHeaderBehavior

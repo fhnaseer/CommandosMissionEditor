@@ -1,12 +1,8 @@
-﻿using System;
-
-using CommandosMissionEditor.Universal.ViewModels;
-
-using Windows.UI.Xaml.Controls;
+﻿using CommandosMissionEditor.Universal.ViewModels;
 
 namespace CommandosMissionEditor.Universal.Views
 {
-    public sealed partial class FilesPage : Page
+    public sealed partial class FilesPage
     {
         public FilesViewModel ViewModel { get; } = new FilesViewModel();
 

@@ -1,10 +1,8 @@
-﻿using System;
-
-using CommandosMissionEditor.Universal.Helpers;
+﻿using CommandosMissionEditor.Universal.Helpers;
 
 namespace CommandosMissionEditor.Universal.ViewModels
 {
-    public class PatrolsViewModel : ViewModelBase
+    public class PatrolsViewModel : NavigationViewModelBase
     {
         public PatrolsViewModel()
         {

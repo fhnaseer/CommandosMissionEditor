@@ -2,9 +2,9 @@
 
 namespace CommandosMissionEditor.Universal.ViewModels
 {
-    public class EnemiesViewModel : NavigationViewModelBase
+    public class AddPatrolViewModel : ViewModelBase
     {
-        public EnemiesViewModel()
+        public AddPatrolViewModel()
         {
         }
     }

@@ -2,11 +2,11 @@
 
 namespace CommandosMissionEditor.Universal.Views
 {
-    public sealed partial class MusicPage
+    public sealed partial class AddActionPage
     {
-        public MusicViewModel ViewModel { get; } = new MusicViewModel();
+        public AddActionViewModel ViewModel { get; } = new AddActionViewModel();
 
-        public MusicPage()
+        public AddActionPage()
         {
             InitializeComponent();
         }
