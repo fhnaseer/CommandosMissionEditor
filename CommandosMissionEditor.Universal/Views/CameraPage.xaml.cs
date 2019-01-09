@@ -1,4 +1,4 @@
-﻿using CommandosMissionEditor.Universal.ViewModels;
+﻿using CommandosMissionEditor.ViewModels;
 
 namespace CommandosMissionEditor.Universal.Views
 {

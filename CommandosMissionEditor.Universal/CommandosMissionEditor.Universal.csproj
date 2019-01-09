@@ -121,21 +121,22 @@
     <Compile Include="ViewModels\CommandosViewModel.cs" />
     <Compile Include="ViewModels\EnemiesViewModel.cs" />
     <Compile Include="ViewModels\LoadMissionViewModel.cs" />
+    <Compile Include="ViewModels\SaveMissionViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
-    <Compile Include="Views\AddActionPage.xaml.cs">
-      <DependentUpon>AddActionPage.xaml</DependentUpon>
+    <Compile Include="Views\AddEnemyActionPage.xaml.cs">
+      <DependentUpon>AddEnemyActionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AddCommandoPage.xaml.cs">
       <DependentUpon>AddCommandoPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddEnemyPage.xaml.cs">
-      <DependentUpon>AddEnemyPage.xaml</DependentUpon>
+    <Compile Include="Views\AddEnemySoldierPage.xaml.cs">
+      <DependentUpon>AddEnemySoldierPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddPatrolPage.xaml.cs">
-      <DependentUpon>AddPatrolPage.xaml</DependentUpon>
+    <Compile Include="Views\AddEnemyPatrolPage.xaml.cs">
+      <DependentUpon>AddEnemyPatrolPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddRoutePage.xaml.cs">
-      <DependentUpon>AddRoutePage.xaml</DependentUpon>
+    <Compile Include="Views\AddEnemyRoutePage.xaml.cs">
+      <DependentUpon>AddEnemyRoutePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CameraPage.xaml.cs">
       <DependentUpon>CameraPage.xaml</DependentUpon>
@@ -189,7 +190,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddActionPage.xaml">
+    <Page Include="Views\AddEnemyActionPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -197,15 +198,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\AddEnemyPage.xaml">
+    <Page Include="Views\AddEnemySoldierPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\AddPatrolPage.xaml">
+    <Page Include="Views\AddEnemyPatrolPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\AddRoutePage.xaml">
+    <Page Include="Views\AddEnemyRoutePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

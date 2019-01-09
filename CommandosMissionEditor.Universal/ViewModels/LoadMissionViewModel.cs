@@ -1,12 +1,12 @@
 ﻿using System;
 using Commandos.IO.Files;
-using CommandosMissionEditor.ViewModels;
+using CommandosMissionEditor.Helpers;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 
 namespace CommandosMissionEditor.Universal.ViewModels
 {
-    public abstract class LoadMissionViewModel : LoadMissionViewModelBase
+    public class LoadMissionViewModel : LoadMissionViewModelBase
     {
         public async override void LoadMission()
         {
