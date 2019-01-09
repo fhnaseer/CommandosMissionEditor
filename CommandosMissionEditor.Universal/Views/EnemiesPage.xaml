@@ -27,6 +27,7 @@
         Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
         <winui:NavigationView.MenuItems>
             <winui:NavigationViewItem x:Uid="Shell_AddEnemy" Icon="Document" helpers:NavHelper.NavigateTo="views:AddEnemyPage" />
+            <winui:NavigationViewItem x:Uid="Shell_AddPatrol" Icon="Document" helpers:NavHelper.NavigateTo="views:AddPatrolPage" />
             <winui:NavigationViewItem x:Uid="Shell_AddRoute" Icon="Document" helpers:NavHelper.NavigateTo="views:AddRoutePage" />
             <winui:NavigationViewItem x:Uid="Shell_AddAction" Icon="Document" helpers:NavHelper.NavigateTo="views:AddActionPage" />
         </winui:NavigationView.MenuItems>

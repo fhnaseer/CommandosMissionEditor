@@ -7,6 +7,7 @@ namespace CommandosMissionEditor.Universal.ViewModels
     {
         public MusicViewModel()
         {
+            LoadDefaultItem();
         }
 
         public override ObservableCollection<BackgroundMusic> ItemCollection => Mission.Music.BackgroundMusics;

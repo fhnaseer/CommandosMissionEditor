@@ -1,18 +1,20 @@
 ﻿using System.Collections.ObjectModel;
-using Commandos.Model.Characters;
-using Commandos.Model.Common;
 using Commandos.Model.Map;
 
 namespace CommandosMissionEditor.ViewModels
 {
-    public class AddEnemyPatrolViewModel : AddEnemyViewModelBase<EnemyCharacter>
+    public class AddEnemyPatrolViewModel : AddItemViewModelBase<EnemyPatrol>
     {
-        public AddEnemyPatrolViewModel(Mission mission, ObservableCollection<EnemyCharacter> enemyCharacters) : base(mission, CharacterType.EnemyPatrol, enemyCharacters)
+        public AddEnemyPatrolViewModel(Mission mission) : base(mission)
         {
         }
 
-        internal AddEnemyPatrolViewModel() : base(null, CharacterType.EnemyPatrol, null) { }
+        internal AddEnemyPatrolViewModel() : base(null) { }
 
-        public override ObservableCollection<EnemyCharacter> ItemCollection => Enemies;
+        public override ObservableCollection<EnemyPatrol> ItemCollection => Mission.World.Patrols;
+
+        public override string TabName => "Patrols";
+
+        public string CollectionName { get; set; } = "Enemies";
     }
 }

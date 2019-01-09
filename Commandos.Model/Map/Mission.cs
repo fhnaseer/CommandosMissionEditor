@@ -1,4 +1,7 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
+using Commandos.Model.Characters;
 
 namespace Commandos.Model.Map
 {
@@ -48,6 +51,16 @@ namespace Commandos.Model.Map
         {
             get => _world ?? (_world = new World());
             set => _world = value;
+        }
+
+        public ObservableCollection<EnemyCharacter> GetEnemies()
+        {
+            var enemies = new ObservableCollection<EnemyCharacter>();
+            foreach (var patrol in World.Patrols)
+                enemies.Add(patrol);
+            foreach (var soldier in World.MissionObjects.Soldiers)
+                enemies.Add(soldier);
+            return enemies;
         }
 
         #region Methods for Equality checks.

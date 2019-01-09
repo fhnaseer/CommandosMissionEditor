@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Commandos.Model.Characters;
 
 namespace Commandos.Model.Map
 {
@@ -13,8 +12,8 @@ namespace Commandos.Model.Map
 
         public MissionObjects MissionObjects { get; set; }
 
-        private ObservableCollection<EnemyCharacter> _patrols;
-        public ObservableCollection<EnemyCharacter> Patrols => _patrols ?? (_patrols = new ObservableCollection<EnemyCharacter>());
+        private ObservableCollection<EnemyPatrol> _patrols;
+        public ObservableCollection<EnemyPatrol> Patrols => _patrols ?? (_patrols = new ObservableCollection<EnemyPatrol>());
 
         public SpecialAreas SpecialAreas { get; set; }
 

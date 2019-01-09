@@ -1,21 +1,23 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using Commandos.Model.Characters;
-using Commandos.Model.Common;
 using Commandos.Model.EnemyActions;
 using Commandos.Model.Map;
 
 namespace CommandosMissionEditor.ViewModels
 {
-    public class AddEnemyActionViewModel : AddEnemyViewModelBase<EnemyAction>
+    public class AddEnemyActionViewModel : AddItemViewModelBase<EnemyAction>
     {
-        public AddEnemyActionViewModel(Mission mission, CharacterType characterType, ObservableCollection<EnemyCharacter> enemyCharacters) : base(mission, characterType, enemyCharacters)
+        public AddEnemyActionViewModel(Mission mission) : base(mission)
         {
         }
 
-        internal AddEnemyActionViewModel() : base(null, CharacterType.Soldier, null) { }
+        internal AddEnemyActionViewModel() : base(null) { }
 
         public override string TabName => "Actions";
+
+        public string CollectionName { get; set; } = "Enemies";
+
 
         public override ObservableCollection<EnemyAction> ItemCollection => SelectedEnemyRoute?.Actions;
 

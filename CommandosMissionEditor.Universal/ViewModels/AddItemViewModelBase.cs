@@ -28,12 +28,7 @@ namespace CommandosMissionEditor.Universal.ViewModels
         private T _defaultItem;
         public T DefaultItem
         {
-            get
-            {
-                if (_defaultItem == null)
-                    LoadDefaultItem();
-                return _defaultItem;
-            }
+            get => _defaultItem;
             set
             {
                 Set(ref _defaultItem, value);

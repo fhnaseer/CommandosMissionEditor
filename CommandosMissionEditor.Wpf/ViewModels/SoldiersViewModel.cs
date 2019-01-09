@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Commandos.Model.Common;
 using Commandos.Model.Map;
 
 namespace CommandosMissionEditor.ViewModels
@@ -17,9 +16,9 @@ namespace CommandosMissionEditor.ViewModels
         public override IList<MissionViewModelBase> GetViewModelCollection()
         {
             return new List<MissionViewModelBase>{
-                new AddEnemySoldierViewModel(Mission, Mission.World.MissionObjects.Soldiers),
-                new AddEnemyRouteViewModel(Mission, CharacterType.Soldier, Mission.World.MissionObjects.Soldiers),
-                new AddEnemyActionViewModel(Mission, CharacterType.Soldier, Mission.World.MissionObjects.Soldiers)
+                new AddEnemySoldierViewModel(Mission),
+                new AddEnemyRouteViewModel(Mission),
+                new AddEnemyActionViewModel(Mission)
             };
         }
     }

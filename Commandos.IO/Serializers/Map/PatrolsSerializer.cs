@@ -5,12 +5,11 @@ using System.Text;
 using Commandos.IO.Entities;
 using Commandos.IO.Helpers;
 using Commandos.IO.Serializers.Helpers;
-using Commandos.Model.Characters;
 using Commandos.Model.Map;
 
 namespace Commandos.IO.Serializers.Map
 {
-    public class PatrolsSerializer : RecordSerializerBase<ObservableCollection<EnemyCharacter>>
+    public class PatrolsSerializer : RecordSerializerBase<ObservableCollection<EnemyPatrol>>
     {
         public const string Patrols = ".ENTES";
         private const string OnePatrol = "EntePatrulla";
@@ -22,9 +21,9 @@ namespace Commandos.IO.Serializers.Map
 
         public override string RecordName => Patrols;
 
-        public override ObservableCollection<EnemyCharacter> Serialize(Record record)
+        public override ObservableCollection<EnemyPatrol> Serialize(Record record)
         {
-            var patrols = new ObservableCollection<EnemyCharacter>();
+            var patrols = new ObservableCollection<EnemyPatrol>();
             if (record == null)
                 return patrols;
 
@@ -51,19 +50,19 @@ namespace Commandos.IO.Serializers.Map
             return patrols;
         }
 
-        public override Record Deserialize(ObservableCollection<EnemyCharacter> input)
+        public override Record Deserialize(ObservableCollection<EnemyPatrol> input)
         {
             var recordString = GetMultipleRecordString(input);
             var tokens = recordString.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
             return TokenParser.ParseTokens(tokens, 0);
         }
 
-        public override string GetMultipleRecordString(ObservableCollection<EnemyCharacter> input)
+        public override string GetMultipleRecordString(ObservableCollection<EnemyPatrol> input)
         {
             return $"{GetPatrolListRecordString(input)}";
         }
 
-        private static string GetPatrolListRecordString(ICollection<EnemyCharacter> patrols)
+        private static string GetPatrolListRecordString(ICollection<EnemyPatrol> patrols)
         {
             var stringBuilder = new StringBuilder();
             stringBuilder.Append($"[ {Patrols} ( ");

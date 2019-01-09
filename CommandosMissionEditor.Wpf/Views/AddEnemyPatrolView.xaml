@@ -30,7 +30,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding CollectionName}" />
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Patrols" />
         <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding ItemCollection}" SelectedItem="{Binding SelectedItem}" />
         <UniformGrid Grid.Row="1" Grid.Column="1" Rows="1">
             <Button Content="Add New" Command="{Binding AddItemCommand}" />
@@ -51,13 +51,13 @@
         <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding SelectedItem.Area}" />
         <TextBlock Grid.Row="5" Grid.Column="0" Text="Angle" />
         <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding SelectedItem.Angle}" />
-        <TextBlock Grid.Row="6" Grid.Column="0" Text="Columns Count" Visibility="{Binding IsPatrolMode, Converter={StaticResource BooleanToVisibilityConverter}}" />
-        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding SelectedItem.ColumnsCount}" Visibility="{Binding IsPatrolMode, Converter={StaticResource BooleanToVisibilityConverter}}" />
-        <TextBlock Grid.Row="7" Grid.Column="0" Text="Rows Count" Visibility="{Binding IsPatrolMode, Converter={StaticResource BooleanToVisibilityConverter}}" />
-        <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding SelectedItem.RowsCount}" Visibility="{Binding IsPatrolMode, Converter={StaticResource BooleanToVisibilityConverter}}" />
-        <TextBlock Grid.Row="8" Grid.Column="0" Text="Soldiers File Name" Visibility="{Binding IsPatrolMode, Converter={StaticResource BooleanToVisibilityConverter}}" />
-        <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding SelectedItem.SoldiersFileName}" Visibility="{Binding IsPatrolMode, Converter={StaticResource BooleanToVisibilityConverter}}" />
-        <TextBlock Grid.Row="9" Grid.Column="0" Text="Leader File Name" Visibility="{Binding IsPatrolMode, Converter={StaticResource BooleanToVisibilityConverter}}" />
-        <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding SelectedItem.LeaderFileName}" Visibility="{Binding IsPatrolMode, Converter={StaticResource BooleanToVisibilityConverter}}" />
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="Columns Count" />
+        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding SelectedItem.ColumnsCount}" />
+        <TextBlock Grid.Row="7" Grid.Column="0" Text="Rows Count" />
+        <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding SelectedItem.RowsCount}" />
+        <TextBlock Grid.Row="8" Grid.Column="0" Text="Soldiers File Name" />
+        <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding SelectedItem.SoldiersFileName}" />
+        <TextBlock Grid.Row="9" Grid.Column="0" Text="Leader File Name" />
+        <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding SelectedItem.LeaderFileName}" />
     </Grid>
 </UserControl>
