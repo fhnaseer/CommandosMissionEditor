@@ -92,13 +92,18 @@ namespace Commandos.IO.Files
 
         public static void WriteMisFile(string path, Mission mission)
         {
+            var lines = GetMisFileText(mission);
+            File.WriteAllLines(path, lines);
+        }
+
+        public static IList<string> GetMisFileText(Mission mission)
+        {
             if (mission is null)
                 throw new ArgumentNullException(nameof(mission));
 
             var multipleRecords = MissionSerializer.GetMultipleRecords(mission);
             var writer = new RecordWriter(multipleRecords);
-            var lines = writer.GetTextLines();
-            File.WriteAllLines(path, lines);
+            return writer.GetTextLines();
         }
     }
 }
