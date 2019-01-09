@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
+using CommandosMissionEditor.Helpers;
 using CommandosMissionEditor.Universal.Services;
 using Windows.System;
 using Windows.UI.Xaml.Controls;

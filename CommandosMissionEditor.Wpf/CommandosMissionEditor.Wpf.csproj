@@ -11,7 +11,7 @@
     <ProjectGuid>{8E43050C-3918-474C-A347-914A43E6F99E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>CommandosMissionEditor</RootNamespace>
-    <AssemblyName>CommandosMissionEditor</AssemblyName>
+    <AssemblyName>CommandosMissionEditor.Wpf</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -68,14 +68,20 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="RelayCommand.cs" />
+    <Compile Include="ViewModels\CommandosViewModel.cs" />
+    <Compile Include="ViewModels\EditMissionViewModel.cs" />
+    <Compile Include="ViewModels\LoadMissionViewModel.cs" />
+    <Compile Include="ViewModels\EnemiesViewModel.cs" />
+    <Compile Include="ViewModels\TabsViewModelBase.cs" />
+    <Compile Include="ViewModels\SaveMissionViewModel.cs" />
     <Compile Include="Views\AddCommandoView.xaml.cs">
       <DependentUpon>AddCommandoView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AddEnemyPatrolView.xaml.cs">
       <DependentUpon>AddEnemyPatrolView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddSoldierView.xaml.cs">
-      <DependentUpon>AddSoldierView.xaml</DependentUpon>
+    <Compile Include="Views\AddEnemySoldierView.xaml.cs">
+      <DependentUpon>AddEnemySoldierView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CameraView.xaml.cs">
       <DependentUpon>CameraView.xaml</DependentUpon>
@@ -98,14 +104,14 @@
     <Compile Include="Views\AddEnemyRouteView.xaml.cs">
       <DependentUpon>AddEnemyRouteView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PatrolsView.xaml.cs">
-      <DependentUpon>PatrolsView.xaml</DependentUpon>
+    <Compile Include="Views\EnemiesView.xaml.cs">
+      <DependentUpon>EnemiesView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SoldiersView.xaml.cs">
-      <DependentUpon>SoldiersView.xaml</DependentUpon>
+    <Compile Include="Views\LoadMissionView.xaml.cs">
+      <DependentUpon>LoadMissionView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UploadMissionView.xaml.cs">
-      <DependentUpon>UploadMissionView.xaml</DependentUpon>
+    <Compile Include="Views\SaveMissionView.xaml.cs">
+      <DependentUpon>SaveMissionView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -132,7 +138,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddSoldierView.xaml">
+    <Page Include="Views\AddEnemySoldierView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -164,15 +170,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PatrolsView.xaml">
+    <Page Include="Views\EnemiesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SoldiersView.xaml">
+    <Page Include="Views\LoadMissionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\UploadMissionView.xaml">
+    <Page Include="Views\SaveMissionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -228,10 +234,12 @@
       <Project>{5F696EFE-A149-455E-AFCF-156174B5A6A1}</Project>
       <Name>Commandos.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CommandosMissionEditor\CommandosMissionEditor.csproj">
+      <Project>{abc26525-b6ce-4dee-ae51-31098ee4baf5}</Project>
+      <Name>CommandosMissionEditor</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -5,36 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\CommandosMissionEditor.Universal\Helpers\RelayCommand.cs" Link="Helpers\RelayCommand.cs" />
-    <Compile Include="..\CommandosMissionEditor.Universal\Helpers\ViewModelBase.cs" Link="Helpers\ViewModelBase.cs" />
-    <Compile Include="..\CommandosMissionEditor.Wpf\ViewModels\AddCommandoViewModel.cs" Link="ViewModels\AddCommandoViewModel.cs" />
-    <Compile Include="..\CommandosMissionEditor.Wpf\ViewModels\AddEnemyActionViewModel.cs" Link="ViewModels\AddEnemyActionViewModel.cs" />
-    <Compile Include="..\CommandosMissionEditor.Wpf\ViewModels\AddEnemyItemViewModelBase.cs" Link="ViewModels\AddEnemyItemViewModelBase.cs" />
-    <Compile Include="..\CommandosMissionEditor.Wpf\ViewModels\AddEnemyPatrolViewModel.cs" Link="ViewModels\AddEnemyPatrolViewModel.cs" />
-    <Compile Include="..\CommandosMissionEditor.Wpf\ViewModels\AddEnemyRouteViewModel.cs" Link="ViewModels\AddEnemyRouteViewModel.cs" />
-    <Compile Include="..\CommandosMissionEditor.Wpf\ViewModels\AddEnemySoldierViewModel.cs" Link="ViewModels\AddEnemySoldierViewModel.cs" />
-    <Compile Include="..\CommandosMissionEditor.Wpf\ViewModels\AddItemViewModelBase.cs" Link="ViewModels\AddItemViewModelBase.cs" />
-    <Compile Include="..\CommandosMissionEditor.Wpf\ViewModels\CameraViewModel.cs" Link="ViewModels\CameraViewModel.cs" />
-    <Compile Include="..\CommandosMissionEditor.Wpf\ViewModels\CommandosViewModel.cs" Link="ViewModels\CommandosViewModel.cs" />
-    <Compile Include="..\CommandosMissionEditor.Wpf\ViewModels\EditMissionViewModel.cs" Link="ViewModels\EditMissionViewModel.cs" />
-    <Compile Include="..\CommandosMissionEditor.Wpf\ViewModels\FilesViewModel.cs" Link="ViewModels\FilesViewModel.cs" />
-    <Compile Include="..\CommandosMissionEditor.Wpf\ViewModels\MissionCollectionViewModelBase.cs" Link="ViewModels\MissionCollectionViewModelBase.cs" />
-    <Compile Include="..\CommandosMissionEditor.Wpf\ViewModels\MissionViewModelBase.cs" Link="ViewModels\MissionViewModelBase.cs" />
-    <Compile Include="..\CommandosMissionEditor.Wpf\ViewModels\MusicViewModel.cs" Link="ViewModels\MusicViewModel.cs" />
-    <Compile Include="..\CommandosMissionEditor.Wpf\ViewModels\PatrolsViewModel.cs" Link="ViewModels\PatrolsViewModel.cs" />
-    <Compile Include="..\CommandosMissionEditor.Wpf\ViewModels\SoldiersViewModel.cs" Link="ViewModels\SoldiersViewModel.cs" />
-    <Compile Include="..\CommandosMissionEditor.Wpf\ViewModels\UploadMissionViewModel.cs" Link="ViewModels\UploadMissionViewModel.cs" />
-    <Compile Include="..\CommandosMissionEditor.Wpf\ViewModels\ViewModelBase.cs" Link="ViewModels\ViewModelBase.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Helpers\" />
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Commandos.IO\Commandos.IO.csproj" />
     <ProjectReference Include="..\Commandos.Model\Commandos.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Windows.Foundation.UniversalApiContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.17763.0\Windows.Foundation.UniversalApiContract\7.0.0.0\Windows.Foundation.UniversalApiContract.winmd</HintPath>
+      <IsWinMDFile>true</IsWinMDFile>
+    </Reference>
   </ItemGroup>
 
 </Project>

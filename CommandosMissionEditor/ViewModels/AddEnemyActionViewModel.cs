@@ -3,45 +3,23 @@ using System.Collections.ObjectModel;
 using Commandos.Model.Characters;
 using Commandos.Model.EnemyActions;
 using Commandos.Model.Map;
+using CommandosMissionEditor.Helpers;
 
 namespace CommandosMissionEditor.ViewModels
 {
     public class AddEnemyActionViewModel : AddItemViewModelBase<EnemyAction>
     {
-        public AddEnemyActionViewModel(Mission mission) : base(mission)
-        {
-        }
-
-        internal AddEnemyActionViewModel() : base(null) { }
-
         public override string TabName => "Actions";
 
-        public string CollectionName { get; set; } = "Enemies";
-
+        public ObservableCollection<EnemyCharacter> Enemies => Mission.GetEnemies();
 
         public override ObservableCollection<EnemyAction> ItemCollection => SelectedEnemyRoute?.Actions;
-
-        public override void OnSelectedItemChanged()
-        {
-            OnPropertyChanged(nameof(IsMoveAction));
-            OnPropertyChanged(nameof(IsRotateAction));
-            OnPropertyChanged(nameof(IsPauseAction));
-        }
-
-        public bool IsMoveAction => SelectedItem is MoveAction;
-        public bool IsRotateAction => SelectedItem is RotateAction;
-        public bool IsPauseAction => SelectedItem is PauseAction;
 
         private EnemyCharacter _selectedEnemy;
         public EnemyCharacter SelectedEnemy
         {
             get => _selectedEnemy;
-            set
-            {
-                _selectedEnemy = value;
-                OnPropertyChanged(nameof(SelectedEnemy));
-                SelectedEnemyRoute = null;
-            }
+            set => Set(ref _selectedEnemy, value);
         }
 
         private EnemyRoute _selectedEnemyRoute;
@@ -50,11 +28,28 @@ namespace CommandosMissionEditor.ViewModels
             get => _selectedEnemyRoute;
             set
             {
-                _selectedEnemyRoute = value;
-                OnPropertyChanged(nameof(SelectedEnemyRoute));
+                Set(ref _selectedEnemyRoute, value);
                 OnPropertyChanged(nameof(ItemCollection));
             }
         }
+
+        public override void OnSelectedItemChanged()
+        {
+            OnPropertyChanged(nameof(IsMoveAction));
+            OnPropertyChanged(nameof(IsRotateAction));
+            OnPropertyChanged(nameof(IsPauseAction));
+            OnPropertyChanged(nameof(MoveAction));
+            OnPropertyChanged(nameof(RotateAction));
+            OnPropertyChanged(nameof(PauseAction));
+        }
+
+        public MoveAction MoveAction => SelectedItem as MoveAction;
+        public RotateAction RotateAction => SelectedItem as RotateAction;
+        public PauseAction PauseAction => SelectedItem as PauseAction;
+
+        public bool IsMoveAction => SelectedItem is MoveAction;
+        public bool IsRotateAction => SelectedItem is RotateAction;
+        public bool IsPauseAction => SelectedItem is PauseAction;
 
         private ObservableCollection<EnemyAction> _actionTypes;
         public ObservableCollection<EnemyAction> ActionTypes => _actionTypes ?? (_actionTypes = new ObservableCollection<EnemyAction>
@@ -74,11 +69,7 @@ namespace CommandosMissionEditor.ViewModels
         public EnemyAction SelectedActionType
         {
             get => _selectedActionType;
-            set
-            {
-                _selectedActionType = value;
-                OnPropertyChanged(nameof(SelectedActionType));
-            }
+            set => Set(ref _selectedActionType, value);
         }
 
         internal override void AddItem()

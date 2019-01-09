@@ -12,19 +12,12 @@
     <UserControl.Resources>
         <ResourceDictionary Source="../ResourceDictionary.xaml" />
     </UserControl.Resources>
-    <DockPanel>
-        <DockPanel DockPanel.Dock="Bottom" >
-            <Button DockPanel.Dock="Right" Content="Save" Command="{Binding SaveMissionCommand}" Width="100"/>
-            <TextBlock Text="Output Path"/>
-            <TextBox Text="{Binding SaveFilePath}" />
-        </DockPanel>
-        <TabControl TabStripPlacement="Left" ItemsSource="{Binding ViewModels}" >
-            <TabControl.ItemTemplate>
-                <!-- this is the header template-->
-                <DataTemplate>
-                    <TextBlock Text="{Binding TabName}"  Width="100" />
-                </DataTemplate>
-            </TabControl.ItemTemplate>
-        </TabControl>
-    </DockPanel>
+    <TabControl TabStripPlacement="Left" ItemsSource="{Binding ViewModels}" >
+        <TabControl.ItemTemplate>
+            <!-- this is the header template-->
+            <DataTemplate>
+                <TextBlock Text="{Binding TabName}"  Width="100" />
+            </DataTemplate>
+        </TabControl.ItemTemplate>
+    </TabControl>
 </UserControl>

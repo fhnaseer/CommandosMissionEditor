@@ -1,17 +1,9 @@
-﻿using Commandos.Model.Map;
+﻿using CommandosMissionEditor.Helpers;
 
 namespace CommandosMissionEditor.ViewModels
 {
-    public class FilesViewModel : MissionViewModelBase
+    public class FilesViewModel : ViewModelBase
     {
-        public FilesViewModel(Mission mission) : base(mission)
-        {
-        }
-
-        internal FilesViewModel() : base(null)
-        {
-        }
-
         public override string TabName => "Files";
     }
 }

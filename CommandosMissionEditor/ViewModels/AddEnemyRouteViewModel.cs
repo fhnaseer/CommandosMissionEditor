@@ -2,23 +2,34 @@
 using Commandos.Model.Characters;
 using Commandos.Model.EnemyActions;
 using Commandos.Model.Map;
+using CommandosMissionEditor.Helpers;
 
 namespace CommandosMissionEditor.ViewModels
 {
     public class AddEnemyRouteViewModel : AddItemViewModelBase<EnemyRoute>
     {
-        public AddEnemyRouteViewModel(Mission mission) : base(mission)
-        {
-        }
-
-        internal AddEnemyRouteViewModel() : base(null) { }
-
         public override string TabName => "Routes";
+
+        public ObservableCollection<EnemyCharacter> Enemies => Mission.GetEnemies();
+
+        private EnemyCharacter _selectedEnemy;
+        public EnemyCharacter SelectedEnemy
+        {
+            get => _selectedEnemy;
+            set
+            {
+                Set(ref _selectedEnemy, value);
+                LoadDefaultItem();
+                OnPropertyChanged(nameof(ItemCollection));
+                SelectedItem = new EnemyRoute();
+            }
+        }
 
         public override ObservableCollection<EnemyRoute> ItemCollection => SelectedEnemy?.Routes;
 
         public override void LoadDefaultItem()
         {
+            OnPropertyChanged(nameof(ItemCollection));
             if (ItemCollection is null) return;
             foreach (var item in ItemCollection)
             {
@@ -31,7 +42,7 @@ namespace CommandosMissionEditor.ViewModels
 
         public override void OnDefaultItemChanged()
         {
-            SelectedEnemy.DefaultRoute = DefaultItem.RouteName;
+            SelectedEnemy.DefaultRoute = DefaultItem?.RouteName;
         }
 
         private EnemyRoute _eventRoute;
@@ -40,22 +51,8 @@ namespace CommandosMissionEditor.ViewModels
             get => _eventRoute;
             set
             {
-                _eventRoute = value;
-                SelectedEnemy.EventRoute = _eventRoute.RouteName;
-                OnPropertyChanged(nameof(EventRoute));
-            }
-        }
-
-        private EnemyCharacter _selectedEnemy;
-        public EnemyCharacter SelectedEnemy
-        {
-            get => _selectedEnemy;
-            set
-            {
-                _selectedEnemy = value;
-                OnPropertyChanged(nameof(SelectedEnemy));
-                OnPropertyChanged(nameof(ItemCollection));
-                OnPropertyChanged(nameof(DefaultItem));
+                Set(ref _eventRoute, value);
+                SelectedEnemy.EventRoute = _eventRoute?.RouteName;
             }
         }
     }

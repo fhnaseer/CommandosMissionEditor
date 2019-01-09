@@ -3,17 +3,16 @@ using System.Collections.ObjectModel;
 using Commandos.Model.Characters;
 using Commandos.Model.Characters.Enemies;
 using Commandos.Model.Map;
+using CommandosMissionEditor.Helpers;
 
 namespace CommandosMissionEditor.ViewModels
 {
     public class AddEnemySoldierViewModel : AddItemViewModelBase<EnemyCharacter>
     {
-        public AddEnemySoldierViewModel(Mission mission) : base(mission)
+        public AddEnemySoldierViewModel()
         {
             PopulateSoldierTypes();
         }
-
-        internal AddEnemySoldierViewModel() : base(null) { }
 
         public override string TabName => "Soldiers";
 
@@ -34,9 +33,8 @@ namespace CommandosMissionEditor.ViewModels
             get => _selectedSoldierCategory;
             set
             {
-                _selectedSoldierCategory = value;
+                Set(ref _selectedSoldierCategory, value);
                 PopulateSoldierTypes();
-                OnPropertyChanged(nameof(SelectedSoldierCategory));
             }
         }
 
@@ -105,13 +103,8 @@ namespace CommandosMissionEditor.ViewModels
         public EnemySoldier SelectedSoldierType
         {
             get => _selectedSoldierType;
-            set
-            {
-                _selectedSoldierType = value;
-                OnPropertyChanged(nameof(SelectedSoldierType));
-            }
+            set => Set(ref _selectedSoldierType, value);
         }
-
 
         internal override void AddItem()
         {

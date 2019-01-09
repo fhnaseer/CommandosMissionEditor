@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using Commandos.Model.Map;
 
-namespace CommandosMissionEditor.Universal.Helpers
+namespace CommandosMissionEditor.Helpers
 {
     public class ViewModelBase : INotifyPropertyChanged
     {
@@ -18,6 +18,8 @@ namespace CommandosMissionEditor.Universal.Helpers
         }
 
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        public virtual string TabName { get; } = string.Empty;
 
         private static Mission _mission;
         public Mission Mission

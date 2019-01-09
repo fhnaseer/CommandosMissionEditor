@@ -1,15 +1,10 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using Commandos.Model.Map;
 
-namespace CommandosMissionEditor.ViewModels
+namespace CommandosMissionEditor.Helpers
 {
-    public abstract class AddItemViewModelBase<T> : MissionViewModelBase where T : new()
+    public abstract class AddItemViewModelBase<T> : ViewModelBase where T : new()
     {
-        public AddItemViewModelBase(Mission mission) : base(mission)
-        {
-        }
-
         public abstract ObservableCollection<T> ItemCollection { get; }
 
         private T _selectedItem;
@@ -18,9 +13,8 @@ namespace CommandosMissionEditor.ViewModels
             get => _selectedItem;
             set
             {
-                _selectedItem = value;
+                Set(ref _selectedItem, value);
                 OnSelectedItemChanged();
-                OnPropertyChanged(nameof(SelectedItem));
             }
         }
 
@@ -29,17 +23,11 @@ namespace CommandosMissionEditor.ViewModels
         private T _defaultItem;
         public T DefaultItem
         {
-            get
-            {
-                if (_defaultItem == null)
-                    LoadDefaultItem();
-                return _defaultItem;
-            }
+            get => _defaultItem;
             set
             {
-                _defaultItem = value;
+                Set(ref _defaultItem, value);
                 OnDefaultItemChanged();
-                OnPropertyChanged(nameof(DefaultItem));
             }
         }
 
@@ -47,12 +35,11 @@ namespace CommandosMissionEditor.ViewModels
         public virtual void OnDefaultItemChanged() { }
 
         private ICommand _removeSelectedItemCommand;
-        public ICommand RemoveSelectedItemCommand => _removeSelectedItemCommand ?? (_removeSelectedItemCommand = new RelayCommand(RemoveSelectedItem, CanRemoveSelectedItem));
-
-        internal bool CanRemoveSelectedItem() { return SelectedItem != null; }
+        public ICommand RemoveSelectedItemCommand => _removeSelectedItemCommand ?? (_removeSelectedItemCommand = new RelayCommand(RemoveSelectedItem));
 
         internal void RemoveSelectedItem()
         {
+            if (SelectedItem == null) return;
             ItemCollection.Remove(SelectedItem);
             SelectedItem = default(T);
         }

@@ -1,15 +1,9 @@
-﻿using Commandos.Model.Map;
+﻿using CommandosMissionEditor.Helpers;
 
 namespace CommandosMissionEditor.ViewModels
 {
-    public class CameraViewModel : MissionViewModelBase
+    public class CameraViewModel : ViewModelBase
     {
-        public CameraViewModel(Mission mission) : base(mission)
-        {
-        }
-
-        internal CameraViewModel() : base(null) { }
-
         public override string TabName => "Camera";
     }
 }

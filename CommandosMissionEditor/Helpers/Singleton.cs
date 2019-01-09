@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 
-namespace CommandosMissionEditor.Universal.Helpers
+namespace CommandosMissionEditor.Helpers
 {
     internal static class Singleton<T>
         where T : new()
