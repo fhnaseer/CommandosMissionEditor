@@ -1,26 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Input;
 using Commandos.IO.Files;
 using CommandosMissionEditor.Universal.Helpers;
 using Windows.Storage.Pickers;
 
 namespace CommandosMissionEditor.Universal.ViewModels
 {
-    public class SaveMissionViewModel : ViewModelBase
+    public class SaveMissionViewModel : SaveMissionViewModelBase
     {
-
-        private string _missionName;
-        public string MissionName
-        {
-            get => _missionName;
-            set => Set(ref _missionName, value);
-        }
-
-        private ICommand _saveMissionCommand;
-        public ICommand SaveMissionCommand => _saveMissionCommand ?? (_saveMissionCommand = new RelayCommand(SaveMission));
-
-        internal async void SaveMission()
+        public async override void SaveMission()
         {
             var savePicker = new FileSavePicker();
             savePicker.SuggestedStartLocation = PickerLocationId.Downloads;
