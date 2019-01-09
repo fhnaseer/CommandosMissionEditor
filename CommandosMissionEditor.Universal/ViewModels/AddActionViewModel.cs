@@ -26,11 +26,7 @@ namespace CommandosMissionEditor.Universal.ViewModels
         public EnemyCharacter SelectedEnemy
         {
             get => _selectedEnemy;
-            set
-            {
-                Set(ref _selectedEnemy, value);
-                OnPropertyChanged(nameof(SelectedEnemy));
-            }
+            set => Set(ref _selectedEnemy, value);
         }
 
         private EnemyRoute _selectedEnemyRoute;

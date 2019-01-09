@@ -48,9 +48,6 @@ namespace CommandosMissionEditor.Universal.ViewModels
             get => _selectedEnemy;
             set
             {
-                ItemCollection.Clear();
-                foreach (var route in value?.Routes)
-                    ItemCollection.Add(route);
                 Set(ref _selectedEnemy, value);
                 LoadDefaultItem();
                 SelectedItem = new EnemyRoute();
