@@ -14,7 +14,7 @@
     </UserControl.Resources>
     <StackPanel>
         <Label Content="File Path (.mis)" />
-        <TextBox Text="{Binding MissionName, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Text="{Binding MissionFilePath, UpdateSourceTrigger=PropertyChanged}" />
         <Button Content="Load Mission" Command="{Binding LoadMissionCommand}" />
     </StackPanel>
 </UserControl>
