@@ -122,40 +122,28 @@
     <Compile Include="Behaviors\NavigationViewHeaderMode.cs" />
     <Compile Include="Helpers\NavHelper.cs" />
     <Compile Include="Helpers\NavigationViewModelBase.cs" />
-    <Compile Include="Helpers\RelayCommand.cs" />
-    <Compile Include="Helpers\ViewModelBase.cs" />
     <Compile Include="Services\ActivationService.cs" />
     <Compile Include="Activation\DefaultLaunchActivationHandler.cs" />
     <Compile Include="Services\NavigationService.cs" />
-    <Compile Include="ViewModels\AddActionViewModel.cs" />
-    <Compile Include="ViewModels\AddCommandoViewModel.cs" />
-    <Compile Include="ViewModels\AddEnemyViewModel.cs" />
-    <Compile Include="ViewModels\AddItemViewModelBase.cs" />
-    <Compile Include="ViewModels\AddPatrolViewModel.cs" />
-    <Compile Include="ViewModels\AddRouteViewModel.cs" />
-    <Compile Include="ViewModels\CameraViewModel.cs" />
     <Compile Include="ViewModels\CommandosViewModel.cs" />
-    <Compile Include="ViewModels\EnemeyCharacter.cs" />
     <Compile Include="ViewModels\EnemiesViewModel.cs" />
-    <Compile Include="ViewModels\FilesViewModel.cs" />
     <Compile Include="ViewModels\LoadMissionViewModel.cs" />
-    <Compile Include="ViewModels\MusicViewModel.cs" />
     <Compile Include="ViewModels\SaveMissionViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
-    <Compile Include="Views\AddActionPage.xaml.cs">
-      <DependentUpon>AddActionPage.xaml</DependentUpon>
+    <Compile Include="Views\AddEnemyActionPage.xaml.cs">
+      <DependentUpon>AddEnemyActionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AddCommandoPage.xaml.cs">
       <DependentUpon>AddCommandoPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddEnemyPage.xaml.cs">
-      <DependentUpon>AddEnemyPage.xaml</DependentUpon>
+    <Compile Include="Views\AddEnemySoldierPage.xaml.cs">
+      <DependentUpon>AddEnemySoldierPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddPatrolPage.xaml.cs">
-      <DependentUpon>AddPatrolPage.xaml</DependentUpon>
+    <Compile Include="Views\AddEnemyPatrolPage.xaml.cs">
+      <DependentUpon>AddEnemyPatrolPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddRoutePage.xaml.cs">
-      <DependentUpon>AddRoutePage.xaml</DependentUpon>
+    <Compile Include="Views\AddEnemyRoutePage.xaml.cs">
+      <DependentUpon>AddEnemyRoutePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CameraPage.xaml.cs">
       <DependentUpon>CameraPage.xaml</DependentUpon>
@@ -209,7 +197,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddActionPage.xaml">
+    <Page Include="Views\AddEnemyActionPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -217,15 +205,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\AddEnemyPage.xaml">
+    <Page Include="Views\AddEnemySoldierPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\AddPatrolPage.xaml">
+    <Page Include="Views\AddEnemyPatrolPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\AddRoutePage.xaml">
+    <Page Include="Views\AddEnemyRoutePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -269,10 +257,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\ResourceExtensions.cs" />
-    <Compile Include="Helpers\Singleton.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="CommandosMissionEditor.Universal_StoreKey.pfx" />
+    <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -300,6 +289,10 @@
     <ProjectReference Include="..\Commandos.Model\Commandos.Model.csproj">
       <Project>{5F696EFE-A149-455E-AFCF-156174B5A6A1}</Project>
       <Name>Commandos.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CommandosMissionEditor\CommandosMissionEditor.csproj">
+      <Project>{abc26525-b6ce-4dee-ae51-31098ee4baf5}</Project>
+      <Name>CommandosMissionEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

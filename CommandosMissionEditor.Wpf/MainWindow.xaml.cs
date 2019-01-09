@@ -10,7 +10,7 @@ namespace CommandosMissionEditor
         public MainWindow()
         {
             InitializeComponent();
-            Content = new UploadMissionViewModel();
+            Content = new EditMissionViewModel();
         }
     }
 }

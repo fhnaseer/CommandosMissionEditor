@@ -1,22 +1,16 @@
 ﻿using System.Collections.Generic;
-using Commandos.Model.Map;
+using CommandosMissionEditor.Helpers;
 
 namespace CommandosMissionEditor.ViewModels
 {
-    public class CommandosViewModel : MissionCollectionViewModelBase
+    public class CommandosViewModel : TabsViewModelBase
     {
-        public CommandosViewModel(Mission mission) : base(mission)
-        {
-        }
-
-        internal CommandosViewModel() : base(null) { }
-
         public override string TabName => "Commandos";
 
-        public override IList<MissionViewModelBase> GetViewModelCollection()
+        public override IList<ViewModelBase> GetViewModelCollection()
         {
-            return new List<MissionViewModelBase>{
-                new AddCommandoViewModel(Mission),
+            return new List<ViewModelBase>{
+                new AddCommandoViewModel(),
             };
         }
     }
