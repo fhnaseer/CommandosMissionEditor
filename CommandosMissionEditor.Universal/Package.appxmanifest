@@ -1,58 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-
-<Package
-  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
-  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
-  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
-  xmlns:genTemplate="http://schemas.microsoft.com/appx/developer/windowsTemplateStudio"
-  IgnorableNamespaces="uap mp genTemplate">
-
-  <Identity
-    Name="EFDDAC7F-D238-4548-96B3-DCDDC5BB4E66"
-    Publisher="CN=fhnas"
-    Version="1.0.0.0" />
-
-  <mp:PhoneIdentity PhoneProductId="EFDDAC7F-D238-4548-96B3-DCDDC5BB4E66" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
-
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:genTemplate="http://schemas.microsoft.com/appx/developer/windowsTemplateStudio" IgnorableNamespaces="uap mp genTemplate">
+  <Identity Name="11707PaaniStudio.CommandosMissionEditor" Publisher="CN=DCD55334-5A57-4FFE-B8BA-8BB556C5D4A6" Version="1.0.0.0" />
+  <mp:PhoneIdentity PhoneProductId="79ae87b8-521c-429c-be39-2e59fa0d42ec" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>CommandosMissionEditor.Universal</DisplayName>
-    <PublisherDisplayName>fhnas</PublisherDisplayName>
+    <DisplayName>Commandos Mission Editor</DisplayName>
+    <PublisherDisplayName>Paani Studio!</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
-
   <Dependencies>
     <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
   </Dependencies>
-
   <Resources>
-    <Resource Language="x-generate"/>
+    <Resource Language="x-generate" />
   </Resources>
-
   <Applications>
-    <Application Id="App"
-      Executable="$targetnametoken$.exe"
-      EntryPoint="CommandosMissionEditor.Universal.App">
-      <uap:VisualElements
-        DisplayName="ms-resource:AppDisplayName"
-        Square150x150Logo="Assets\Square150x150Logo.png"
-        Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="ms-resource:AppDescription"
-        BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="CommandosMissionEditor.Universal.App">
+      <uap:VisualElements DisplayName="ms-resource:AppDisplayName" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="ms-resource:AppDescription" BackgroundColor="transparent">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
+        </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
-
-      <Extensions>
-      </Extensions>
     </Application>
   </Applications>
-
   <Capabilities>
     <Capability Name="internetClient" />
   </Capabilities>
-
   <genTemplate:Metadata>
-    <genTemplate:Item Name="generator" Value="Windows Template Studio"/>
+    <genTemplate:Item Name="generator" Value="Windows Template Studio" />
     <genTemplate:Item Name="wizardVersion" Version="v2.5.18319.1" />
     <genTemplate:Item Name="templatesVersion" Version="v2.5.18334.1" />
     <genTemplate:Item Name="projectType" Value="SplitView" />
