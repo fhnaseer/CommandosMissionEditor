@@ -44,9 +44,9 @@
             <TextBlock Grid.Row="5" Grid.Column="0" Text="Repeat Type" />
             <TextBox Grid.Row="5" Grid.Column="1" Text="{x:Bind ViewModel.SelectedItem.ActionRepeatType, Mode=TwoWay}" />
             <TextBlock Grid.Row="7" Grid.Column="0" Text="Default Route" />
-            <ComboBox Grid.Row="7" Grid.Column="1" ItemsSource="{x:Bind ViewModel.ItemCollection}" SelectedItem="{x:Bind ViewModel.DefaultItem, Mode=TwoWay}" />
+            <ComboBox Grid.Row="7" Grid.Column="1" ItemsSource="{x:Bind ViewModel.ItemCollection, Mode=OneWay}" SelectedItem="{x:Bind ViewModel.DefaultItem, Mode=TwoWay}" />
             <TextBlock Grid.Row="8" Grid.Column="0" Text="Event Route" />
-            <ComboBox Grid.Row="8" Grid.Column="1" ItemsSource="{x:Bind ViewModel.ItemCollection}" SelectedItem="{x:Bind ViewModel.EventRoute, Mode=TwoWay}" />
+            <ComboBox Grid.Row="8" Grid.Column="1" ItemsSource="{x:Bind ViewModel.ItemCollection, Mode=OneWay}" SelectedItem="{x:Bind ViewModel.EventRoute, Mode=TwoWay}" />
         </Grid>
     </Grid>
 </Page>

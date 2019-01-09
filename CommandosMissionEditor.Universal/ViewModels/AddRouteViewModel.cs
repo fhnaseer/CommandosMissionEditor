@@ -8,14 +8,11 @@ namespace CommandosMissionEditor.Universal.ViewModels
     {
         public ObservableCollection<EnemyCharacter> Enemies => Mission.GetEnemies();
 
-        private ObservableCollection<EnemyRoute> _itemCollection;
-        public override ObservableCollection<EnemyRoute> ItemCollection
-        {
-            get { return _itemCollection ?? (_itemCollection = new ObservableCollection<EnemyRoute>()); }
-        }
+        public override ObservableCollection<EnemyRoute> ItemCollection => SelectedEnemy?.Routes;
 
         public override void LoadDefaultItem()
         {
+            OnPropertyChanged(nameof(ItemCollection));
             if (ItemCollection is null) return;
             foreach (var item in ItemCollection)
             {
@@ -50,6 +47,7 @@ namespace CommandosMissionEditor.Universal.ViewModels
             {
                 Set(ref _selectedEnemy, value);
                 LoadDefaultItem();
+                OnPropertyChanged(nameof(ItemCollection));
                 SelectedItem = new EnemyRoute();
             }
         }
