@@ -11,17 +11,6 @@ namespace CommandosMissionEditor.Universal.ViewModels
 
         public override ObservableCollection<EnemyAction> ItemCollection => SelectedEnemyRoute?.Actions;
 
-        public override void OnSelectedItemChanged()
-        {
-            OnPropertyChanged(nameof(IsMoveAction));
-            OnPropertyChanged(nameof(IsRotateAction));
-            OnPropertyChanged(nameof(IsPauseAction));
-        }
-
-        public bool IsMoveAction => SelectedItem is MoveAction;
-        public bool IsRotateAction => SelectedItem is RotateAction;
-        public bool IsPauseAction => SelectedItem is PauseAction;
-
         private EnemyCharacter _selectedEnemy;
         public EnemyCharacter SelectedEnemy
         {
@@ -39,6 +28,24 @@ namespace CommandosMissionEditor.Universal.ViewModels
                 OnPropertyChanged(nameof(ItemCollection));
             }
         }
+
+        public override void OnSelectedItemChanged()
+        {
+            OnPropertyChanged(nameof(IsMoveAction));
+            OnPropertyChanged(nameof(IsRotateAction));
+            OnPropertyChanged(nameof(IsPauseAction));
+            OnPropertyChanged(nameof(MoveAction));
+            OnPropertyChanged(nameof(RotateAction));
+            OnPropertyChanged(nameof(PauseAction));
+        }
+
+        public MoveAction MoveAction => SelectedItem as MoveAction;
+        public RotateAction RotateAction => SelectedItem as RotateAction;
+        public PauseAction PauseAction => SelectedItem as PauseAction;
+
+        public bool IsMoveAction => SelectedItem is MoveAction;
+        public bool IsRotateAction => SelectedItem is RotateAction;
+        public bool IsPauseAction => SelectedItem is PauseAction;
 
         private ObservableCollection<EnemyAction> _actionTypes;
         public ObservableCollection<EnemyAction> ActionTypes => _actionTypes ?? (_actionTypes = new ObservableCollection<EnemyAction>

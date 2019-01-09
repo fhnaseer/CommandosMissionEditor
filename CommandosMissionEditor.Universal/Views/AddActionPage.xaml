@@ -51,17 +51,17 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="Movement Type" />
-                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding ViewModel.SelectedItem.MovementType, Mode=TwoWay}" />
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{x:Bind ViewModel.MoveAction.MovementType, Mode=TwoWay}" />
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="Area" />
-                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ViewModel.SelectedItem.Area, Mode=TwoWay}" />
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{x:Bind ViewModel.MoveAction.Area, Mode=TwoWay}" />
                 <TextBlock Grid.Row="2" Grid.Column="0" Text="Position" />
                 <controls:UniformGrid Grid.Row="2" Grid.Column="1" Rows="1">
                     <TextBlock Text="X" />
-                    <TextBox Text="{Binding ViewModel.SelectedItem.Position.X, Mode=TwoWay}" />
+                    <TextBox Text="{x:Bind ViewModel.MoveAction.Position.X, Mode=TwoWay}" />
                     <TextBlock Text="Y" />
-                    <TextBox Text="{Binding ViewModel.SelectedItem.Position.Y, Mode=TwoWay}" />
+                    <TextBox Text="{x:Bind ViewModel.MoveAction.Position.Y, Mode=OneWay}" />
                     <TextBlock Text="Z" />
-                    <TextBox Text="{Binding ViewModel.SelectedItem.Position.Z, Mode=TwoWay}" />
+                    <TextBox Text="{x:Bind ViewModel.MoveAction.Position.Z, Mode=TwoWay}" />
                 </controls:UniformGrid>
             </Grid>
             <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Visibility="{x:Bind ViewModel.IsRotateAction, Mode=OneWay}">
@@ -73,7 +73,7 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="Angle" />
-                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding ViewModel.SelectedItem.Angle, Mode=TwoWay}" />
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{x:Bind ViewModel.RotateAction.Angle, Mode=TwoWay}" />
             </Grid>
             <Grid Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Visibility="{x:Bind ViewModel.IsPauseAction, Mode=OneWay}">
                 <Grid.ColumnDefinitions>
@@ -84,7 +84,7 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="Time" />
-                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding ViewModel.SelectedItem.Time, Mode=TwoWay}" />
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{x:Bind ViewModel.PauseAction.Time, Mode=TwoWay}" />
             </Grid>
         </Grid>
     </Grid>
