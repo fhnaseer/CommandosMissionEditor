@@ -109,9 +109,9 @@
       <Version>2.0.0</Version>
     </PackageReference>
     <!-- Nuget package references -->
-    <PackageReference Include="Microsoft.UI.Xaml">
+    <!--<PackageReference Include="Microsoft.UI.Xaml">
       <Version>2.0.181018003.1</Version>
-    </PackageReference>
+    </PackageReference>-->
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="Strings\en-us\Resources.resw" />

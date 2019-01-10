@@ -8,7 +8,6 @@ using Windows.System;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
-using WinUI = Microsoft.UI.Xaml.Controls;
 
 namespace CommandosMissionEditor.Universal.Helpers
 {
@@ -19,8 +18,8 @@ namespace CommandosMissionEditor.Universal.Helpers
 
         private bool _isBackEnabled;
         private IList<KeyboardAccelerator> _keyboardAccelerators;
-        private WinUI.NavigationView _navigationView;
-        private WinUI.NavigationViewItem _selected;
+        private NavigationView _navigationView;
+        private NavigationViewItem _selected;
         private ICommand _loadedCommand;
         private ICommand _itemInvokedCommand;
 
@@ -30,7 +29,7 @@ namespace CommandosMissionEditor.Universal.Helpers
             set { Set(ref _isBackEnabled, value); }
         }
 
-        public WinUI.NavigationViewItem Selected
+        public NavigationViewItem Selected
         {
             get { return _selected; }
             set { Set(ref _selected, value); }
@@ -38,9 +37,9 @@ namespace CommandosMissionEditor.Universal.Helpers
 
         public ICommand LoadedCommand => _loadedCommand ?? (_loadedCommand = new RelayCommand(OnLoaded));
 
-        public ICommand ItemInvokedCommand => _itemInvokedCommand ?? (_itemInvokedCommand = new RelayCommand<WinUI.NavigationViewItemInvokedEventArgs>(OnItemInvoked));
+        public ICommand ItemInvokedCommand => _itemInvokedCommand ?? (_itemInvokedCommand = new RelayCommand<NavigationViewItemInvokedEventArgs>(OnItemInvoked));
 
-        public void Initialize(Frame frame, WinUI.NavigationView navigationView, IList<KeyboardAccelerator> keyboardAccelerators)
+        public void Initialize(Frame frame, NavigationView navigationView, IList<KeyboardAccelerator> keyboardAccelerators)
         {
             _navigationView = navigationView;
             _keyboardAccelerators = keyboardAccelerators;
@@ -57,16 +56,16 @@ namespace CommandosMissionEditor.Universal.Helpers
             _keyboardAccelerators.Add(_backKeyboardAccelerator);
         }
 
-        private void OnItemInvoked(WinUI.NavigationViewItemInvokedEventArgs args)
+        private void OnItemInvoked(NavigationViewItemInvokedEventArgs args)
         {
             var item = _navigationView.MenuItems
-                            .OfType<WinUI.NavigationViewItem>()
+                            .OfType<NavigationViewItem>()
                             .First(menuItem => (string)menuItem.Content == (string)args.InvokedItem);
             var pageType = item.GetValue(NavHelper.NavigateToProperty) as Type;
             NavigationService.Navigate(pageType);
         }
 
-        private void OnBackRequested(WinUI.NavigationView sender, WinUI.NavigationViewBackRequestedEventArgs args)
+        private void OnBackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
         {
             NavigationService.GoBack();
         }
@@ -75,11 +74,11 @@ namespace CommandosMissionEditor.Universal.Helpers
         {
             IsBackEnabled = NavigationService.CanGoBack;
             Selected = _navigationView.MenuItems
-                            .OfType<WinUI.NavigationViewItem>()
+                            .OfType<NavigationViewItem>()
                             .FirstOrDefault(menuItem => IsMenuItemForPageType(menuItem, e.SourcePageType));
         }
 
-        private bool IsMenuItemForPageType(WinUI.NavigationViewItem menuItem, Type sourcePageType)
+        private bool IsMenuItemForPageType(NavigationViewItem menuItem, Type sourcePageType)
         {
             var pageType = menuItem.GetValue(NavHelper.NavigateToProperty) as Type;
             return pageType == sourcePageType;
