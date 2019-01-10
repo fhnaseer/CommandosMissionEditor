@@ -21,7 +21,7 @@ namespace CommandosMissionEditor.Helpers
 
         public virtual string TabName { get; } = string.Empty;
 
-        private static Mission _mission;
+        private static Mission _mission = new Mission();
         public Mission Mission
         {
             get => _mission;

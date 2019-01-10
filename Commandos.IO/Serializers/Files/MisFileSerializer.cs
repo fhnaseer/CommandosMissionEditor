@@ -51,7 +51,7 @@ namespace Commandos.IO.Files
             var matches = Regex.Matches(fullText, commentPattern);
             foreach (Match match in matches)
                 fullText = fullText.Replace(match.Value, " ");
-            return fullText.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+            return TokenParser.GetCleanedTokens(fullText);
         }
 
         private static List<string> GetCleanedLines(IList<string> lines)

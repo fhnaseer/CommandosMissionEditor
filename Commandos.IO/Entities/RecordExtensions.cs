@@ -163,13 +163,17 @@ namespace Commandos.IO.Entities
 
         public static void AddSingleDataRecord(this MultipleRecords multipleRecords, string name, string data)
         {
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(data))
+                return;
+
             var singleDataRecord = GetSingleDataRecord(name, data);
             multipleRecords.Records.Add(name, singleDataRecord);
         }
 
         public static void AddMixedDataRecord(this MultipleRecords multipleRecords, string name, Record data)
         {
-            multipleRecords.Records.Add(name, data);
+            if (!string.IsNullOrWhiteSpace(name) && data != null)
+                multipleRecords.Records.Add(name, data);
         }
     }
 }

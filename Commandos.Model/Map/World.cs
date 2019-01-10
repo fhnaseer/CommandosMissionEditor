@@ -8,16 +8,16 @@ namespace Commandos.Model.Map
     {
         public string GscFileName { get; set; }
 
-        public Administration Administration { get; set; }
+        public Administration Administration { get; set; } = new Administration(null);
 
-        public MissionObjects MissionObjects { get; set; }
+        public MissionObjects MissionObjects { get; set; } = new MissionObjects();
 
         private ObservableCollection<EnemyPatrol> _patrols;
         public ObservableCollection<EnemyPatrol> Patrols => _patrols ?? (_patrols = new ObservableCollection<EnemyPatrol>());
 
-        public SpecialAreas SpecialAreas { get; set; }
+        public SpecialAreas SpecialAreas { get; set; } = new SpecialAreas(null);
 
-        public SoundAreas SoundAreas { get; set; }
+        public SoundAreas SoundAreas { get; set; } = new SoundAreas(null);
 
         #region Methods for Equality checks.
         // http://msdn.microsoft.com/en-us/library/dd183755.aspx

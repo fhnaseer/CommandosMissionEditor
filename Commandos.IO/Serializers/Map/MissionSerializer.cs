@@ -34,7 +34,8 @@ namespace Commandos.IO.Serializers.Map
             records.Records.Add(BriefingSerializer.Briefing, SerializerHelper.Instance.BriefingSerializer.Deserialize(mission.Briefing));
             records.Records.Add(MusicSerializer.Music, SerializerHelper.Instance.MusicSerializer.Deserialize(mission.Music));
             records.Records.Add(FicherosSerializer.Ficheros, SerializerHelper.Instance.FicherosSerializer.Deserialize(mission.Ficheros));
-            records.AddMultipleRecords(StringConstants.Abilities, mission.Abilities.MultipleRecords);
+            if (mission.Abilities.MultipleRecords != null)
+                records.AddMultipleRecords(StringConstants.Abilities, mission.Abilities.MultipleRecords);
             records.Records.Add(WorldSerializer.World, SerializerHelper.Instance.WorldSerializer.Deserialize(mission.World));
             return records;
         }

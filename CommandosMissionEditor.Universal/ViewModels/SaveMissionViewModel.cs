@@ -13,7 +13,7 @@ namespace CommandosMissionEditor.Universal.ViewModels
             var savePicker = new FileSavePicker();
             savePicker.SuggestedStartLocation = PickerLocationId.Downloads;
             savePicker.FileTypeChoices.Add("Commandos Mission File", new List<string>() { ".mis" });
-            savePicker.SuggestedFileName = MissionName;
+            savePicker.SuggestedFileName = MissionName ?? "New Mission";
             var file = await savePicker.PickSaveFileAsync();
             if (file != null)
             {
