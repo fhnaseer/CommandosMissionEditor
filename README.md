@@ -1,4 +1,6 @@
-[![Build status](https://fhnaseer.visualstudio.com/PaaniStudio/_apis/build/status/CommandosMissionEditor_Develop,)](https://fhnaseer.visualstudio.com/PaaniStudio/_build/latest?definitionId=4)
+# Master Branch Status: [![Build status](https://fhnaseer.visualstudio.com/PaaniStudio/_apis/build/status/CommandosMissionEditor_Master,)](https://fhnaseer.visualstudio.com/PaaniStudio/_build/latest?definitionId=0)
+
+# Develop Branch Status: [![Build status](https://fhnaseer.visualstudio.com/PaaniStudio/_apis/build/status/CommandosMissionEditor_Develop,)](https://fhnaseer.visualstudio.com/PaaniStudio/_build/latest?definitionId=4)
 
 # CommandosMissionEditor
 
