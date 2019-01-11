@@ -302,7 +302,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
-    <None Include="CommandosMissionEditor.Universal_StoreKey.pfx" />
     <None Include="CommandosMissionEditor.Universal_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
