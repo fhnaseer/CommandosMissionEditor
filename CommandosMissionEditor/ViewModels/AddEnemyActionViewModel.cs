@@ -72,7 +72,7 @@ namespace CommandosMissionEditor.ViewModels
             set => Set(ref _selectedActionType, value);
         }
 
-        internal override void AddItem()
+        protected override void AddItem()
         {
             var action = Activator.CreateInstance(SelectedActionType.GetType()) as EnemyAction;
             ItemCollection.Add(action);

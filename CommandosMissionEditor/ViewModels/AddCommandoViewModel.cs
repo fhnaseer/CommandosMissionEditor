@@ -29,11 +29,21 @@ namespace CommandosMissionEditor.ViewModels
         public Commando SelectedCommando
         {
             get => _selectedCommando;
-            set => Set(ref _selectedCommando, value);
+            set
+            {
+                Set(ref _selectedCommando, value);
+                AddItemCommand.RaiseCanExecuteChanged();
+            }
         }
 
-        internal override void AddItem()
+        protected override bool CanAddItem()
         {
+            return SelectedCommando != null;
+        }
+
+        protected override void AddItem()
+        {
+            if (SelectedCommando == null) return;
             var commando = Activator.CreateInstance(SelectedCommando.GetType()) as Commando;
             ItemCollection.Add(commando);
             SelectedItem = commando;

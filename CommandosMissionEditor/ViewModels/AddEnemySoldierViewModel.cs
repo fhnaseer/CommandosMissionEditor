@@ -106,7 +106,7 @@ namespace CommandosMissionEditor.ViewModels
             set => Set(ref _selectedSoldierType, value);
         }
 
-        internal override void AddItem()
+        protected override void AddItem()
         {
             var enemy = Activator.CreateInstance(SelectedSoldierType.GetType()) as EnemySoldier;
             ItemCollection.Add(enemy);

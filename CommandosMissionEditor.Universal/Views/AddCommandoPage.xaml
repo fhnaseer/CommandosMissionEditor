@@ -7,47 +7,55 @@
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
-    <Grid
-        x:Name="ContentArea"
-        Margin="{StaticResource MediumLeftRightMargin}">
-        <Grid
-            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="3*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="Commandos" />
-            <controls:UniformGrid Grid.Row="0" Grid.Column="1" Rows="1">
-                <ComboBox ItemsSource="{x:Bind ViewModel.ItemCollection}" SelectedItem="{x:Bind ViewModel.SelectedItem, Mode=TwoWay}" />
-                <Button Content="Remove Selected" Command="{x:Bind ViewModel.RemoveSelectedItemCommand}" />
-            </controls:UniformGrid>
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="Add" />
-            <controls:UniformGrid Grid.Row="1" Grid.Column="1" Rows="1">
-                <ComboBox ItemsSource="{x:Bind ViewModel.Commandos}" SelectedItem="{x:Bind ViewModel.SelectedCommando, Mode=TwoWay}" />
-                <Button Content="Add New" Command="{x:Bind ViewModel.AddItemCommand}" />
-            </controls:UniformGrid>
-            <TextBlock Grid.Row="3" Grid.Column="0" Text="Starting Position" />
-            <controls:UniformGrid Grid.Row="3" Grid.Column="1" Rows="1">
-                <TextBlock Text="X" />
-                <TextBox Text="{x:Bind ViewModel.SelectedItem.Position.X, Mode=TwoWay}" />
-                <TextBlock Text="Y" />
-                <TextBox Text="{x:Bind ViewModel.SelectedItem.Position.Y, Mode=TwoWay}" />
-                <TextBlock Text="Z" />
-                <TextBox Text="{x:Bind ViewModel.SelectedItem.Position.Z, Mode=TwoWay}" />
-            </controls:UniformGrid>
-            <TextBlock Grid.Row="4" Grid.Column="0" Text="Area" />
-            <TextBox Grid.Row="4" Grid.Column="1" Text="{x:Bind ViewModel.SelectedItem.Area, Mode=TwoWay}" />
-            <TextBlock Grid.Row="5" Grid.Column="0" Text="Angle" />
-            <TextBox Grid.Row="5" Grid.Column="1" Text="{x:Bind ViewModel.SelectedItem.Angle, Mode=TwoWay}" />
-        </Grid>
+    <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
+        <StackPanel Orientation="Vertical">
+            <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Commandos" />
+                <controls:UniformGrid Grid.Row="0" Grid.Column="1" Rows="1">
+                    <ComboBox ItemsSource="{x:Bind ViewModel.ItemCollection}" SelectedItem="{x:Bind ViewModel.SelectedItem, Mode=TwoWay}" />
+                    <Button Content="Remove Selected" Command="{x:Bind ViewModel.RemoveSelectedItemCommand}" />
+                </controls:UniformGrid>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Add" />
+                <controls:UniformGrid Grid.Row="1" Grid.Column="1" Rows="1">
+                    <ComboBox ItemsSource="{x:Bind ViewModel.Commandos}" SelectedItem="{x:Bind ViewModel.SelectedCommando, Mode=TwoWay}" />
+                    <Button Content="Add New" Command="{x:Bind ViewModel.AddItemCommand}" />
+                </controls:UniformGrid>
+            </Grid>
+            <TextBlock />
+            <Grid Visibility="{x:Bind ViewModel.EditingEnabled, Mode=OneWay}" Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Starting Position" />
+                <controls:UniformGrid Grid.Row="1" Grid.Column="1" Rows="1">
+                    <TextBlock Text="X" />
+                    <TextBox Text="{x:Bind ViewModel.SelectedItem.Position.X, Mode=TwoWay}" />
+                    <TextBlock Text="Y" />
+                    <TextBox Text="{x:Bind ViewModel.SelectedItem.Position.Y, Mode=TwoWay}" />
+                    <TextBlock Text="Z" />
+                    <TextBox Text="{x:Bind ViewModel.SelectedItem.Position.Z, Mode=TwoWay}" />
+                </controls:UniformGrid>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Area" />
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{x:Bind ViewModel.SelectedItem.Area, Mode=TwoWay}" />
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="Angle" />
+                <TextBox Grid.Row="3" Grid.Column="1" Text="{x:Bind ViewModel.SelectedItem.Angle, Mode=TwoWay}" />
+            </Grid>
+        </StackPanel>
     </Grid>
 </Page>
