@@ -21,6 +21,7 @@ namespace CommandosMissionEditor.ViewModels
                 Set(ref _selectedEnemy, value);
                 LoadDefaultItem();
                 OnPropertyChanged(nameof(ItemCollection));
+                AddItemCommand.RaiseCanExecuteChanged();
                 SelectedItem = new EnemyRoute();
             }
         }
@@ -54,6 +55,11 @@ namespace CommandosMissionEditor.ViewModels
                 Set(ref _eventRoute, value);
                 SelectedEnemy.EventRoute = _eventRoute?.RouteName;
             }
+        }
+
+        protected override bool CanAddItem()
+        {
+            return SelectedEnemy != null;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using Commandos.Model.Characters;
 using Commandos.Model.Characters.Enemies;
 using Commandos.Model.Map;
@@ -35,6 +36,8 @@ namespace CommandosMissionEditor.ViewModels
             {
                 Set(ref _selectedSoldierCategory, value);
                 PopulateSoldierTypes();
+                SelectedSoldierType = SoldierTypes.FirstOrDefault();
+
             }
         }
 
@@ -103,7 +106,16 @@ namespace CommandosMissionEditor.ViewModels
         public EnemySoldier SelectedSoldierType
         {
             get => _selectedSoldierType;
-            set => Set(ref _selectedSoldierType, value);
+            set
+            {
+                Set(ref _selectedSoldierType, value);
+                AddItemCommand.RaiseCanExecuteChanged();
+            }
+        }
+
+        protected override bool CanAddItem()
+        {
+            return SelectedSoldierType != null;
         }
 
         protected override void AddItem()
