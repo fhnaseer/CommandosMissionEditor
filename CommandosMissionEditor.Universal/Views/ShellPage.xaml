@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"    
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:winui="using:Microsoft.UI.Xaml.Controls"
     xmlns:behaviors="using:CommandosMissionEditor.Universal.Behaviors"
     xmlns:helpers="using:CommandosMissionEditor.Universal.Helpers"
     xmlns:views="using:CommandosMissionEditor.Universal.Views"
@@ -18,7 +17,7 @@
         </ic:EventTriggerBehavior>
     </i:Interaction.Behaviors>
 
-    <winui:NavigationView
+    <NavigationView
         x:Name="navigationView"
         IsBackButtonVisible="Visible"
         IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
@@ -26,21 +25,21 @@
         IsSettingsVisible="False"
         ItemInvoked="OnItemInvoked"
         Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
-        <winui:NavigationView.MenuItems>
+        <NavigationView.MenuItems>
             <!--
             TODO WTS: Change the symbols for each item as appropriate for your app
             More on Segoe UI Symbol icons: https://docs.microsoft.com/windows/uwp/style/segoe-ui-symbol-font
             Or to use an IconElement instead of a Symbol see https://github.com/Microsoft/WindowsTemplateStudio/blob/master/docs/projectTypes/navigationpane.md
             Edit String/en-US/Resources.resw: Add a menu item title for each page
             -->
-            <winui:NavigationViewItem x:Uid="Shell_LoadMission" Icon="Document" helpers:NavHelper.NavigateTo="views:LoadMissionPage" />
-            <winui:NavigationViewItem x:Uid="Shell_Files" Icon="Document" helpers:NavHelper.NavigateTo="views:FilesPage" />
-            <winui:NavigationViewItem x:Uid="Shell_Camera" Icon="Document" helpers:NavHelper.NavigateTo="views:CameraPage" />
-            <winui:NavigationViewItem x:Uid="Shell_Music" Icon="Document" helpers:NavHelper.NavigateTo="views:MusicPage" />
-            <winui:NavigationViewItem x:Uid="Shell_Commandos" Icon="Document" helpers:NavHelper.NavigateTo="views:CommandosPage" />
-            <winui:NavigationViewItem x:Uid="Shell_Enemies" Icon="Document" helpers:NavHelper.NavigateTo="views:EnemiesPage" />
-            <winui:NavigationViewItem x:Uid="Shell_SaveMission" Icon="Document" helpers:NavHelper.NavigateTo="views:SaveMissionPage" />
-        </winui:NavigationView.MenuItems>
+            <NavigationViewItem x:Uid="Shell_LoadMission" Icon="Document" helpers:NavHelper.NavigateTo="views:LoadMissionPage" />
+            <NavigationViewItem x:Uid="Shell_Files" Icon="Document" helpers:NavHelper.NavigateTo="views:FilesPage" />
+            <NavigationViewItem x:Uid="Shell_Camera" Icon="Document" helpers:NavHelper.NavigateTo="views:CameraPage" />
+            <NavigationViewItem x:Uid="Shell_Music" Icon="Document" helpers:NavHelper.NavigateTo="views:MusicPage" />
+            <NavigationViewItem x:Uid="Shell_Commandos" Icon="Document" helpers:NavHelper.NavigateTo="views:CommandosPage" />
+            <NavigationViewItem x:Uid="Shell_Enemies" Icon="Document" helpers:NavHelper.NavigateTo="views:EnemiesPage" />
+            <NavigationViewItem x:Uid="Shell_SaveMission" Icon="Document" helpers:NavHelper.NavigateTo="views:SaveMissionPage" />
+        </NavigationView.MenuItems>
         <i:Interaction.Behaviors>
             <behaviors:NavigationViewHeaderBehavior
                 DefaultHeader="{x:Bind ViewModel.Selected.Content, Mode=OneWay}">
@@ -59,5 +58,5 @@
         <Grid>
             <Frame x:Name="shellFrame" />
         </Grid>
-    </winui:NavigationView>
+    </NavigationView>
 </Page>

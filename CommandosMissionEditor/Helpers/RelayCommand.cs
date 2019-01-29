@@ -26,7 +26,7 @@ namespace CommandosMissionEditor.Helpers
 
         public void Execute(object parameter) => _execute();
 
-        public void OnCanExecuteChanged() => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+        public void RaiseCanExecuteChanged() => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
     }
 
     public class RelayCommand<T> : ICommand
@@ -52,6 +52,6 @@ namespace CommandosMissionEditor.Helpers
 
         public void Execute(object parameter) => _execute((T)parameter);
 
-        public void OnCanExecuteChanged() => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+        public void RaiseCanExecuteChanged() => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
     }
 }

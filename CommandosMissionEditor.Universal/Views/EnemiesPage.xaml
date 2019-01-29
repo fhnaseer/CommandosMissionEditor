@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"    
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:winui="using:Microsoft.UI.Xaml.Controls"
     xmlns:behaviors="using:CommandosMissionEditor.Universal.Behaviors"
     xmlns:helpers="using:CommandosMissionEditor.Universal.Helpers"
     xmlns:views="using:CommandosMissionEditor.Universal.Views"
@@ -16,21 +15,20 @@
             <ic:InvokeCommandAction Command="{x:Bind ViewModel.LoadedCommand}" />
         </ic:EventTriggerBehavior>
     </i:Interaction.Behaviors>
-    <winui:NavigationView
+    <NavigationView
         x:Name="navigationView"
         IsBackButtonVisible="Collapsed"
         IsBackEnabled="False"
         SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}"
         IsSettingsVisible="False"
-        PaneDisplayMode="Top"
         ItemInvoked="OnItemInvoked"
         Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
-        <winui:NavigationView.MenuItems>
-            <winui:NavigationViewItem x:Uid="Shell_AddEnemy" Icon="Document" helpers:NavHelper.NavigateTo="views:AddEnemySoldierPage" />
-            <winui:NavigationViewItem x:Uid="Shell_AddPatrol" Icon="Document" helpers:NavHelper.NavigateTo="views:AddEnemyPatrolPage" />
-            <winui:NavigationViewItem x:Uid="Shell_AddRoute" Icon="Document" helpers:NavHelper.NavigateTo="views:AddEnemyRoutePage" />
-            <winui:NavigationViewItem x:Uid="Shell_AddAction" Icon="Document" helpers:NavHelper.NavigateTo="views:AddEnemyActionPage" />
-        </winui:NavigationView.MenuItems>
+        <NavigationView.MenuItems>
+            <NavigationViewItem x:Uid="Shell_AddEnemy" Icon="Document" helpers:NavHelper.NavigateTo="views:AddEnemySoldierPage" />
+            <NavigationViewItem x:Uid="Shell_AddPatrol" Icon="Document" helpers:NavHelper.NavigateTo="views:AddEnemyPatrolPage" />
+            <NavigationViewItem x:Uid="Shell_AddRoute" Icon="Document" helpers:NavHelper.NavigateTo="views:AddEnemyRoutePage" />
+            <NavigationViewItem x:Uid="Shell_AddAction" Icon="Document" helpers:NavHelper.NavigateTo="views:AddEnemyActionPage" />
+        </NavigationView.MenuItems>
         <i:Interaction.Behaviors>
             <behaviors:NavigationViewHeaderBehavior
                 DefaultHeader="{x:Bind ViewModel.Selected.Content, Mode=OneWay}">
@@ -49,5 +47,5 @@
         <Grid>
             <Frame x:Name="shellFrame" />
         </Grid>
-    </winui:NavigationView>
+    </NavigationView>
 </Page>

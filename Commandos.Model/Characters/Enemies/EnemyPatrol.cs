@@ -5,9 +5,9 @@ namespace Commandos.Model.Map
 {
     public class EnemyPatrol : EnemyCharacter
     {
-        public string ColumnsCount { get; set; }
+        public string ColumnsCount { get; set; } = "0";
 
-        public string RowsCount { get; set; }
+        public string RowsCount { get; set; } = "0";
 
         public string SoldiersFileName { get; set; }
 

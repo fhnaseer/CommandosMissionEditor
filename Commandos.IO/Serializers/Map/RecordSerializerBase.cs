@@ -1,5 +1,4 @@
-﻿using System;
-using Commandos.IO.Entities;
+﻿using Commandos.IO.Entities;
 using Commandos.IO.Helpers;
 using Commandos.IO.Serializers.Helpers;
 
@@ -16,7 +15,7 @@ namespace Commandos.IO.Serializers.Map
         public virtual Record Deserialize(T input)
         {
             var recordString = GetMultipleRecordString(input);
-            var tokens = recordString.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+            var tokens = TokenParser.GetCleanedTokens(recordString);
             var multipleRecords = TokenParser.ParseTokens(tokens);
             return new Record(RecordName) { Data = multipleRecords };
         }

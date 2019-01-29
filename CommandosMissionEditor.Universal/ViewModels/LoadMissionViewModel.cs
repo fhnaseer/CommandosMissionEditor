@@ -17,9 +17,13 @@ namespace CommandosMissionEditor.Universal.ViewModels
             };
             openPicker.FileTypeFilter.Add(".mis");
             var file = await openPicker.PickSingleFileAsync();
-            MissionFilePath = file.Path;
-            var lines = await FileIO.ReadLinesAsync(file);
-            Mission = MisFileSerializer.ReadMisFile(lines);
+
+            if (file != null)
+            {
+                MissionFilePath = file.Path;
+                var lines = await FileIO.ReadLinesAsync(file);
+                Mission = MisFileSerializer.ReadMisFile(lines);
+            }
         }
     }
 }

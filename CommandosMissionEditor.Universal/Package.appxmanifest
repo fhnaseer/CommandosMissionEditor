@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:genTemplate="http://schemas.microsoft.com/appx/developer/windowsTemplateStudio" IgnorableNamespaces="uap mp genTemplate">
-  <Identity Name="11707PaaniStudio.CommandosMissionEditor" Publisher="CN=DCD55334-5A57-4FFE-B8BA-8BB556C5D4A6" Version="1.0.4.0" />
-  <mp:PhoneIdentity PhoneProductId="79ae87b8-521c-429c-be39-2e59fa0d42ec" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="11707PaaniStudio.38069E9328AC0" Publisher="CN=DCD55334-5A57-4FFE-B8BA-8BB556C5D4A6" Version="1.0.0.0" />
+  <mp:PhoneIdentity PhoneProductId="74394ece-53a4-46fc-845e-12c356c83389" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Commandos Mission Editor</DisplayName>
-    <PublisherDisplayName>Paani Studio!</PublisherDisplayName>
+    <PublisherDisplayName>fhnaseer</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>

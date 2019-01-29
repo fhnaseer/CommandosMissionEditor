@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using Commandos.IO.Entities;
 using Commandos.IO.Helpers;
 using Commandos.Model.Map;
@@ -37,7 +36,7 @@ namespace Commandos.IO.Serializers.Map
         public override Record Deserialize(MissionObjects input)
         {
             var recordString = GetMultipleRecordString(input);
-            var tokens = recordString.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+            var tokens = TokenParser.GetCleanedTokens(recordString);
             return TokenParser.ParseTokens(tokens, 0);
         }
 

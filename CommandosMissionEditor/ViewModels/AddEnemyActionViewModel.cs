@@ -29,6 +29,7 @@ namespace CommandosMissionEditor.ViewModels
             set
             {
                 Set(ref _selectedEnemyRoute, value);
+                AddItemCommand.RaiseCanExecuteChanged();
                 OnPropertyChanged(nameof(ItemCollection));
             }
         }
@@ -69,10 +70,19 @@ namespace CommandosMissionEditor.ViewModels
         public EnemyAction SelectedActionType
         {
             get => _selectedActionType;
-            set => Set(ref _selectedActionType, value);
+            set
+            {
+                Set(ref _selectedActionType, value);
+                AddItemCommand.RaiseCanExecuteChanged();
+            }
         }
 
-        internal override void AddItem()
+        protected override bool CanAddItem()
+        {
+            return SelectedActionType != null && SelectedEnemyRoute != null;
+        }
+
+        protected override void AddItem()
         {
             var action = Activator.CreateInstance(SelectedActionType.GetType()) as EnemyAction;
             ItemCollection.Add(action);

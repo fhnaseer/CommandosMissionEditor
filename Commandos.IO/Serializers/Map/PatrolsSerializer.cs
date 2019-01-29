@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using Commandos.IO.Entities;
@@ -53,7 +52,7 @@ namespace Commandos.IO.Serializers.Map
         public override Record Deserialize(ObservableCollection<EnemyPatrol> input)
         {
             var recordString = GetMultipleRecordString(input);
-            var tokens = recordString.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+            var tokens = TokenParser.GetCleanedTokens(recordString);
             return TokenParser.ParseTokens(tokens, 0);
         }
 

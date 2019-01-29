@@ -7,7 +7,7 @@ namespace Commandos.Model.Map
     {
         public string CameraDirection { get; set; }
 
-        public Position Position { get; set; }
+        public Position Position { get; set; } = new Position();
 
         public string Area { get; set; }
 

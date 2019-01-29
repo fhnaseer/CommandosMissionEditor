@@ -44,11 +44,14 @@ namespace Commandos.IO.Serializers.Map
             var records = new MultipleRecords();
             if (input.GscFileName != null)
                 records.Records.Add(GscFile, RecordExtensions.GetSingleDataRecord(GscFile, input.GscFileName));
-            records.AddMultipleRecords(Administration, input.Administration.MultipleRecords);
+            if (input.Administration.MultipleRecords != null)
+                records.AddMultipleRecords(Administration, input.Administration.MultipleRecords);
             records.AddMixedDataRecord(MissionObjects, MissionObjectsSerializer.Deserialize(input.MissionObjects));
             records.AddMixedDataRecord(Patrols, PatrolsSerializer.Deserialize(input.Patrols));
-            records.AddMixedDataRecord(SpecialAreas, input.SpecialAreas.MultipleRecords);
-            records.AddMixedDataRecord(SoundAreas, input.SoundAreas.MultipleRecords);
+            if (input.SpecialAreas.MultipleRecords != null)
+                records.AddMixedDataRecord(SpecialAreas, input.SpecialAreas.MultipleRecords);
+            if (input.SoundAreas.MultipleRecords != null)
+                records.AddMixedDataRecord(SoundAreas, input.SoundAreas.MultipleRecords);
             record.Data = records;
             return record;
         }

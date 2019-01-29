@@ -1,11 +1,13 @@
 ﻿using System.Collections.ObjectModel;
-using System.Windows.Input;
+using System.Linq;
 
 namespace CommandosMissionEditor.Helpers
 {
     public abstract class AddItemViewModelBase<T> : ViewModelBase where T : new()
     {
         public abstract ObservableCollection<T> ItemCollection { get; }
+
+        public bool EditingEnabled => SelectedItem != null;
 
         private T _selectedItem;
         public T SelectedItem
@@ -14,6 +16,8 @@ namespace CommandosMissionEditor.Helpers
             set
             {
                 Set(ref _selectedItem, value);
+                OnPropertyChanged(nameof(EditingEnabled));
+                RemoveSelectedItemCommand.RaiseCanExecuteChanged();
                 OnSelectedItemChanged();
             }
         }
@@ -34,20 +38,30 @@ namespace CommandosMissionEditor.Helpers
         public virtual void LoadDefaultItem() { }
         public virtual void OnDefaultItemChanged() { }
 
-        private ICommand _removeSelectedItemCommand;
-        public ICommand RemoveSelectedItemCommand => _removeSelectedItemCommand ?? (_removeSelectedItemCommand = new RelayCommand(RemoveSelectedItem));
+        private RelayCommand _removeSelectedItemCommand;
+        public RelayCommand RemoveSelectedItemCommand => _removeSelectedItemCommand ?? (_removeSelectedItemCommand = new RelayCommand(RemoveSelectedItem, CanRemoveItem));
+
+        protected virtual bool CanRemoveItem()
+        {
+            return EditingEnabled;
+        }
 
         internal void RemoveSelectedItem()
         {
             if (SelectedItem == null) return;
             ItemCollection.Remove(SelectedItem);
-            SelectedItem = default(T);
+            SelectedItem = ItemCollection.FirstOrDefault();
         }
 
-        private ICommand _addItemCommand;
-        public ICommand AddItemCommand => _addItemCommand ?? (_addItemCommand = new RelayCommand(AddItem));
+        private RelayCommand _addItemCommand;
+        public RelayCommand AddItemCommand => _addItemCommand ?? (_addItemCommand = new RelayCommand(AddItem, CanAddItem));
 
-        internal virtual void AddItem()
+        protected virtual bool CanAddItem()
+        {
+            return true;
+        }
+
+        protected virtual void AddItem()
         {
             var item = new T();
             ItemCollection.Add(item);

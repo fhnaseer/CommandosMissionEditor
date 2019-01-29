@@ -6,11 +6,9 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-using WinUI = Microsoft.UI.Xaml.Controls;
-
 namespace CommandosMissionEditor.Universal.Behaviors
 {
-    public class NavigationViewHeaderBehavior : Behavior<WinUI.NavigationView>
+    public class NavigationViewHeaderBehavior : Behavior<NavigationView>
     {
         private static NavigationViewHeaderBehavior _current;
         private Page _currentPage;
