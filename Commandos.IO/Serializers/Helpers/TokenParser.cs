@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Commandos.IO.Entities;
 
-namespace Commandos.IO.Helpers
+namespace Commandos.IO.Serializers.Helpers
 {
     public static class TokenParser
     {

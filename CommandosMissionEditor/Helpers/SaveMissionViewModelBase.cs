@@ -1,7 +1,6 @@
 ﻿using System.Windows.Input;
-using CommandosMissionEditor.Helpers;
 
-namespace CommandosMissionEditor.Universal.Helpers
+namespace CommandosMissionEditor.Helpers
 {
     public abstract class SaveMissionViewModelBase : ViewModelBase
     {

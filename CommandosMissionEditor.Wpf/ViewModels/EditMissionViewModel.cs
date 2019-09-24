@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using CommandosMissionEditor.Helpers;
+using CommandosMissionEditor.ViewModels;
 
-namespace CommandosMissionEditor.ViewModels
+namespace CommandosMissionEditor.Wpf.ViewModels
 {
     public class EditMissionViewModel : TabsViewModelBase
     {

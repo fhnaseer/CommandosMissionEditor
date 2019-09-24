@@ -1,7 +1,6 @@
 ﻿using Commandos.Model.Common;
-using Commandos.Model.EnemyActions;
 
-namespace Commandos.Model.Characters.Enemies.Actions
+namespace Commandos.Model.EnemyActions
 {
     public class MoveAction : EnemyAction, IPosition
     {

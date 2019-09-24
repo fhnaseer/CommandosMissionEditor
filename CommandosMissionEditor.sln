@@ -7,13 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commandos.Model", "Commando
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commandos.IO", "Commandos.IO\Commandos.IO.csproj", "{40FEFAE9-37A3-4992-8D18-C587575E5841}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commandos.IO.Tests", "Commandos.IO.Tests\Commandos.IO.Tests.csproj", "{6B6D97E4-EC43-4BB3-8EF7-4421F967722E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commandos.IO.Tests", "Commandos.IO.Tests\Commandos.IO.Tests.csproj", "{6B6D97E4-EC43-4BB3-8EF7-4421F967722E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandosMissionEditor.Wpf", "CommandosMissionEditor.Wpf\CommandosMissionEditor.Wpf.csproj", "{8E43050C-3918-474C-A347-914A43E6F99E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandosMissionEditor.Universal", "CommandosMissionEditor.Universal\CommandosMissionEditor.Universal.csproj", "{81347145-0DB0-4EA9-9A87-89039C986BC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandosMissionEditor", "CommandosMissionEditor\CommandosMissionEditor.csproj", "{ABC26525-B6CE-4DEE-AE51-31098EE4BAF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandosMissionEditor", "CommandosMissionEditor\CommandosMissionEditor.csproj", "{ABC26525-B6CE-4DEE-AE51-31098EE4BAF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

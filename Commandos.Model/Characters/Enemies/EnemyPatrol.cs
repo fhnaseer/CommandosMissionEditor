@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Commandos.Model.Characters;
 
-namespace Commandos.Model.Map
+namespace Commandos.Model.Characters.Enemies
 {
     public class EnemyPatrol : EnemyCharacter
     {

@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using Commandos.IO.Files;
 using Commandos.IO.Serializers.Files;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -10,7 +9,6 @@ namespace Commandos.IO.Tests.Serializers.Files
     public class RecordWriterTest
     {
         public TestContext TestContext { get; set; }
-
 
         [TestMethod]
         public void RecordWriter_Works()

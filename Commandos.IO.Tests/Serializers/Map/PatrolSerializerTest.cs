@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using Commandos.IO.Entities;
-using Commandos.IO.Helpers;
+using Commandos.IO.Serializers.Helpers;
 using Commandos.IO.Serializers.Map;
 using Commandos.IO.Tests.Serializers.Helpers;
+using Commandos.Model.Characters.Enemies;
 using Commandos.Model.Map;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

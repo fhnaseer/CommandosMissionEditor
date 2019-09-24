@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text;
 using Commandos.IO.Entities;
-using Commandos.IO.Helpers;
 using Commandos.IO.Serializers.Helpers;
 using Commandos.Model.Characters.Commandos;
 

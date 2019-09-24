@@ -1,4 +1,4 @@
-﻿namespace Commandos.IO.Helpers
+﻿namespace Commandos.IO.Serializers.Helpers
 {
     public static class StringConstants
     {

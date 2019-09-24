@@ -1,7 +1,6 @@
-﻿<Application x:Class="CommandosMissionEditor.App"
+﻿<Application x:Class="CommandosMissionEditor.Wpf.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:CommandosMissionEditor"
              StartupUri="MainWindow.xaml"
              DispatcherUnhandledException="Application_DispatcherUnhandledException" >
     <Application.Resources>

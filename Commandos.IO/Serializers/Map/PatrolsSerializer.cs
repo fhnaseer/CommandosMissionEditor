@@ -2,8 +2,8 @@
 using System.Collections.ObjectModel;
 using System.Text;
 using Commandos.IO.Entities;
-using Commandos.IO.Helpers;
 using Commandos.IO.Serializers.Helpers;
+using Commandos.Model.Characters.Enemies;
 using Commandos.Model.Map;
 
 namespace Commandos.IO.Serializers.Map
