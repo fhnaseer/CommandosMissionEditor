@@ -1,9 +1,9 @@
 ﻿using System;
 using Commandos.IO.Entities;
-using Commandos.IO.Helpers;
+using Commandos.IO.Serializers.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Commandos.IO.Tests.Files
+namespace Commandos.IO.Tests.Serializers.Helpers
 {
     [TestClass]
     public class TokenParserTest

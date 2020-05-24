@@ -1,6 +1,6 @@
-﻿using CommandosMissionEditor.ViewModels;
+﻿using CommandosMissionEditor.Wpf.ViewModels;
 
-namespace CommandosMissionEditor
+namespace CommandosMissionEditor.Wpf
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

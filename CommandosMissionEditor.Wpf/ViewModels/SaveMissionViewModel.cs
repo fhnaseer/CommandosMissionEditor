@@ -1,7 +1,7 @@
-﻿using Commandos.IO.Files;
-using CommandosMissionEditor.Universal.Helpers;
+﻿using Commandos.IO.Serializers.Files;
+using CommandosMissionEditor.Helpers;
 
-namespace CommandosMissionEditor.ViewModels
+namespace CommandosMissionEditor.Wpf.ViewModels
 {
     public class SaveMissionViewModel : SaveMissionViewModelBase
     {

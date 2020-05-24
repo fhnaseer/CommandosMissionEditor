@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using Commandos.Model.Characters.Enemies;
 using Commandos.Model.Map;
 using CommandosMissionEditor.Helpers;
 

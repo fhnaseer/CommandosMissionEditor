@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Commandos.IO.Entities;
 
-namespace Commandos.IO.Helpers
+namespace Commandos.IO.Serializers.Helpers
 {
     public enum BracketType
     {

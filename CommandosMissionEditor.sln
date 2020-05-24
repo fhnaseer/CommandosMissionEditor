@@ -7,13 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commandos.Model", "Commando
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commandos.IO", "Commandos.IO\Commandos.IO.csproj", "{40FEFAE9-37A3-4992-8D18-C587575E5841}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commandos.IO.Tests", "Commandos.IO.Tests\Commandos.IO.Tests.csproj", "{6B6D97E4-EC43-4BB3-8EF7-4421F967722E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commandos.IO.Tests", "Commandos.IO.Tests\Commandos.IO.Tests.csproj", "{6B6D97E4-EC43-4BB3-8EF7-4421F967722E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandosMissionEditor.Wpf", "CommandosMissionEditor.Wpf\CommandosMissionEditor.Wpf.csproj", "{8E43050C-3918-474C-A347-914A43E6F99E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandosMissionEditor.Wpf", "CommandosMissionEditor.Wpf\CommandosMissionEditor.Wpf.csproj", "{8E43050C-3918-474C-A347-914A43E6F99E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandosMissionEditor.Universal", "CommandosMissionEditor.Universal\CommandosMissionEditor.Universal.csproj", "{81347145-0DB0-4EA9-9A87-89039C986BC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandosMissionEditor", "CommandosMissionEditor\CommandosMissionEditor.csproj", "{ABC26525-B6CE-4DEE-AE51-31098EE4BAF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandosMissionEditor", "CommandosMissionEditor\CommandosMissionEditor.csproj", "{ABC26525-B6CE-4DEE-AE51-31098EE4BAF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -118,8 +118,6 @@ Global
 		{81347145-0DB0-4EA9-9A87-89039C986BC5}.Debug|x64.Build.0 = Debug|x64
 		{81347145-0DB0-4EA9-9A87-89039C986BC5}.Debug|x64.Deploy.0 = Debug|x64
 		{81347145-0DB0-4EA9-9A87-89039C986BC5}.Debug|x86.ActiveCfg = Debug|x86
-		{81347145-0DB0-4EA9-9A87-89039C986BC5}.Debug|x86.Build.0 = Debug|x86
-		{81347145-0DB0-4EA9-9A87-89039C986BC5}.Debug|x86.Deploy.0 = Debug|x86
 		{81347145-0DB0-4EA9-9A87-89039C986BC5}.Release|Any CPU.ActiveCfg = Release|x86
 		{81347145-0DB0-4EA9-9A87-89039C986BC5}.Release|ARM.ActiveCfg = Release|ARM
 		{81347145-0DB0-4EA9-9A87-89039C986BC5}.Release|ARM.Build.0 = Release|ARM
@@ -129,8 +127,6 @@ Global
 		{81347145-0DB0-4EA9-9A87-89039C986BC5}.Release|x64.Build.0 = Release|x64
 		{81347145-0DB0-4EA9-9A87-89039C986BC5}.Release|x64.Deploy.0 = Release|x64
 		{81347145-0DB0-4EA9-9A87-89039C986BC5}.Release|x86.ActiveCfg = Release|x86
-		{81347145-0DB0-4EA9-9A87-89039C986BC5}.Release|x86.Build.0 = Release|x86
-		{81347145-0DB0-4EA9-9A87-89039C986BC5}.Release|x86.Deploy.0 = Release|x86
 		{ABC26525-B6CE-4DEE-AE51-31098EE4BAF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ABC26525-B6CE-4DEE-AE51-31098EE4BAF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABC26525-B6CE-4DEE-AE51-31098EE4BAF5}.Debug|ARM.ActiveCfg = Debug|Any CPU

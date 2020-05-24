@@ -1,4 +1,4 @@
-﻿namespace CommandosMissionEditor.Views
+﻿namespace CommandosMissionEditor.Wpf.Views
 {
     /// <summary>
     /// Interaction logic for MusicView.xaml

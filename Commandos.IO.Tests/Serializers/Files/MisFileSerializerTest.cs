@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using Commandos.IO.Files;
+using Commandos.IO.Serializers.Files;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Commandos.IO.Tests.Files
+namespace Commandos.IO.Tests.Serializers.Files
 {
     [TestClass]
     [DeploymentItem("TestFiles")]

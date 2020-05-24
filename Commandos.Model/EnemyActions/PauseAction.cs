@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Commandos.Model.EnemyActions;
 
-namespace Commandos.Model.Characters.Enemies.Actions
+namespace Commandos.Model.EnemyActions
 {
     public class PauseAction : EnemyAction
     {
@@ -17,11 +16,11 @@ namespace Commandos.Model.Characters.Enemies.Actions
         // Code is taken from MSDN which uses additional null checks for better performance.
         // It make no sense in writing same unit-tests again and again (is left null, is right null, etc.) again and again.
         /// <summary>
-        /// Determines whether the specified <see cref="Object" />, is equal to this instance.
+        /// Determines whether the specified <see cref="PauseAction" />, is equal to this instance.
         /// </summary>
-        /// <param name="obj">The <see cref="Object" /> to compare with this instance.</param>
+        /// <param name="obj">The <see cref="PauseAction" /> to compare with this instance.</param>
         /// <returns>
-        ///   <c>true</c> if the specified <see cref="Object" /> is equal to this instance; otherwise, <c>false</c>.
+        ///   <c>true</c> if the specified <see cref="PauseAction" /> is equal to this instance; otherwise, <c>false</c>.
         /// </returns>
         [ExcludeFromCodeCoverage]
         public override bool Equals(object obj)

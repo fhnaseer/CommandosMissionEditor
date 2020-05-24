@@ -1,6 +1,5 @@
 ﻿using System.Text;
 using Commandos.IO.Entities;
-using Commandos.IO.Helpers;
 using Commandos.Model.Characters;
 using Commandos.Model.EnemyActions;
 

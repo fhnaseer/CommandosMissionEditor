@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Commandos.Model.Characters.Enemies;
 
 namespace Commandos.Model.Map
 {

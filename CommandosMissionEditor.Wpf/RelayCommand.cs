@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace CommandosMissionEditor
+namespace CommandosMissionEditor.Wpf
 {
     public class RelayCommand : ICommand
     {
