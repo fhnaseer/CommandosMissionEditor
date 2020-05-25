@@ -37,7 +37,8 @@ namespace Commandos.IO.Serializers.Map
         {
             var recordString = GetMultipleRecordString(input);
             var tokens = TokenParser.GetCleanedTokens(recordString);
-            return TokenParser.ParseTokens(tokens, 0);
+            var tokenMetadata = new TokenMetadata(1, 2, tokens.Length - 2, tokens);
+            return TokenParser.ParseTokens(tokenMetadata);
         }
 
         public override string GetMultipleRecordString(MissionObjects input)

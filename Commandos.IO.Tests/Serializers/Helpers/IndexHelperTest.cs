@@ -21,9 +21,9 @@ namespace Commandos.IO.Tests.Serializers.Helpers
             var result = IndexHelper.GetIndexes(tokens, 0);
 
             // Assert,
-            Assert.AreEqual(1, result.nameIndex);
-            Assert.AreEqual(2, result.startIndex);
-            Assert.AreEqual(2, result.endIndex);
+            Assert.AreEqual(1, result.NameIndex);
+            Assert.AreEqual(2, result.StartIndex);
+            Assert.AreEqual(2, result.EndIndex);
         }
 
         [TestMethod]
@@ -38,9 +38,9 @@ namespace Commandos.IO.Tests.Serializers.Helpers
             var result = IndexHelper.GetIndexes(tokens, 3);
 
             // Assert,
-            Assert.AreEqual(3, result.nameIndex);
-            Assert.AreEqual(4, result.startIndex);
-            Assert.AreEqual(16, result.endIndex);
+            Assert.AreEqual(3, result.NameIndex);
+            Assert.AreEqual(4, result.StartIndex);
+            Assert.AreEqual(16, result.EndIndex);
         }
 
         [TestMethod]
@@ -55,9 +55,9 @@ namespace Commandos.IO.Tests.Serializers.Helpers
             var result = IndexHelper.GetIndexes(tokens, 19);
 
             // Assert,
-            Assert.AreEqual(19, result.nameIndex);
-            Assert.AreEqual(20, result.startIndex);
-            Assert.AreEqual(29, result.endIndex);
+            Assert.AreEqual(19, result.NameIndex);
+            Assert.AreEqual(20, result.StartIndex);
+            Assert.AreEqual(29, result.EndIndex);
         }
     }
 }

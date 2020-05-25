@@ -26,58 +26,59 @@ namespace Commandos.IO.Serializers.Helpers
         {
             if (tokens is null)
                 throw new ArgumentNullException(nameof(tokens));
-            if (tokens[0] != "[" && tokens[tokens.Length - 1] != "]")
-                if (tokens[0] != "(" && tokens[tokens.Length - 1] != ")")
+            if (tokens[0] != "[" && tokens[^1] != "]")
+                if (tokens[0] != "(" && tokens[^1] != ")")
                     throw new InvalidDataException("Invalid data,");
-            return ParseMultipleRecords(tokens, 0, tokens.Length - 1);
+            return ParseMultipleRecords(tokens[1..^1]);
         }
 
-        private static MultipleRecords ParseMultipleRecords(string[] tokens, int startIndex, int endIndex)
+        private static MultipleRecords ParseMultipleRecords(string[] tokens)
         {
             var record = new MultipleRecords();
-            for (var i = startIndex + 1; i < endIndex; i++)
+            for (var i = 0; i < tokens.Length; i++)
             {
-                var indexes = IndexHelper.GetIndexes(tokens, i);
-                var result = ParseTokens(tokens, i);
+                var tokenMetadata = IndexHelper.GetIndexes(tokens, i);
+                var result = ParseTokens(tokenMetadata);
                 record.Records.Add(result.Name, result);
-                i = indexes.endIndex;
+                i = tokenMetadata.EndIndex;
             }
             return record;
         }
 
-        internal static Record ParseTokens(string[] tokens, int startIndex)
+        internal static Record ParseTokens(TokenMetadata tokenMetadata)
         {
-            var indexes = IndexHelper.GetIndexes(tokens, startIndex);
             var record = new Record();
-            record.Name = tokens[indexes.nameIndex];
-            if (indexes.recordDataType == RecordDataType.SingleDataRecord)
-                record.Data = ParseSingleDataRecord(tokens, indexes.startIndex);
-            else if (indexes.recordDataType == RecordDataType.MultipleRecords)
-                record.Data = ParseMultipleRecords(tokens, indexes.startIndex, indexes.endIndex);
-            else if (indexes.recordDataType == RecordDataType.MixedDataRecord)
-                record.Data = ParseMixedRecords(tokens, indexes.startIndex, indexes.endIndex);
+            record.Name = tokenMetadata.Name;
+            if (tokenMetadata.RecordDataType == RecordDataType.SingleDataRecord)
+                record.Data = ParseSingleDataRecord(tokenMetadata.Tokens);
+            else if (tokenMetadata.RecordDataType == RecordDataType.MultipleRecords)
+                record.Data = ParseMultipleRecords(tokenMetadata.DataTokens);
+            else if (tokenMetadata.RecordDataType == RecordDataType.MixedDataRecord)
+                record.Data = ParseMixedRecords(tokenMetadata.DataTokens);
             return record;
         }
 
-        private static MixedDataRecord ParseMixedRecords(string[] tokens, int startIndex, int endIndex)
+        private static MixedDataRecord ParseMixedRecords(string[] tokens)
         {
             var record = new MixedDataRecord();
-            for (var i = startIndex + 1; i < endIndex; i++)
+            for (var i = 0; i < tokens.Length; i++)
             {
                 int end;
                 if (tokens[i] == "(")
                 {
                     end = IndexHelper.GetEndIndex(tokens, i, BracketType.RoundBracket);
-                    record.Records.Add(ParseMixedRecords(tokens, i, end));
+                    var subTokens = tokens[(i + 1)..end];
+                    record.Records.Add(ParseMixedRecords(subTokens));
                 }
                 else if (tokens[i] == "[")
                 {
                     end = IndexHelper.GetEndIndex(tokens, i, BracketType.SquareBracket);
-                    record.Records.Add(ParseMultipleRecords(tokens, i, end));
+                    var subTokens = tokens[(i + 1)..end];
+                    record.Records.Add(ParseMultipleRecords(subTokens));
                 }
                 else
                 {
-                    record.Records.Add(ParseSingleDataRecord(tokens, i));
+                    record.Records.Add(ParseSingleDataRecord(tokens[i..(i + 1)]));
                     end = i;
                 }
                 i = end;
@@ -85,9 +86,9 @@ namespace Commandos.IO.Serializers.Helpers
             return record;
         }
 
-        private static SingleDataRecord ParseSingleDataRecord(string[] tokens, int startIndex)
+        private static SingleDataRecord ParseSingleDataRecord(string[] tokens)
         {
-            return new SingleDataRecord { Data = tokens[startIndex] };
+            return new SingleDataRecord { Data = tokens[^1] };
         }
     }
 }

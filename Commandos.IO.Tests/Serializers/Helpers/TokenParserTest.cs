@@ -14,9 +14,10 @@ namespace Commandos.IO.Tests.Serializers.Helpers
             // Arrange,
             var text = $"[ .XYZ 1 ]";
             var tokens = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var tokenMetadata = new TokenMetadata(1, 2, tokens.Length - 2, tokens);
 
             // Act,
-            var actual = TokenParser.ParseTokens(tokens, 1);
+            var actual = TokenParser.ParseTokens(tokenMetadata);
 
             // Assert,
             Assert.AreEqual(".XYZ", actual.Name);
@@ -29,9 +30,10 @@ namespace Commandos.IO.Tests.Serializers.Helpers
             // Arrange,
             var text = "[ .XYZ ( 1 2 0 ) ]";
             var tokens = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var tokenMetadata = new TokenMetadata(1, 2, tokens.Length - 2, tokens);
 
             // Act,
-            var actual = TokenParser.ParseTokens(tokens, 1);
+            var actual = TokenParser.ParseTokens(tokenMetadata);
 
             // Assert,
             Assert.AreEqual(".XYZ", actual.Name);
@@ -47,9 +49,10 @@ namespace Commandos.IO.Tests.Serializers.Helpers
             // Arrange,
             var text = "[ .MUSICAS ( ( Battle.WAV EXTERIOR ) ( Shadows.WAV INTERIOR ) ) ]";
             var tokens = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var tokenMetadata = new TokenMetadata(1, 2, tokens.Length - 2, tokens);
 
             // Act,
-            var actual = TokenParser.ParseTokens(tokens, 1);
+            var actual = TokenParser.ParseTokens(tokenMetadata);
 
             // Assert,
             Assert.AreEqual(".MUSICAS", actual.Name);
@@ -66,9 +69,10 @@ namespace Commandos.IO.Tests.Serializers.Helpers
             // Arrange,
             var text = "[ .VISORES [ .XYZ ( 1 2 0 ) .ESC EXTERIOR .CAMARA 0 ] .BRIEFING [ .INICIAL TU01A.BRI ] .BAS TU01.BAS ]";
             var tokens = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var tokenMetadata = new TokenMetadata(1, 2, 13, tokens);
 
             // Act,
-            var actual = TokenParser.ParseTokens(tokens, 1);
+            var actual = TokenParser.ParseTokens(tokenMetadata);
 
             // Assert,
             Assert.AreEqual(".VISORES", actual.Name);
@@ -88,9 +92,10 @@ namespace Commandos.IO.Tests.Serializers.Helpers
             // Arrange,
             var text = "[ .PUERTAS ( [ .TOKEN PI_TU03I00-EXT .FLAGS ( CERRADA_CON_LLAVE ) ] ) ]";
             var tokens = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var tokenMetadata = new TokenMetadata(1, 2, tokens.Length - 2, tokens);
 
             // Act,
-            var actual = TokenParser.ParseTokens(tokens, 1);
+            var actual = TokenParser.ParseTokens(tokenMetadata);
 
             // Assert,
             Assert.AreEqual(".PUERTAS", actual.Name);
