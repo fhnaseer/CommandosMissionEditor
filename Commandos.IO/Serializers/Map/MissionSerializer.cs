@@ -11,17 +11,16 @@ namespace Commandos.IO.Serializers.Map
 
         public static Mission GetMission(MultipleRecords multipleRecords)
         {
-            return new Mission
-            {
-                MsbFileName = multipleRecords.GetStringValue(MsbFile),
-                BasFileName = multipleRecords.GetStringValue(BasFile),
-                Camera = SerializerHelper.Instance.CameraSerializer.Serialize(multipleRecords.GetRecord(CameraSerializer.Camera)),
-                Briefing = SerializerHelper.Instance.BriefingSerializer.Serialize(multipleRecords.GetRecord(BriefingSerializer.Briefing)),
-                Music = SerializerHelper.Instance.MusicSerializer.Serialize(multipleRecords.GetRecord(MusicSerializer.Music)),
-                Ficheros = SerializerHelper.Instance.FicherosSerializer.Serialize(multipleRecords.GetRecord(FicherosSerializer.Ficheros)),
-                Abilities = new Abilities(multipleRecords.GetMultipleRecord(StringConstants.Abilities)),
-                World = SerializerHelper.Instance.WorldSerializer.Serialize(multipleRecords.GetRecord(WorldSerializer.World))
-            };
+            var mission = new Mission();
+            mission.MsbFileName = multipleRecords.GetStringValue(MsbFile);
+            mission.BasFileName = multipleRecords.GetStringValue(BasFile);
+            mission.Camera = SerializerHelper.Instance.CameraSerializer.Serialize(multipleRecords.GetRecord(CameraSerializer.Camera));
+            mission.Briefing = SerializerHelper.Instance.BriefingSerializer.Serialize(multipleRecords.GetRecord(BriefingSerializer.Briefing));
+            mission.Music = SerializerHelper.Instance.MusicSerializer.Serialize(multipleRecords.GetRecord(MusicSerializer.Music));
+            mission.Ficheros = SerializerHelper.Instance.FicherosSerializer.Serialize(multipleRecords.GetRecord(FicherosSerializer.Ficheros));
+            mission.Abilities = new Abilities(multipleRecords.GetMultipleRecord(StringConstants.Abilities));
+            mission.World = SerializerHelper.Instance.WorldSerializer.Serialize(multipleRecords.GetRecord(WorldSerializer.World));
+            return mission;
         }
 
         public static MultipleRecords GetMultipleRecords(Mission mission)

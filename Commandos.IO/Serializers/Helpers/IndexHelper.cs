@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using Commandos.IO.Entities;
 
 namespace Commandos.IO.Serializers.Helpers
 {
@@ -11,18 +10,15 @@ namespace Commandos.IO.Serializers.Helpers
 
     public static class IndexHelper
     {
-        internal static (int nameIndex, int startIndex, int endIndex, RecordDataType recordDataType) GetIndexes(string[] tokens, int startPoint)
+        internal static TokenMetadata GetIndexes(string[] tokens, int startPoint)
         {
             var nameIndex = GetStartIndex(tokens, startPoint);
             var startIndex = nameIndex + 1;
             if (tokens[startIndex] == "[")
-                return (nameIndex, startIndex, GetEndIndex(tokens, startIndex, "[", "]"), RecordDataType.MultipleRecords);
-            else if (tokens[startIndex] == "(")
-            {
-                return (nameIndex, startIndex, GetEndIndex(tokens, startIndex, "(", ")"), RecordDataType.MixedDataRecord);
-            }
-            else
-                return (nameIndex, startIndex, startIndex, RecordDataType.SingleDataRecord);
+                return new TokenMetadata(nameIndex, startIndex, GetEndIndex(tokens, startIndex, "[", "]"), tokens);
+            if (tokens[startIndex] == "(")
+                return new TokenMetadata(nameIndex, startIndex, GetEndIndex(tokens, startIndex, "(", ")"), tokens);
+            return new TokenMetadata(nameIndex, startIndex, startIndex, tokens);
         }
 
         private static int GetStartIndex(string[] tokens, int startPoint)

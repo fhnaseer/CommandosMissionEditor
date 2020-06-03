@@ -18,14 +18,12 @@ namespace Commandos.IO.Serializers.Map
         public override World Serialize(Record record)
         {
             var multipleRecords = record.GetMultipleRecords();
-            var world = new World
-            {
-                GscFileName = multipleRecords.GetStringValue(GscFile),
-                Administration = new Administration(multipleRecords.GetMultipleRecord(Administration)),
-                MissionObjects = MissionObjectsSerializer.Serialize(multipleRecords.GetRecord(MissionObjects)),
-                SpecialAreas = new SpecialAreas(multipleRecords.GetMixedDataRecordTemp(SpecialAreas)),
-                SoundAreas = new SoundAreas(multipleRecords.GetMixedDataRecordTemp(SoundAreas)),
-            };
+            var world = new World();
+            world.GscFileName = multipleRecords.GetStringValue(GscFile);
+            world.Administration = new Administration(multipleRecords.GetMultipleRecord(Administration));
+            world.MissionObjects = MissionObjectsSerializer.Serialize(multipleRecords.GetRecord(MissionObjects));
+            world.SpecialAreas = new SpecialAreas(multipleRecords.GetMixedDataRecordTemp(SpecialAreas));
+            world.SoundAreas = new SoundAreas(multipleRecords.GetMixedDataRecordTemp(SoundAreas));
             var patrols = PatrolsSerializer.Serialize(multipleRecords.GetRecord(Patrols));
             foreach (var patrol in patrols)
                 world.Patrols.Add(patrol);
